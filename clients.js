@@ -1,7 +1,3 @@
-/* =========================================================
-   VORVENA — CLIENTS JS
-========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
 
     /* ================= MOBILE MENU ================= */
@@ -153,16 +149,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (projectForm && formMessage) {
 
-        projectForm.addEventListener("submit", event => {
-
-            event.preventDefault();
+        projectForm.addEventListener("submit", () => {
 
             formMessage.textContent =
-                "Your project request is ready to be connected to the VORVENA client system.";
+                "Sending your project request...";
 
             formMessage.style.color = "#555";
-
-            projectForm.reset();
 
         });
 
