@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ================= MOBILE MENU ================= */
+    
 
     const menuBtn = document.getElementById("menuBtn");
     const mobileNav = document.getElementById("mobileNav");
@@ -146,15 +146,233 @@ document.addEventListener("DOMContentLoaded", () => {
     const formMessage =
         document.getElementById("formMessage");
 
+    const submitButton =
+        projectForm
+            ? projectForm.querySelector(".submit-btn")
+            : null;
+
 
     if (projectForm && formMessage) {
 
-        projectForm.addEventListener("submit", () => {
+        projectForm.addEventListener("submit", async (event) => {
+
+            /* Stop the normal Formspree redirect */
+
+            event.preventDefault();
+
+
+            /* Make sure the form is valid */
+
+            if (!projectForm.checkValidity()) {
+
+                projectForm.reportValidity();
+
+                return;
+
+            }
+
+
+            /* Make sure the Formspree endpoint exists */
+
+            const formAction =
+                projectForm.getAttribute("action");
+
+            if (
+                !formAction ||
+                formAction === "YOUR_FORMSPREE_ENDPOINT"
+            ) {
+
+                formMessage.textContent =
+                    "Something went wrong. Please try again later.";
+
+                formMessage.style.color = "#b00020";
+
+                return;
+
+            }
+
+
+            /* Disable button while submitting */
+
+            if (submitButton) {
+
+                submitButton.disabled = true;
+
+                submitButton.style.opacity = "0.6";
+
+                submitButton.style.cursor = "not-allowed";
+
+                submitButton.innerHTML =
+                    'Sending Request <span>...</span>';
+
+            }
+
+
+            /* Show sending message */
 
             formMessage.textContent =
                 "Sending your project request...";
 
             formMessage.style.color = "#555";
+
+
+            try {
+
+                /* Collect form information */
+
+                const formData =
+                    new FormData(projectForm);
+
+
+                /* Send request to Formspree */
+
+                const response =
+                    await fetch(
+                        formAction,
+                        {
+                            method: "POST",
+                            body: formData,
+                            headers: {
+                                "Accept": "application/json"
+                            }
+                        }
+                    );
+
+
+                /* Check Formspree response */
+
+                if (response.ok) {
+
+                    /* Success */
+
+                    formMessage.innerHTML =
+                        "<strong>REQUEST RECEIVED</strong><br>" +
+                        "Thank you. Your project request has been successfully " +
+                        "submitted to VORVENA. Our team will review your request " +
+                        "and get back to you shortly.";
+
+                    formMessage.style.color = "#111";
+
+                    /* Reset the form */
+
+                    projectForm.reset();
+
+
+                    /* Restore button */
+
+                    if (submitButton) {
+
+                        submitButton.disabled = false;
+
+                        submitButton.style.opacity = "1";
+
+                        submitButton.style.cursor = "pointer";
+
+                        submitButton.innerHTML =
+                            'Request Submitted <span>✓</span>';
+
+                    }
+
+
+                    /* Return button to normal after a few seconds */
+
+                    setTimeout(() => {
+
+                        if (submitButton) {
+
+                            submitButton.innerHTML =
+                                'Submit Project Request <span>↗</span>';
+
+                        }
+
+                    }, 4000);
+
+
+                } else {
+
+                    /* Formspree returned an error */
+
+                    let errorMessage =
+                        "We couldn't submit your request. Please try again.";
+
+                    try {
+
+                        const data =
+                            await response.json();
+
+                        if (
+                            data &&
+                            data.errors &&
+                            data.errors.length
+                        ) {
+
+                            errorMessage =
+                                data.errors
+                                    .map(error => error.message)
+                                    .join(", ");
+
+                        }
+
+                    } catch (error) {
+
+                        /* Keep default error message */
+
+                    }
+
+
+                    formMessage.innerHTML =
+                        "<strong>SUBMISSION FAILED</strong><br>" +
+                        errorMessage;
+
+                    formMessage.style.color = "#b00020";
+
+
+                    /* Restore button */
+
+                    if (submitButton) {
+
+                        submitButton.disabled = false;
+
+                        submitButton.style.opacity = "1";
+
+                        submitButton.style.cursor = "pointer";
+
+                        submitButton.innerHTML =
+                            'Try Again <span>↻</span>';
+
+                    }
+
+                }
+
+
+            } catch (error) {
+
+                /* Internet/network error */
+
+                formMessage.innerHTML =
+                    "<strong>CONNECTION ERROR</strong><br>" +
+                    "We couldn't connect to the VORVENA request system. " +
+                    "Please check your internet connection and try again.";
+
+                formMessage.style.color = "#b00020";
+
+
+                /* Restore button */
+
+                if (submitButton) {
+
+                    submitButton.disabled = false;
+
+                    submitButton.style.opacity = "1";
+
+                    submitButton.style.cursor = "pointer";
+
+                    submitButton.innerHTML =
+                        'Try Again <span>↻</span>';
+
+                }
+
+            }
 
         });
 
