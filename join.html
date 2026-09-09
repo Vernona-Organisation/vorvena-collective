@@ -1,20 +1,21 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
     <title>Join Community | VORVENA</title>
 
     <link rel="stylesheet" href="join.css">
+
+
 </head>
 
 <body>
 
-    <!-- =========================
-         HEADER
-    ========================== -->
 
     <header class="site-header">
 
@@ -40,13 +41,7 @@
 
             </nav>
 
-            <button
-                class="menu-btn"
-                id="menuBtn"
-                type="button"
-                aria-label="Open menu"
-                aria-expanded="false"
-            >
+            <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">
                 <span></span>
                 <span></span>
             </button>
@@ -76,8 +71,8 @@
 
 
     <!-- =========================
-         HERO
-    ========================== -->
+     HERO
+========================== -->
 
     <main>
 
@@ -109,8 +104,8 @@
 
 
         <!-- =========================
-             APPLICATION
-        ========================== -->
+         APPLICATION
+    ========================== -->
 
         <section class="application-section">
 
@@ -134,8 +129,8 @@
 
 
                     <!-- =========================
-                         PERSONAL INFORMATION
-                    ========================== -->
+                     PERSONAL INFORMATION
+                ========================== -->
 
                     <div class="form-section">
 
@@ -157,14 +152,8 @@
                                         FIRST NAME *
                                     </label>
 
-                                    <input
-                                        type="text"
-                                        id="firstName"
-                                        name="firstName"
-                                        placeholder="Your first name"
-                                        autocomplete="given-name"
-                                        required
-                                    >
+                                    <input type="text" id="firstName" name="firstName" placeholder="Your first name"
+                                        autocomplete="given-name" required>
 
                                 </div>
 
@@ -175,14 +164,8 @@
                                         LAST NAME *
                                     </label>
 
-                                    <input
-                                        type="text"
-                                        id="lastName"
-                                        name="lastName"
-                                        placeholder="Your last name"
-                                        autocomplete="family-name"
-                                        required
-                                    >
+                                    <input type="text" id="lastName" name="lastName" placeholder="Your last name"
+                                        autocomplete="family-name" required>
 
                                 </div>
 
@@ -193,17 +176,13 @@
                                         EMAIL ADDRESS *
                                     </label>
 
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        placeholder="you@example.com"
-                                        autocomplete="email"
-                                        required
-                                    >
+                                    <input type="email" id="email" name="email" placeholder="you@example.com"
+                                        autocomplete="email" required>
 
                                 </div>
 
+
+                                <!-- PHONE NUMBER -->
 
                                 <div class="form-group">
 
@@ -211,17 +190,25 @@
                                         PHONE NUMBER *
                                     </label>
 
-                                    <input
-                                        type="tel"
-                                        id="phone"
-                                        name="phone"
-                                        placeholder="+234..."
-                                        autocomplete="tel"
-                                        required
-                                    >
+                                    <div class="phone-input">
+
+                                        <div class="phone-code-box">
+                                            <span id="selectedFlag">🇳🇬</span>
+
+                                            <span id="phoneCode">
+                                                +234
+                                            </span>
+                                        </div>
+
+                                        <input type="tel" id="phone" name="phone" placeholder="8012345678"
+                                            autocomplete="tel-national" inputmode="tel" required>
+
+                                    </div>
 
                                 </div>
 
+
+                                <!-- COUNTRY -->
 
                                 <div class="form-group">
 
@@ -229,14 +216,13 @@
                                         COUNTRY *
                                     </label>
 
-                                    <input
-                                        type="text"
-                                        id="country"
-                                        name="country"
-                                        placeholder="Nigeria"
-                                        autocomplete="country-name"
-                                        required
-                                    >
+                                    <select id="country" name="country" autocomplete="country-name" required>
+
+                                        <option value="">
+                                            Select your country
+                                        </option>
+
+                                    </select>
 
                                 </div>
 
@@ -247,14 +233,8 @@
                                         CITY *
                                     </label>
 
-                                    <input
-                                        type="text"
-                                        id="city"
-                                        name="city"
-                                        placeholder="Your city"
-                                        autocomplete="address-level2"
-                                        required
-                                    >
+                                    <input type="text" id="city" name="city" placeholder="Your city"
+                                        autocomplete="address-level2" required>
 
                                 </div>
 
@@ -266,8 +246,8 @@
 
 
                     <!-- =========================
-                         PROFILE PHOTO
-                    ========================== -->
+                     PROFILE PHOTO
+                ========================== -->
 
                     <div class="form-section">
 
@@ -292,10 +272,7 @@
 
                                 <label for="profilePicture" class="upload-box">
 
-                                    <div
-                                        class="image-preview"
-                                        id="imagePreview"
-                                    >
+                                    <div class="image-preview" id="imagePreview">
                                         <span>
                                             +
                                         </span>
@@ -315,13 +292,8 @@
 
                                 </label>
 
-                                <input
-                                    type="file"
-                                    id="profilePicture"
-                                    name="profilePicture"
-                                    accept="image/png,image/jpeg,image/webp"
-                                    required
-                                >
+                                <input type="file" id="profilePicture" name="profilePicture"
+                                    accept="image/png,image/jpeg,image/webp" required>
 
                             </div>
 
@@ -331,8 +303,8 @@
 
 
                     <!-- =========================
-                         PROFESSIONAL INFORMATION
-                    ========================== -->
+                     PROFESSIONAL INFORMATION
+                ========================== -->
 
                     <div class="form-section">
 
@@ -354,87 +326,30 @@
                                         PRIMARY PROFESSION *
                                     </label>
 
-                                    <select
-                                        id="profession"
-                                        name="profession"
-                                        required
-                                    >
+                                    <select id="profession" name="profession" required>
 
                                         <option value="">
                                             Select your profession
                                         </option>
 
-                                        <option>
-                                            Frontend Developer
-                                        </option>
-
-                                        <option>
-                                            Backend Developer
-                                        </option>
-
-                                        <option>
-                                            Full Stack Developer
-                                        </option>
-
-                                        <option>
-                                            Graphic Designer
-                                        </option>
-
-                                        <option>
-                                            Motion Designer
-                                        </option>
-
-                                        <option>
-                                            UI/UX Designer
-                                        </option>
-
-                                        <option>
-                                            Social Media Manager
-                                        </option>
-
-                                        <option>
-                                            Affiliate Marketer
-                                        </option>
-
-                                        <option>
-                                            Technical Writer
-                                        </option>
-
-                                        <option>
-                                            DevOps / Cloud Engineer
-                                        </option>
-
-                                        <option>
-                                            AI / Machine Learning Engineer
-                                        </option>
-
-                                        <option>
-                                            Photographer
-                                        </option>
-
-                                        <option>
-                                            QA / Software Tester
-                                        </option>
-
-                                        <option>
-                                            Writer
-                                        </option>
-
-                                        <option>
-                                            Data Analyst
-                                        </option>
-
-                                        <option>
-                                            Digital Marketer
-                                        </option>
-
-                                        <option>
-                                            Cyber Security
-                                        </option>
-
-                                        <option>
-                                            Other
-                                        </option>
+                                        <option>Frontend Developer</option>
+                                        <option>Backend Developer</option>
+                                        <option>Full Stack Developer</option>
+                                        <option>Graphic Designer</option>
+                                        <option>Motion Designer</option>
+                                        <option>UI/UX Designer</option>
+                                        <option>Social Media Manager</option>
+                                        <option>Affiliate Marketer</option>
+                                        <option>Technical Writer</option>
+                                        <option>DevOps / Cloud Engineer</option>
+                                        <option>AI / Machine Learning Engineer</option>
+                                        <option>Photographer</option>
+                                        <option>QA / Software Tester</option>
+                                        <option>Writer</option>
+                                        <option>Data Analyst</option>
+                                        <option>Digital Marketer</option>
+                                        <option>Cyber Security</option>
+                                        <option>Other</option>
 
                                     </select>
 
@@ -447,35 +362,17 @@
                                         YEARS OF EXPERIENCE *
                                     </label>
 
-                                    <select
-                                        id="experience"
-                                        name="experience"
-                                        required
-                                    >
+                                    <select id="experience" name="experience" required>
 
                                         <option value="">
                                             Select experience
                                         </option>
 
-                                        <option>
-                                            Less than 1 year
-                                        </option>
-
-                                        <option>
-                                            1–2 years
-                                        </option>
-
-                                        <option>
-                                            3–5 years
-                                        </option>
-
-                                        <option>
-                                            6–10 years
-                                        </option>
-
-                                        <option>
-                                            10+ years
-                                        </option>
+                                        <option>Less than 1 year</option>
+                                        <option>1–2 years</option>
+                                        <option>3–5 years</option>
+                                        <option>6–10 years</option>
+                                        <option>10+ years</option>
 
                                     </select>
 
@@ -488,13 +385,8 @@
                                         SKILLS *
                                     </label>
 
-                                    <input
-                                        type="text"
-                                        id="skills"
-                                        name="skills"
-                                        placeholder="HTML, CSS, JavaScript, Figma..."
-                                        required
-                                    >
+                                    <input type="text" id="skills" name="skills"
+                                        placeholder="HTML, CSS, JavaScript, Figma..." required>
 
                                     <small class="field-note">
                                         Separate multiple skills with commas.
@@ -509,13 +401,9 @@
                                         PROFESSIONAL BIO *
                                     </label>
 
-                                    <textarea
-                                        id="bio"
-                                        name="bio"
-                                        rows="6"
+                                    <textarea id="bio" name="bio" rows="6"
                                         placeholder="Tell us about your experience, strengths and the kind of work you do..."
-                                        required
-                                    ></textarea>
+                                        required></textarea>
 
                                 </div>
 
@@ -527,8 +415,8 @@
 
 
                     <!-- =========================
-                         WORK INFORMATION
-                    ========================== -->
+                     WORK INFORMATION
+                ========================== -->
 
                     <div class="form-section">
 
@@ -550,13 +438,8 @@
                                         PORTFOLIO LINK *
                                     </label>
 
-                                    <input
-                                        type="url"
-                                        id="portfolio"
-                                        name="portfolio"
-                                        placeholder="https://yourportfolio.com"
-                                        required
-                                    >
+                                    <input type="url" id="portfolio" name="portfolio"
+                                        placeholder="https://yourportfolio.com" required>
 
                                 </div>
 
@@ -567,12 +450,8 @@
                                         ADDITIONAL WORK / SOCIAL LINK
                                     </label>
 
-                                    <input
-                                        type="url"
-                                        id="additionalLink"
-                                        name="additionalLink"
-                                        placeholder="https://..."
-                                    >
+                                    <input type="url" id="additionalLink" name="additionalLink"
+                                        placeholder="https://...">
 
                                 </div>
 
@@ -585,13 +464,7 @@
 
                                     <div class="file-input-wrapper">
 
-                                        <input
-                                            type="file"
-                                            id="cv"
-                                            name="cv"
-                                            accept=".pdf,.doc,.docx"
-                                            required
-                                        >
+                                        <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
 
                                         <label for="cv" class="file-label">
 
@@ -622,8 +495,8 @@
 
 
                     <!-- =========================
-                         ACCOUNT
-                    ========================== -->
+                     ACCOUNT
+                ========================== -->
 
                     <div class="form-section">
 
@@ -645,15 +518,9 @@
                                         PASSWORD *
                                     </label>
 
-                                    <input
-                                        type="password"
-                                        id="password"
-                                        name="password"
-                                        placeholder="Minimum 8 characters"
-                                        minlength="8"
-                                        autocomplete="new-password"
-                                        required
-                                    >
+                                    <input type="password" id="password" name="password"
+                                        placeholder="Minimum 8 characters" minlength="8" autocomplete="new-password"
+                                        required>
 
                                 </div>
 
@@ -664,15 +531,9 @@
                                         CONFIRM PASSWORD *
                                     </label>
 
-                                    <input
-                                        type="password"
-                                        id="confirmPassword"
-                                        name="confirmPassword"
-                                        placeholder="Repeat your password"
-                                        minlength="8"
-                                        autocomplete="new-password"
-                                        required
-                                    >
+                                    <input type="password" id="confirmPassword" name="confirmPassword"
+                                        placeholder="Repeat your password" minlength="8" autocomplete="new-password"
+                                        required>
 
                                 </div>
 
@@ -684,8 +545,8 @@
 
 
                     <!-- =========================
-                         AGREEMENTS
-                    ========================== -->
+                     AGREEMENTS
+                ========================== -->
 
                     <div class="form-section agreement-section">
 
@@ -709,15 +570,11 @@
 
                                 <label class="agreement-item">
 
-                                    <input
-                                        type="checkbox"
-                                        id="terms"
-                                        required
-                                    >
+                                    <input type="checkbox" id="terms" required>
 
                                     <span>
                                         I agree to the
-                                        <a href="terms.html" target="_blank">
+                                        <a href="./terms.html" target="_blank">
                                             Terms & Conditions
                                         </a>.
                                     </span>
@@ -727,15 +584,11 @@
 
                                 <label class="agreement-item">
 
-                                    <input
-                                        type="checkbox"
-                                        id="privacy"
-                                        required
-                                    >
+                                    <input type="checkbox" id="privacy" required>
 
                                     <span>
                                         I have read and agree to the
-                                        <a href="privacy.html" target="_blank">
+                                        <a href="./privacy.html" target="_blank">
                                             Privacy Policy
                                         </a>.
                                     </span>
@@ -745,15 +598,11 @@
 
                                 <label class="agreement-item">
 
-                                    <input
-                                        type="checkbox"
-                                        id="guidelines"
-                                        required
-                                    >
+                                    <input type="checkbox" id="guidelines" required>
 
                                     <span>
                                         I agree to follow the
-                                        <a href="guidelines.html" target="_blank">
+                                        <a href="./guidelines.html" target="_blank">
                                             Community Guidelines
                                         </a>.
                                     </span>
@@ -763,11 +612,7 @@
 
                                 <label class="agreement-item">
 
-                                    <input
-                                        type="checkbox"
-                                        id="paymentAgreement"
-                                        required
-                                    >
+                                    <input type="checkbox" id="paymentAgreement" required>
 
                                     <span>
                                         I understand the VORVENA project
@@ -787,8 +632,8 @@
 
 
                     <!-- =========================
-                         SUBMIT
-                    ========================== -->
+                     SUBMIT
+                ========================== -->
 
                     <div class="submit-area">
 
@@ -805,10 +650,7 @@
                         </div>
 
 
-                        <button
-                            type="submit"
-                            class="submit-btn"
-                        >
+                        <button type="submit" class="submit-btn">
 
                             <span>
                                 SUBMIT APPLICATION
@@ -823,11 +665,7 @@
                     </div>
 
 
-                    <div
-                        class="form-message"
-                        id="formMessage"
-                        aria-live="polite"
-                    ></div>
+                    <div class="form-message" id="formMessage" aria-live="polite"></div>
 
                 </form>
 
@@ -837,8 +675,8 @@
 
 
         <!-- =========================
-             PROCESS
-        ========================== -->
+         PROCESS
+    ========================== -->
 
         <section class="process-section">
 
@@ -927,8 +765,8 @@
 
 
         <!-- =========================
-             CTA
-        ========================== -->
+         CTA
+    ========================== -->
 
         <section class="join-cta">
 
@@ -941,7 +779,7 @@
                 NEXT CHAPTER.
             </h2>
 
-            <a href="profiles.html">
+            <a href="./profiles.html">
                 EXPLORE THE COMMUNITY ↗
             </a>
 
@@ -951,8 +789,8 @@
 
 
     <!-- =========================
-         FOOTER
-    ========================== -->
+     FOOTER
+========================== -->
 
     <footer class="site-footer">
 
@@ -960,7 +798,7 @@
 
             <div class="footer-brand">
 
-                <a href="index.html">
+                <a href="./index.html">
                     VORVENA
                 </a>
 
@@ -978,10 +816,10 @@
                     EXPLORE
                 </span>
 
-                <a href="index.html">Home</a>
-                <a href="community.html">Community</a>
-                <a href="profiles.html">Profiles</a>
-                <a href="clients.html">Clients</a>
+                <a href="./index.html">Home</a>
+                <a href="./community.html">Community</a>
+                <a href="./profiles.html">Profiles</a>
+                <a href="./clients.html">Clients</a>
 
             </div>
 
@@ -992,11 +830,11 @@
                     JOIN
                 </span>
 
-                <a href="join.html">
+                <a href="./join.html">
                     Join Community
                 </a>
 
-                <a href="client-signup.html">
+                <a href="./client-signup.html">
                     Client Account
                 </a>
 
@@ -1009,10 +847,10 @@
                     LEGAL
                 </span>
 
-                <a href="terms.html">Terms</a>
-                <a href="privacy.html">Privacy</a>
-                <a href="guidelines.html">Guidelines</a>
-                <a href="feedback.html">Feedback</a>
+                <a href="./terms.html">Terms</a>
+                <a href="./privacy.html">Privacy</a>
+                <a href="./guidelines.html">Guidelines</a>
+                <a href="./feedback.html">Feedback</a>
 
             </div>
 
@@ -1034,7 +872,7 @@
     </footer>
 
 
-    <script src="join.js"></script>
+    <script src="./join.js"></script>
 
 </body>
 
