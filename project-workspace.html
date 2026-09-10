@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Project Workspace | VORVENA</title>
+
+    <link rel="stylesheet" href="project-workspace.css">
+</head>
+
+<body>
+
+    <!-- MOBILE OVERLAY -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-top">
+
+            <a href="index.html" class="logo">
+                VORVENA
+            </a>
+
+            <button class="close-sidebar" id="closeSidebar">
+                &times;
+            </button>
+
+
+            <div class="client-profile">
+
+                <div class="profile-avatar">
+                    JD
+                </div>
+
+                <div>
+                    <h3>John Doe</h3>
+                    <span>Client</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="sidebar-nav">
+
+            <a href="clients-dashboard.html" class="nav-link">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a href="community.html" class="nav-link">
+                <span class="nav-icon">◉</span>
+                <span>Find Professionals</span>
+            </a>
+
+
+            <a href="#" class="nav-link active">
+                <span class="nav-icon">▣</span>
+                <span>My Projects</span>
+                <span class="nav-count">3</span>
+            </a>
+
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">✉</span>
+                <span>Messages</span>
+                <span class="nav-count">2</span>
+            </a>
+
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">₦</span>
+                <span>Payments</span>
+            </a>
+
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">●</span>
+                <span>Notifications</span>
+            </a>
+
+
+            <a href="#" class="nav-link">
+                <span class="nav-icon">⚙</span>
+                <span>Account Settings</span>
+            </a>
+
+        </nav>
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+            <div class="support-box">
+
+                <strong>Need help?</strong>
+
+                <p>
+                    Our team is available to assist you.
+                </p>
+
+                <button id="supportBtn">
+                    Contact Support
+                </button>
+
+            </div>
+
+
+            <button class="logout-btn" id="logoutBtn">
+                <span>↪</span>
+                Log Out
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <button class="menu-btn" id="menuBtn">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+            <div class="topbar-title">
+                Project Workspace
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <button
+                    class="notification-btn"
+                    id="notificationBtn"
+                >
+                    🔔
+
+                    <span class="notification-dot"></span>
+                </button>
+
+
+                <div class="top-profile">
+
+                    <div class="small-avatar">
+                        JD
+                    </div>
+
+                    <div class="top-profile-info">
+
+                        <strong>
+                            John Doe
+                        </strong>
+
+                        <span>
+                            Client
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =========================
+             WORKSPACE
+        ========================== -->
+
+        <section class="workspace-container">
+
+
+            <!-- BACK -->
+
+            <a
+                href="clients-dashboard.html"
+                class="back-link"
+            >
+                ← Back to Dashboard
+            </a>
+
+
+
+            <!-- PROJECT HEADER -->
+
+            <div class="project-header">
+
+                <div class="project-heading">
+
+                    <div class="project-badge">
+                        W
+                    </div>
+
+
+                    <div>
+
+                        <p class="project-label">
+                            PROJECT
+                        </p>
+
+                        <h1 id="projectTitle">
+                            Business Website Design
+                        </h1>
+
+                        <p class="project-id">
+                            Project ID:
+                            <span id="projectId">
+                                VOR-001
+                            </span>
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="project-status">
+
+                    <span class="status-dot"></span>
+
+                    <span id="projectStatus">
+                        In Progress
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PROJECT INFORMATION -->
+
+            <div class="project-info-grid">
+
+
+                <!-- PROFESSIONAL -->
+
+                <div class="info-box">
+
+                    <span class="info-label">
+                        PROFESSIONAL
+                    </span>
+
+                    <div class="professional-info">
+
+                        <div class="professional-avatar">
+                            DW
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                David Williams
+                            </strong>
+
+                            <span>
+                                Web Developer
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRICE -->
+
+                <div class="info-box">
+
+                    <span class="info-label">
+                        PROJECT PRICE
+                    </span>
+
+                    <strong class="info-value">
+                        ₦150,000
+                    </strong>
+
+                </div>
+
+
+                <!-- DEADLINE -->
+
+                <div class="info-box">
+
+                    <span class="info-label">
+                        DEADLINE
+                    </span>
+
+                    <strong class="info-value">
+                        September 20, 2026
+                    </strong>
+
+                </div>
+
+
+                <!-- REVISIONS -->
+
+                <div class="info-box">
+
+                    <span class="info-label">
+                        REVISIONS
+                    </span>
+
+                    <strong class="info-value">
+                        0 / 2
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MAIN WORKSPACE GRID -->
+
+            <div class="workspace-grid">
+
+
+                <!-- =========================
+                     LEFT COLUMN
+                ========================== -->
+
+                <div class="workspace-left">
+
+
+                    <!-- PROJECT DESCRIPTION -->
+
+                    <section class="workspace-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <p class="card-label">
+                                    PROJECT DETAILS
+                                </p>
+
+                                <h2>
+                                    Project Description
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="description-content">
+
+                            <p>
+                                Design and develop a modern,
+                                responsive business website for
+                                the client's company.
+                            </p>
+
+                            <p>
+                                The website should have a clean
+                                professional appearance, work
+                                properly on desktop and mobile,
+                                and include the agreed pages and
+                                features.
+                            </p>
+
+
+                            <div class="requirements">
+
+                                <h3>
+                                    Project Requirements
+                                </h3>
+
+                                <ul>
+
+                                    <li>
+                                        Responsive website
+                                    </li>
+
+                                    <li>
+                                        Professional modern design
+                                    </li>
+
+                                    <li>
+                                        Mobile-friendly layout
+                                    </li>
+
+                                    <li>
+                                        Contact section
+                                    </li>
+
+                                    <li>
+                                        Basic SEO structure
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- SUBMITTED WORK -->
+
+                    <section class="workspace-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <p class="card-label">
+                                    DELIVERABLES
+                                </p>
+
+                                <h2>
+                                    Submitted Work
+                                </h2>
+
+                            </div>
+
+                            <span class="file-count">
+                                2 Files
+                            </span>
+
+                        </div>
+
+
+                        <div class="files-list">
+
+
+                            <div class="file-item">
+
+                                <div class="file-icon">
+                                    PDF
+                                </div>
+
+                                <div class="file-details">
+
+                                    <strong>
+                                        Website Design Preview
+                                    </strong>
+
+                                    <span>
+                                        PDF • 2.4 MB
+                                    </span>
+
+                                </div>
+
+                                <button class="file-btn">
+                                    View
+                                </button>
+
+                            </div>
+
+
+
+                            <div class="file-item">
+
+                                <div class="file-icon">
+                                    ZIP
+                                </div>
+
+                                <div class="file-details">
+
+                                    <strong>
+                                        Website Source Files
+                                    </strong>
+
+                                    <span>
+                                        ZIP • 8.7 MB
+                                    </span>
+
+                                </div>
+
+                                <button class="file-btn">
+                                    View
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- ACTIVITY -->
+
+                    <section class="workspace-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <p class="card-label">
+                                    PROJECT HISTORY
+                                </p>
+
+                                <h2>
+                                    Activity
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline">
+
+
+                            <div class="timeline-item">
+
+                                <div class="timeline-marker">
+                                    ✓
+                                </div>
+
+                                <div class="timeline-content">
+
+                                    <strong>
+                                        Project started
+                                    </strong>
+
+                                    <p>
+                                        David Williams accepted
+                                        the project.
+                                    </p>
+
+                                    <span>
+                                        September 8, 2026
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="timeline-item">
+
+                                <div class="timeline-marker">
+                                    ↑
+                                </div>
+
+                                <div class="timeline-content">
+
+                                    <strong>
+                                        Work submitted
+                                    </strong>
+
+                                    <p>
+                                        Website preview and source
+                                        files were submitted.
+                                    </p>
+
+                                    <span>
+                                        September 9, 2026
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="timeline-item current">
+
+                                <div class="timeline-marker">
+                                    ●
+                                </div>
+
+                                <div class="timeline-content">
+
+                                    <strong>
+                                        Waiting for your review
+                                    </strong>
+
+                                    <p>
+                                        Review the submitted work
+                                        and approve or request a
+                                        revision.
+                                    </p>
+
+                                    <span>
+                                        Now
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+
+                <!-- =========================
+                     RIGHT COLUMN
+                ========================== -->
+
+                <aside class="workspace-right">
+
+
+                    <!-- REVIEW CARD -->
+
+                    <section class="action-card">
+
+                        <p class="card-label">
+                            ACTION REQUIRED
+                        </p>
+
+                        <h2>
+                            Review the Work
+                        </h2>
+
+                        <p>
+                            The professional has submitted
+                            the current version of the project.
+                            Review the files before approving.
+                        </p>
+
+
+                        <button
+                            class="approve-btn"
+                            id="approveBtn"
+                        >
+                            ✓ Approve Work
+                        </button>
+
+
+                        <button
+                            class="revision-btn"
+                            id="revisionBtn"
+                        >
+                            Request Revision
+                        </button>
+
+                    </section>
+
+
+
+                    <!-- REVISION INFORMATION -->
+
+                    <section class="workspace-card revision-info">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <p class="card-label">
+                                    REVISIONS
+                                </p>
+
+                                <h2>
+                                    Revision Policy
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="revision-body">
+
+                            <div class="revision-number">
+                                0
+                                <span>
+                                    of 2 used
+                                </span>
+                            </div>
+
+                            <p>
+                                You have 2 included revisions
+                                for this project.
+                            </p>
+
+                            <small>
+                                Additional changes outside the
+                                agreed scope may require a new
+                                agreement.
+                            </small>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- PROFESSIONAL CONTACT -->
+
+                    <section class="workspace-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <p class="card-label">
+                                    PROFESSIONAL
+                                </p>
+
+                                <h2>
+                                    David Williams
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-professional">
+
+                            <div class="contact-avatar">
+                                DW
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Web Developer
+                                </strong>
+
+                                <span>
+                                    Approved Professional
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            class="message-btn"
+                            id="messageBtn"
+                        >
+                            ✉ Message Professional
+                        </button>
+
+                    </section>
+
+
+
+                    <!-- PAYMENT -->
+
+                    <section class="workspace-card payment-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <p class="card-label">
+                                    PAYMENT
+                                </p>
+
+                                <h2>
+                                    Project Payment
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="payment-row">
+
+                            <span>
+                                Project Price
+                            </span>
+
+                            <strong>
+                                ₦150,000
+                            </strong>
+
+                        </div>
+
+
+                        <div class="payment-row">
+
+                            <span>
+                                Payment Status
+                            </span>
+
+                            <strong class="paid">
+                                Paid
+                            </strong>
+
+                        </div>
+
+                    </section>
+
+                </aside>
+
+            </div>
+
+
+
+            <!-- =========================
+                 MESSAGES
+            ========================== -->
+
+            <section class="workspace-card messages-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <p class="card-label">
+                            COMMUNICATION
+                        </p>
+
+                        <h2>
+                            Project Messages
+                        </h2>
+
+                    </div>
+
+                    <span class="online-status">
+                        ● Online
+                    </span>
+
+                </div>
+
+
+                <div class="messages-area" id="messagesArea">
+
+
+                    <div class="message received">
+
+                        <div class="message-avatar">
+                            DW
+                        </div>
+
+                        <div class="message-content">
+
+                            <div class="message-top">
+
+                                <strong>
+                                    David Williams
+                                </strong>
+
+                                <span>
+                                    10:32 AM
+                                </span>
+
+                            </div>
+
+                            <p>
+                                I've uploaded the latest website
+                                preview. Please take a look and
+                                let me know if any changes are
+                                needed.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="message sent">
+
+                        <div class="message-content">
+
+                            <div class="message-top">
+
+                                <strong>
+                                    You
+                                </strong>
+
+                                <span>
+                                    10:45 AM
+                                </span>
+
+                            </div>
+
+                            <p>
+                                Thanks. I'll review it now.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MESSAGE INPUT -->
+
+                <div class="message-input-area">
+
+                    <input
+                        type="text"
+                        id="messageInput"
+                        placeholder="Write a message..."
+                    >
+
+                    <button id="sendMessageBtn">
+                        Send
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- FOOTER NOTICE -->
+
+            <div class="workspace-notice">
+
+                <span>✓</span>
+
+                <p>
+                    Keep project communication and files
+                    inside VORVENA to maintain a clear
+                    project history.
+                </p>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- REVISION MODAL -->
+
+    <div class="modal-overlay" id="revisionModal">
+
+        <div class="revision-modal">
+
+            <button
+                class="modal-close"
+                id="closeRevisionModal"
+            >
+                &times;
+            </button>
+
+
+            <p class="card-label">
+                PROJECT REVISION
+            </p>
+
+            <h2>
+                Request a Revision
+            </h2>
+
+            <p class="modal-description">
+                Explain what you would like the professional
+                to change or improve.
+            </p>
+
+
+            <form id="revisionForm">
+
+                <label for="revisionMessage">
+                    What needs to be changed?
+                </label>
+
+                <textarea
+                    id="revisionMessage"
+                    placeholder="Describe the changes you need..."
+                    required
+                ></textarea>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        id="cancelRevision"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="submit-revision"
+                    >
+                        Send Revision Request
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="project-workspace.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,2061 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | VORVENA</title>
+
+    <link rel="stylesheet" href="admin-dashboard.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-top">
+
+            <div class="brand">
+                <div class="brand-mark">V</div>
+
+                <div>
+                    <h2>VORVENA</h2>
+                    <span>ADMIN PANEL</span>
+                </div>
+            </div>
+
+            <div class="admin-profile">
+
+                <div class="admin-avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong>Administrator</strong>
+                    <small>Super Admin</small>
+                </div>
+
+                <span class="online-dot"></span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-label">MAIN</p>
+
+            <a href="#" class="nav-link active" data-section="dashboard">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#" class="nav-link" data-section="applications">
+                <i class="fa-solid fa-file-circle-check"></i>
+                <span>Applications</span>
+                <b class="nav-count">5</b>
+            </a>
+
+            <a href="#" class="nav-link" data-section="professionals">
+                <i class="fa-solid fa-user-tie"></i>
+                <span>Professionals</span>
+            </a>
+
+            <a href="#" class="nav-link" data-section="clients">
+                <i class="fa-solid fa-users"></i>
+                <span>Clients</span>
+            </a>
+
+            <a href="#" class="nav-link" data-section="projects">
+                <i class="fa-solid fa-briefcase"></i>
+                <span>Projects</span>
+            </a>
+
+            <a href="#" class="nav-link" data-section="messages">
+                <i class="fa-solid fa-comments"></i>
+                <span>Messages</span>
+                <b class="nav-count">3</b>
+            </a>
+
+            <p class="nav-label">FINANCE</p>
+
+            <a href="#" class="nav-link" data-section="payments">
+                <i class="fa-solid fa-credit-card"></i>
+                <span>Payments</span>
+            </a>
+
+            <a href="#" class="nav-link" data-section="payouts">
+                <i class="fa-solid fa-money-bill-transfer"></i>
+                <span>Awaiting Payout</span>
+                <b class="nav-count red">2</b>
+            </a>
+
+            <p class="nav-label">MANAGEMENT</p>
+
+            <a href="#" class="nav-link" data-section="notifications">
+                <i class="fa-solid fa-bell"></i>
+                <span>Notifications</span>
+                <b class="nav-count">4</b>
+            </a>
+
+            <a href="#" class="nav-link" data-section="activity">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Activity Log</span>
+            </a>
+
+            <a href="#" class="nav-link" data-section="settings">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button class="support-btn" id="supportBtn">
+                <i class="fa-solid fa-headset"></i>
+                <span>Admin Support</span>
+            </button>
+
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button class="menu-btn" id="menuBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div>
+                    <span class="top-label">VORVENA</span>
+                    <h1 id="pageTitle">Admin Dashboard</h1>
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <!-- THEME TOGGLE -->
+                <button
+                    class="icon-btn theme-toggle"
+                    id="themeToggle"
+                    title="Change theme"
+                    aria-label="Change theme"
+                >
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+
+                <!-- NOTIFICATION -->
+                <button
+                    class="icon-btn notification-btn"
+                    id="notificationBtn"
+                    title="Notifications"
+                >
+                    <i class="fa-solid fa-bell"></i>
+                    <span>4</span>
+                </button>
+
+
+                <div class="top-admin">
+
+                    <div class="top-avatar">
+                        A
+                    </div>
+
+                    <div class="top-admin-info">
+                        <strong>Administrator</strong>
+                        <small>Super Admin</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <div class="content">
+
+
+            <!-- ================= DASHBOARD ================= -->
+            <section class="section active-section" id="dashboard">
+
+                <div class="welcome-row">
+
+                    <div>
+                        <span class="section-kicker">OVERVIEW</span>
+
+                        <h2>
+                            Welcome back, Administrator
+                        </h2>
+
+                        <p>
+                            Here's what's happening across the VORVENA community.
+                        </p>
+                    </div>
+
+                    <div class="date-box">
+                        <i class="fa-regular fa-calendar"></i>
+                        <span id="currentDate"></span>
+                    </div>
+
+                </div>
+
+
+                <!-- STATS -->
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+
+                        <div class="stat-content">
+                            <span>Total Professionals</span>
+                            <strong id="totalProfessionals">128</strong>
+                            <small class="positive">
+                                <i class="fa-solid fa-arrow-up"></i>
+                                8% this month
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon online">
+                            <i class="fa-solid fa-circle"></i>
+                        </div>
+
+                        <div class="stat-content">
+                            <span>Professionals Online</span>
+                            <strong id="onlineProfessionals">24</strong>
+                            <small class="online-text">
+                                <i class="fa-solid fa-circle"></i>
+                                Active now
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+
+                        <div class="stat-content">
+                            <span>Active Projects</span>
+                            <strong>31</strong>
+                            <small>Across the community</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card alert-stat">
+
+                        <div class="stat-icon red-icon">
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                        </div>
+
+                        <div class="stat-content">
+                            <span>Awaiting Payout</span>
+                            <strong>2</strong>
+                            <small class="danger">
+                                Requires attention
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SECOND STATS -->
+                <div class="mini-stats">
+
+                    <div>
+                        <span>Verified Professionals</span>
+                        <strong>96</strong>
+                    </div>
+
+                    <div>
+                        <span>Pending Applications</span>
+                        <strong>5</strong>
+                    </div>
+
+                    <div>
+                        <span>Completed Projects</span>
+                        <strong>247</strong>
+                    </div>
+
+                    <div>
+                        <span>VORVENA Earnings</span>
+                        <strong>₦3,285,000</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- DASHBOARD GRID -->
+                <div class="dashboard-grid">
+
+                    <!-- COMMUNITY ACTIVITY -->
+                    <div class="card activity-card">
+
+                        <div class="card-header">
+
+                            <div>
+                                <span class="section-kicker">LIVE</span>
+                                <h3>Community Activity</h3>
+                            </div>
+
+                            <button
+                                class="text-btn"
+                                data-target="activity"
+                            >
+                                View All
+                            </button>
+
+                        </div>
+
+
+                        <div class="activity-list" id="dashboardActivity">
+
+                            <div class="activity-item">
+
+                                <div class="activity-icon red">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+
+                                <div>
+                                    <strong>Client approved submitted work</strong>
+
+                                    <p>
+                                        Bright Solutions approved
+                                        <b>Business Website Design</b>.
+                                    </p>
+
+                                    <small>2 minutes ago</small>
+                                </div>
+
+                            </div>
+
+
+                            <div class="activity-item">
+
+                                <div class="activity-icon orange">
+                                    <i class="fa-solid fa-money-bill"></i>
+                                </div>
+
+                                <div>
+                                    <strong>Project awaiting payout</strong>
+
+                                    <p>
+                                        David Williams is awaiting his
+                                        85% professional payout.
+                                    </p>
+
+                                    <small>3 minutes ago</small>
+                                </div>
+
+                            </div>
+
+
+                            <div class="activity-item">
+
+                                <div class="activity-icon blue">
+                                    <i class="fa-solid fa-file"></i>
+                                </div>
+
+                                <div>
+                                    <strong>New work submitted</strong>
+
+                                    <p>
+                                        Sarah Creative submitted Brand Logo Design.
+                                    </p>
+
+                                    <small>18 minutes ago</small>
+                                </div>
+
+                            </div>
+
+
+                            <div class="activity-item">
+
+                                <div class="activity-icon green">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                </div>
+
+                                <div>
+                                    <strong>New professional application</strong>
+
+                                    <p>
+                                        Michael Adams submitted an application.
+                                    </p>
+
+                                    <small>32 minutes ago</small>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- AWAITING PAYOUT -->
+                    <div class="card payout-card">
+
+                        <div class="card-header">
+
+                            <div>
+                                <span class="section-kicker">ACTION REQUIRED</span>
+                                <h3>Awaiting Payout</h3>
+                            </div>
+
+                            <span class="badge red">2</span>
+
+                        </div>
+
+
+                        <div class="payout-item">
+
+                            <div class="payout-info">
+
+                                <div class="project-avatar">
+                                    BW
+                                </div>
+
+                                <div>
+                                    <strong>Business Website Design</strong>
+                                    <span>David Williams</span>
+                                </div>
+
+                            </div>
+
+                            <div class="payout-money">
+                                <strong>₦127,500</strong>
+                                <small>85% payout</small>
+                            </div>
+
+                            <button
+                                class="primary-btn payout-btn"
+                                data-project="Business Website Design"
+                            >
+                                Review Payout
+                            </button>
+
+                        </div>
+
+
+                        <div class="payout-item">
+
+                            <div class="payout-info">
+
+                                <div class="project-avatar">
+                                    BL
+                                </div>
+
+                                <div>
+                                    <strong>Brand Logo Design</strong>
+                                    <span>Sarah Creative</span>
+                                </div>
+
+                            </div>
+
+                            <div class="payout-money">
+                                <strong>₦68,000</strong>
+                                <small>85% payout</small>
+                            </div>
+
+                            <button
+                                class="primary-btn payout-btn"
+                                data-project="Brand Logo Design"
+                            >
+                                Review Payout
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROJECT MONITOR -->
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <span class="section-kicker">MONITOR</span>
+                            <h3>Recent Projects</h3>
+                        </div>
+
+                        <button
+                            class="text-btn"
+                            data-target="projects"
+                        >
+                            View Projects
+                        </button>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>Project</th>
+                                    <th>Client</th>
+                                    <th>Professional</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Business Website Design</strong>
+                                        <small>VOR-001</small>
+                                    </td>
+
+                                    <td>Bright Solutions</td>
+
+                                    <td>David Williams</td>
+
+                                    <td>₦150,000</td>
+
+                                    <td>
+                                        <span class="status awaiting">
+                                            Awaiting Payout
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button
+                                            class="table-btn view-project"
+                                        >
+                                            View
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Brand Logo Design</strong>
+                                        <small>VOR-002</small>
+                                    </td>
+
+                                    <td>Sarah Creative</td>
+
+                                    <td>Sarah Creative</td>
+
+                                    <td>₦80,000</td>
+
+                                    <td>
+                                        <span class="status review">
+                                            Submitted
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button class="table-btn view-project">
+                                            View
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <strong>Social Media Management</strong>
+                                        <small>VOR-003</small>
+                                    </td>
+
+                                    <td>Michael Adams</td>
+
+                                    <td>Michael Adams</td>
+
+                                    <td>₦120,000</td>
+
+                                    <td>
+                                        <span class="status progress">
+                                            In Progress
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <button class="table-btn view-project">
+                                            View
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= APPLICATIONS ================= -->
+            <section class="section" id="applications">
+
+                <div class="page-heading">
+                    <div>
+                        <span class="section-kicker">MANAGEMENT</span>
+                        <h2>Professional Applications</h2>
+                        <p>Review people requesting to join the VORVENA community.</p>
+                    </div>
+                </div>
+
+
+                <div class="toolbar">
+
+                    <div class="search-box">
+                        <i class="fa-solid fa-search"></i>
+                        <input
+                            type="text"
+                            placeholder="Search applications..."
+                            class="section-search"
+                        >
+                    </div>
+
+                    <select>
+                        <option>All Applications</option>
+                        <option>Pending</option>
+                        <option>Approved</option>
+                        <option>Rejected</option>
+                    </select>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="application-list">
+
+                        <div class="application-row">
+
+                            <div class="person-info">
+                                <div class="person-avatar">MA</div>
+
+                                <div>
+                                    <strong>Michael Adams</strong>
+                                    <span>Frontend Developer</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <span>Applied Sept 10, 2026</span>
+                            </div>
+
+                            <span class="status pending">Pending</span>
+
+                            <button class="primary-btn approve-application">
+                                Approve
+                            </button>
+
+                            <button class="danger-outline reject-application">
+                                Reject
+                            </button>
+
+                        </div>
+
+
+                        <div class="application-row">
+
+                            <div class="person-info">
+                                <div class="person-avatar">JO</div>
+
+                                <div>
+                                    <strong>John Okoro</strong>
+                                    <span>Graphic Designer</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <span>Applied Sept 9, 2026</span>
+                            </div>
+
+                            <span class="status pending">Pending</span>
+
+                            <button class="primary-btn approve-application">
+                                Approve
+                            </button>
+
+                            <button class="danger-outline reject-application">
+                                Reject
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= PROFESSIONALS ================= -->
+            <section class="section" id="professionals">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="section-kicker">COMMUNITY</span>
+                        <h2>Professional Management</h2>
+                        <p>Manage approved professionals and their community profiles.</p>
+                    </div>
+
+                    <div class="online-summary">
+                        <span class="live-dot"></span>
+                        <strong id="professionalOnlineCount">24</strong>
+                        Professionals Online
+                    </div>
+
+                </div>
+
+
+                <div class="toolbar">
+
+                    <div class="search-box">
+
+                        <i class="fa-solid fa-search"></i>
+
+                        <input
+                            type="text"
+                            id="professionalSearch"
+                            placeholder="Search professionals..."
+                        >
+
+                    </div>
+
+                    <select id="professionalFilter">
+
+                        <option value="all">All Professionals</option>
+                        <option value="verified">Verified</option>
+                        <option value="online">Online</option>
+                        <option value="offline">Offline</option>
+                        <option value="suspended">Suspended</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="professional-grid" id="professionalGrid">
+
+                    <!-- PROFESSIONAL 1 -->
+                    <article
+                        class="professional-card"
+                        data-name="David Williams"
+                        data-status="online"
+                        data-verified="true"
+                    >
+
+                        <div class="professional-cover"></div>
+
+                        <div class="professional-body">
+
+                            <div class="professional-avatar large">
+                                DW
+                                <span class="profile-online"></span>
+                            </div>
+
+                            <div class="professional-title">
+
+                                <h3>
+                                    David Williams
+
+                                    <span class="verified-badge">
+                                        <i class="fa-solid fa-check"></i>
+                                    </span>
+                                </h3>
+
+                                <span>Web Developer</span>
+
+                            </div>
+
+
+                            <div class="professional-status online-status">
+                                <i class="fa-solid fa-circle"></i>
+                                Online now
+                            </div>
+
+
+                            <div class="professional-stats">
+
+                                <div>
+                                    <strong class="completed-job-count">8</strong>
+                                    <span>Jobs Completed</span>
+                                </div>
+
+                                <div>
+                                    <strong>2</strong>
+                                    <span>Active Jobs</span>
+                                </div>
+
+                                <div>
+                                    <strong>₦487.5k</strong>
+                                    <span>Total Earned</span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="professional-actions">
+
+                                <button
+                                    class="secondary-btn edit-professional"
+                                    data-name="David Williams"
+                                >
+                                    <i class="fa-solid fa-pen"></i>
+                                    Edit
+                                </button>
+
+                                <button
+                                    class="secondary-btn verify-professional"
+                                >
+                                    <i class="fa-solid fa-badge-check"></i>
+                                    Verified
+                                </button>
+
+                                <button
+                                    class="danger-btn suspend-professional"
+                                >
+                                    Suspend
+                                </button>
+
+                                <button
+                                    class="icon-danger delete-professional"
+                                    title="Delete professional"
+                                >
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PROFESSIONAL 2 -->
+                    <article
+                        class="professional-card"
+                        data-name="Sarah Creative"
+                        data-status="online"
+                        data-verified="true"
+                    >
+
+                        <div class="professional-cover"></div>
+
+                        <div class="professional-body">
+
+                            <div class="professional-avatar large">
+                                SC
+                                <span class="profile-online"></span>
+                            </div>
+
+                            <div class="professional-title">
+
+                                <h3>
+                                    Sarah Creative
+
+                                    <span class="verified-badge">
+                                        <i class="fa-solid fa-check"></i>
+                                    </span>
+                                </h3>
+
+                                <span>Graphic Designer</span>
+
+                            </div>
+
+
+                            <div class="professional-status online-status">
+                                <i class="fa-solid fa-circle"></i>
+                                Online now
+                            </div>
+
+
+                            <div class="professional-stats">
+
+                                <div>
+                                    <strong class="completed-job-count">12</strong>
+                                    <span>Jobs Completed</span>
+                                </div>
+
+                                <div>
+                                    <strong>1</strong>
+                                    <span>Active Jobs</span>
+                                </div>
+
+                                <div>
+                                    <strong>₦620k</strong>
+                                    <span>Total Earned</span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="professional-actions">
+
+                                <button
+                                    class="secondary-btn edit-professional"
+                                    data-name="Sarah Creative"
+                                >
+                                    <i class="fa-solid fa-pen"></i>
+                                    Edit
+                                </button>
+
+                                <button
+                                    class="secondary-btn verify-professional"
+                                >
+                                    <i class="fa-solid fa-badge-check"></i>
+                                    Verified
+                                </button>
+
+                                <button
+                                    class="danger-btn suspend-professional"
+                                >
+                                    Suspend
+                                </button>
+
+                                <button
+                                    class="icon-danger delete-professional"
+                                >
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PROFESSIONAL 3 -->
+                    <article
+                        class="professional-card"
+                        data-name="Michael Adams"
+                        data-status="offline"
+                        data-verified="false"
+                    >
+
+                        <div class="professional-cover"></div>
+
+                        <div class="professional-body">
+
+                            <div class="professional-avatar large">
+                                MA
+                            </div>
+
+                            <div class="professional-title">
+
+                                <h3>
+                                    Michael Adams
+                                </h3>
+
+                                <span>Social Media Manager</span>
+
+                            </div>
+
+
+                            <div class="professional-status offline-status">
+                                <i class="fa-solid fa-circle"></i>
+                                Offline
+                            </div>
+
+
+                            <div class="professional-stats">
+
+                                <div>
+                                    <strong class="completed-job-count">4</strong>
+                                    <span>Jobs Completed</span>
+                                </div>
+
+                                <div>
+                                    <strong>1</strong>
+                                    <span>Active Jobs</span>
+                                </div>
+
+                                <div>
+                                    <strong>₦210k</strong>
+                                    <span>Total Earned</span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="professional-actions">
+
+                                <button
+                                    class="secondary-btn edit-professional"
+                                    data-name="Michael Adams"
+                                >
+                                    <i class="fa-solid fa-pen"></i>
+                                    Edit
+                                </button>
+
+                                <button
+                                    class="secondary-btn verify-professional"
+                                >
+                                    <i class="fa-solid fa-badge-check"></i>
+                                    Verify
+                                </button>
+
+                                <button
+                                    class="danger-btn suspend-professional"
+                                >
+                                    Suspend
+                                </button>
+
+                                <button
+                                    class="icon-danger delete-professional"
+                                >
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= CLIENTS ================= -->
+            <section class="section" id="clients">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="section-kicker">COMMUNITY</span>
+                        <h2>Clients</h2>
+                        <p>Monitor clients and their projects.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>Client</th>
+                                    <th>Company</th>
+                                    <th>Projects</th>
+                                    <th>Total Spent</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+                                        <div class="table-person">
+                                            <div>BS</div>
+                                            <strong>Bright Solutions</strong>
+                                        </div>
+                                    </td>
+
+                                    <td>Bright Solutions Ltd</td>
+                                    <td>6</td>
+                                    <td>₦720,000</td>
+
+                                    <td>
+                                        <span class="status active">Active</span>
+                                    </td>
+
+                                    <td>
+                                        <button class="table-btn">
+                                            View
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <div class="table-person">
+                                            <div>SC</div>
+                                            <strong>Sarah Creative</strong>
+                                        </div>
+                                    </td>
+
+                                    <td>Sarah Creative Studio</td>
+                                    <td>4</td>
+                                    <td>₦410,000</td>
+
+                                    <td>
+                                        <span class="status active">Active</span>
+                                    </td>
+
+                                    <td>
+                                        <button class="table-btn">
+                                            View
+                                        </button>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= PROJECTS ================= -->
+            <section class="section" id="projects">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="section-kicker">PROJECT CONTROL</span>
+                        <h2>All Projects</h2>
+                        <p>Monitor every project moving through VORVENA.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="project-status-grid">
+
+                    <div>
+                        <span>All Projects</span>
+                        <strong>284</strong>
+                    </div>
+
+                    <div>
+                        <span>In Progress</span>
+                        <strong>31</strong>
+                    </div>
+
+                    <div>
+                        <span>Submitted</span>
+                        <strong>8</strong>
+                    </div>
+
+                    <div>
+                        <span>Revision</span>
+                        <strong>4</strong>
+                    </div>
+
+                    <div>
+                        <span>Awaiting Payout</span>
+                        <strong>2</strong>
+                    </div>
+
+                    <div>
+                        <span>Completed</span>
+                        <strong>239</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>Project</th>
+                                    <th>Client</th>
+                                    <th>Professional</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                    <th>Deadline</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>
+                                        <strong>Business Website Design</strong>
+                                        <small>VOR-001</small>
+                                    </td>
+
+                                    <td>Bright Solutions</td>
+                                    <td>David Williams</td>
+                                    <td>₦150,000</td>
+
+                                    <td>
+                                        <span class="status awaiting">
+                                            Awaiting Payout
+                                        </span>
+                                    </td>
+
+                                    <td>Sept 20, 2026</td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>
+                                        <strong>Brand Logo Design</strong>
+                                        <small>VOR-002</small>
+                                    </td>
+
+                                    <td>Sarah Creative</td>
+                                    <td>Sarah Creative</td>
+                                    <td>₦80,000</td>
+
+                                    <td>
+                                        <span class="status review">
+                                            Submitted
+                                        </span>
+                                    </td>
+
+                                    <td>Sept 15, 2026</td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= MESSAGES ================= -->
+            <section class="section" id="messages">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="section-kicker">MONITORING</span>
+                        <h2>Workspace Messages</h2>
+                        <p>Monitor project conversations between clients and professionals.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="message-monitor-grid">
+
+                    <div class="card conversation-list">
+
+                        <div class="conversation active">
+
+                            <div class="conversation-avatar">
+                                BS
+                            </div>
+
+                            <div>
+                                <strong>Bright Solutions</strong>
+                                <span>David Williams</span>
+                                <small>Can you check the homepage...</small>
+                            </div>
+
+                            <b>2</b>
+
+                        </div>
+
+
+                        <div class="conversation">
+
+                            <div class="conversation-avatar">
+                                SC
+                            </div>
+
+                            <div>
+                                <strong>Sarah Creative</strong>
+                                <span>Client Workspace</span>
+                                <small>I've submitted the updated logo.</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="conversation">
+
+                            <div class="conversation-avatar">
+                                MA
+                            </div>
+
+                            <div>
+                                <strong>Michael Adams</strong>
+                                <span>Social Media Project</span>
+                                <small>Project deadline question.</small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="card admin-chat">
+
+                        <div class="chat-header">
+
+                            <div>
+                                <strong>Bright Solutions ↔ David Williams</strong>
+                                <span>Business Website Design • VOR-001</span>
+                            </div>
+
+                            <span class="status progress">
+                                In Progress
+                            </span>
+
+                        </div>
+
+
+                        <div class="chat-messages">
+
+                            <div class="chat-message client-message">
+                                <span>Bright Solutions</span>
+                                <p>
+                                    Can you make the homepage hero section slightly bigger?
+                                </p>
+                                <small>10:21 AM</small>
+                            </div>
+
+
+                            <div class="chat-message professional-message">
+                                <span>David Williams</span>
+                                <p>
+                                    Sure. I'll update the hero section and submit the revised version.
+                                </p>
+                                <small>10:25 AM</small>
+                            </div>
+
+
+                            <div class="chat-message client-message">
+                                <span>Bright Solutions</span>
+                                <p>
+                                    Thanks. Everything else looks good.
+                                </p>
+                                <small>10:27 AM</small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= PAYMENTS ================= -->
+            <section class="section" id="payments">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="section-kicker">FINANCE</span>
+                        <h2>Payments</h2>
+                        <p>Track project payments and VORVENA earnings.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="finance-grid">
+
+                    <div class="finance-card">
+                        <span>Total Project Value</span>
+                        <strong>₦19,850,000</strong>
+                    </div>
+
+                    <div class="finance-card">
+                        <span>Professional Payouts</span>
+                        <strong>₦16,872,500</strong>
+                    </div>
+
+                    <div class="finance-card">
+                        <span>VORVENA Commission</span>
+                        <strong>₦2,977,500</strong>
+                    </div>
+
+                    <div class="finance-card">
+                        <span>Awaiting Payout</span>
+                        <strong>₦195,500</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Project</th>
+                                    <th>Total</th>
+                                    <th>Professional 85%</th>
+                                    <th>VORVENA 15%</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>Business Website Design</td>
+                                    <td>₦150,000</td>
+                                    <td>₦127,500</td>
+                                    <td>₦22,500</td>
+                                    <td>
+                                        <span class="status awaiting">
+                                            Awaiting Payout
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Brand Logo Design</td>
+                                    <td>₦80,000</td>
+                                    <td>₦68,000</td>
+                                    <td>₦12,000</td>
+                                    <td>
+                                        <span class="status paid">
+                                            Paid
+                                        </span>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= PAYOUT ================= -->
+            <section class="section" id="payouts">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="section-kicker">ACTION REQUIRED</span>
+                        <h2>Awaiting Payout</h2>
+                        <p>Review approved projects and process professional payouts.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="payout-large-card">
+
+                    <div class="payout-large-header">
+
+                        <div>
+                            <span class="status awaiting">
+                                Awaiting Payout
+                            </span>
+
+                            <h3>Business Website Design</h3>
+
+                            <p>
+                                Project #VOR-001 • Client approved submitted work
+                            </p>
+                        </div>
+
+                        <strong>₦150,000</strong>
+
+                    </div>
+
+
+                    <div class="payout-breakdown">
+
+                        <div>
+                            <span>Project Value</span>
+                            <strong>₦150,000</strong>
+                        </div>
+
+                        <div>
+                            <span>Professional Share</span>
+                            <strong>₦127,500</strong>
+                            <small>85%</small>
+                        </div>
+
+                        <div>
+                            <span>VORVENA Commission</span>
+                            <strong>₦22,500</strong>
+                            <small>15%</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="payout-professional">
+
+                        <div class="professional-avatar">
+                            DW
+                        </div>
+
+                        <div>
+                            <strong>David Williams</strong>
+                            <span>Web Developer • 8 jobs completed</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="payout-actions">
+
+                        <button class="primary-btn process-payout">
+                            <i class="fa-solid fa-check"></i>
+                            Verify & Mark Paid
+                        </button>
+
+                        <button class="secondary-btn">
+                            View Project
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= NOTIFICATIONS ================= -->
+            <section class="section" id="notifications">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="section-kicker">ALERTS</span>
+                        <h2>Notifications</h2>
+                        <p>Important events requiring administrator attention.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="card notification-list">
+
+                    <div class="admin-notification unread">
+
+                        <div class="notification-icon red">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+
+                        <div>
+                            <strong>Client approved a project</strong>
+                            <p>
+                                Bright Solutions approved Business Website Design.
+                            </p>
+                            <small>2 minutes ago</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="admin-notification unread">
+
+                        <div class="notification-icon orange">
+                            <i class="fa-solid fa-money-bill"></i>
+                        </div>
+
+                        <div>
+                            <strong>Payout required</strong>
+                            <p>
+                                David Williams is awaiting a ₦127,500 payout.
+                            </p>
+                            <small>3 minutes ago</small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="admin-notification">
+
+                        <div class="notification-icon blue">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+
+                        <div>
+                            <strong>New professional application</strong>
+                            <p>
+                                Michael Adams wants to join VORVENA.
+                            </p>
+                            <small>32 minutes ago</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= ACTIVITY ================= -->
+            <section class="section" id="activity">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="section-kicker">AUDIT TRAIL</span>
+                        <h2>Activity Log</h2>
+                        <p>A record of important activity across VORVENA.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="full-activity-list">
+
+                        <div class="full-activity">
+
+                            <div class="activity-icon red">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+
+                            <div>
+                                <strong>Client approved work</strong>
+                                <p>
+                                    Bright Solutions approved Business Website Design.
+                                </p>
+                                <small>September 10, 2026 • 05:31 AM</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="full-activity">
+
+                            <div class="activity-icon orange">
+                                <i class="fa-solid fa-money-bill"></i>
+                            </div>
+
+                            <div>
+                                <strong>Project moved to Awaiting Payout</strong>
+                                <p>
+                                    VOR-001 is ready for administrator payout verification.
+                                </p>
+                                <small>September 10, 2026 • 05:31 AM</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="full-activity">
+
+                            <div class="activity-icon blue">
+                                <i class="fa-solid fa-upload"></i>
+                            </div>
+
+                            <div>
+                                <strong>Professional submitted work</strong>
+                                <p>
+                                    David Williams submitted files for VOR-001.
+                                </p>
+                                <small>September 10, 2026 • 05:20 AM</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="full-activity">
+
+                            <div class="activity-icon green">
+                                <i class="fa-solid fa-user-plus"></i>
+                            </div>
+
+                            <div>
+                                <strong>Professional application received</strong>
+                                <p>
+                                    Michael Adams submitted a new application.
+                                </p>
+                                <small>September 10, 2026 • 04:52 AM</small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= SETTINGS ================= -->
+            <section class="section" id="settings">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="section-kicker">SYSTEM</span>
+                        <h2>Admin Settings</h2>
+                        <p>Manage dashboard preferences.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="settings-grid">
+
+                    <div class="card setting-card">
+
+                        <div class="setting-icon">
+                            <i class="fa-solid fa-moon"></i>
+                        </div>
+
+                        <div>
+                            <h3>Dashboard Theme</h3>
+                            <p>
+                                Switch between light and dark mode.
+                            </p>
+                        </div>
+
+                        <button
+                            class="secondary-btn"
+                            id="settingsThemeBtn"
+                        >
+                            Change Theme
+                        </button>
+
+                    </div>
+
+
+                    <div class="card setting-card">
+
+                        <div class="setting-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+
+                        <div>
+                            <h3>Admin Security</h3>
+                            <p>
+                                Administrator controls will be connected to Supabase Auth.
+                            </p>
+                        </div>
+
+                        <span class="status active">
+                            Protected
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <footer class="admin-footer">
+            <span>© 2026 VORVENA</span>
+            <span>Admin Control Center</span>
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- ================= EDIT PROFESSIONAL MODAL ================= -->
+
+<div class="modal" id="editModal">
+
+    <div class="modal-box">
+
+        <button class="modal-close" id="closeEditModal">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <span class="section-kicker">PROFESSIONAL MANAGEMENT</span>
+
+        <h2>Edit Professional</h2>
+
+        <p class="modal-description">
+            Update the professional's public profile information.
+        </p>
+
+
+        <form id="editProfessionalForm">
+
+            <div class="form-group">
+
+                <label>Full Name</label>
+
+                <input
+                    type="text"
+                    id="editName"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Profession</label>
+
+                <input
+                    type="text"
+                    id="editProfession"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Account Status</label>
+
+                <select id="editStatus">
+
+                    <option value="active">Active</option>
+                    <option value="suspended">Suspended</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    id="cancelEdit"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Save Changes
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ================= PAYOUT MODAL ================= -->
+
+<div class="modal" id="payoutModal">
+
+    <div class="modal-box payout-modal-box">
+
+        <button class="modal-close" id="closePayoutModal">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <span class="section-kicker">PAYOUT VERIFICATION</span>
+
+        <h2>Process Professional Payout</h2>
+
+        <p class="modal-description">
+            Verify the project before marking the professional as paid.
+        </p>
+
+
+        <div class="verification-box">
+
+            <div>
+                <span>Project</span>
+                <strong id="payoutProjectName">
+                    Business Website Design
+                </strong>
+            </div>
+
+            <div>
+                <span>Professional</span>
+                <strong>David Williams</strong>
+            </div>
+
+            <div>
+                <span>Professional Share</span>
+                <strong>₦127,500</strong>
+            </div>
+
+            <div>
+                <span>VORVENA Commission</span>
+                <strong>₦22,500</strong>
+            </div>
+
+        </div>
+
+
+        <div class="warning-box">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+            <p>
+                Once marked as paid, this project will move to
+                <strong>Completed</strong> and the professional's
+                completed-job count will increase automatically.
+            </p>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                class="secondary-btn"
+                id="cancelPayout"
+            >
+                Cancel
+            </button>
+
+            <button
+                class="primary-btn"
+                id="confirmPayout"
+            >
+                <i class="fa-solid fa-check"></i>
+                Confirm Payment
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= DELETE MODAL ================= -->
+
+<div class="modal" id="deleteModal">
+
+    <div class="modal-box small-modal">
+
+        <button class="modal-close" id="closeDeleteModal">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="danger-modal-icon">
+            <i class="fa-solid fa-trash"></i>
+        </div>
+
+        <h2>Remove Professional?</h2>
+
+        <p>
+            This will remove the professional from the VORVENA community.
+            Their historical project records should remain preserved.
+        </p>
+
+
+        <div class="modal-actions">
+
+            <button
+                class="secondary-btn"
+                id="cancelDelete"
+            >
+                Cancel
+            </button>
+
+            <button
+                class="danger-btn"
+                id="confirmDelete"
+            >
+                Remove Professional
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="toast" id="toast">
+    <i class="fa-solid fa-check"></i>
+    <span id="toastMessage">Action completed.</span>
+</div>
+
+
+<script src="admin-dashboard.js"></script>
+
+</body>
+</html>

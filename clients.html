@@ -32,7 +32,13 @@
 
             </nav>
 
-            <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                aria-label="Open menu"
+                aria-expanded="false"
+                type="button"
+            >
                 <span></span>
                 <span></span>
             </button>
@@ -52,9 +58,12 @@
     </header>
 
 
-    <!-- ================= HERO ================= -->
+    <!-- ================= MAIN ================= -->
 
     <main>
+
+
+        <!-- ================= HERO ================= -->
 
         <section class="hero">
 
@@ -202,7 +211,10 @@
 
         <!-- ================= HOW IT WORKS ================= -->
 
-        <section class="process-section" id="how-it-works">
+        <section
+            class="process-section"
+            id="how-it-works"
+        >
 
             <div class="section-label">
                 03 / HOW IT WORKS
@@ -230,11 +242,14 @@
                     <span>01</span>
 
                     <div>
+
                         <h3>Explore</h3>
+
                         <p>
                             Browse professional profiles and discover
                             people with the skills you need.
                         </p>
+
                     </div>
 
                 </div>
@@ -245,11 +260,14 @@
                     <span>02</span>
 
                     <div>
+
                         <h3>Select</h3>
+
                         <p>
                             Review a professional's skills, experience
                             and portfolio.
                         </p>
+
                     </div>
 
                 </div>
@@ -260,11 +278,14 @@
                     <span>03</span>
 
                     <div>
+
                         <h3>Request</h3>
+
                         <p>
                             When you're ready, sign in as a client and
                             submit your project request.
                         </p>
+
                     </div>
 
                 </div>
@@ -275,11 +296,14 @@
                     <span>04</span>
 
                     <div>
+
                         <h3>Build</h3>
+
                         <p>
                             Once approved and agreed, the professional
                             gets to work on your project.
                         </p>
+
                     </div>
 
                 </div>
@@ -318,7 +342,10 @@
                         your project can be properly managed.
                     </p>
 
-                    <a href="./login.html" class="text-link">
+                    <a
+                        href="./login.html"
+                        class="text-link"
+                    >
                         Client Login
                         <span>↗</span>
                     </a>
@@ -332,13 +359,19 @@
 
         <!-- ================= PROJECT REQUEST ================= -->
 
-        <section class="request-section">
+        <section
+            class="request-section"
+            id="project-request"
+        >
 
             <div class="section-label">
                 05 / PROJECT REQUEST
             </div>
 
             <div class="request-grid">
+
+
+                <!-- ================= REQUEST INTRO ================= -->
 
                 <div class="request-intro">
 
@@ -355,213 +388,265 @@
                 </div>
 
 
-                <!-- ================= FORMSPREE FORM ================= -->
+                <!-- ================= REQUEST FORM ================= -->
 
-                <form
-                    class="project-form"
-                    id="projectForm"
-                    action="https://formspree.io/f/mjyvjyly"
-                    method="POST"
-                >
+                <div class="request-form-area">
 
-                    <div class="form-group">
+                    <form
+                        class="project-form"
+                        id="projectForm"
+                        action="https://formspree.io/f/mjyvjyly"
+                        method="POST"
+                    >
 
-                        <label for="service">
-                            SERVICE
-                        </label>
 
-                        <select
-                            id="service"
-                            name="service"
-                            required
+                        <!-- ================= CLIENT NAME ================= -->
+
+                        <div class="form-group">
+
+                            <label for="name">
+                                NAME
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="client_name"
+                                placeholder="Enter your name"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- ================= SERVICE ================= -->
+
+                        <div class="form-group">
+
+                            <label for="service">
+                                SERVICE
+                            </label>
+
+                            <select
+                                id="service"
+                                name="service"
+                                required
+                            >
+
+                                <option value="">
+                                    Select a service
+                                </option>
+
+                                <option value="Frontend Development">
+                                    Frontend Development
+                                </option>
+
+                                <option value="Backend Development">
+                                    Backend Development
+                                </option>
+
+                                <option value="Full Stack Development">
+                                    Full Stack Development
+                                </option>
+
+                                <option value="Graphic Design">
+                                    Graphic Design
+                                </option>
+
+                                <option value="Motion Design">
+                                    Motion Design
+                                </option>
+
+                                <option value="UI/UX Design">
+                                    UI/UX Design
+                                </option>
+
+                                <option value="Digital Marketing">
+                                    Digital Marketing
+                                </option>
+
+                                <option value="Social Media Management">
+                                    Social Media Management
+                                </option>
+
+                                <option value="Writing">
+                                    Writing
+                                </option>
+
+                                <option value="Photography">
+                                    Photography
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- ================= PROJECT DESCRIPTION ================= -->
+
+                        <div class="form-group">
+
+                            <label for="project">
+                                PROJECT DESCRIPTION
+                            </label>
+
+                            <textarea
+                                id="project"
+                                name="project_description"
+                                rows="5"
+                                placeholder="Tell us about your project..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <!-- ================= BUDGET + TIMELINE ================= -->
+
+                        <div class="form-row">
+
+
+                            <!-- BUDGET -->
+
+                            <div class="form-group">
+
+                                <label for="budget">
+                                    BUDGET
+                                </label>
+
+                                <select
+                                    id="budget"
+                                    name="budget"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select budget
+                                    </option>
+
+                                    <option value="Under ₦100,000">
+                                        Under ₦100,000
+                                    </option>
+
+                                    <option value="₦100,000 – ₦250,000">
+                                        ₦100,000 – ₦250,000
+                                    </option>
+
+                                    <option value="₦250,000 – ₦500,000">
+                                        ₦250,000 – ₦500,000
+                                    </option>
+
+                                    <option value="₦500,000 – ₦1,000,000">
+                                        ₦500,000 – ₦1,000,000
+                                    </option>
+
+                                    <option value="₦1,000,000+">
+                                        ₦1,000,000+
+                                    </option>
+
+                                    <option value="International / USD">
+                                        International / USD
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- TIMELINE -->
+
+                            <div class="form-group">
+
+                                <label for="timeline">
+                                    TIMELINE
+                                </label>
+
+                                <select
+                                    id="timeline"
+                                    name="timeline"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select timeline
+                                    </option>
+
+                                    <option value="Under 1 week">
+                                        Under 1 week
+                                    </option>
+
+                                    <option value="1 – 2 weeks">
+                                        1 – 2 weeks
+                                    </option>
+
+                                    <option value="2 – 4 weeks">
+                                        2 – 4 weeks
+                                    </option>
+
+                                    <option value="1 – 3 months">
+                                        1 – 3 months
+                                    </option>
+
+                                    <option value="Flexible">
+                                        Flexible
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <!-- ================= HIDDEN CLIENT EMAIL ================= -->
+
+                        <input
+                            type="hidden"
+                            name="client_email"
+                            id="formClientEmail"
                         >
 
-                            <option value="">
-                                Select a service
-                            </option>
 
-                            <option value="Frontend Development">
-                                Frontend Development
-                            </option>
+                        <!-- ================= EMAIL SUBJECT ================= -->
 
-                            <option value="Backend Development">
-                                Backend Development
-                            </option>
-
-                            <option value="Full Stack Development">
-                                Full Stack Development
-                            </option>
-
-                            <option value="Graphic Design">
-                                Graphic Design
-                            </option>
-
-                            <option value="Motion Design">
-                                Motion Design
-                            </option>
-
-                            <option value="UI/UX Design">
-                                UI/UX Design
-                            </option>
-
-                            <option value="Digital Marketing">
-                                Digital Marketing
-                            </option>
-
-                            <option value="Social Media Management">
-                                Social Media Management
-                            </option>
-
-                            <option value="Writing">
-                                Writing
-                            </option>
-
-                            <option value="Photography">
-                                Photography
-                            </option>
-
-                            <option value="Other">
-                                Other
-                            </option>
-
-                        </select>
-
-                    </div>
+                        <input
+                            type="hidden"
+                            name="_subject"
+                            value="New VORVENA Project Request"
+                        >
 
 
-                    <div class="form-group">
+                        <!-- ================= SUBMIT ================= -->
 
-                        <label for="project">
-                            PROJECT DESCRIPTION
-                        </label>
+                        <button
+                            type="submit"
+                            class="submit-btn"
+                        >
 
-                        <textarea
-                            id="project"
-                            name="project_description"
-                            rows="5"
-                            placeholder="Tell us about your project..."
-                            required
-                        ></textarea>
+                            Submit Project Request
 
-                    </div>
+                            <span>↗</span>
+
+                        </button>
 
 
-                    <div class="form-row">
+                        <!-- ================= FORM MESSAGE ================= -->
 
-                        <div class="form-group">
-
-                            <label for="budget">
-                                BUDGET
-                            </label>
-
-                            <select
-                                id="budget"
-                                name="budget"
-                                required
-                            >
-
-                                <option value="">
-                                    Select budget
-                                </option>
-
-                                <option value="Under ₦100,000">
-                                    Under ₦100,000
-                                </option>
-
-                                <option value="₦100,000 – ₦250,000">
-                                    ₦100,000 – ₦250,000
-                                </option>
-
-                                <option value="₦250,000 – ₦500,000">
-                                    ₦250,000 – ₦500,000
-                                </option>
-
-                                <option value="₦500,000 – ₦1,000,000">
-                                    ₦500,000 – ₦1,000,000
-                                </option>
-
-                                <option value="₦1,000,000+">
-                                    ₦1,000,000+
-                                </option>
-
-                                <option value="International / USD">
-                                    International / USD
-                                </option>
-
-                            </select>
-
-                        </div>
+                        <p
+                            class="form-message"
+                            id="formMessage"
+                        ></p>
 
 
-                        <div class="form-group">
+                    </form>
 
-                            <label for="timeline">
-                                TIMELINE
-                            </label>
-
-                            <select
-                                id="timeline"
-                                name="timeline"
-                                required
-                            >
-
-                                <option value="">
-                                    Select timeline
-                                </option>
-
-                                <option value="Under 1 week">
-                                    Under 1 week
-                                </option>
-
-                                <option value="1 – 2 weeks">
-                                    1 – 2 weeks
-                                </option>
-
-                                <option value="2 – 4 weeks">
-                                    2 – 4 weeks
-                                </option>
-
-                                <option value="1 – 3 months">
-                                    1 – 3 months
-                                </option>
-
-                                <option value="Flexible">
-                                    Flexible
-                                </option>
-
-                            </select>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Optional subject for the email -->
-
-                    <input
-                        type="hidden"
-                        name="_subject"
-                        value="New VORVENA Project Request"
-                    >
-
-
-                    <button
-                        type="submit"
-                        class="submit-btn"
-                    >
-
-                        Submit Project Request
-
-                        <span>↗</span>
-
-                    </button>
-
-                    <p
-                        class="form-message"
-                        id="formMessage"
-                    ></p>
-
-                </form>
+                </div>
 
             </div>
 
@@ -690,7 +775,9 @@
 
             <div class="global-content">
 
-                <span>GLOBAL COMMUNITY</span>
+                <span>
+                    GLOBAL COMMUNITY
+                </span>
 
                 <h2>
                     LOCAL ROOTS.
@@ -723,7 +810,10 @@
 
             <div class="cta-actions">
 
-                <a href="profiles.html" class="btn btn-dark">
+                <a
+                    href="profiles.html"
+                    class="btn btn-dark"
+                >
                     Explore Profiles
                     <span>↗</span>
                 </a>
@@ -741,9 +831,13 @@
 
         <div class="footer-top">
 
+
             <div class="footer-brand">
 
-                <a href="index.html" class="footer-logo">
+                <a
+                    href="index.html"
+                    class="footer-logo"
+                >
                     VORVENA
                 </a>
 
@@ -756,33 +850,63 @@
 
             <div class="footer-column">
 
-                <h4>EXPLORE</h4>
+                <h4>
+                    EXPLORE
+                </h4>
 
-                <a href="./index.html">Home</a>
-                <a href="./community.html">Community</a>
-                <a href="./profiles.html">Profiles</a>
-                <a href="./clients.html">Clients</a>
+                <a href="./index.html">
+                    Home
+                </a>
+
+                <a href="./community.html">
+                    Community
+                </a>
+
+                <a href="./profiles.html">
+                    Profiles
+                </a>
+
+                <a href="./clients.html">
+                    Clients
+                </a>
 
             </div>
 
 
             <div class="footer-column">
 
-                <h4>JOIN</h4>
+                <h4>
+                    JOIN
+                </h4>
 
-                <a href="./join.html">Join Community</a>
+                <a href="./join.html">
+                    Join Community
+                </a>
 
             </div>
 
 
             <div class="footer-column">
 
-                <h4>LEGAL</h4>
+                <h4>
+                    LEGAL
+                </h4>
 
-                <a href="terms.html">Terms & Conditions</a>
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="guidelines.html">Community Guidelines</a>
-                <a href="feedback.html">Feedback</a>
+                <a href="terms.html">
+                    Terms & Conditions
+                </a>
+
+                <a href="privacy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="guidelines.html">
+                    Community Guidelines
+                </a>
+
+                <a href="feedback.html">
+                    Feedback
+                </a>
 
             </div>
 
@@ -804,9 +928,10 @@
     </footer>
 
 
-    <script src="clients.js?v=2"></script>
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="clients.js?v=3"></script>
 
 </body>
 
 </html>
-

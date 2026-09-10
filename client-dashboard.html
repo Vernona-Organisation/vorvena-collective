@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="VORVENA Client Dashboard - Manage your projects, professionals and payments.">
+
+    <title>Client Dashboard | VORVENA</title>
+
+    <link rel="stylesheet"
+        href="client-dashboard.css">
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         MOBILE SIDEBAR OVERLAY
+    ========================================== -->
+
+    <div class="sidebar-overlay"
+        id="sidebarOverlay"></div>
+
+
+
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside class="sidebar"
+        id="sidebar">
+
+
+        <!-- LOGO -->
+
+        <div class="sidebar-top">
+
+            <a href="index.html"
+                class="dashboard-logo">
+
+                VOR<span>V</span>ENA
+
+            </a>
+
+
+            <button class="close-sidebar"
+                id="closeSidebar"
+                aria-label="Close menu">
+
+                &times;
+
+            </button>
+
+        </div>
+
+
+
+        <!-- =====================================
+             CLIENT PROFILE
+        ====================================== -->
+
+        <div class="sidebar-profile">
+
+            <div class="profile-avatar">
+
+                JD
+
+            </div>
+
+
+            <div class="profile-info">
+
+                <h3 id="clientName">
+                    Client
+                </h3>
+
+                <p>
+                    Client Account
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================
+             SIDEBAR NAVIGATION
+        ====================================== -->
+
+        <nav class="sidebar-nav">
+
+
+            <a href="clients-dashboard.html"
+                class="nav-link active">
+
+                <span class="nav-icon">
+                    ⌂
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+
+            <a href="profiles.html"
+                class="nav-link">
+
+                <span class="nav-icon">
+                    ◉
+                </span>
+
+                <span>
+                    Find Professionals
+                </span>
+
+            </a>
+
+
+
+            <a href="#"
+                class="nav-link">
+
+                <span class="nav-icon">
+                    ▣
+                </span>
+
+                <span>
+                    My Projects
+                </span>
+
+                <span class="nav-count">
+                    3
+                </span>
+
+            </a>
+
+
+
+            <a href="#"
+                class="nav-link">
+
+                <span class="nav-icon">
+                    ✉
+                </span>
+
+                <span>
+                    Messages
+                </span>
+
+                <span class="nav-count">
+                    2
+                </span>
+
+            </a>
+
+
+
+            <a href="#"
+                class="nav-link">
+
+                <span class="nav-icon">
+                    ₦
+                </span>
+
+                <span>
+                    Payments
+                </span>
+
+            </a>
+
+
+
+            <a href="#"
+                class="nav-link">
+
+                <span class="nav-icon">
+                    ♢
+                </span>
+
+                <span>
+                    Notifications
+                </span>
+
+            </a>
+
+
+
+            <a href="#"
+                class="nav-link">
+
+                <span class="nav-icon">
+                    ⚙
+                </span>
+
+                <span>
+                    Account Settings
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+
+        <!-- =====================================
+             SIDEBAR BOTTOM
+        ====================================== -->
+
+        <div class="sidebar-bottom">
+
+
+            <div class="support-box">
+
+                <h4>
+                    Need Help?
+                </h4>
+
+                <p>
+                    Our support team is here
+                    to assist you.
+                </p>
+
+                <button id="supportBtn">
+
+                    Contact Support
+
+                </button>
+
+            </div>
+
+
+
+            <button class="logout-btn"
+                id="logoutBtn">
+
+                <span>
+                    ⇥
+                </span>
+
+                Logout
+
+            </button>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =====================================
+             TOPBAR
+        ====================================== -->
+
+        <header class="topbar">
+
+
+            <div class="topbar-left">
+
+                <button class="menu-btn"
+                    id="menuBtn"
+                    aria-label="Open menu">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+
+                <div class="page-title">
+
+                    <h1>
+                        Client Dashboard
+                    </h1>
+
+                    <p>
+                        Manage your projects and professionals.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="topbar-right">
+
+
+                <button class="notification-btn"
+                    id="notificationBtn"
+                    aria-label="Notifications">
+
+                    ♢
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+
+                <div class="top-client">
+
+                    <div class="small-avatar">
+
+                        JD
+
+                    </div>
+
+
+                    <span id="topClientName">
+
+                        Client
+
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =====================================
+             DASHBOARD CONTENT
+        ====================================== -->
+
+        <section class="dashboard-content">
+
+
+            <!-- =================================
+                 WELCOME SECTION
+            ================================== -->
+
+            <div class="welcome-section">
+
+
+                <div>
+
+                    <p class="welcome-label">
+                        CLIENT DASHBOARD
+                    </p>
+
+
+                    <h2>
+                        Welcome back,
+                        <span id="welcomeName">
+                            Client
+                        </span>.
+                    </h2>
+
+
+                    <p>
+                        Here's what's happening
+                        with your projects.
+                    </p>
+
+                </div>
+
+
+
+                <a href="profiles.html"
+                    class="primary-btn">
+
+                    Find a Professional
+
+                </a>
+
+
+            </div>
+
+
+
+            <!-- =================================
+                 STATISTICS
+            ================================== -->
+
+            <div class="stats-grid">
+
+
+                <!-- ACTIVE PROJECTS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ▣
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Active Projects
+                        </p>
+
+                        <h3 id="activeProjects">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- COMPLETED -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Completed Projects
+                        </p>
+
+                        <h3 id="completedProjects">
+                            4
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PENDING -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ◷
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Pending Projects
+                        </p>
+
+                        <h3 id="pendingProjects">
+                            1
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TOTAL SPENT -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ₦
+                    </div>
+
+                    <div>
+
+                        <p>
+                            Total Spent
+                        </p>
+
+                        <h3 id="totalSpent">
+                            ₦350k
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================
+                 DASHBOARD GRID
+            ================================== -->
+
+            <div class="dashboard-grid">
+
+
+                <!-- =================================
+                     ACTIVE PROJECTS
+                ================================== -->
+
+                <section class="dashboard-card projects-card">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <p class="card-label">
+                                WORK IN PROGRESS
+                            </p>
+
+                            <h2>
+                                Active Projects
+                            </h2>
+
+                        </div>
+
+
+                        <a href="#">
+                            View All
+                        </a>
+
+                    </div>
+
+
+
+                    <div class="projects-list"
+                        id="projectsList">
+
+
+                        <!-- PROJECT 1 -->
+
+                        <div class="project-item">
+
+
+                            <div class="project-main">
+
+                                <div class="project-icon">
+                                    W
+                                </div>
+
+
+                                <div>
+
+                                    <h3>
+                                        Business Website Design
+                                    </h3>
+
+                                    <p>
+                                        David Williams
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="project-details">
+
+                                <strong>
+                                    ₦150,000
+                                </strong>
+
+                                <span>
+                                    Due Sept 20
+                                </span>
+
+                            </div>
+
+
+                            <span class="status in-progress">
+                                In Progress
+                            </span>
+
+
+                        </div>
+
+
+
+                        <!-- PROJECT 2 -->
+
+                        <div class="project-item">
+
+
+                            <div class="project-main">
+
+                                <div class="project-icon">
+                                    B
+                                </div>
+
+
+                                <div>
+
+                                    <h3>
+                                        Brand Logo Design
+                                    </h3>
+
+                                    <p>
+                                        Sarah Creative
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="project-details">
+
+                                <strong>
+                                    ₦80,000
+                                </strong>
+
+                                <span>
+                                    Due Sept 15
+                                </span>
+
+                            </div>
+
+
+                            <span class="status review">
+                                Review
+                            </span>
+
+
+                        </div>
+
+
+
+                        <!-- PROJECT 3 -->
+
+                        <div class="project-item">
+
+
+                            <div class="project-main">
+
+                                <div class="project-icon">
+                                    S
+                                </div>
+
+
+                                <div>
+
+                                    <h3>
+                                        Social Media Management
+                                    </h3>
+
+                                    <p>
+                                        Michael Adams
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="project-details">
+
+                                <strong>
+                                    ₦120,000
+                                </strong>
+
+                                <span>
+                                    Due Sept 30
+                                </span>
+
+                            </div>
+
+
+                            <span class="status in-progress">
+                                In Progress
+                            </span>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </section>
+
+
+
+                <!-- =================================
+                     NOTIFICATIONS
+                ================================== -->
+
+                <section class="dashboard-card notifications-card">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <p class="card-label">
+                                UPDATES
+                            </p>
+
+                            <h2>
+                                Notifications
+                            </h2>
+
+                        </div>
+
+
+                        <a href="#">
+                            View All
+                        </a>
+
+                    </div>
+
+
+
+                    <div class="notifications-list">
+
+
+                        <div class="notification-item">
+
+                            <div class="notification-icon">
+                                ✓
+                            </div>
+
+
+                            <div>
+
+                                <h3>
+                                    Project approved
+                                </h3>
+
+                                <p>
+                                    Your website project
+                                    has been approved.
+                                </p>
+
+                                <span>
+                                    2 hours ago
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="notification-item">
+
+                            <div class="notification-icon">
+                                ₦
+                            </div>
+
+
+                            <div>
+
+                                <h3>
+                                    Payment received
+                                </h3>
+
+                                <p>
+                                    Your payment was
+                                    successfully processed.
+                                </p>
+
+                                <span>
+                                    Yesterday
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="notification-item">
+
+                            <div class="notification-icon">
+                                ★
+                            </div>
+
+
+                            <div>
+
+                                <h3>
+                                    New professional update
+                                </h3>
+
+                                <p>
+                                    David Williams submitted
+                                    new work for review.
+                                </p>
+
+                                <span>
+                                    2 days ago
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                </section>
+
+
+
+            </div>
+
+
+
+            <!-- =================================
+                 RECENT ACTIVITY
+            ================================== -->
+
+            <section class="dashboard-card activity-card">
+
+
+                <div class="card-header">
+
+                    <div>
+
+                        <p class="card-label">
+                            RECENT
+                        </p>
+
+                        <h2>
+                            Recent Activity
+                        </h2>
+
+                    </div>
+
+
+                    <a href="#">
+                        View All
+                    </a>
+
+                </div>
+
+
+
+                <div class="activity-list">
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-line"></div>
+
+                        <div class="activity-icon">
+                            ✓
+                        </div>
+
+
+                        <div class="activity-content">
+
+                            <h3>
+                                Project milestone completed
+                            </h3>
+
+                            <p>
+                                David Williams completed
+                                the homepage design.
+                            </p>
+
+                            <span>
+                                Today, 10:30 AM
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-line"></div>
+
+                        <div class="activity-icon">
+                            ₦
+                        </div>
+
+
+                        <div class="activity-content">
+
+                            <h3>
+                                Payment made
+                            </h3>
+
+                            <p>
+                                ₦150,000 payment was
+                                made for your website project.
+                            </p>
+
+                            <span>
+                                Yesterday, 4:20 PM
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            +
+                        </div>
+
+
+                        <div class="activity-content">
+
+                            <h3>
+                                New project created
+                            </h3>
+
+                            <p>
+                                You created a new project
+                                with Sarah Creative.
+                            </p>
+
+                            <span>
+                                Sept 5, 2:15 PM
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================
+                 QUICK ACTIONS
+            ================================== -->
+
+            <section class="quick-actions">
+
+
+                <a href="profiles.html"
+                    class="quick-action">
+
+                    <div class="quick-action-icon">
+                        +
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Find a Professional
+                        </h3>
+
+                        <p>
+                            Browse approved professionals
+                            and hire talent.
+                        </p>
+
+                    </div>
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <a href="#"
+                    class="quick-action">
+
+                    <div class="quick-action-icon">
+                        ▣
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            View Projects
+                        </h3>
+
+                        <p>
+                            Manage all your active
+                            and completed projects.
+                        </p>
+
+                    </div>
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <a href="#"
+                    class="quick-action">
+
+                    <div class="quick-action-icon">
+                        ✉
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Messages
+                        </h3>
+
+                        <p>
+                            Communicate with your
+                            professionals.
+                        </p>
+
+                    </div>
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+
+            </section>
+
+
+
+            <!-- =================================
+                 TRUST NOTICE
+            ================================== -->
+
+            <div class="trust-notice">
+
+
+                <div class="trust-icon">
+                    ✓
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Your projects are protected.
+                    </h3>
+
+                    <p>
+                        VORVENA helps connect you with
+                        approved professionals. Project
+                        payments and agreements are
+                        handled securely through the platform.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="client-dashboard.js"></script>
+
+</body>
+
+</html>

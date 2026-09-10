@@ -1,29 +1,48 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const form = document.getElementById("clientSignupForm");
+    const form =
+        document.getElementById("clientSignupForm");
 
-    const fullName = document.getElementById("fullName");
-    const email = document.getElementById("email");
-    const phone = document.getElementById("phone");
-    const company = document.getElementById("company");
+    const fullName =
+        document.getElementById("fullName");
 
-    const password = document.getElementById("password");
-    const confirmPassword = document.getElementById("confirmPassword");
+    const email =
+        document.getElementById("email");
 
-    const showPassword = document.getElementById("showPassword");
+    const phone =
+        document.getElementById("phone");
+
+    const company =
+        document.getElementById("company");
+
+    const password =
+        document.getElementById("password");
+
+    const confirmPassword =
+        document.getElementById("confirmPassword");
+
+    const showPassword =
+        document.getElementById("showPassword");
+
     const showConfirmPassword =
         document.getElementById("showConfirmPassword");
 
-    const terms = document.getElementById("terms");
-    const privacy = document.getElementById("privacy");
+    const terms =
+        document.getElementById("terms");
 
-    const formMessage = document.getElementById("formMessage");
-    const submitButton = document.querySelector(".submit-btn");
+    const privacy =
+        document.getElementById("privacy");
+
+    const formMessage =
+        document.getElementById("formMessage");
+
+    const submitButton =
+        document.querySelector(".submit-btn");
 
 
-    // =========================
+    // ==========================================
     // SHOW / HIDE PASSWORD
-    // =========================
+    // ==========================================
 
     if (showPassword && password) {
 
@@ -46,9 +65,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // =========================
+    // ==========================================
     // SHOW / HIDE CONFIRM PASSWORD
-    // =========================
+    // ==========================================
 
     if (showConfirmPassword && confirmPassword) {
 
@@ -71,9 +90,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // =========================
-    // FORM SUBMISSION
-    // =========================
+    // ==========================================
+    // SIGNUP FORM
+    // ==========================================
 
     if (form) {
 
@@ -81,31 +100,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
             event.preventDefault();
 
-
-            // Clear previous message
             clearMessage();
 
 
-            // =========================
+            // ==========================================
             // GET VALUES
-            // =========================
+            // ==========================================
 
-            const nameValue = fullName.value.trim();
-            const emailValue = email.value.trim();
-            const phoneValue = phone.value.trim();
-            const companyValue = company.value.trim();
+            const nameValue =
+                fullName.value.trim();
 
-            const passwordValue = password.value;
+            const emailValue =
+                email.value.trim().toLowerCase();
+
+            const phoneValue =
+                phone.value.trim();
+
+            const companyValue =
+                company.value.trim();
+
+            const passwordValue =
+                password.value;
+
             const confirmPasswordValue =
                 confirmPassword.value;
 
 
-            // =========================
+            // ==========================================
             // REQUIRED FIELDS
-            // =========================
+            // ==========================================
 
-            if (!nameValue || !emailValue || !passwordValue ||
-                !confirmPasswordValue) {
+            if (
+                !nameValue ||
+                !emailValue ||
+                !passwordValue ||
+                !confirmPasswordValue
+            ) {
 
                 showMessage(
                     "Please complete all required fields.",
@@ -116,9 +146,24 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            // =========================
+            // ==========================================
+            // NAME VALIDATION
+            // ==========================================
+
+            if (nameValue.length < 2) {
+
+                showMessage(
+                    "Please enter your full name.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            // ==========================================
             // EMAIL VALIDATION
-            // =========================
+            // ==========================================
 
             const emailPattern =
                 /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -134,9 +179,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            // =========================
+            // ==========================================
             // PASSWORD LENGTH
-            // =========================
+            // ==========================================
 
             if (passwordValue.length < 8) {
 
@@ -149,11 +194,14 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            // =========================
+            // ==========================================
             // PASSWORD MATCH
-            // =========================
+            // ==========================================
 
-            if (passwordValue !== confirmPasswordValue) {
+            if (
+                passwordValue !==
+                confirmPasswordValue
+            ) {
 
                 showMessage(
                     "Passwords do not match.",
@@ -164,9 +212,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            // =========================
+            // ==========================================
             // TERMS
-            // =========================
+            // ==========================================
 
             if (!terms.checked) {
 
@@ -179,9 +227,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            // =========================
+            // ==========================================
             // PRIVACY
-            // =========================
+            // ==========================================
 
             if (!privacy.checked) {
 
@@ -194,50 +242,158 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            // =========================
+            // ==========================================
+            // CHECK EXISTING ACCOUNT
+            // ==========================================
+
+            const existingAccount =
+                localStorage.getItem(
+                    "vorvenaClientAccount"
+                );
+
+            if (existingAccount) {
+
+                try {
+
+                    const account =
+                        JSON.parse(existingAccount);
+
+                    if (
+                        account.email &&
+                        account.email.toLowerCase() ===
+                        emailValue
+                    ) {
+
+                        showMessage(
+                            "A client account with this email already exists. Please login instead.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+                } catch (error) {
+
+                    // If old/corrupted data exists,
+                    // allow the new account to replace it.
+
+                }
+
+            }
+
+
+            // ==========================================
             // LOADING STATE
-            // =========================
+            // ==========================================
 
-            submitButton.disabled = true;
+            if (submitButton) {
 
-            submitButton.style.opacity = "0.6";
-            submitButton.style.cursor = "wait";
+                submitButton.disabled = true;
 
-            submitButton.querySelector("span").textContent =
-                "CREATING ACCOUNT...";
+                submitButton.style.opacity = "0.6";
+
+                submitButton.style.cursor = "wait";
+
+                const buttonText =
+                    submitButton.querySelector("span");
+
+                if (buttonText) {
+
+                    buttonText.textContent =
+                        "CREATING ACCOUNT...";
+
+                }
+
+            }
 
 
-            // =========================
-            // TEMPORARY SIGNUP
-            // =========================
+            // ==========================================
+            // CREATE CLIENT ACCOUNT
+            // ==========================================
 
             setTimeout(() => {
 
-                /*
-                ==========================================
-                SUPABASE WILL GO HERE LATER
-                ==========================================
+                const clientAccount = {
 
-                const { data, error } =
-                    await supabase.auth.signUp({
-                        email: emailValue,
-                        password: passwordValue,
-                        options: {
-                            data: {
-                                full_name: nameValue,
-                                phone: phoneValue,
-                                company: companyValue,
-                                account_type: "client"
-                            }
-                        }
-                    });
+                    id:
+                        "client-" +
+                        Date.now(),
 
-                ==========================================
-                */
+                    fullName:
+                        nameValue,
+
+                    email:
+                        emailValue,
+
+                    phone:
+                        phoneValue,
+
+                    company:
+                        companyValue,
+
+                    password:
+                        passwordValue,
+
+                    accountType:
+                        "client",
+
+                    createdAt:
+                        new Date().toISOString()
+
+                };
 
 
-                // Store temporary client information
-                // for frontend testing only.
+                // ==========================================
+                // SAVE ACCOUNT
+                // ==========================================
+
+                localStorage.setItem(
+                    "vorvenaClientAccount",
+                    JSON.stringify(clientAccount)
+                );
+
+
+                // ==========================================
+                // CREATE LOGIN SESSION
+                // ==========================================
+
+                const loggedInUser = {
+
+                    id:
+                        clientAccount.id,
+
+                    fullName:
+                        clientAccount.fullName,
+
+                    email:
+                        clientAccount.email,
+
+                    phone:
+                        clientAccount.phone,
+
+                    company:
+                        clientAccount.company,
+
+                    accountType:
+                        "client"
+
+                };
+
+
+                sessionStorage.setItem(
+                    "vorvenaLoggedInUser",
+                    JSON.stringify(loggedInUser)
+                );
+
+                sessionStorage.setItem(
+                    "vorvenaUserLoggedIn",
+                    "true"
+                );
+
+
+                // ==========================================
+                // SAVE CLIENT INFORMATION
+                // ==========================================
 
                 sessionStorage.setItem(
                     "vorvenaClientName",
@@ -255,64 +411,108 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
 
-                // =========================
-                // SUCCESS
-                // =========================
+                // ==========================================
+                // SUCCESS MESSAGE
+                // ==========================================
 
                 showMessage(
-                    "Client account created successfully. Your account is ready to connect to VORVENA.",
+                    "Account created successfully. Redirecting...",
                     "success"
                 );
 
 
-                submitButton.querySelector("span").textContent =
-                    "ACCOUNT CREATED";
+                if (submitButton) {
 
-                submitButton.style.opacity = "1";
-                submitButton.style.cursor = "default";
+                    const buttonText =
+                        submitButton.querySelector("span");
 
+                    if (buttonText) {
 
-                // =========================
-                // REDIRECT LATER
-                // =========================
+                        buttonText.textContent =
+                            "ACCOUNT CREATED";
 
-                /*
-                When Supabase is connected,
-                we can redirect the client to:
+                    }
 
-                client-dashboard.html
+                    submitButton.style.opacity = "1";
 
-                or directly back to the
-                professional they wanted to hire.
-                */
+                    submitButton.style.cursor =
+                        "default";
+
+                }
 
 
-            }, 1000);
+                // ==========================================
+                // CHECK HIRING INTENT
+                // ==========================================
+
+                const hiringIntent =
+                    sessionStorage.getItem(
+                        "vorvenaHiringIntent"
+                    );
+
+                const selectedProfessional =
+                    sessionStorage.getItem(
+                        "vorvenaSelectedProfessional"
+                    );
+
+
+                // ==========================================
+                // REDIRECT
+                // ==========================================
+
+                setTimeout(() => {
+
+                    /*
+                     * If the client came here because
+                     * they wanted to hire someone,
+                     * keep that professional selected.
+                     */
+
+                    if (
+                        hiringIntent === "true" &&
+                        selectedProfessional
+                    ) {
+
+                        window.location.href =
+                            "clients.html#project-request";
+
+                        return;
+                    }
+
+
+                    /*
+                     * Normal signup.
+                     */
+
+                    window.location.href =
+                        "clients.html";
+
+                }, 800);
+
+
+            }, 700);
 
         });
 
     }
 
 
-    // =========================
-    // MESSAGE FUNCTION
-    // =========================
+    // ==========================================
+    // MESSAGE FUNCTIONS
+    // ==========================================
 
     function showMessage(message, type) {
 
         if (!formMessage) return;
 
-        formMessage.textContent = message;
+        formMessage.textContent =
+            message;
 
         formMessage.className =
             `form-message ${type}`;
 
     }
 
-
-    // =========================
-    // CLEAR MESSAGE
-    // =========================
 
     function clearMessage() {
 

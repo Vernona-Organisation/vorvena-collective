@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Request a Project | VORVENA</title>
+
+    <link rel="stylesheet" href="project-request.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <h2>VORVENA</h2>
+            <span>CLIENT PORTAL</span>
+        </div>
+
+        <div class="client-mini-profile">
+            <div class="avatar">JD</div>
+
+            <div>
+                <strong>John Doe</strong>
+                <small>Client</small>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="./client-dashboard.html">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="./profiles.html">
+                <span>⌕</span>
+                Find Professionals
+            </a>
+
+            <a href="./client-dashboard.html#projects">
+                <span>▣</span>
+                My Projects
+            </a>
+
+            <a href="./client-dashboard.html#messages">
+                <span>◉</span>
+                Messages
+            </a>
+
+            <a href="./client-dashboard.html#payments">
+                <span>₦</span>
+                Payments
+            </a>
+
+            <a href="./client-dashboard.html#notifications">
+                <span>♢</span>
+                Notifications
+            </a>
+
+            <a href="./client-dashboard.html#account">
+                <span>⚙</span>
+                Account Settings
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button id="supportBtn">
+                <span>?</span>
+                Support
+            </button>
+
+            <button id="logoutBtn" class="logout-btn">
+                <span>↪</span>
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <button class="menu-btn" id="menuBtn">
+                ☰
+            </button>
+
+            <div class="topbar-title">
+                <span>Client Portal</span>
+                <strong>Project Request</strong>
+            </div>
+
+            <div class="topbar-right">
+
+                <button class="notification-btn" id="notificationBtn">
+                    ♢
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="top-profile">
+                    <div class="avatar small">JD</div>
+
+                    <div>
+                        <strong>John Doe</strong>
+                        <small>Client</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+
+        <section class="page-content">
+
+            <a href="./client-dashboard.html" class="back-link">
+                ← Back to Dashboard
+            </a>
+
+
+            <div class="page-heading">
+
+                <div>
+                    <span class="eyebrow">START A NEW PROJECT</span>
+
+                    <h1>Request a Professional</h1>
+
+                    <p>
+                        Tell the professional what you need. They will review
+                        your request and submit their charge.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- ================= SELECTED PROFESSIONAL ================= -->
+
+            <section class="selected-professional">
+
+                <div class="professional-avatar">
+                    DW
+                </div>
+
+                <div class="professional-info">
+
+                    <span>SELECTED PROFESSIONAL</span>
+
+                    <h2>David Williams</h2>
+
+                    <p>Web Developer</p>
+
+                    <div class="professional-meta">
+                        <span>✓ Verified Professional</span>
+                        <span>8 Successful Jobs</span>
+                    </div>
+
+                </div>
+
+                <button class="change-btn" id="changeProfessional">
+                    Change
+                </button>
+
+            </section>
+
+
+            <!-- ================= FORM ================= -->
+
+            <form id="projectRequestForm" class="request-form">
+
+
+                <!-- PROJECT INFORMATION -->
+
+                <div class="form-card">
+
+                    <div class="card-header">
+
+                        <div class="step-number">
+                            01
+                        </div>
+
+                        <div>
+                            <h2>Project Information</h2>
+
+                            <p>
+                                Give the professional a clear understanding
+                                of what you want.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group full">
+
+                            <label for="projectTitle">
+                                Project Title
+                            </label>
+
+                            <input
+                                type="text"
+                                id="projectTitle"
+                                name="projectTitle"
+                                placeholder="e.g. Business Website Design"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label for="projectDescription">
+                                Project Description
+                            </label>
+
+                            <textarea
+                                id="projectDescription"
+                                name="projectDescription"
+                                rows="7"
+                                placeholder="Describe what you want the professional to create..."
+                                required
+                            ></textarea>
+
+                            <small>
+                                Be as clear as possible. Mention important
+                                features, pages, designs or requirements.
+                            </small>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="deadline">
+                                Preferred Deadline
+                            </label>
+
+                            <input
+                                type="date"
+                                id="deadline"
+                                name="deadline"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="budget">
+                                Optional Budget
+                            </label>
+
+                            <div class="input-with-symbol">
+
+                                <span>₦</span>
+
+                                <input
+                                    type="number"
+                                    id="budget"
+                                    name="budget"
+                                    placeholder="e.g. 150000"
+                                    min="0"
+                                >
+
+                            </div>
+
+                            <small>
+                                The professional will still submit their own
+                                charge.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- REQUIREMENTS -->
+
+                <div class="form-card">
+
+                    <div class="card-header">
+
+                        <div class="step-number">
+                            02
+                        </div>
+
+                        <div>
+                            <h2>Project Requirements</h2>
+
+                            <p>
+                                Add any additional information that can help
+                                the professional understand the project.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label for="requirements">
+                            Additional Requirements
+                        </label>
+
+                        <textarea
+                            id="requirements"
+                            name="requirements"
+                            rows="5"
+                            placeholder="Examples: preferred style, colors, number of pages, features, target audience..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- REFERENCE FILE -->
+
+                <div class="form-card">
+
+                    <div class="card-header">
+
+                        <div class="step-number">
+                            03
+                        </div>
+
+                        <div>
+                            <h2>Reference Files</h2>
+
+                            <p>
+                                Upload files that may help the professional
+                                understand your project.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <label class="upload-area" for="referenceFiles">
+
+                        <div class="upload-icon">
+                            ↑
+                        </div>
+
+                        <strong>
+                            Upload Reference Files
+                        </strong>
+
+                        <span>
+                            Images, PDFs, documents, ZIP files and more
+                        </span>
+
+                        <small>
+                            Maximum 10MB per file
+                        </small>
+
+                        <input
+                            type="file"
+                            id="referenceFiles"
+                            multiple
+                            accept=".jpg,.jpeg,.png,.webp,.pdf,.doc,.docx,.zip"
+                        >
+
+                    </label>
+
+
+                    <div id="fileList" class="file-list"></div>
+
+                </div>
+
+
+                <!-- PAYMENT EXPLANATION -->
+
+                <div class="payment-info">
+
+                    <div class="payment-icon">
+                        ₦
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            How pricing works
+                        </h3>
+
+                        <p>
+                            You are not paying yet. After you submit this
+                            request, the professional will review your project
+                            and submit their charge. You can then accept the
+                            quote and proceed to payment.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AGREEMENT -->
+
+                <div class="agreement">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="agreement"
+                            required
+                        >
+
+                        <span>
+                            I confirm that the information provided is
+                            accurate and I understand that submitting this
+                            request does not automatically create a payment.
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- ACTIONS -->
+
+                <div class="form-actions">
+
+                    <a
+                        href="./client-dashboard.html"
+                        class="cancel-btn"
+                    >
+                        Cancel
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="submit-btn"
+                        id="submitRequestBtn"
+                    >
+                        Submit Project Request
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer class="footer">
+
+            <p>
+                © 2026 VORVENA. All rights reserved.
+            </p>
+
+            <div>
+                <a href="./terms.html">Terms</a>
+                <a href="./privacy.html">Privacy</a>
+                <a href="./guidelines.html">Guidelines</a>
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <!-- OVERLAY -->
+
+    <div class="overlay" id="overlay"></div>
+
+
+    <!-- SUCCESS MODAL -->
+
+    <div class="modal-overlay" id="successModal">
+
+        <div class="success-modal">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>Request Submitted</h2>
+
+            <p>
+                Your project request has been sent to
+                <strong>David Williams</strong>.
+            </p>
+
+            <p class="modal-small">
+                The professional will review your project and submit their
+                charge. You will be notified when they respond.
+            </p>
+
+            <button id="viewProjectsBtn">
+                Go to My Projects
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="project-request.js"></script>
+
+</body>
+
+</html>

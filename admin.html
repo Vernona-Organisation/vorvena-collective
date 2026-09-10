@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VORVENA | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-top">
+
+            <a href="#" class="admin-logo">
+                <span>VORVENA</span>
+                <small>ADMIN CONTROL CENTER</small>
+            </a>
+
+            <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+                ×
+            </button>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <div class="nav-label">
+                MAIN MENU
+            </div>
+
+            <a href="#dashboard"
+               class="nav-link active"
+               data-section="dashboard">
+
+                <span class="nav-icon">⌂</span>
+                <span class="nav-label-text">Dashboard</span>
+
+            </a>
+
+
+            <a href="#projects"
+               class="nav-link"
+               data-section="projects">
+
+                <span class="nav-icon">▣</span>
+                <span class="nav-label-text">Projects</span>
+                <span class="nav-badge">5</span>
+
+            </a>
+
+
+            <a href="#professionals"
+               class="nav-link"
+               data-section="professionals">
+
+                <span class="nav-icon">♙</span>
+                <span class="nav-label-text">Professionals</span>
+                <span class="nav-badge">7</span>
+
+            </a>
+
+
+            <a href="#clients"
+               class="nav-link"
+               data-section="clients">
+
+                <span class="nav-icon">♟</span>
+                <span class="nav-label-text">Clients</span>
+
+            </a>
+
+
+            <a href="#payments"
+               class="nav-link"
+               data-section="payments">
+
+                <span class="nav-icon">₦</span>
+                <span class="nav-label-text">Payments</span>
+
+            </a>
+
+
+            <a href="#feedback"
+               class="nav-link"
+               data-section="feedback">
+
+                <span class="nav-icon">★</span>
+                <span class="nav-label-text">Feedback</span>
+
+            </a>
+
+
+            <div class="nav-label settings-label">
+                SYSTEM
+            </div>
+
+
+            <a href="#settings"
+               class="nav-link"
+               data-section="settings">
+
+                <span class="nav-icon">⚙</span>
+                <span class="nav-label-text">Settings</span>
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="index.html" class="back-link">
+                ← Back to VORVENA
+            </a>
+
+            <button class="logout-btn" id="logoutBtn">
+                ⇥ Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- SIDEBAR OVERLAY -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+
+    <!-- ================= MAIN ================= -->
+    <main class="main-content">
+
+
+        <!-- ================= TOPBAR ================= -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button class="menu-btn"
+                        id="menuBtn"
+                        aria-label="Open menu">
+                    ☰
+                </button>
+
+                <div>
+
+                    <p class="topbar-overline">
+                        VORVENA ADMIN
+                    </p>
+
+                    <h1 id="pageTitle">
+                        Dashboard
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <!-- THEME TOGGLE -->
+                <button
+                    class="icon-btn theme-toggle"
+                    id="themeToggle"
+                    aria-label="Switch to dark mode"
+                    title="Switch to dark mode">
+                    ☾
+                </button>
+
+
+                <!-- NOTIFICATIONS -->
+                <button
+                    class="icon-btn notification-btn"
+                    id="notificationBtn"
+                    aria-label="Notifications"
+                    title="Notifications">
+
+                    🔔
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <!-- ADMIN -->
+                <div class="admin-profile">
+
+                    <div class="admin-avatar">
+                        AD
+                    </div>
+
+                    <div class="admin-details">
+
+                        <strong>Admin</strong>
+
+                        <span>
+                            Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ================= PAGE CONTENT ================= -->
+        <div class="page-content">
+
+
+            <!-- =================================================
+                 DASHBOARD
+            ================================================== -->
+            <section
+                id="dashboard"
+                class="dashboard-section active">
+
+
+                <div class="welcome-row">
+
+                    <div>
+
+                        <p class="section-kicker">
+                            Overview
+                        </p>
+
+                        <h2 class="section-heading">
+                            Welcome back, Admin
+                        </h2>
+
+                        <p class="section-description">
+                            Manage VORVENA professionals, clients,
+                            projects, payments and community activity
+                            from one central dashboard.
+                        </p>
+
+                    </div>
+
+
+                    <div class="date-box">
+                        September 2026
+                    </div>
+
+                </div>
+
+
+
+                <!-- STATS -->
+                <div class="stats-grid">
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            ♟
+                        </div>
+
+                        <div class="stat-content">
+
+                            <span>Total Clients</span>
+
+                            <strong>24</strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            ♙
+                        </div>
+
+                        <div class="stat-content">
+
+                            <span>Professionals</span>
+
+                            <strong>18</strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            !
+                        </div>
+
+                        <div class="stat-content">
+
+                            <span>Pending Requests</span>
+
+                            <strong>7</strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            ▣
+                        </div>
+
+                        <div class="stat-content">
+
+                            <span>Active Projects</span>
+
+                            <strong>5</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DASHBOARD GRID -->
+                <div class="dashboard-grid">
+
+
+                    <!-- RECENT PROJECTS -->
+                    <div class="content-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>
+                                    Recent Project Requests
+                                </h3>
+
+                                <p>
+                                    Latest requests from clients
+                                </p>
+
+                            </div>
+
+                            <button
+                                class="text-btn"
+                                data-target="projects">
+
+                                View all
+
+                            </button>
+
+                        </div>
+
+
+                        <div class="table-wrapper">
+
+                            <table class="dashboard-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>Client</th>
+                                        <th>Project</th>
+                                        <th>Budget</th>
+                                        <th>Status</th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <td>
+
+                                            <div class="person-cell">
+
+                                                <div class="mini-avatar">
+                                                    JD
+                                                </div>
+
+                                                <div>
+
+                                                    <strong>
+                                                        John Doe
+                                                    </strong>
+
+                                                    <span>
+                                                        Client
+                                                    </span>
+
+                                                </div>
+
+                                            </div>
+
+                                        </td>
+
+                                        <td>
+                                            Landing Page
+                                        </td>
+
+                                        <td>
+                                            ₦120,000
+                                        </td>
+
+                                        <td>
+                                            <span class="status pending">
+                                                Pending
+                                            </span>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+
+                                            <div class="person-cell">
+
+                                                <div class="mini-avatar">
+                                                    MJ
+                                                </div>
+
+                                                <div>
+
+                                                    <strong>
+                                                        Mary James
+                                                    </strong>
+
+                                                    <span>
+                                                        Client
+                                                    </span>
+
+                                                </div>
+
+                                            </div>
+
+                                        </td>
+
+                                        <td>
+                                            Brand Design
+                                        </td>
+
+                                        <td>
+                                            ₦180,000
+                                        </td>
+
+                                        <td>
+                                            <span class="status active">
+                                                Active
+                                            </span>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+
+                                            <div class="person-cell">
+
+                                                <div class="mini-avatar">
+                                                    DS
+                                                </div>
+
+                                                <div>
+
+                                                    <strong>
+                                                        David Smith
+                                                    </strong>
+
+                                                    <span>
+                                                        Client
+                                                    </span>
+
+                                                </div>
+
+                                            </div>
+
+                                        </td>
+
+                                        <td>
+                                            Website Development
+                                        </td>
+
+                                        <td>
+                                            ₦250,000
+                                        </td>
+
+                                        <td>
+                                            <span class="status in-progress">
+                                                In Progress
+                                            </span>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+
+                                            <div class="person-cell">
+
+                                                <div class="mini-avatar">
+                                                    SW
+                                                </div>
+
+                                                <div>
+
+                                                    <strong>
+                                                        Sarah Williams
+                                                    </strong>
+
+                                                    <span>
+                                                        Client
+                                                    </span>
+
+                                                </div>
+
+                                            </div>
+
+                                        </td>
+
+                                        <td>
+                                            Social Media Design
+                                        </td>
+
+                                        <td>
+                                            ₦90,000
+                                        </td>
+
+                                        <td>
+                                            <span class="status completed">
+                                                Completed
+                                            </span>
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PENDING PROFESSIONALS -->
+                    <div class="content-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>
+                                    Pending Professionals
+                                </h3>
+
+                                <p>
+                                    Applications awaiting review
+                                </p>
+
+                            </div>
+
+                            <span class="section-count">
+                                7 pending
+                            </span>
+
+                        </div>
+
+
+                        <div class="professional-list">
+
+
+                            <div class="professional-item">
+
+                                <div class="professional-avatar">
+                                    JD
+                                </div>
+
+                                <div class="professional-info">
+
+                                    <h3>
+                                        James Daniel
+                                    </h3>
+
+                                    <p>
+                                        Frontend Developer
+                                    </p>
+
+                                </div>
+
+                                <div class="professional-actions">
+
+                                    <button
+                                        class="small-btn approve-btn">
+                                        Approve
+                                    </button>
+
+                                    <button
+                                        class="small-btn reject-btn">
+                                        Reject
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="professional-item">
+
+                                <div class="professional-avatar">
+                                    AM
+                                </div>
+
+                                <div class="professional-info">
+
+                                    <h3>
+                                        Anna Michael
+                                    </h3>
+
+                                    <p>
+                                        Graphic Designer
+                                    </p>
+
+                                </div>
+
+                                <div class="professional-actions">
+
+                                    <button
+                                        class="small-btn approve-btn">
+                                        Approve
+                                    </button>
+
+                                    <button
+                                        class="small-btn reject-btn">
+                                        Reject
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="professional-item">
+
+                                <div class="professional-avatar">
+                                    EK
+                                </div>
+
+                                <div class="professional-info">
+
+                                    <h3>
+                                        Emeka Kings
+                                    </h3>
+
+                                    <p>
+                                        UI/UX Designer
+                                    </p>
+
+                                </div>
+
+                                <div class="professional-actions">
+
+                                    <button
+                                        class="small-btn approve-btn">
+                                        Approve
+                                    </button>
+
+                                    <button
+                                        class="small-btn reject-btn">
+                                        Reject
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div style="padding: 0 20px 20px;">
+
+                            <button
+                                class="primary-btn full-width-btn"
+                                data-target="professionals">
+
+                                Manage Professionals
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- COMMISSION -->
+                <div class="commission-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                Platform Commission
+                            </h3>
+
+                            <p>
+                                Current project revenue overview
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="commission-rate">
+                        15%
+                    </div>
+
+
+                    <div class="commission-total">
+
+                        <span>
+                            Total Project Value
+                        </span>
+
+                        <strong>
+                            ₦500,000
+                        </strong>
+
+                    </div>
+
+
+                    <div class="commission-breakdown">
+
+                        <div class="commission-row">
+
+                            <span>
+                                VORVENA Commission
+                            </span>
+
+                            <strong>
+                                ₦75,000
+                            </strong>
+
+                        </div>
+
+
+                        <div class="commission-row">
+
+                            <span>
+                                Professional Earnings
+                            </span>
+
+                            <strong>
+                                ₦425,000
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="commission-note">
+
+                        VORVENA retains 15% of approved project
+                        payments while 85% goes to the professional,
+                        according to the platform payment terms.
+
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PROJECTS
+            ================================================== -->
+            <section
+                id="projects"
+                class="dashboard-section">
+
+
+                <div class="welcome-row">
+
+                    <div>
+
+                        <p class="section-kicker">
+                            Management
+                        </p>
+
+                        <h2 class="section-heading">
+                            Projects
+                            <span class="section-count">
+                                5 active
+                            </span>
+                        </h2>
+
+                        <p class="section-description">
+                            Monitor client requests and manage
+                            projects handled through VORVENA.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                Project Management
+                            </h3>
+
+                            <p>
+                                All recent project activity
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table class="dashboard-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Client</th>
+                                    <th>Project</th>
+                                    <th>Professional</th>
+                                    <th>Budget</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>John Doe</td>
+
+                                    <td>
+                                        Landing Page
+                                    </td>
+
+                                    <td>
+                                        James Daniel
+                                    </td>
+
+                                    <td>
+                                        ₦120,000
+                                    </td>
+
+                                    <td>
+                                        <span class="status pending">
+                                            Pending
+                                        </span>
+                                    </td>
+
+                                    <td>
+
+                                        <button
+                                            class="small-btn primary-btn project-action-btn">
+                                            Review
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>Mary James</td>
+
+                                    <td>
+                                        Brand Design
+                                    </td>
+
+                                    <td>
+                                        Anna Michael
+                                    </td>
+
+                                    <td>
+                                        ₦180,000
+                                    </td>
+
+                                    <td>
+                                        <span class="status active">
+                                            Active
+                                        </span>
+                                    </td>
+
+                                    <td>
+
+                                        <button
+                                            class="small-btn primary-btn project-action-btn">
+                                            Manage
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>David Smith</td>
+
+                                    <td>
+                                        Website Development
+                                    </td>
+
+                                    <td>
+                                        Emeka Kings
+                                    </td>
+
+                                    <td>
+                                        ₦250,000
+                                    </td>
+
+                                    <td>
+                                        <span class="status in-progress">
+                                            In Progress
+                                        </span>
+                                    </td>
+
+                                    <td>
+
+                                        <button
+                                            class="small-btn primary-btn project-action-btn">
+                                            Manage
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PROFESSIONALS
+            ================================================== -->
+            <section
+                id="professionals"
+                class="dashboard-section">
+
+
+                <div class="welcome-row">
+
+                    <div>
+
+                        <p class="section-kicker">
+                            Talent Management
+                        </p>
+
+                        <h2 class="section-heading">
+                            Professionals
+                        </h2>
+
+                        <p class="section-description">
+                            Review applications and manage
+                            approved professionals in the community.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="filter-bar">
+
+                    <div class="filter-buttons">
+
+                        <button class="filter-btn active">
+                            All
+                        </button>
+
+                        <button class="filter-btn">
+                            Pending
+                        </button>
+
+                        <button class="filter-btn">
+                            Approved
+                        </button>
+
+                    </div>
+
+
+                    <input
+                        type="search"
+                        class="search-bar"
+                        placeholder="Search professionals...">
+
+                </div>
+
+
+                <div class="professional-grid">
+
+
+                    <div class="professional-card">
+
+                        <div class="professional-card-top">
+
+                            <div class="large-avatar">
+                                JD
+                            </div>
+
+                            <div class="professional-card-info">
+
+                                <h3>
+                                    James Daniel
+                                </h3>
+
+                                <p>
+                                    Frontend Developer
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <p class="professional-card-description">
+                            Frontend developer specializing in
+                            responsive websites and modern UI.
+                        </p>
+
+                        <span class="status pending">
+                            Pending Review
+                        </span>
+
+                        <div class="professional-card-actions">
+
+                            <button
+                                class="small-btn approve-btn">
+                                Approve
+                            </button>
+
+                            <button
+                                class="small-btn reject-btn">
+                                Reject
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="professional-card">
+
+                        <div class="professional-card-top">
+
+                            <div class="large-avatar">
+                                AM
+                            </div>
+
+                            <div class="professional-card-info">
+
+                                <h3>
+                                    Anna Michael
+                                </h3>
+
+                                <p>
+                                    Graphic Designer
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <p class="professional-card-description">
+                            Creative graphic designer focused on
+                            branding, flyers and digital campaigns.
+                        </p>
+
+                        <span class="status pending">
+                            Pending Review
+                        </span>
+
+                        <div class="professional-card-actions">
+
+                            <button
+                                class="small-btn approve-btn">
+                                Approve
+                            </button>
+
+                            <button
+                                class="small-btn reject-btn">
+                                Reject
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="professional-card">
+
+                        <div class="professional-card-top">
+
+                            <div class="large-avatar">
+                                EK
+                            </div>
+
+                            <div class="professional-card-info">
+
+                                <h3>
+                                    Emeka Kings
+                                </h3>
+
+                                <p>
+                                    UI/UX Designer
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <p class="professional-card-description">
+                            UI/UX designer creating clean and
+                            user-focused digital experiences.
+                        </p>
+
+                        <span class="status pending">
+                            Pending Review
+                        </span>
+
+                        <div class="professional-card-actions">
+
+                            <button
+                                class="small-btn approve-btn">
+                                Approve
+                            </button>
+
+                            <button
+                                class="small-btn reject-btn">
+                                Reject
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 CLIENTS
+            ================================================== -->
+            <section
+                id="clients"
+                class="dashboard-section">
+
+
+                <div class="welcome-row">
+
+                    <div>
+
+                        <p class="section-kicker">
+                            Community
+                        </p>
+
+                        <h2 class="section-heading">
+                            Clients
+                        </h2>
+
+                        <p class="section-description">
+                            View registered clients and monitor
+                            their activity on VORVENA.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                Registered Clients
+                            </h3>
+
+                            <p>
+                                24 clients currently registered
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table class="dashboard-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Client</th>
+                                    <th>Email</th>
+                                    <th>Projects</th>
+                                    <th>Status</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>John Doe</td>
+                                    <td>john@example.com</td>
+                                    <td>3</td>
+
+                                    <td>
+                                        <span class="status active">
+                                            Active
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>Mary James</td>
+                                    <td>mary@example.com</td>
+                                    <td>2</td>
+
+                                    <td>
+                                        <span class="status active">
+                                            Active
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>David Smith</td>
+                                    <td>david@example.com</td>
+                                    <td>4</td>
+
+                                    <td>
+                                        <span class="status active">
+                                            Active
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PAYMENTS
+            ================================================== -->
+            <section
+                id="payments"
+                class="dashboard-section">
+
+
+                <div class="welcome-row">
+
+                    <div>
+
+                        <p class="section-kicker">
+                            Finance
+                        </p>
+
+                        <h2 class="section-heading">
+                            Payments
+                        </h2>
+
+                        <p class="section-description">
+                            Monitor project payments and VORVENA
+                            commission distribution.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="payment-stats">
+
+
+                    <div class="payment-stat">
+
+                        <span>
+                            Total Project Value
+                        </span>
+
+                        <strong>
+                            ₦500,000
+                        </strong>
+
+                    </div>
+
+
+                    <div class="payment-stat">
+
+                        <span>
+                            VORVENA Commission
+                        </span>
+
+                        <strong>
+                            ₦75,000
+                        </strong>
+
+                    </div>
+
+
+                    <div class="payment-stat">
+
+                        <span>
+                            Professional Earnings
+                        </span>
+
+                        <strong>
+                            ₦425,000
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                Recent Payments
+                            </h3>
+
+                            <p>
+                                Project payment history
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table class="dashboard-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Project</th>
+                                    <th>Client</th>
+                                    <th>Amount</th>
+                                    <th>Commission</th>
+                                    <th>Status</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+                                        Landing Page
+                                    </td>
+
+                                    <td>
+                                        John Doe
+                                    </td>
+
+                                    <td>
+                                        ₦120,000
+                                    </td>
+
+                                    <td>
+                                        ₦18,000
+                                    </td>
+
+                                    <td>
+                                        <span class="status paid">
+                                            Paid
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        Brand Design
+                                    </td>
+
+                                    <td>
+                                        Mary James
+                                    </td>
+
+                                    <td>
+                                        ₦180,000
+                                    </td>
+
+                                    <td>
+                                        ₦27,000
+                                    </td>
+
+                                    <td>
+                                        <span class="status paid">
+                                            Paid
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 FEEDBACK
+            ================================================== -->
+            <section
+                id="feedback"
+                class="dashboard-section">
+
+
+                <div class="welcome-row">
+
+                    <div>
+
+                        <p class="section-kicker">
+                            Community Voice
+                        </p>
+
+                        <h2 class="section-heading">
+                            Feedback
+                        </h2>
+
+                        <p class="section-description">
+                            Review ratings and feedback submitted
+                            by clients and professionals.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feedback-grid">
+
+
+                    <div class="feedback-card">
+
+                        <div class="feedback-top">
+
+                            <strong>
+                                John Doe
+                            </strong>
+
+                            <div class="stars">
+                                ★★★★★
+                            </div>
+
+                        </div>
+
+                        <p>
+                            Very smooth experience. The professional
+                            delivered exactly what I needed.
+                        </p>
+
+                        <div class="feedback-author">
+                            Client • Landing Page Project
+                        </div>
+
+                    </div>
+
+
+                    <div class="feedback-card">
+
+                        <div class="feedback-top">
+
+                            <strong>
+                                Mary James
+                            </strong>
+
+                            <div class="stars">
+                                ★★★★★
+                            </div>
+
+                        </div>
+
+                        <p>
+                            VORVENA made it easy to find someone
+                            who understood my brand.
+                        </p>
+
+                        <div class="feedback-author">
+                            Client • Branding Project
+                        </div>
+
+                    </div>
+
+
+                    <div class="feedback-card">
+
+                        <div class="feedback-top">
+
+                            <strong>
+                                David Smith
+                            </strong>
+
+                            <div class="stars">
+                                ★★★★☆
+                            </div>
+
+                        </div>
+
+                        <p>
+                            Good platform and professional communication
+                            throughout the project.
+                        </p>
+
+                        <div class="feedback-author">
+                            Client • Website Project
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SETTINGS
+            ================================================== -->
+            <section
+                id="settings"
+                class="dashboard-section">
+
+
+                <div class="welcome-row">
+
+                    <div>
+
+                        <p class="section-kicker">
+                            System
+                        </p>
+
+                        <h2 class="section-heading">
+                            Settings
+                        </h2>
+
+                        <p class="section-description">
+                            Manage administrative settings and
+                            platform configuration.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-grid">
+
+
+                    <div class="settings-card">
+
+                        <div class="settings-icon">
+                            ⚙
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Platform Settings
+                            </h3>
+
+                            <p>
+                                Configure general VORVENA platform
+                                preferences and information.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-card">
+
+                        <div class="settings-icon">
+                            ♙
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Professional Management
+                            </h3>
+
+                            <p>
+                                Manage professional approval and
+                                community membership settings.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-card">
+
+                        <div class="settings-icon">
+                            ₦
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Payment Settings
+                            </h3>
+
+                            <p>
+                                Configure payment and commission
+                                settings for the platform.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-card">
+
+                        <div class="settings-icon">
+                            🔔
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Notifications
+                            </h3>
+
+                            <p>
+                                Manage administrative alerts and
+                                notification preferences.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+
+
+        <!-- ================= FOOTER ================= -->
+        <footer class="dashboard-footer">
+
+            <strong>VORVENA</strong>
+            © 2026. Admin Control Center.
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script src="admin.js"></script>
+
+</body>
+</html>
