@@ -1,3 +1,42 @@
+/* =========================================================
+   VORVENA CLIENT SIGNUP
+   NAVY AURA / GLASS / WHITE / BLACK
+========================================================= */
+
+:root {
+    --navy-950: #020817;
+    --navy-900: #061126;
+    --navy-800: #0a1d3d;
+    --navy: #0b2a66;
+    --blue: #174ea6;
+
+    --white: #ffffff;
+    --black: #05070b;
+
+    --text: #08101f;
+    --muted: #667085;
+    --muted-light: #98a2b3;
+
+    --line: rgba(8, 29, 61, 0.12);
+    --line-dark: rgba(255, 255, 255, 0.12);
+
+    --glass: rgba(255, 255, 255, 0.68);
+    --glass-strong: rgba(255, 255, 255, 0.86);
+
+    --navy-glow: rgba(23, 78, 166, 0.25);
+
+    --shadow:
+        0 25px 70px rgba(6, 17, 38, 0.10);
+
+    --shadow-strong:
+        0 35px 100px rgba(6, 17, 38, 0.18);
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -9,10 +48,59 @@ html {
 }
 
 body {
+    position: relative;
+
     font-family: Arial, Helvetica, sans-serif;
-    background: #f5f5f3;
-    color: #111;
+
+    background:
+        radial-gradient(
+            circle at 8% 8%,
+            rgba(23, 78, 166, 0.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 92% 32%,
+            rgba(8, 42, 100, 0.10),
+            transparent 28%
+        ),
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f7faff 52%,
+            #eef3fb 100%
+        );
+
+    color: var(--text);
+
     line-height: 1.6;
+
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 25% 25%,
+            rgba(27, 92, 190, 0.10),
+            transparent 24%
+        ),
+        radial-gradient(
+            circle at 75% 70%,
+            rgba(5, 30, 75, 0.08),
+            transparent 26%
+        );
+
+    filter: blur(70px);
+
+    z-index: -1;
 }
 
 a {
@@ -20,135 +108,355 @@ a {
     text-decoration: none;
 }
 
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
 
-/* =========================
+
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 .signup-header {
     width: 100%;
+
     min-height: 85px;
+
     padding: 0 6%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #d8d8d5;
-    background: #f5f5f3;
+
+    border-bottom: 1px solid rgba(8, 29, 61, 0.10);
+
+    background:
+        rgba(255, 255, 255, 0.72);
+
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+
+    box-shadow:
+        0 8px 35px rgba(5, 20, 50, 0.05);
+
+    position: relative;
+
+    z-index: 10;
 }
 
 .logo {
     font-size: 1.45rem;
+
     font-weight: 900;
+
     letter-spacing: -1px;
+
+    color: var(--navy-950);
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.logo:hover {
+    color: var(--blue);
+
+    transform: translateY(-1px);
 }
 
 .back-link {
+    display: inline-flex;
+
+    align-items: center;
+
     font-size: 0.85rem;
+
     font-weight: 700;
-    transition: opacity 0.3s ease;
+
+    color: var(--navy);
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
 }
 
 .back-link:hover {
-    opacity: 0.5;
+    color: var(--blue);
+
+    transform: translateX(-3px);
 }
 
 
-/* =========================
+/* =========================================================
    MAIN PAGE
-========================= */
+========================================================= */
 
 .signup-page {
     width: 88%;
+
     max-width: 1400px;
+
     margin: 0 auto;
+
     min-height: calc(100vh - 85px);
 
     display: grid;
+
     grid-template-columns: 1fr 0.9fr;
+
     gap: 90px;
 
     padding: 90px 0;
+
+    position: relative;
 }
 
 
-/* =========================
+/* =========================================================
    INTRO
-========================= */
+========================================================= */
 
 .signup-intro {
     padding-top: 30px;
+
+    position: relative;
+}
+
+.signup-intro::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    left: -180px;
+    top: 5%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(23, 78, 166, 0.12),
+            transparent 70%
+        );
+
+    filter: blur(25px);
+
+    pointer-events: none;
+
+    z-index: -1;
 }
 
 .eyebrow {
     display: inline-block;
+
     margin-bottom: 30px;
 
+    padding: 8px 13px;
+
+    border: 1px solid rgba(23, 78, 166, 0.16);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255, 255, 255, 0.60);
+
+    backdrop-filter: blur(14px);
+
+    color: var(--blue);
+
     font-size: 0.72rem;
+
     font-weight: 800;
+
     letter-spacing: 2px;
+
     text-transform: uppercase;
 }
 
 .signup-intro h1 {
     font-size: clamp(3rem, 6vw, 6.5rem);
+
     line-height: 0.92;
+
     letter-spacing: -5px;
+
     font-weight: 900;
+
     max-width: 750px;
+
     margin-bottom: 35px;
+
+    color: var(--navy-950);
+
+    text-shadow:
+        0 12px 35px rgba(5, 20, 50, 0.06);
 }
 
 .signup-intro > p {
     max-width: 520px;
+
     font-size: 1.05rem;
-    color: #555;
+
+    color: #596579;
+
     line-height: 1.8;
+
     margin-bottom: 60px;
 }
 
 
-/* =========================
+/* =========================================================
    INTRO POINTS
-========================= */
+========================================================= */
 
 .intro-points {
     max-width: 560px;
-    border-top: 1px solid #cfcfcb;
+
+    border-top: 1px solid var(--line);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.34),
+            transparent
+        );
 }
 
 .intro-point {
     display: grid;
+
     grid-template-columns: 60px 1fr;
+
     gap: 20px;
 
-    padding: 22px 0;
-    border-bottom: 1px solid #cfcfcb;
+    padding: 22px 15px;
+
+    border-bottom: 1px solid var(--line);
+
+    transition:
+        background 0.3s ease,
+        padding 0.3s ease;
+}
+
+.intro-point:hover {
+    padding-left: 22px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(23, 78, 166, 0.07),
+            transparent
+        );
 }
 
 .intro-point span {
     font-size: 0.72rem;
+
     font-weight: 800;
+
     letter-spacing: 1px;
+
+    color: var(--blue);
 }
 
 .intro-point p {
     font-size: 0.95rem;
+
     font-weight: 600;
+
+    color: var(--navy-900);
 }
 
 
-/* =========================
+/* =========================================================
    SIGNUP CARD
-========================= */
+========================================================= */
 
 .signup-card {
-    background: #111;
-    color: #fff;
-    padding: 55px;
-
     align-self: start;
 
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.12);
+    position: relative;
+
+    padding: 55px;
+
+    color: var(--white);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 28px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(23, 78, 166, 0.28),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(23, 78, 166, 0.12),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #020817,
+            #061126 58%,
+            #0a1d3d
+        );
+
+    box-shadow:
+        var(--shadow-strong);
+}
+
+.signup-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    right: -140px;
+    top: -140px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 0 80px rgba(23, 78, 166, 0.16);
+}
+
+.signup-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    left: -100px;
+    bottom: -100px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(23, 78, 166, 0.12);
+
+    filter: blur(25px);
+}
+
+.card-header,
+.signup-card form,
+.login-prompt {
+    position: relative;
+
+    z-index: 2;
 }
 
 .card-header {
@@ -157,30 +465,40 @@ a {
 
 .card-number {
     display: block;
+
     margin-bottom: 18px;
 
     font-size: 0.68rem;
+
     font-weight: 800;
+
     letter-spacing: 2px;
-    color: #999;
+
+    color: #8fa3c2;
 }
 
 .card-header h2 {
     font-size: 2rem;
+
     line-height: 1;
+
     letter-spacing: -1px;
+
     margin-bottom: 15px;
+
+    color: var(--white);
 }
 
 .card-header p {
     font-size: 0.9rem;
-    color: #999;
+
+    color: #aebbd0;
 }
 
 
-/* =========================
+/* =========================================================
    FORM
-========================= */
+========================================================= */
 
 .form-group {
     margin-bottom: 24px;
@@ -188,61 +506,91 @@ a {
 
 .form-group label {
     display: block;
+
     margin-bottom: 9px;
 
     font-size: 0.76rem;
+
     font-weight: 800;
+
     letter-spacing: 0.5px;
+
     text-transform: uppercase;
+
+    color: #e5ebf5;
 }
 
 .form-group label span {
-    color: #777;
+    color: #7284a0;
+
     font-weight: 500;
+
     text-transform: none;
+
     letter-spacing: 0;
 }
 
 .form-group input {
     width: 100%;
+
     height: 52px;
 
     padding: 0 16px;
 
-    border: 1px solid #333;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 12px;
+
     outline: none;
 
-    background: #191919;
-    color: #fff;
+    background:
+        rgba(255, 255, 255, 0.055);
+
+    color: var(--white);
 
     font-size: 0.92rem;
 
+    backdrop-filter: blur(12px);
+
     transition:
         border-color 0.3s ease,
-        background 0.3s ease;
+        background 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .form-group input::placeholder {
-    color: #666;
+    color: #71809a;
+}
+
+.form-group input:hover {
+    border-color: rgba(255, 255, 255, 0.20);
 }
 
 .form-group input:focus {
-    border-color: #fff;
-    background: #202020;
+    border-color: rgba(87, 145, 230, 0.75);
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 0 0 3px rgba(23, 78, 166, 0.18),
+        0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
 .form-group small {
     display: block;
+
     margin-top: 8px;
 
-    color: #777;
+    color: #71809a;
+
     font-size: 0.7rem;
 }
 
 
-/* =========================
+/* =========================================================
    PASSWORD
-========================= */
+========================================================= */
 
 .password-wrapper {
     position: relative;
@@ -254,46 +602,60 @@ a {
 
 .show-password {
     position: absolute;
+
     right: 14px;
     top: 50%;
+
     transform: translateY(-50%);
 
     border: none;
+
     background: transparent;
 
-    color: #aaa;
+    color: #91a1ba;
+
     cursor: pointer;
 
     font-size: 0.72rem;
+
     font-weight: 800;
+
     text-transform: uppercase;
+
+    transition: color 0.25s ease;
 }
 
 .show-password:hover {
-    color: #fff;
+    color: var(--white);
 }
 
 
-/* =========================
+/* =========================================================
    AGREEMENT
-========================= */
+========================================================= */
 
 .agreement {
     margin-top: 32px;
+
     margin-bottom: 25px;
 
     display: flex;
+
     flex-direction: column;
+
     gap: 13px;
 }
 
 .checkbox-label {
     display: flex;
+
     align-items: flex-start;
+
     gap: 10px;
 
     font-size: 0.78rem;
-    color: #999;
+
+    color: #98a6ba;
 
     cursor: pointer;
 }
@@ -304,31 +666,42 @@ a {
 
     margin-top: 3px;
 
-    accent-color: #fff;
+    accent-color: #4d82d2;
+
     cursor: pointer;
 }
 
 .checkbox-label a {
-    color: #fff;
+    color: var(--white);
+
     text-decoration: underline;
+
     text-underline-offset: 3px;
+
+    transition: color 0.25s ease;
+}
+
+.checkbox-label a:hover {
+    color: #80aef0;
 }
 
 
-/* =========================
+/* =========================================================
    FORM MESSAGE
-========================= */
+========================================================= */
 
 .form-message {
     min-height: 20px;
+
     margin-bottom: 15px;
 
     font-size: 0.78rem;
+
     line-height: 1.5;
 }
 
 .form-message.error {
-    color: #ff8b8b;
+    color: #ff9d9d;
 }
 
 .form-message.success {
@@ -336,136 +709,210 @@ a {
 }
 
 
-/* =========================
+/* =========================================================
    SUBMIT BUTTON
-========================= */
+========================================================= */
 
 .submit-btn {
     width: 100%;
+
     min-height: 58px;
 
     padding: 0 20px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
-    border: none;
-    background: #fff;
-    color: #111;
+    border: 1px solid rgba(255, 255, 255, 0.85);
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #edf3fc
+        );
+
+    color: var(--navy-950);
 
     font-size: 0.78rem;
+
     font-weight: 900;
+
     letter-spacing: 0.5px;
 
     cursor: pointer;
 
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.15);
+
     transition:
         background 0.3s ease,
         color 0.3s ease,
-        transform 0.3s ease;
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .submit-btn:hover {
-    background: #ddd;
-    transform: translateY(-2px);
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #dbe9fb
+        );
+
+    color: var(--navy);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 18px 45px rgba(23, 78, 166, 0.22);
 }
 
 .submit-btn .arrow {
     font-size: 1.3rem;
+
+    transition: transform 0.25s ease;
+}
+
+.submit-btn:hover .arrow {
+    transform: translateX(4px);
 }
 
 
-/* =========================
+/* =========================================================
    LOGIN PROMPT
-========================= */
+========================================================= */
 
 .login-prompt {
     margin-top: 30px;
+
     padding-top: 25px;
 
-    border-top: 1px solid #333;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
 
     text-align: center;
 }
 
 .login-prompt p {
-    color: #777;
+    color: #71809a;
+
     font-size: 0.8rem;
 }
 
 .login-prompt a {
-    color: #fff;
+    color: var(--white);
+
     font-weight: 800;
+
     text-decoration: underline;
+
     text-underline-offset: 3px;
+
+    transition: color 0.25s ease;
+}
+
+.login-prompt a:hover {
+    color: #80aef0;
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 .signup-footer {
     width: 88%;
+
     max-width: 1400px;
+
     margin: 0 auto;
 
     padding: 50px 0 35px;
 
-    border-top: 1px solid #d0d0cd;
+    border-top: 1px solid var(--line);
 
     display: grid;
+
     grid-template-columns: 1fr auto 1fr;
+
     align-items: end;
+
     gap: 30px;
+
+    position: relative;
 }
 
 .footer-logo {
     font-size: 1.1rem;
+
     font-weight: 900;
+
     letter-spacing: -0.5px;
+
+    color: var(--navy-950);
+
+    transition: color 0.25s ease;
+}
+
+.footer-logo:hover {
+    color: var(--blue);
 }
 
 .footer-left p {
     margin-top: 8px;
 
-    color: #777;
+    color: #7b8799;
+
     font-size: 0.76rem;
 }
 
 .footer-links {
     display: flex;
+
     gap: 25px;
 }
 
 .footer-links a {
     font-size: 0.72rem;
+
     font-weight: 700;
-    transition: opacity 0.3s ease;
+
+    color: #526078;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
 }
 
 .footer-links a:hover {
-    opacity: 0.5;
+    color: var(--blue);
+
+    transform: translateY(-1px);
 }
 
 .copyright {
     justify-self: end;
 
-    color: #888;
+    color: #8995a8;
+
     font-size: 0.7rem;
 }
 
 
-/* =========================
-   TABLET
-   768px
-========================= */
+/* =========================================================
+   TABLET — 768px
+========================================================= */
 
 @media (max-width: 768px) {
 
     .signup-header {
         min-height: 75px;
+
         padding: 0 6%;
     }
 
@@ -473,6 +920,7 @@ a {
         width: 90%;
 
         grid-template-columns: 1fr;
+
         gap: 55px;
 
         padding: 60px 0;
@@ -484,6 +932,7 @@ a {
 
     .signup-intro h1 {
         font-size: clamp(3rem, 10vw, 5rem);
+
         letter-spacing: -3px;
     }
 
@@ -493,12 +942,15 @@ a {
 
     .signup-card {
         padding: 40px;
+
+        border-radius: 24px;
     }
 
     .signup-footer {
         width: 90%;
 
         grid-template-columns: 1fr;
+
         align-items: start;
 
         padding: 40px 0 30px;
@@ -510,15 +962,15 @@ a {
 
     .copyright {
         justify-self: start;
+
         order: 3;
     }
 }
 
 
-/* =========================
-   MOBILE
-   425px
-========================= */
+/* =========================================================
+   MOBILE — 425px
+========================================================= */
 
 @media (max-width: 425px) {
 
@@ -536,27 +988,42 @@ a {
 
     .signup-page {
         width: 90%;
+
         padding: 45px 0;
+
         gap: 40px;
+    }
+
+    .signup-intro::before {
+        width: 300px;
+        height: 300px;
+
+        left: -170px;
     }
 
     .eyebrow {
         margin-bottom: 20px;
+
+        font-size: 0.64rem;
     }
 
     .signup-intro h1 {
         font-size: 3rem;
+
         letter-spacing: -2.5px;
+
         line-height: 0.95;
     }
 
     .signup-intro > p {
         font-size: 0.92rem;
+
         line-height: 1.7;
     }
 
     .intro-point {
         grid-template-columns: 45px 1fr;
+
         gap: 12px;
     }
 
@@ -566,6 +1033,8 @@ a {
 
     .signup-card {
         padding: 30px 22px;
+
+        border-radius: 20px;
     }
 
     .card-header h2 {
@@ -578,25 +1047,27 @@ a {
 
     .submit-btn {
         min-height: 55px;
+
         font-size: 0.7rem;
     }
 
     .footer-links {
         flex-wrap: wrap;
+
         gap: 15px;
     }
 }
 
 
-/* =========================
-   SMALL MOBILE
-   375px
-========================= */
+/* =========================================================
+   SMALL MOBILE — 375px
+========================================================= */
 
 @media (max-width: 375px) {
 
     .signup-page {
         width: 92%;
+
         padding: 35px 0;
     }
 
@@ -622,5 +1093,25 @@ a {
 
     .signup-footer {
         width: 92%;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
     }
 }

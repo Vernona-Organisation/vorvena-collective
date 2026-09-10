@@ -1,3 +1,31 @@
+:root {
+    --white: #ffffff;
+    --off-white: #f7f9fc;
+    --navy: #07152f;
+    --navy-2: #0b1f42;
+    --navy-3: #123565;
+    --black: #05070b;
+
+    --text: #07111f;
+    --muted: #667085;
+    --muted-light: #98a2b3;
+
+    --border: rgba(7, 21, 47, 0.12);
+    --border-dark: rgba(255, 255, 255, 0.14);
+
+    --shadow-sm: 0 8px 30px rgba(7, 21, 47, 0.06);
+    --shadow-lg: 0 30px 80px rgba(7, 21, 47, 0.14);
+
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+}
+
+
+/* =========================
+   RESET
+========================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -10,10 +38,30 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #f5f4ef;
-    color: #111;
+    background: var(--off-white);
+    color: var(--text);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    background:
+        radial-gradient(
+            circle at 80% 5%,
+            rgba(18, 53, 101, 0.10),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 10% 45%,
+            rgba(7, 21, 47, 0.05),
+            transparent 25%
+        );
 }
 
 a {
@@ -42,8 +90,14 @@ button {
     width: 100%;
     z-index: 1000;
 
-    background: #f5f4ef;
-    border-bottom: 1px solid #d2d1cc;
+    background: rgba(255, 255, 255, 0.78);
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    border-bottom: 1px solid rgba(7, 21, 47, 0.10);
+
+    box-shadow: 0 5px 30px rgba(7, 21, 47, 0.04);
 }
 
 .nav-container {
@@ -58,10 +112,11 @@ button {
 }
 
 .logo {
+    color: var(--navy);
+
     font-size: 1.45rem;
     font-weight: 900;
     letter-spacing: -1px;
-    color: #111;
 }
 
 .desktop-nav {
@@ -73,14 +128,16 @@ button {
 .desktop-nav a {
     position: relative;
 
-    color: #111;
+    color: #344054;
 
     font-size: 0.7rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.7px;
 
-    transition: opacity 0.3s ease;
+    transition:
+        color 0.3s ease,
+        opacity 0.3s ease;
 }
 
 .desktop-nav a::after {
@@ -91,15 +148,18 @@ button {
     bottom: -8px;
 
     width: 0;
-    height: 1px;
+    height: 2px;
 
-    background: #111;
+    border-radius: 10px;
+
+    background: var(--navy);
 
     transition: width 0.3s ease;
 }
 
 .desktop-nav a:hover {
-    opacity: 0.55;
+    color: var(--navy);
+    opacity: 0.7;
 }
 
 .desktop-nav a:hover::after,
@@ -108,6 +168,7 @@ button {
 }
 
 .desktop-nav a.active {
+    color: var(--navy);
     font-weight: 900;
 }
 
@@ -122,8 +183,13 @@ button {
     width: 44px;
     height: 44px;
 
-    border: 1px solid #111;
-    background: transparent;
+    border: 1px solid rgba(7, 21, 47, 0.16);
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 
     flex-direction: column;
     align-items: center;
@@ -141,7 +207,9 @@ button {
     width: 20px;
     height: 2px;
 
-    background: #111;
+    border-radius: 10px;
+
+    background: var(--navy);
 
     transition:
         transform 0.3s ease,
@@ -171,20 +239,44 @@ button {
 ========================= */
 
 .join-hero {
+    position: relative;
+
     width: 88%;
     max-width: 1400px;
 
     margin: 0 auto;
 
-    padding: 105px 0 75px;
+    padding: 115px 0 85px;
 
-    border-bottom: 1px solid #d0cfca;
+    border-bottom: 1px solid var(--border);
+}
+
+.join-hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    top: -120px;
+    right: -160px;
+
+    background: rgba(18, 53, 101, 0.12);
+
+    filter: blur(90px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
 }
 
 .hero-label {
+    position: relative;
+
     margin-bottom: 35px;
 
-    color: #111;
+    color: var(--navy);
 
     font-size: 0.68rem;
     font-weight: 900;
@@ -192,9 +284,11 @@ button {
 }
 
 .join-hero h1 {
+    position: relative;
+
     max-width: 1100px;
 
-    color: #111;
+    color: var(--navy);
 
     font-size: clamp(4rem, 9vw, 9rem);
     line-height: 0.84;
@@ -208,6 +302,8 @@ button {
 }
 
 .hero-bottom {
+    position: relative;
+
     margin-top: 70px;
 
     display: flex;
@@ -220,14 +316,14 @@ button {
 .hero-bottom p {
     max-width: 520px;
 
-    color: #555;
+    color: var(--muted);
 
     font-size: 1rem;
     line-height: 1.8;
 }
 
 .hero-bottom span {
-    color: #111;
+    color: var(--navy);
 
     font-size: 0.65rem;
     font-weight: 900;
@@ -245,9 +341,9 @@ button {
 
     margin: 0 auto;
 
-    padding: 100px 0;
+    padding: 110px 0;
 
-    background: #f5f4ef;
+    background: transparent;
 }
 
 .section-heading {
@@ -260,7 +356,7 @@ button {
 }
 
 .section-heading > span {
-    color: #111;
+    color: var(--navy);
 
     font-size: 0.68rem;
     font-weight: 900;
@@ -268,7 +364,7 @@ button {
 }
 
 .section-heading h2 {
-    color: #111;
+    color: var(--navy);
 
     font-size: clamp(2.7rem, 5vw, 5.5rem);
     line-height: 0.88;
@@ -294,11 +390,11 @@ button {
 
     padding: 55px 0;
 
-    border-top: 1px solid #cfcfca;
+    border-top: 1px solid var(--border);
 }
 
 .section-number {
-    color: #555;
+    color: #98a2b3;
 
     font-size: 0.7rem;
     font-weight: 900;
@@ -311,7 +407,7 @@ button {
 .form-section-title {
     margin-bottom: 30px;
 
-    color: #111;
+    color: var(--navy);
 
     font-size: 0.72rem;
     font-weight: 900;
@@ -323,7 +419,7 @@ button {
 
     margin-bottom: 30px;
 
-    color: #555;
+    color: var(--muted);
 
     font-size: 0.85rem;
     line-height: 1.8;
@@ -358,7 +454,7 @@ button {
 
     margin-bottom: 9px;
 
-    color: #111;
+    color: var(--navy);
 
     font-size: 0.68rem;
     font-weight: 900;
@@ -370,15 +466,27 @@ button {
 .form-group textarea {
     width: 100%;
 
-    border: 1px solid #aaa9a4;
+    border: 1px solid rgba(7, 21, 47, 0.15);
+    border-radius: 10px;
+
     outline: none;
 
-    background: #ffffff;
-    color: #111;
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--text);
+
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
 
     transition:
         border-color 0.25s ease,
-        background 0.25s ease;
+        background 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    border-color: rgba(7, 21, 47, 0.30);
 }
 
 .form-group input,
@@ -397,14 +505,19 @@ button {
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: #777;
+    color: #98a2b3;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    border-color: #111;
-    background: #fff;
+    border-color: var(--navy);
+
+    background: var(--white);
+
+    box-shadow:
+        0 0 0 4px rgba(18, 53, 101, 0.08),
+        0 12px 35px rgba(7, 21, 47, 0.06);
 }
 
 .field-note {
@@ -412,7 +525,7 @@ button {
 
     margin-top: 8px;
 
-    color: #666;
+    color: #98a2b3;
 
     font-size: 0.65rem;
 }
@@ -442,10 +555,11 @@ button {
 
     gap: 7px;
 
-    border: 1px solid #aaa9a4;
+    border: 1px solid rgba(7, 21, 47, 0.15);
+    border-radius: 10px;
 
-    background: #ffffff;
-    color: #111;
+    background: var(--white);
+    color: var(--navy);
 
     font-size: 0.82rem;
     font-weight: 800;
@@ -493,20 +607,33 @@ button {
 
     gap: 25px;
 
-    border: 1px dashed #999;
+    border: 1px dashed rgba(7, 21, 47, 0.25);
+    border-radius: 16px;
 
-    background: #ffffff;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.95),
+            rgba(241, 246, 253, 0.9)
+        );
 
     cursor: pointer;
 
     transition:
         border-color 0.3s ease,
-        background 0.3s ease;
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .upload-box:hover {
-    border-color: #111;
-    background: #fafafa;
+    border-color: var(--navy);
+
+    background: var(--white);
+
+    transform: translateY(-2px);
+
+    box-shadow: var(--shadow-sm);
 }
 
 .image-preview {
@@ -521,11 +648,21 @@ button {
 
     overflow: hidden;
 
-    background: #e5e4df;
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #07152f,
+            #123565
+        );
+
+    box-shadow:
+        0 15px 35px rgba(7, 21, 47, 0.16);
 }
 
 .image-preview span {
-    color: #666;
+    color: rgba(255, 255, 255, 0.75);
 
     font-size: 2rem;
     font-weight: 300;
@@ -546,19 +683,22 @@ button {
 }
 
 .upload-text strong {
-    color: #111;
+    color: var(--navy);
 
     font-size: 0.75rem;
     font-weight: 900;
 }
 
 .upload-text small {
-    color: #666;
+    color: var(--muted);
 
     font-size: 0.65rem;
 }
 
 
+/* =========================
+   FILE INPUT
+========================= */
 
 .file-input-wrapper input[type="file"] {
     display: none;
@@ -574,10 +714,11 @@ button {
     align-items: center;
     justify-content: space-between;
 
-    border: 1px solid #aaa9a4;
+    border: 1px solid rgba(7, 21, 47, 0.15);
+    border-radius: 10px;
 
-    background: #ffffff;
-    color: #111;
+    background: var(--white);
+    color: var(--navy);
 
     cursor: pointer;
 
@@ -586,18 +727,26 @@ button {
 
     transition:
         border-color 0.3s ease,
-        background 0.3s ease;
+        background 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .file-label:hover {
-    border-color: #111;
-    background: #fafafa;
+    border-color: var(--navy);
+
+    background: #f8fbff;
+
+    box-shadow: var(--shadow-sm);
 }
 
 .file-label > span:last-child {
     font-size: 1.2rem;
 }
 
+
+/* =========================
+   AGREEMENTS
+========================= */
 
 .agreement-section {
     padding-bottom: 70px;
@@ -607,7 +756,7 @@ button {
     display: flex;
     flex-direction: column;
 
-    border-top: 1px solid #cfcfca;
+    border-top: 1px solid var(--border);
 }
 
 .agreement-item {
@@ -618,9 +767,9 @@ button {
 
     padding: 17px 0;
 
-    border-bottom: 1px solid #cfcfca;
+    border-bottom: 1px solid var(--border);
 
-    color: #444;
+    color: #667085;
 
     font-size: 0.78rem;
     line-height: 1.6;
@@ -636,13 +785,13 @@ button {
 
     margin-top: 3px;
 
-    accent-color: #111;
+    accent-color: var(--navy);
 
     cursor: pointer;
 }
 
 .agreement-item a {
-    color: #111;
+    color: var(--navy);
 
     font-weight: 800;
 
@@ -652,7 +801,7 @@ button {
 }
 
 .agreement-item strong {
-    color: #111;
+    color: var(--navy);
 }
 
 
@@ -669,8 +818,8 @@ button {
 
     gap: 40px;
 
-    border-top: 1px solid #111;
-    border-bottom: 1px solid #111;
+    border-top: 1px solid var(--navy);
+    border-bottom: 1px solid var(--navy);
 }
 
 .submit-label {
@@ -678,7 +827,7 @@ button {
 
     margin-bottom: 8px;
 
-    color: #111;
+    color: var(--navy);
 
     font-size: 0.65rem;
     font-weight: 900;
@@ -686,7 +835,7 @@ button {
 }
 
 .submit-area p {
-    color: #555;
+    color: var(--muted);
 
     font-size: 0.78rem;
 }
@@ -701,24 +850,43 @@ button {
     align-items: center;
     justify-content: space-between;
 
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
 
-    background: #111;
-    color: #fff;
+    background:
+        linear-gradient(
+            135deg,
+            #050b18,
+            #0b1f42
+        );
+
+    color: var(--white);
 
     font-size: 0.72rem;
     font-weight: 900;
     letter-spacing: 0.7px;
 
+    box-shadow:
+        0 15px 35px rgba(7, 21, 47, 0.20);
+
     transition:
         background 0.3s ease,
-        transform 0.3s ease;
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .submit-btn:hover {
-    background: #333;
+    background:
+        linear-gradient(
+            135deg,
+            #0b1f42,
+            #123565
+        );
 
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 20px 45px rgba(7, 21, 47, 0.28);
 }
 
 .submit-arrow {
@@ -735,26 +903,64 @@ button {
 }
 
 .form-message.success {
-    color: #247a3b;
+    color: #16704a;
 }
 
 .form-message.error {
-    color: #b32929;
+    color: #b42318;
 }
 
 
-/* =========================
-   PROCESS
-========================= */
+/* =========================================================
+   PROCESS — DARK AURA
+========================================================= */
 
 .process-section {
-    padding: 100px 6%;
+    position: relative;
 
-    background: #111;
-    color: #fff;
+    padding: 110px 6%;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(32, 83, 155, 0.45),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(18, 53, 101, 0.30),
+            transparent 30%
+        ),
+        var(--navy);
+
+    color: var(--white);
+}
+
+.process-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    top: -250px;
+    left: 40%;
+
+    border-radius: 50%;
+
+    background: rgba(54, 111, 190, 0.20);
+
+    filter: blur(100px);
+
+    pointer-events: none;
 }
 
 .process-heading {
+    position: relative;
+
     width: 88%;
     max-width: 1400px;
 
@@ -767,7 +973,7 @@ button {
 }
 
 .process-heading > span {
-    color: #aaa;
+    color: #aab8cd;
 
     font-size: 0.68rem;
     font-weight: 900;
@@ -775,7 +981,7 @@ button {
 }
 
 .process-heading h2 {
-    color: #fff;
+    color: var(--white);
 
     font-size: clamp(2.5rem, 5vw, 5rem);
     line-height: 0.88;
@@ -783,6 +989,8 @@ button {
 }
 
 .process-grid {
+    position: relative;
+
     width: 88%;
     max-width: 1400px;
 
@@ -791,7 +999,7 @@ button {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 
-    border-top: 1px solid #444;
+    border-top: 1px solid var(--border-dark);
 }
 
 .process-card {
@@ -799,15 +1007,23 @@ button {
 
     padding: 30px 25px;
 
-    border-right: 1px solid #444;
+    border-right: 1px solid var(--border-dark);
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.process-card:hover {
+    background: rgba(255, 255, 255, 0.035);
 }
 
 .process-card:first-child {
-    border-left: 1px solid #444;
+    border-left: 1px solid var(--border-dark);
 }
 
 .process-card > span {
-    color: #aaa;
+    color: #8291a8;
 
     font-size: 0.65rem;
     font-weight: 900;
@@ -817,7 +1033,7 @@ button {
     margin-top: 75px;
     margin-bottom: 15px;
 
-    color: #fff;
+    color: var(--white);
 
     font-size: 1.3rem;
     letter-spacing: -0.5px;
@@ -826,27 +1042,59 @@ button {
 .process-card p {
     max-width: 220px;
 
-    color: #bbb;
+    color: #aeb9c9;
 
     font-size: 0.78rem;
     line-height: 1.7;
 }
 
 
-/* =========================
+/* =========================================================
    CTA
-========================= */
+========================================================= */
 
 .join-cta {
-    padding: 120px 6%;
+    position: relative;
 
-    background: #f5f4ef;
+    padding: 130px 6%;
+
+    overflow: hidden;
+
+    background: var(--white);
 
     text-align: center;
 }
 
+.join-cta::before {
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: rgba(18, 53, 101, 0.08);
+
+    filter: blur(100px);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.join-cta > span,
+.join-cta h2,
+.join-cta > a {
+    position: relative;
+}
+
 .join-cta > span {
-    color: #111;
+    color: var(--navy);
 
     font-size: 0.65rem;
     font-weight: 900;
@@ -856,7 +1104,7 @@ button {
 .join-cta h2 {
     margin: 30px 0 40px;
 
-    color: #111;
+    color: var(--navy);
 
     font-size: clamp(3.5rem, 8vw, 8rem);
     line-height: 0.84;
@@ -867,33 +1115,50 @@ button {
 .join-cta > a {
     display: inline-flex;
 
-    padding-bottom: 7px;
+    padding: 14px 22px;
 
-    border-bottom: 1px solid #111;
+    border: 1px solid var(--navy);
+    border-radius: 8px;
 
-    color: #111;
+    background: var(--navy);
+    color: var(--white);
 
     font-size: 0.72rem;
     font-weight: 900;
     letter-spacing: 0.8px;
 
-    transition: opacity 0.3s ease;
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .join-cta > a:hover {
-    opacity: 0.5;
+    background: var(--navy-3);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(7, 21, 47, 0.18);
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 .site-footer {
-    padding: 75px 6% 30px;
+    padding: 80px 6% 30px;
 
-    background: #050505;
-    color: #fff;
+    background:
+        radial-gradient(
+            circle at 80% 0%,
+            rgba(18, 53, 101, 0.28),
+            transparent 28%
+        ),
+        var(--black);
+
+    color: var(--white);
 }
 
 .footer-top {
@@ -909,7 +1174,7 @@ button {
 }
 
 .footer-brand > a {
-    color: #fff;
+    color: var(--white);
 
     font-size: 1.2rem;
     font-weight: 900;
@@ -921,7 +1186,7 @@ button {
 
     margin-top: 15px;
 
-    color: #999;
+    color: #8994a5;
 
     font-size: 0.72rem;
     line-height: 1.7;
@@ -938,7 +1203,7 @@ button {
 .footer-column > span {
     margin-bottom: 10px;
 
-    color: #888;
+    color: #667085;
 
     font-size: 0.62rem;
     font-weight: 900;
@@ -946,16 +1211,20 @@ button {
 }
 
 .footer-column a {
-    color: #ccc;
+    color: #b8c1ce;
 
     font-size: 0.7rem;
     font-weight: 700;
 
-    transition: color 0.3s ease;
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
 }
 
 .footer-column a:hover {
-    color: #fff;
+    color: var(--white);
+
+    transform: translateX(3px);
 }
 
 .footer-bottom {
@@ -969,17 +1238,17 @@ button {
     display: flex;
     justify-content: space-between;
 
-    border-top: 1px solid #333;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
 
-    color: #777;
+    color: #667085;
 
     font-size: 0.62rem;
 }
 
 
-/* =========================
+/* =========================================================
    TABLET
-========================= */
+========================================================= */
 
 @media (max-width: 768px) {
 
@@ -1008,9 +1277,12 @@ button {
         display: flex;
         flex-direction: column;
 
-        background: #f5f4ef;
+        background: rgba(255, 255, 255, 0.92);
 
-        border-bottom: 1px solid #ccc;
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+
+        border-bottom: 1px solid var(--border);
 
         visibility: hidden;
         opacity: 0;
@@ -1039,9 +1311,9 @@ button {
 
         padding: 17px 0;
 
-        border-bottom: 1px solid #d2d1cc;
+        border-bottom: 1px solid var(--border);
 
-        color: #111;
+        color: var(--navy);
 
         font-size: 0.7rem;
         font-weight: 900;
@@ -1138,11 +1410,11 @@ button {
     .process-card {
         min-height: 260px;
 
-        border-bottom: 1px solid #444;
+        border-bottom: 1px solid var(--border-dark);
     }
 
     .process-card:nth-child(3) {
-        border-left: 1px solid #444;
+        border-left: 1px solid var(--border-dark);
     }
 
 
@@ -1177,9 +1449,9 @@ button {
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 425px) {
 
@@ -1363,8 +1635,8 @@ button {
 
         padding: 25px 20px;
 
-        border-left: 1px solid #444 !important;
-        border-right: 1px solid #444;
+        border-left: 1px solid var(--border-dark) !important;
+        border-right: 1px solid var(--border-dark);
     }
 
     .process-card h3 {
@@ -1407,9 +1679,9 @@ button {
 }
 
 
-/* =========================
+/* =========================================================
    SMALL MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 375px) {
 

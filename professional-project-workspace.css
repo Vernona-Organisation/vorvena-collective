@@ -1,6 +1,7 @@
 /* =====================================================
    VORVENA PROFESSIONAL PROJECT WORKSPACE
-   ===================================================== */
+   PALETTE: PURE WHITE + NAVY BLUE
+===================================================== */
 
 * {
     margin: 0;
@@ -9,34 +10,31 @@
 }
 
 :root {
-    --black: #090909;
-    --dark: #111111;
-    --dark-2: #181818;
-    --dark-3: #222222;
-
-    --red: #e50914;
-    --red-dark: #b80710;
-
     --white: #ffffff;
-    --text: #eeeeee;
-    --muted: #999999;
-    --border: #2c2c2c;
 
-    --green: #20c77a;
-    --orange: #f0a500;
+    --navy: #0b1f3a;
+    --navy-dark: #07172b;
+    --navy-light: #eef3f8;
+    --navy-soft: #f7f9fc;
+
+    --text: #172033;
+    --muted: #667085;
+    --border: #d9e1ea;
+
+    --navy-border: #526987;
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #f5f5f5;
-    color: #171717;
+    background: var(--white);
+    color: var(--text);
     min-height: 100vh;
 }
 
 
 /* =====================================================
    LAYOUT
-   ===================================================== */
+===================================================== */
 
 .workspace-layout {
     display: flex;
@@ -46,16 +44,19 @@ body {
 
 /* =====================================================
    SIDEBAR
-   ===================================================== */
+===================================================== */
 
 .sidebar {
     width: 270px;
-    background: var(--black);
+
+    background: var(--navy);
     color: var(--white);
+
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
+
     z-index: 1000;
 
     display: flex;
@@ -64,7 +65,7 @@ body {
 
     padding: 24px 16px;
 
-    border-right: 1px solid #242424;
+    border-right: 1px solid var(--navy-border);
 }
 
 .brand {
@@ -87,8 +88,8 @@ body {
     align-items: center;
     justify-content: center;
 
-    background: var(--red);
-    color: white;
+    background: var(--white);
+    color: var(--navy);
 
     font-size: 20px;
     font-weight: 900;
@@ -101,9 +102,11 @@ body {
 
     padding: 13px;
 
-    background: #151515;
+    background: rgba(255, 255, 255, 0.08);
 
     margin-bottom: 22px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .professional-mini-profile strong {
@@ -112,14 +115,16 @@ body {
 }
 
 .professional-mini-profile small {
-    color: #888;
+    color: #b9c8da;
     font-size: 11px;
     display: block;
     margin-top: 3px;
 }
 
 
-/* AVATAR */
+/* =====================================================
+   AVATAR
+===================================================== */
 
 .avatar {
     width: 40px;
@@ -127,8 +132,8 @@ body {
 
     border-radius: 50%;
 
-    background: var(--red);
-    color: white;
+    background: var(--white);
+    color: var(--navy);
 
     display: flex;
     align-items: center;
@@ -144,7 +149,9 @@ body {
 }
 
 
-/* NAV */
+/* =====================================================
+   SIDEBAR NAV
+===================================================== */
 
 .sidebar-nav {
     display: flex;
@@ -161,7 +168,7 @@ body {
 
     padding: 12px;
 
-    color: #a8a8a8;
+    color: #b9c8da;
 
     text-decoration: none;
 
@@ -178,20 +185,20 @@ body {
 
 .sidebar-nav a:hover,
 .sidebar-nav a.active {
-    background: #1c1c1c;
-    color: white;
+    background: rgba(255, 255, 255, 0.10);
+    color: var(--white);
 }
 
 .sidebar-nav a.active {
-    border-left: 3px solid var(--red);
-    color: white;
+    border-left: 3px solid var(--white);
+    color: var(--white);
 }
 
 .nav-count {
     margin-left: auto;
 
-    background: var(--red);
-    color: white;
+    background: var(--white);
+    color: var(--navy);
 
     min-width: 20px;
     height: 20px;
@@ -202,6 +209,11 @@ body {
 
     font-size: 10px;
 }
+
+
+/* =====================================================
+   SIDEBAR BOTTOM
+===================================================== */
 
 .sidebar-bottom {
     display: flex;
@@ -214,7 +226,7 @@ body {
     border: 0;
     background: transparent;
 
-    color: #999;
+    color: #b9c8da;
 
     padding: 12px;
 
@@ -231,7 +243,7 @@ body {
 
 .support-btn:hover,
 .logout-btn:hover {
-    color: white;
+    color: var(--white);
 }
 
 .support-btn span,
@@ -243,25 +255,29 @@ body {
 
 /* =====================================================
    MAIN CONTENT
-   ===================================================== */
+===================================================== */
 
 .main-content {
     margin-left: 270px;
+
     width: calc(100% - 270px);
+
     min-height: 100vh;
+
+    background: var(--white);
 }
 
 
 /* =====================================================
    TOPBAR
-   ===================================================== */
+===================================================== */
 
 .topbar {
     height: 72px;
 
-    background: white;
+    background: var(--white);
 
-    border-bottom: 1px solid #e7e7e7;
+    border-bottom: 1px solid var(--border);
 
     display: flex;
     align-items: center;
@@ -281,7 +297,10 @@ body {
     border: 0;
     background: transparent;
 
+    color: var(--navy);
+
     font-size: 24px;
+
     cursor: pointer;
 }
 
@@ -290,6 +309,8 @@ body {
 
     font-size: 15px;
     font-weight: 800;
+
+    color: var(--navy);
 }
 
 .topbar-title small {
@@ -297,7 +318,7 @@ body {
 
     margin-top: 3px;
 
-    color: #999;
+    color: var(--muted);
     font-size: 11px;
 }
 
@@ -311,12 +332,18 @@ body {
     width: 38px;
     height: 38px;
 
-    border: 1px solid #ddd;
-    background: white;
+    border: 1px solid var(--border);
+    background: var(--white);
+
+    color: var(--navy);
 
     cursor: pointer;
 
     position: relative;
+}
+
+.notification-btn:hover {
+    background: var(--navy-light);
 }
 
 .notification-btn span {
@@ -325,7 +352,7 @@ body {
     width: 7px;
     height: 7px;
 
-    background: var(--red);
+    background: var(--navy);
 
     border-radius: 50%;
 
@@ -341,20 +368,26 @@ body {
 
 .top-profile strong {
     display: block;
+
     font-size: 12px;
+
+    color: var(--navy);
 }
 
 .top-profile small {
-    color: #999;
+    color: var(--muted);
+
     display: block;
+
     font-size: 10px;
+
     margin-top: 2px;
 }
 
 
 /* =====================================================
    CONTAINER
-   ===================================================== */
+===================================================== */
 
 .workspace-container {
     max-width: 1250px;
@@ -365,7 +398,7 @@ body {
 }
 
 .back-link {
-    color: #666;
+    color: var(--muted);
 
     font-size: 13px;
     font-weight: 700;
@@ -375,20 +408,22 @@ body {
     display: inline-block;
 
     margin-bottom: 22px;
+
+    transition: 0.2s;
 }
 
 .back-link:hover {
-    color: var(--red);
+    color: var(--navy);
 }
 
 
 /* =====================================================
    PROJECT HEADER
-   ===================================================== */
+===================================================== */
 
 .project-header {
-    background: var(--black);
-    color: white;
+    background: var(--navy);
+    color: var(--white);
 
     padding: 30px;
 
@@ -411,7 +446,8 @@ body {
     width: 58px;
     height: 58px;
 
-    background: var(--red);
+    background: var(--white);
+    color: var(--navy);
 
     display: flex;
     align-items: center;
@@ -421,7 +457,7 @@ body {
 }
 
 .project-label {
-    color: #999;
+    color: #b9c8da;
 
     font-size: 10px;
     font-weight: 800;
@@ -433,11 +469,15 @@ body {
 
 .project-header h1 {
     font-size: 25px;
+
     margin-bottom: 6px;
+
+    color: var(--white);
 }
 
 .project-header p {
-    color: #aaa;
+    color: #d2ddea;
+
     font-size: 13px;
 }
 
@@ -453,15 +493,17 @@ body {
 }
 
 .project-status.in-progress {
-    background: rgba(229, 9, 20, 0.15);
-    border: 1px solid var(--red);
-    color: #ff4b54;
+    background: rgba(255, 255, 255, 0.10);
+
+    border: 1px solid #91a5bd;
+
+    color: var(--white);
 }
 
 
 /* =====================================================
    PROJECT INFO
-   ===================================================== */
+===================================================== */
 
 .project-info-grid {
     display: grid;
@@ -474,17 +516,23 @@ body {
 }
 
 .info-card {
-    background: white;
+    background: var(--white);
 
-    border: 1px solid #e5e5e5;
+    border: 1px solid var(--border);
 
     padding: 19px;
+
+    transition: 0.25s;
+}
+
+.info-card:hover {
+    border-color: #aebdce;
 }
 
 .info-card span {
     display: block;
 
-    color: #999;
+    color: var(--muted);
 
     font-size: 9px;
     font-weight: 800;
@@ -498,12 +546,14 @@ body {
     display: block;
 
     font-size: 15px;
+
+    color: var(--navy);
 }
 
 .info-card small {
     display: block;
 
-    color: #999;
+    color: var(--muted);
 
     font-size: 10px;
 
@@ -513,7 +563,7 @@ body {
 
 /* =====================================================
    WORKSPACE GRID
-   ===================================================== */
+===================================================== */
 
 .workspace-grid {
     display: grid;
@@ -534,13 +584,13 @@ body {
 
 /* =====================================================
    CARDS
-   ===================================================== */
+===================================================== */
 
 .workspace-card,
 .side-card {
-    background: white;
+    background: var(--white);
 
-    border: 1px solid #e5e5e5;
+    border: 1px solid var(--border);
 
     padding: 23px;
 }
@@ -560,7 +610,7 @@ body {
 }
 
 .section-number {
-    color: var(--red);
+    color: var(--navy);
 
     font-size: 11px;
     font-weight: 900;
@@ -570,10 +620,12 @@ body {
 
 .card-heading h2 {
     font-size: 17px;
+
+    color: var(--navy);
 }
 
 .card-heading p {
-    color: #999;
+    color: var(--muted);
 
     font-size: 11px;
 
@@ -583,16 +635,18 @@ body {
 
 /* =====================================================
    BRIEF
-   ===================================================== */
+===================================================== */
 
 .brief-content h3 {
     font-size: 17px;
 
     margin-bottom: 10px;
+
+    color: var(--navy);
 }
 
 .brief-content p {
-    color: #666;
+    color: var(--muted);
 
     font-size: 13px;
 
@@ -605,6 +659,8 @@ body {
     font-size: 13px;
 
     margin-bottom: 12px;
+
+    color: var(--navy);
 }
 
 .requirements {
@@ -621,7 +677,7 @@ body {
     display: flex;
     gap: 9px;
 
-    color: #555;
+    color: var(--muted);
 
     font-size: 12px;
 
@@ -629,7 +685,7 @@ body {
 }
 
 .requirements li span {
-    color: var(--green);
+    color: var(--navy);
 
     font-weight: bold;
 }
@@ -637,7 +693,7 @@ body {
 
 /* =====================================================
    FILES
-   ===================================================== */
+===================================================== */
 
 .file-list {
     display: flex;
@@ -647,7 +703,7 @@ body {
 }
 
 .file-item {
-    border: 1px solid #e6e6e6;
+    border: 1px solid var(--border);
 
     padding: 12px;
 
@@ -655,6 +711,13 @@ body {
     align-items: center;
 
     gap: 12px;
+
+    transition: 0.2s;
+}
+
+.file-item:hover {
+    border-color: #aebdce;
+    background: var(--navy-soft);
 }
 
 .file-icon {
@@ -670,13 +733,13 @@ body {
 }
 
 .file-icon.pdf {
-    background: #ffe7e7;
-    color: var(--red);
+    background: var(--navy-light);
+    color: var(--navy);
 }
 
 .file-icon.image {
-    background: #eee;
-    color: #555;
+    background: var(--navy-light);
+    color: var(--navy);
 }
 
 .file-info {
@@ -687,12 +750,14 @@ body {
     display: block;
 
     font-size: 12px;
+
+    color: var(--navy);
 }
 
 .file-info small {
     display: block;
 
-    color: #999;
+    color: var(--muted);
 
     font-size: 10px;
 
@@ -700,9 +765,11 @@ body {
 }
 
 .file-btn {
-    border: 1px solid #ddd;
+    border: 1px solid var(--border);
 
-    background: white;
+    background: var(--white);
+
+    color: var(--navy);
 
     padding: 8px 13px;
 
@@ -710,26 +777,29 @@ body {
     font-weight: 700;
 
     cursor: pointer;
+
+    transition: 0.2s;
 }
 
 .file-btn:hover {
-    border-color: var(--red);
-    color: var(--red);
+    background: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
 }
 
 
 /* =====================================================
    UPLOAD
-   ===================================================== */
+===================================================== */
 
 .upload-area {
-    border: 1.5px dashed #ccc;
+    border: 1.5px dashed #aebdce;
 
     padding: 35px 20px;
 
     text-align: center;
 
-    background: #fafafa;
+    background: var(--navy-soft);
 }
 
 .upload-icon {
@@ -742,8 +812,8 @@ body {
     align-items: center;
     justify-content: center;
 
-    background: #ffe8e8;
-    color: var(--red);
+    background: var(--navy);
+    color: var(--white);
 
     font-size: 24px;
 }
@@ -752,10 +822,12 @@ body {
     font-size: 14px;
 
     margin-bottom: 7px;
+
+    color: var(--navy);
 }
 
 .upload-area p {
-    color: #999;
+    color: var(--muted);
 
     font-size: 11px;
 
@@ -767,7 +839,7 @@ body {
 .upload-area small {
     display: block;
 
-    color: #aaa;
+    color: #8b98a9;
 
     font-size: 9px;
 
@@ -777,8 +849,8 @@ body {
 .upload-btn {
     display: inline-block;
 
-    background: var(--black);
-    color: white;
+    background: var(--navy);
+    color: var(--white);
 
     padding: 10px 17px;
 
@@ -786,10 +858,12 @@ body {
 
     font-size: 11px;
     font-weight: 700;
+
+    transition: 0.25s;
 }
 
 .upload-btn:hover {
-    background: var(--red);
+    background: var(--navy-dark);
 }
 
 .selected-files {
@@ -807,9 +881,11 @@ body {
 
     padding: 9px 11px;
 
-    background: #f5f5f5;
+    background: var(--navy-soft);
 
     font-size: 11px;
+
+    color: var(--navy);
 }
 
 .submission-actions {
@@ -824,7 +900,7 @@ body {
 
 /* =====================================================
    BUTTONS
-   ===================================================== */
+===================================================== */
 
 .primary-btn,
 .secondary-btn,
@@ -843,41 +919,46 @@ body {
 }
 
 .primary-btn {
-    background: var(--red);
-    color: white;
+    background: var(--navy);
+    color: var(--white);
 }
 
 .primary-btn:hover {
-    background: var(--red-dark);
+    background: var(--navy-dark);
 }
 
 .secondary-btn {
-    background: white;
+    background: var(--white);
 
-    border: 1px solid #d8d8d8;
+    border: 1px solid var(--border);
 
-    color: #333;
+    color: var(--navy);
 }
 
 .secondary-btn:hover {
-    border-color: #999;
+    background: var(--navy-light);
+    border-color: #aebdce;
 }
 
 .danger-btn {
-    background: var(--red);
-    color: white;
+    background: var(--navy);
+    color: var(--white);
+}
+
+.danger-btn:hover {
+    background: var(--navy-dark);
 }
 
 .danger-outline {
-    background: white;
+    background: var(--white);
 
-    border: 1px solid var(--red);
+    border: 1px solid var(--navy);
 
-    color: var(--red);
+    color: var(--navy);
 }
 
 .danger-outline:hover {
-    background: #fff0f0;
+    background: var(--navy-light);
 }
 
 .full {
@@ -891,12 +972,12 @@ body {
 
 /* =====================================================
    REVISION
-   ===================================================== */
+===================================================== */
 
 .revision-badge {
-    background: #fff0f0;
+    background: var(--navy-light);
 
-    color: var(--red);
+    color: var(--navy);
 
     padding: 7px 10px;
 
@@ -914,8 +995,8 @@ body {
     width: 45px;
     height: 45px;
 
-    background: #eafaf3;
-    color: var(--green);
+    background: var(--navy-light);
+    color: var(--navy);
 
     display: flex;
     align-items: center;
@@ -930,18 +1011,22 @@ body {
     font-size: 13px;
 
     margin-bottom: 5px;
+
+    color: var(--navy);
 }
 
 .empty-state p {
-    color: #999;
+    color: var(--muted);
 
     font-size: 11px;
 }
 
 .revision-request {
-    border: 1px solid #eee;
+    border: 1px solid var(--border);
 
     padding: 15px;
+
+    background: var(--navy-soft);
 }
 
 .revision-top {
@@ -957,12 +1042,14 @@ body {
     display: block;
 
     font-size: 12px;
+
+    color: var(--navy);
 }
 
 .revision-top small {
     display: block;
 
-    color: #999;
+    color: var(--muted);
 
     font-size: 10px;
 
@@ -970,14 +1057,14 @@ body {
 }
 
 .revision-top span {
-    color: var(--orange);
+    color: var(--navy);
 
     font-size: 10px;
     font-weight: 800;
 }
 
 .revision-request p {
-    color: #666;
+    color: var(--muted);
 
     font-size: 12px;
 
@@ -989,7 +1076,7 @@ body {
 
 /* =====================================================
    MESSAGES
-   ===================================================== */
+===================================================== */
 
 .messages {
     display: flex;
@@ -1012,8 +1099,8 @@ body {
     width: 32px;
     height: 32px;
 
-    background: var(--black);
-    color: white;
+    background: var(--navy);
+    color: var(--white);
 
     display: flex;
     align-items: center;
@@ -1024,7 +1111,7 @@ body {
 }
 
 .professional-message .message-avatar {
-    background: var(--red);
+    background: var(--navy-dark);
 }
 
 .message strong {
@@ -1033,10 +1120,12 @@ body {
     font-size: 11px;
 
     margin-bottom: 4px;
+
+    color: var(--navy);
 }
 
 .message p {
-    background: #f4f4f4;
+    background: var(--navy-soft);
 
     padding: 9px 11px;
 
@@ -1044,17 +1133,17 @@ body {
 
     line-height: 1.5;
 
-    color: #555;
+    color: var(--text);
 }
 
 .professional-message p {
-    background: #fff0f0;
+    background: var(--navy-light);
 }
 
 .message small {
     display: block;
 
-    color: #aaa;
+    color: #8b98a9;
 
     font-size: 9px;
 
@@ -1072,24 +1161,30 @@ body {
 
     min-width: 0;
 
-    border: 1px solid #ddd;
+    border: 1px solid var(--border);
 
     padding: 11px;
 
     outline: none;
 
     font-size: 11px;
+
+    color: var(--navy);
+}
+
+.message-form input::placeholder {
+    color: #8b98a9;
 }
 
 .message-form input:focus {
-    border-color: var(--red);
+    border-color: var(--navy);
 }
 
 .message-form button {
     border: 0;
 
-    background: var(--black);
-    color: white;
+    background: var(--navy);
+    color: var(--white);
 
     padding: 0 18px;
 
@@ -1099,10 +1194,14 @@ body {
     font-weight: 700;
 }
 
+.message-form button:hover {
+    background: var(--navy-dark);
+}
+
 
 /* =====================================================
    TIMELINE
-   ===================================================== */
+===================================================== */
 
 .timeline {
     position: relative;
@@ -1121,7 +1220,7 @@ body {
 
     width: 1px;
 
-    background: #ddd;
+    background: #c5d0dd;
 }
 
 .timeline-item {
@@ -1147,24 +1246,26 @@ body {
     width: 10px;
     height: 10px;
 
-    border: 2px solid #ccc;
+    border: 2px solid #aebdce;
 
-    background: white;
+    background: var(--white);
 
     border-radius: 50%;
 }
 
 .timeline-item.active .timeline-dot {
-    border-color: var(--red);
-    background: var(--red);
+    border-color: var(--navy);
+    background: var(--navy);
 }
 
 .timeline-item strong {
     font-size: 12px;
+
+    color: var(--navy);
 }
 
 .timeline-item p {
-    color: #777;
+    color: var(--muted);
 
     font-size: 11px;
 
@@ -1176,7 +1277,7 @@ body {
 .timeline-item small {
     display: block;
 
-    color: #aaa;
+    color: #8b98a9;
 
     font-size: 9px;
 
@@ -1186,7 +1287,7 @@ body {
 
 /* =====================================================
    SIDE CARDS
-   ===================================================== */
+===================================================== */
 
 .workspace-side {
     display: flex;
@@ -1197,10 +1298,12 @@ body {
 
 .side-card h3 {
     font-size: 15px;
+
+    color: var(--navy);
 }
 
 .action-description {
-    color: #999;
+    color: var(--muted);
 
     font-size: 11px;
 
@@ -1217,21 +1320,25 @@ body {
 }
 
 .action-note {
-    background: #f7f7f7;
+    background: var(--navy-soft);
 
     padding: 12px;
 
     margin-top: 13px;
+
+    border: 1px solid var(--border);
 }
 
 .action-note strong {
     display: block;
 
     font-size: 10px;
+
+    color: var(--navy);
 }
 
 .action-note p {
-    color: #888;
+    color: var(--muted);
 
     font-size: 9px;
 
@@ -1241,7 +1348,9 @@ body {
 }
 
 
-/* PAYMENT */
+/* =====================================================
+   PAYMENT
+===================================================== */
 
 .side-card-title {
     display: flex;
@@ -1255,7 +1364,7 @@ body {
 
 .side-card-title span:first-child,
 .side-label {
-    color: #999;
+    color: var(--muted);
 
     font-size: 9px;
     font-weight: 800;
@@ -1268,9 +1377,9 @@ body {
 }
 
 .payment-status {
-    background: #fff3dc;
+    background: var(--navy-light);
 
-    color: #b47700;
+    color: var(--navy);
 
     padding: 6px 8px;
 
@@ -1279,7 +1388,7 @@ body {
 }
 
 .payment-total {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border);
 
     padding-bottom: 15px;
 }
@@ -1287,7 +1396,7 @@ body {
 .payment-total small {
     display: block;
 
-    color: #999;
+    color: var(--muted);
 
     font-size: 10px;
 
@@ -1296,6 +1405,8 @@ body {
 
 .payment-total strong {
     font-size: 25px;
+
+    color: var(--navy);
 }
 
 .payment-breakdown {
@@ -1313,13 +1424,15 @@ body {
 }
 
 .payment-breakdown span {
-    color: #777;
+    color: var(--muted);
 
     font-size: 10px;
 }
 
 .payment-breakdown strong {
     font-size: 11px;
+
+    color: var(--navy);
 }
 
 .payment-info {
@@ -1327,20 +1440,20 @@ body {
 
     gap: 10px;
 
-    background: #f5f5f5;
+    background: var(--navy-light);
 
     padding: 11px;
 }
 
 .payment-info span {
-    color: var(--red);
+    color: var(--navy);
 
     font-size: 14px;
     font-weight: 900;
 }
 
 .payment-info p {
-    color: #777;
+    color: var(--muted);
 
     font-size: 9px;
 
@@ -1348,7 +1461,9 @@ body {
 }
 
 
-/* STATUS */
+/* =====================================================
+   STATUS
+===================================================== */
 
 .status-card {
     padding-bottom: 12px;
@@ -1366,7 +1481,7 @@ body {
 
     padding: 8px 0;
 
-    color: #aaa;
+    color: #8b98a9;
 
     font-size: 10px;
 }
@@ -1378,17 +1493,19 @@ body {
 }
 
 .status-line.completed {
-    color: var(--green);
+    color: var(--navy);
 }
 
 .status-line.current {
-    color: var(--red);
+    color: var(--navy);
 
     font-weight: 800;
 }
 
 
-/* CLIENT */
+/* =====================================================
+   CLIENT
+===================================================== */
 
 .client-profile {
     display: flex;
@@ -1403,8 +1520,8 @@ body {
     width: 40px;
     height: 40px;
 
-    background: var(--black);
-    color: white;
+    background: var(--navy);
+    color: var(--white);
 
     display: flex;
     align-items: center;
@@ -1418,12 +1535,14 @@ body {
     display: block;
 
     font-size: 12px;
+
+    color: var(--navy);
 }
 
 .client-profile small {
     display: block;
 
-    color: #999;
+    color: var(--muted);
 
     font-size: 9px;
 
@@ -1433,10 +1552,10 @@ body {
 
 /* =====================================================
    FOOTER
-   ===================================================== */
+===================================================== */
 
 footer {
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--border);
 
     margin-top: 10px;
 
@@ -1445,7 +1564,7 @@ footer {
     display: flex;
     justify-content: space-between;
 
-    color: #999;
+    color: var(--muted);
 
     font-size: 9px;
 }
@@ -1453,14 +1572,14 @@ footer {
 
 /* =====================================================
    MODAL
-   ===================================================== */
+===================================================== */
 
 .modal-overlay {
     position: fixed;
 
     inset: 0;
 
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(7, 23, 43, 0.72);
 
     display: none;
     align-items: center;
@@ -1478,7 +1597,7 @@ footer {
 .modal {
     position: relative;
 
-    background: white;
+    background: var(--white);
 
     width: 100%;
     max-width: 430px;
@@ -1486,6 +1605,8 @@ footer {
     padding: 30px;
 
     text-align: center;
+
+    border: 1px solid var(--border);
 }
 
 .modal-close {
@@ -1500,17 +1621,21 @@ footer {
 
     font-size: 25px;
 
-    color: #999;
+    color: var(--muted);
 
     cursor: pointer;
+}
+
+.modal-close:hover {
+    color: var(--navy);
 }
 
 .modal-icon {
     width: 48px;
     height: 48px;
 
-    background: #fff0f0;
-    color: var(--red);
+    background: var(--navy-light);
+    color: var(--navy);
 
     display: flex;
     align-items: center;
@@ -1523,18 +1648,20 @@ footer {
 }
 
 .modal-icon.danger {
-    background: #fff0f0;
-    color: var(--red);
+    background: var(--navy-light);
+    color: var(--navy);
 }
 
 .modal h2 {
     font-size: 18px;
 
     margin-bottom: 8px;
+
+    color: var(--navy);
 }
 
 .modal > p {
-    color: #777;
+    color: var(--muted);
 
     font-size: 11px;
 
@@ -1556,7 +1683,7 @@ footer {
 
     min-height: 120px;
 
-    border: 1px solid #ddd;
+    border: 1px solid var(--border);
 
     padding: 12px;
 
@@ -1569,16 +1696,22 @@ footer {
     font-size: 11px;
 
     margin-bottom: 12px;
+
+    color: var(--navy);
+}
+
+.modal textarea::placeholder {
+    color: #8b98a9;
 }
 
 .modal textarea:focus {
-    border-color: var(--red);
+    border-color: var(--navy);
 }
 
 
 /* =====================================================
    UTILITIES
-   ===================================================== */
+===================================================== */
 
 .hidden {
     display: none !important;
@@ -1586,8 +1719,21 @@ footer {
 
 
 /* =====================================================
+   FOCUS
+===================================================== */
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--navy);
+    outline-offset: 3px;
+}
+
+
+/* =====================================================
    1100px
-   ===================================================== */
+===================================================== */
 
 @media (max-width: 1100px) {
 
@@ -1610,13 +1756,12 @@ footer {
     .client-card {
         grid-column: span 1;
     }
-
 }
 
 
 /* =====================================================
    768px
-   ===================================================== */
+===================================================== */
 
 @media (max-width: 768px) {
 
@@ -1625,7 +1770,7 @@ footer {
 
         transition: transform 0.3s ease;
 
-        box-shadow: 10px 0 30px rgba(0,0,0,0.2);
+        box-shadow: 10px 0 30px rgba(7, 23, 43, 0.20);
     }
 
     .sidebar.open {
@@ -1669,13 +1814,12 @@ footer {
 
         gap: 7px;
     }
-
 }
 
 
 /* =====================================================
    600px
-   ===================================================== */
+===================================================== */
 
 @media (max-width: 600px) {
 
@@ -1698,6 +1842,7 @@ footer {
     .project-icon {
         width: 48px;
         height: 48px;
+
         flex-shrink: 0;
     }
 
@@ -1712,13 +1857,12 @@ footer {
     .submission-actions button {
         width: 100%;
     }
-
 }
 
 
 /* =====================================================
    425px
-   ===================================================== */
+===================================================== */
 
 @media (max-width: 425px) {
 
@@ -1801,13 +1945,12 @@ footer {
     .modal {
         padding: 24px 18px;
     }
-
 }
 
 
 /* =====================================================
    375px
-   ===================================================== */
+===================================================== */
 
 @media (max-width: 375px) {
 
@@ -1841,5 +1984,4 @@ footer {
     .message-form button {
         padding: 0 13px;
     }
-
 }

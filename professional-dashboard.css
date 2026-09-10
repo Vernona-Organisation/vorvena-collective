@@ -1,24 +1,22 @@
-/* =========================================================
-   VORVENA PROFESSIONAL DASHBOARD
-   MAIN COLORS: BLACK / RED / WHITE
-========================================================= */
-
 :root {
-    --red: #e50914;
-    --dark-red: #b80710;
-    --black: #0a0a0a;
-    --dark: #111111;
-    --dark-2: #181818;
     --white: #ffffff;
-    --off-white: #f7f7f7;
-    --grey: #777777;
-    --light-grey: #eeeeee;
-    --border: #e5e5e5;
-    --green: #16803c;
-    --orange: #c56a00;
+
+    --navy: #0b1f3a;
+    --navy-dark: #07172b;
+    --navy-mid: #16345c;
+
+    --navy-light: #eef3f8;
+    --navy-soft: #f7f9fc;
+
+    --text: #172033;
+    --muted: #667085;
+
+    --border: #d9e1ea;
+    --border-light: #e8edf3;
 
     --sidebar-width: 270px;
-    --shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+
+    --shadow: 0 8px 30px rgba(11, 31, 58, 0.06);
 }
 
 /* =========================================================
@@ -37,8 +35,8 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #f5f5f5;
-    color: var(--black);
+    background: var(--navy-soft);
+    color: var(--text);
     min-height: 100vh;
 }
 
@@ -58,6 +56,14 @@ a {
     color: inherit;
 }
 
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--navy);
+    outline-offset: 2px;
+}
+
 /* =========================================================
    SIDEBAR
 ========================================================= */
@@ -69,7 +75,7 @@ a {
     width: var(--sidebar-width);
     height: 100vh;
 
-    background: var(--black);
+    background: var(--navy);
     color: var(--white);
 
     display: flex;
@@ -87,10 +93,11 @@ a {
     font-weight: 900;
     letter-spacing: 2px;
     padding: 0 10px 25px;
+    color: var(--white);
 }
 
 .logo span {
-    color: var(--red);
+    color: var(--white);
 }
 
 .professional-mini-profile {
@@ -101,8 +108,8 @@ a {
     padding: 15px 10px;
     margin-bottom: 20px;
 
-    border-top: 1px solid #292929;
-    border-bottom: 1px solid #292929;
+    border-top: 1px solid rgba(255, 255, 255, 0.13);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
 }
 
 .profile-avatar,
@@ -114,8 +121,8 @@ a {
 
     flex-shrink: 0;
 
-    background: var(--red);
-    color: var(--white);
+    background: var(--white);
+    color: var(--navy);
 
     font-weight: 800;
 }
@@ -134,12 +141,12 @@ a {
 
 .professional-mini-profile span {
     font-size: 11px;
-    color: #aaa;
+    color: rgba(255, 255, 255, 0.65);
 }
 
 .nav-title {
     font-size: 9px;
-    color: #777;
+    color: rgba(255, 255, 255, 0.45);
     font-weight: 800;
     letter-spacing: 1.5px;
 
@@ -160,21 +167,24 @@ a {
     min-height: 45px;
     padding: 0 12px;
 
-    color: #aaa;
+    color: rgba(255, 255, 255, 0.68);
     font-size: 13px;
     font-weight: 600;
+
+    border-left: 3px solid transparent;
 
     transition: 0.2s ease;
 }
 
 .nav-link:hover {
-    color: white;
-    background: #191919;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .nav-link.active {
-    background: var(--red);
-    color: white;
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--white);
+    border-left-color: var(--white);
 }
 
 .nav-icon {
@@ -193,15 +203,16 @@ a {
     align-items: center;
     justify-content: center;
 
-    background: #292929;
-    color: white;
+    background: var(--white);
+    color: var(--navy);
 
     font-size: 10px;
     font-weight: 800;
 }
 
 .nav-link.active .nav-count {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.18);
+    color: var(--white);
 }
 
 .sidebar-bottom {
@@ -209,7 +220,9 @@ a {
 }
 
 .support-box {
-    background: #151515;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+
     padding: 15px;
     margin-bottom: 15px;
 }
@@ -219,7 +232,7 @@ a {
 }
 
 .support-box p {
-    color: #888;
+    color: rgba(255, 255, 255, 0.58);
     font-size: 10px;
     line-height: 1.5;
     margin: 7px 0 12px;
@@ -227,16 +240,21 @@ a {
 
 .support-box button {
     width: 100%;
-    border: 1px solid #444;
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
     background: transparent;
-    color: white;
+    color: var(--white);
+
     padding: 9px;
     font-size: 10px;
+
+    transition: 0.2s ease;
 }
 
 .support-box button:hover {
-    border-color: var(--red);
-    background: var(--red);
+    border-color: var(--white);
+    background: var(--white);
+    color: var(--navy);
 }
 
 .logout-btn {
@@ -245,7 +263,7 @@ a {
 
     border: none;
     background: transparent;
-    color: #aaa;
+    color: rgba(255, 255, 255, 0.68);
 
     display: flex;
     align-items: center;
@@ -258,8 +276,8 @@ a {
 }
 
 .logout-btn:hover {
-    background: #191919;
-    color: white;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--white);
 }
 
 /* =========================================================
@@ -279,7 +297,7 @@ a {
 .topbar {
     height: 72px;
 
-    background: white;
+    background: var(--white);
     border-bottom: 1px solid var(--border);
 
     display: flex;
@@ -297,8 +315,8 @@ a {
     display: none;
 
     border: none;
-    background: var(--black);
-    color: white;
+    background: var(--navy);
+    color: var(--white);
 
     width: 42px;
     height: 42px;
@@ -315,10 +333,11 @@ a {
 .topbar-title span {
     font-size: 14px;
     font-weight: 800;
+    color: var(--navy);
 }
 
 .topbar-title small {
-    color: var(--grey);
+    color: var(--muted);
     font-size: 10px;
 }
 
@@ -335,14 +354,17 @@ a {
     position: relative;
 
     border: 1px solid var(--border);
-    background: white;
+    background: var(--white);
+    color: var(--navy);
 
     font-size: 18px;
+
+    transition: 0.2s ease;
 }
 
 .icon-btn:hover {
-    border-color: var(--red);
-    color: var(--red);
+    border-color: var(--navy);
+    background: var(--navy-light);
 }
 
 .notification-dot {
@@ -353,7 +375,7 @@ a {
     width: 6px;
     height: 6px;
 
-    background: var(--red);
+    background: var(--navy);
     border-radius: 50%;
 }
 
@@ -368,6 +390,8 @@ a {
     height: 38px;
     border-radius: 50%;
     font-size: 11px;
+
+    border: 1px solid var(--border);
 }
 
 .top-profile-info {
@@ -378,15 +402,16 @@ a {
 
 .top-profile-info strong {
     font-size: 11px;
+    color: var(--navy);
 }
 
 .top-profile-info span {
     font-size: 9px;
-    color: var(--grey);
+    color: var(--muted);
 }
 
 .profile-arrow {
-    color: #999;
+    color: var(--muted);
 }
 
 /* =========================================================
@@ -422,7 +447,7 @@ a {
 
 .eyebrow {
     display: block;
-    color: var(--red);
+    color: var(--navy);
     font-size: 9px;
     font-weight: 900;
     letter-spacing: 1.7px;
@@ -433,10 +458,11 @@ a {
     font-size: clamp(25px, 3vw, 35px);
     line-height: 1.1;
     margin-bottom: 9px;
+    color: var(--navy);
 }
 
 .page-header p {
-    color: var(--grey);
+    color: var(--muted);
     font-size: 12px;
     line-height: 1.6;
     max-width: 650px;
@@ -448,8 +474,8 @@ a {
 
 .primary-btn {
     border: none;
-    background: var(--red);
-    color: white;
+    background: var(--navy);
+    color: var(--white);
 
     min-height: 43px;
     padding: 0 18px;
@@ -466,7 +492,7 @@ a {
 }
 
 .primary-btn:hover {
-    background: var(--dark-red);
+    background: var(--navy-dark);
     transform: translateY(-1px);
 }
 
@@ -474,25 +500,27 @@ a {
     width: 100%;
     min-height: 40px;
 
-    border: 1px solid var(--black);
-    background: white;
-    color: var(--black);
+    border: 1px solid var(--navy);
+    background: var(--white);
+    color: var(--navy);
 
     font-size: 11px;
     font-weight: 800;
 
     margin-top: 18px;
+
+    transition: 0.2s ease;
 }
 
 .secondary-btn:hover {
-    background: var(--black);
-    color: white;
+    background: var(--navy);
+    color: var(--white);
 }
 
 .text-btn {
     border: none;
     background: transparent;
-    color: var(--red);
+    color: var(--navy);
 
     font-size: 10px;
     font-weight: 800;
@@ -517,7 +545,7 @@ a {
 }
 
 .stat-card {
-    background: white;
+    background: var(--white);
     border: 1px solid var(--border);
 
     padding: 20px;
@@ -543,24 +571,12 @@ a {
     font-size: 17px;
 }
 
-.red-icon {
-    background: #ffe8e9;
-    color: var(--red);
-}
-
-.black-icon {
-    background: #eeeeee;
-    color: var(--black);
-}
-
-.light-icon {
-    background: #eeeeee;
-    color: var(--green);
-}
-
+.red-icon,
+.black-icon,
+.light-icon,
 .dark-red-icon {
-    background: #fce7e7;
-    color: var(--dark-red);
+    background: var(--navy-light);
+    color: var(--navy);
 }
 
 .stat-content {
@@ -568,22 +584,23 @@ a {
 }
 
 .stat-content > span {
-    color: var(--grey);
+    color: var(--muted);
     font-size: 10px;
 }
 
 .stat-content h2 {
     font-size: 20px;
     margin: 6px 0;
+    color: var(--navy);
 }
 
 .stat-content small {
-    color: #999;
+    color: var(--muted);
     font-size: 9px;
 }
 
 .stat-content .positive {
-    color: var(--green);
+    color: var(--navy);
     font-weight: 700;
 }
 
@@ -600,7 +617,7 @@ a {
 }
 
 .dashboard-card {
-    background: white;
+    background: var(--white);
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
     padding: 22px;
@@ -618,10 +635,11 @@ a {
 .card-header h3 {
     font-size: 14px;
     margin-bottom: 5px;
+    color: var(--navy);
 }
 
 .card-header p {
-    color: #999;
+    color: var(--muted);
     font-size: 10px;
 }
 
@@ -642,7 +660,7 @@ a {
 
     padding: 17px 0;
 
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--border-light);
 }
 
 .project-main {
@@ -663,8 +681,8 @@ a {
     align-items: center;
     justify-content: center;
 
-    background: var(--black);
-    color: white;
+    background: var(--navy);
+    color: var(--white);
 
     font-size: 10px;
     font-weight: 900;
@@ -673,10 +691,11 @@ a {
 .project-main h4 {
     font-size: 12px;
     margin-bottom: 5px;
+    color: var(--navy);
 }
 
 .project-main p {
-    color: #999;
+    color: var(--muted);
     font-size: 9px;
     margin-bottom: 8px;
 }
@@ -688,12 +707,12 @@ a {
 }
 
 .project-meta span {
-    color: #777;
+    color: var(--muted);
     font-size: 9px;
 }
 
 .project-meta span:first-child {
-    color: var(--black);
+    color: var(--navy);
     font-weight: 800;
 }
 
@@ -717,30 +736,18 @@ a {
     white-space: nowrap;
 }
 
-.active-status {
-    background: #fff0f0;
-    color: var(--red);
-}
-
-.review-status {
-    background: #fff5df;
-    color: var(--orange);
-}
-
-.pending-status {
-    background: #eeeeee;
-    color: #666;
-}
-
+.active-status,
+.review-status,
+.pending-status,
 .paid-status {
-    background: #e9f7ef;
-    color: var(--green);
+    background: var(--navy-light);
+    color: var(--navy);
 }
 
 .project-action {
     border: none;
     background: transparent;
-    color: var(--red);
+    color: var(--navy);
 
     font-size: 9px;
     font-weight: 800;
@@ -761,14 +768,14 @@ a {
 }
 
 .earnings-total {
-    background: var(--black);
-    color: white;
+    background: var(--navy);
+    color: var(--white);
     padding: 17px;
 }
 
 .earnings-total span {
     display: block;
-    color: #999;
+    color: rgba(255, 255, 255, 0.65);
     font-size: 9px;
     margin-bottom: 7px;
 }
@@ -786,18 +793,15 @@ a {
     align-items: center;
     justify-content: center;
 
-    background: #f3f3f3;
+    background: var(--navy-light);
+    color: var(--navy);
 
     font-weight: 900;
 }
 
-.payment-check {
-    color: var(--green);
-}
-
 .earnings-divider {
     height: 1px;
-    background: #eee;
+    background: var(--border-light);
     margin: 17px 0;
 }
 
@@ -814,12 +818,13 @@ a {
 }
 
 .earning-info span {
-    color: #999;
+    color: var(--muted);
     font-size: 9px;
 }
 
 .earning-info strong {
     font-size: 12px;
+    color: var(--navy);
 }
 
 .payout-project {
@@ -828,8 +833,8 @@ a {
     justify-content: space-between;
     gap: 10px;
 
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
 
     padding: 15px 0;
 }
@@ -839,7 +844,7 @@ a {
 }
 
 .payout-project span {
-    color: var(--black);
+    color: var(--navy);
     font-size: 11px;
     font-weight: 800;
 }
@@ -854,7 +859,7 @@ a {
 }
 
 .payment-status-box small {
-    color: #999;
+    color: var(--muted);
     font-size: 8px;
 }
 
@@ -882,13 +887,13 @@ a {
 
     padding: 13px 0;
 
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--border-light);
 }
 
 .notification-item.unread {
     background: linear-gradient(
         to right,
-        rgba(229, 9, 20, 0.035),
+        rgba(11, 31, 58, 0.035),
         transparent
     );
 }
@@ -905,38 +910,27 @@ a {
 
     font-size: 11px;
     font-weight: 900;
-}
 
-.red-notification {
-    background: #ffe8e9;
-    color: var(--red);
-}
-
-.black-notification {
-    background: #eeeeee;
-    color: black;
-}
-
-.grey-notification {
-    background: #f3f3f3;
-    color: #777;
+    background: var(--navy-light);
+    color: var(--navy);
 }
 
 .notification-item strong {
     display: block;
     font-size: 10px;
     margin-bottom: 4px;
+    color: var(--navy);
 }
 
 .notification-item p {
-    color: #777;
+    color: var(--muted);
     font-size: 9px;
     line-height: 1.5;
 }
 
 .notification-item small {
     display: block;
-    color: #aaa;
+    color: #8a96a8;
     font-size: 8px;
     margin-top: 5px;
 }
@@ -950,8 +944,8 @@ a {
 .quick-action {
     width: 100%;
 
-    border: 1px solid #eee;
-    background: white;
+    border: 1px solid var(--border-light);
+    background: var(--white);
 
     padding: 12px;
 
@@ -961,10 +955,13 @@ a {
     gap: 10px;
 
     text-align: left;
+
+    transition: 0.2s ease;
 }
 
 .quick-action:hover {
-    border-color: var(--red);
+    border-color: var(--navy);
+    background: var(--navy-soft);
 }
 
 .quick-action > span {
@@ -975,8 +972,8 @@ a {
     align-items: center;
     justify-content: center;
 
-    background: #f4f4f4;
-    color: var(--red);
+    background: var(--navy-light);
+    color: var(--navy);
 
     font-weight: 900;
 }
@@ -989,15 +986,16 @@ a {
 
 .quick-action strong {
     font-size: 10px;
+    color: var(--navy);
 }
 
 .quick-action small {
-    color: #999;
+    color: var(--muted);
     font-size: 8px;
 }
 
 .quick-action b {
-    color: var(--red);
+    color: var(--navy);
 }
 
 /* =========================================================
@@ -1011,8 +1009,8 @@ a {
 
     padding: 18px 20px;
 
-    background: var(--black);
-    color: white;
+    background: var(--navy);
+    color: var(--white);
 }
 
 .trust-symbol {
@@ -1025,7 +1023,8 @@ a {
     align-items: center;
     justify-content: center;
 
-    background: var(--red);
+    background: var(--white);
+    color: var(--navy);
 
     font-weight: 900;
 }
@@ -1035,7 +1034,7 @@ a {
 }
 
 .trust-notice p {
-    color: #aaa;
+    color: rgba(255, 255, 255, 0.65);
     font-size: 9px;
     line-height: 1.6;
     margin-top: 5px;
@@ -1068,8 +1067,8 @@ a {
     align-items: center;
     justify-content: center;
 
-    background: #f2f2f2;
-    color: var(--red);
+    background: var(--navy-light);
+    color: var(--navy);
 
     font-size: 25px;
     font-weight: 900;
@@ -1080,10 +1079,11 @@ a {
 .section-placeholder h2 {
     font-size: 18px;
     margin-bottom: 8px;
+    color: var(--navy);
 }
 
 .section-placeholder p {
-    color: #999;
+    color: var(--muted);
     font-size: 11px;
     margin-bottom: 20px;
 }
@@ -1093,7 +1093,7 @@ a {
 ========================================================= */
 
 .submitted-demo {
-    border: 1px solid #eee;
+    border: 1px solid var(--border-light);
     padding: 22px;
 }
 
@@ -1104,35 +1104,40 @@ a {
     gap: 20px;
 
     padding-bottom: 18px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-light);
 }
 
 .submitted-header h2 {
     font-size: 18px;
     margin: 10px 0 5px;
+    color: var(--navy);
 }
 
 .submitted-header p {
-    color: #999;
+    color: var(--muted);
     font-size: 10px;
 }
 
 .submitted-header > strong {
     font-size: 15px;
+    color: var(--navy);
 }
 
 .review-message {
-    background: #fff8e9;
+    background: var(--navy-light);
+    border-left: 3px solid var(--navy);
+
     padding: 15px;
     margin: 18px 0;
 }
 
 .review-message strong {
     font-size: 11px;
+    color: var(--navy);
 }
 
 .review-message p {
-    color: #777;
+    color: var(--muted);
     font-size: 9px;
     margin-top: 5px;
 }
@@ -1169,8 +1174,8 @@ a {
 
     border-radius: 50%;
 
-    background: #eee;
-    color: #777;
+    background: var(--navy-light);
+    color: var(--muted);
 
     font-size: 11px;
     font-weight: 900;
@@ -1178,44 +1183,42 @@ a {
     margin-bottom: 8px;
 }
 
-.flow-step.completed > span {
-    background: var(--green);
-    color: white;
-}
-
+.flow-step.completed > span,
 .flow-step.active > span {
-    background: var(--red);
-    color: white;
+    background: var(--navy);
+    color: var(--white);
 }
 
 .flow-step strong {
     font-size: 10px;
     margin-bottom: 4px;
+    color: var(--navy);
 }
 
 .flow-step small {
-    color: #999;
+    color: var(--muted);
     font-size: 8px;
 }
 
 .flow-line {
     width: 80px;
     height: 1px;
-    background: #ddd;
+    background: var(--border);
 }
 
 .payment-explanation {
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--border-light);
     padding-top: 25px;
 }
 
 .payment-explanation h3 {
     font-size: 14px;
     margin-bottom: 9px;
+    color: var(--navy);
 }
 
 .payment-explanation p {
-    color: #777;
+    color: var(--muted);
     font-size: 10px;
     line-height: 1.7;
 }
@@ -1229,19 +1232,21 @@ a {
 }
 
 .split-box div {
-    background: #f7f7f7;
+    background: var(--navy-soft);
+    border: 1px solid var(--border-light);
     padding: 15px;
 }
 
 .split-box span {
     display: block;
-    color: #999;
+    color: var(--muted);
     font-size: 9px;
     margin-bottom: 5px;
 }
 
 .split-box strong {
     font-size: 20px;
+    color: var(--navy);
 }
 
 /* =========================================================
@@ -1256,7 +1261,7 @@ a {
 
     padding: 16px 0;
 
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--border-light);
 }
 
 .payment-history-row > div {
@@ -1270,12 +1275,12 @@ a {
 }
 
 .payment-history-row span {
-    color: #999;
+    color: var(--muted);
     font-size: 8px;
 }
 
 .payment-history-row .payment-amount {
-    color: var(--green);
+    color: var(--navy);
 }
 
 /* =========================================================
@@ -1288,7 +1293,7 @@ a {
     gap: 20px;
 
     padding-bottom: 25px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-light);
 }
 
 .profile-large-avatar {
@@ -1297,15 +1302,18 @@ a {
     border-radius: 50%;
 
     font-size: 20px;
+
+    border: 1px solid var(--border);
 }
 
 .profile-large h2 {
     font-size: 20px;
     margin-bottom: 5px;
+    color: var(--navy);
 }
 
 .profile-large p {
-    color: #999;
+    color: var(--muted);
     font-size: 11px;
     margin-bottom: 10px;
 }
@@ -1313,8 +1321,8 @@ a {
 .verified-badge {
     display: inline-flex;
 
-    background: #e9f7ef;
-    color: var(--green);
+    background: var(--navy-light);
+    color: var(--navy);
 
     padding: 6px 9px;
 
@@ -1337,16 +1345,17 @@ a {
 }
 
 .profile-information span {
-    color: #999;
+    color: var(--muted);
     font-size: 9px;
 }
 
 .profile-information strong {
     font-size: 10px;
+    color: var(--navy);
 }
 
 .profile-approved {
-    color: var(--green);
+    color: var(--navy);
 }
 
 /* =========================================================
@@ -1363,7 +1372,7 @@ a {
     justify-content: space-between;
     gap: 20px;
 
-    color: #999;
+    color: var(--muted);
     font-size: 9px;
 }
 
@@ -1373,7 +1382,7 @@ a {
 }
 
 .dashboard-footer a:hover {
-    color: var(--red);
+    color: var(--navy);
 }
 
 /* =========================================================
@@ -1384,7 +1393,7 @@ a {
     position: fixed;
     inset: 0;
 
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(11, 31, 58, 0.62);
 
     display: none;
     align-items: center;
@@ -1404,12 +1413,14 @@ a {
 
     width: min(430px, 100%);
 
-    background: white;
+    background: var(--white);
+    border: 1px solid var(--border);
+
     padding: 35px;
 
     text-align: center;
 
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 60px rgba(11, 31, 58, 0.18);
 }
 
 .modal-close {
@@ -1421,7 +1432,11 @@ a {
     background: transparent;
 
     font-size: 25px;
-    color: #777;
+    color: var(--muted);
+}
+
+.modal-close:hover {
+    color: var(--navy);
 }
 
 .modal-icon {
@@ -1434,8 +1449,8 @@ a {
     align-items: center;
     justify-content: center;
 
-    background: #ffe8e9;
-    color: var(--red);
+    background: var(--navy-light);
+    color: var(--navy);
 
     font-weight: 900;
     font-size: 20px;
@@ -1444,10 +1459,11 @@ a {
 .modal-box h2 {
     font-size: 20px;
     margin-bottom: 10px;
+    color: var(--navy);
 }
 
 .modal-box p {
-    color: #777;
+    color: var(--muted);
     font-size: 11px;
     line-height: 1.7;
 }
@@ -1483,7 +1499,6 @@ a {
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
-
 }
 
 /* =========================================================
@@ -1505,7 +1520,7 @@ a {
         position: fixed;
         inset: 0;
 
-        background: rgba(0, 0, 0, 0.55);
+        background: rgba(11, 31, 58, 0.55);
 
         z-index: 900;
     }
@@ -1550,7 +1565,6 @@ a {
     .dashboard-footer {
         padding: 0 20px;
     }
-
 }
 
 /* =========================================================
@@ -1593,7 +1607,6 @@ a {
         grid-column: 1 / -1;
         justify-self: start;
     }
-
 }
 
 /* =========================================================
@@ -1720,7 +1733,6 @@ a {
         flex-direction: column;
         padding: 0 14px;
     }
-
 }
 
 /* =========================================================
@@ -1783,5 +1795,4 @@ a {
     .modal-box {
         padding: 28px 20px;
     }
-
 }

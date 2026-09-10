@@ -1,20 +1,20 @@
-/* =========================================
-   VORVENA PROJECT REQUEST
-   ========================================= */
-
 :root {
-    --black: #0b0b0b;
-    --black-soft: #111111;
     --white: #ffffff;
-    --off-white: #f7f7f7;
-    --red: #c90000;
-    --red-dark: #a80000;
-    --text: #171717;
-    --muted: #707070;
-    --border: #dddddd;
-    --success: #15803d;
+    --navy: #0b1f3a;
+    --navy-dark: #07172b;
+    --navy-light: #eef3f8;
+    --navy-soft: #f6f8fb;
+
+    --text: #172033;
+    --muted: #667085;
+    --border: #d9e1ea;
+
     --sidebar-width: 265px;
 }
+
+/* =========================================
+   RESET
+   ========================================= */
 
 * {
     margin: 0;
@@ -28,7 +28,7 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: var(--off-white);
+    background: var(--white);
     color: var(--text);
     overflow-x: hidden;
 }
@@ -49,7 +49,6 @@ a {
     color: inherit;
 }
 
-
 /* =========================================
    SIDEBAR
    ========================================= */
@@ -58,10 +57,11 @@ a {
     position: fixed;
     top: 0;
     left: 0;
+
     width: var(--sidebar-width);
     height: 100vh;
 
-    background: var(--black);
+    background: var(--navy);
     color: var(--white);
 
     display: flex;
@@ -70,17 +70,17 @@ a {
     z-index: 1000;
 }
 
-
 /* BRAND */
 
 .brand {
     padding: 28px 24px 22px;
-    border-bottom: 1px solid #292929;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .brand h2 {
     font-size: 25px;
     letter-spacing: 2px;
+    color: var(--white);
 }
 
 .brand span {
@@ -91,9 +91,8 @@ a {
     font-weight: 700;
     letter-spacing: 2px;
 
-    color: #999;
+    color: #b9c5d4;
 }
-
 
 /* MINI PROFILE */
 
@@ -104,21 +103,23 @@ a {
 
     padding: 20px 22px;
 
-    border-bottom: 1px solid #292929;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .avatar {
     width: 42px;
     height: 42px;
 
-    background: var(--red);
-    color: white;
+    background: var(--white);
+    color: var(--navy);
 
     display: grid;
     place-items: center;
 
     font-size: 13px;
     font-weight: 700;
+
+    border-radius: 8px;
 }
 
 .avatar.small {
@@ -137,12 +138,13 @@ a {
     display: block;
     margin-top: 3px;
 
-    color: #999;
+    color: #b9c5d4;
     font-size: 11px;
 }
 
-
-/* NAV */
+/* =========================================
+   SIDEBAR NAV
+   ========================================= */
 
 .sidebar-nav {
     padding: 18px 12px;
@@ -163,7 +165,7 @@ a {
     border: none;
     background: transparent;
 
-    color: #bdbdbd;
+    color: #b9c5d4;
 
     font-size: 13px;
     text-align: left;
@@ -171,6 +173,8 @@ a {
     cursor: pointer;
 
     transition: 0.2s ease;
+
+    border-radius: 7px;
 }
 
 .sidebar-nav a span,
@@ -183,26 +187,31 @@ a {
 
 .sidebar-nav a:hover,
 .sidebar-bottom button:hover {
-    background: #181818;
-    color: white;
+    background: rgba(255, 255, 255, 0.09);
+    color: var(--white);
 }
 
 .sidebar-nav a.active {
-    background: var(--red);
-    color: white;
+    background: var(--white);
+    color: var(--navy);
 }
+
+/* =========================================
+   SIDEBAR BOTTOM
+   ========================================= */
 
 .sidebar-bottom {
     margin-top: auto;
+
     padding: 15px 12px;
-    border-top: 1px solid #292929;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .logout-btn:hover {
-    background: #260000 !important;
-    color: #ff5c5c !important;
+    background: rgba(255, 255, 255, 0.09) !important;
+    color: var(--white) !important;
 }
-
 
 /* =========================================
    MAIN
@@ -214,8 +223,9 @@ a {
 
     display: flex;
     flex-direction: column;
-}
 
+    background: var(--white);
+}
 
 /* =========================================
    TOPBAR
@@ -226,7 +236,7 @@ a {
 
     padding: 0 32px;
 
-    background: white;
+    background: var(--white);
     border-bottom: 1px solid var(--border);
 
     display: flex;
@@ -241,10 +251,13 @@ a {
     height: 42px;
 
     border: 1px solid var(--border);
-    background: white;
+    background: var(--white);
+    color: var(--navy);
 
     cursor: pointer;
     font-size: 20px;
+
+    border-radius: 7px;
 }
 
 .topbar-title span {
@@ -259,6 +272,8 @@ a {
 .topbar-title strong {
     display: block;
     margin-top: 4px;
+
+    color: var(--navy);
 
     font-size: 16px;
 }
@@ -276,11 +291,21 @@ a {
     height: 40px;
 
     border: 1px solid var(--border);
-    background: white;
+    background: var(--white);
+    color: var(--navy);
 
     cursor: pointer;
 
     font-size: 18px;
+
+    border-radius: 7px;
+
+    transition: 0.2s ease;
+}
+
+.notification-btn:hover {
+    border-color: var(--navy);
+    background: var(--navy-light);
 }
 
 .notification-dot {
@@ -291,7 +316,9 @@ a {
     width: 6px;
     height: 6px;
 
-    background: var(--red);
+    background: var(--navy);
+
+    border-radius: 50%;
 }
 
 .top-profile {
@@ -300,6 +327,13 @@ a {
     gap: 9px;
 }
 
+.top-profile strong {
+    color: var(--text);
+}
+
+.top-profile small {
+    color: var(--muted);
+}
 
 /* =========================================
    PAGE CONTENT
@@ -308,6 +342,7 @@ a {
 .page-content {
     width: min(100% - 50px, 1050px);
     margin: 0 auto;
+
     padding: 32px 0 50px;
 }
 
@@ -316,14 +351,16 @@ a {
 
     margin-bottom: 22px;
 
-    color: var(--muted);
+    color: var(--navy);
+
     font-size: 13px;
+    font-weight: 600;
 
     transition: 0.2s;
 }
 
 .back-link:hover {
-    color: var(--red);
+    opacity: 0.7;
 }
 
 .page-heading {
@@ -335,7 +372,7 @@ a {
 
     margin-bottom: 9px;
 
-    color: var(--red);
+    color: var(--navy);
 
     font-size: 10px;
     font-weight: 700;
@@ -343,8 +380,11 @@ a {
 }
 
 .page-heading h1 {
+    color: var(--navy);
+
     font-size: 32px;
     line-height: 1.15;
+
     margin-bottom: 8px;
 }
 
@@ -352,18 +392,18 @@ a {
     max-width: 650px;
 
     color: var(--muted);
+
     font-size: 14px;
     line-height: 1.7;
 }
-
 
 /* =========================================
    SELECTED PROFESSIONAL
    ========================================= */
 
 .selected-professional {
-    background: var(--black);
-    color: white;
+    background: var(--navy);
+    color: var(--white);
 
     padding: 22px;
 
@@ -372,19 +412,24 @@ a {
     gap: 16px;
 
     margin-bottom: 20px;
+
+    border-radius: 10px;
 }
 
 .professional-avatar {
     width: 58px;
     height: 58px;
 
-    background: var(--red);
+    background: var(--white);
+    color: var(--navy);
 
     display: grid;
     place-items: center;
 
     font-size: 16px;
     font-weight: 700;
+
+    border-radius: 8px;
 }
 
 .professional-info {
@@ -394,7 +439,7 @@ a {
 .professional-info > span {
     display: block;
 
-    color: #999;
+    color: #b9c5d4;
 
     font-size: 9px;
     font-weight: 700;
@@ -409,7 +454,7 @@ a {
 }
 
 .professional-info p {
-    color: #bbb;
+    color: #d2dae4;
     font-size: 12px;
 }
 
@@ -421,44 +466,49 @@ a {
     margin-top: 8px;
 
     font-size: 10px;
-    color: #aaa;
+    color: #c5cfdb;
 }
 
 .professional-meta span:first-child {
-    color: #eee;
+    color: var(--white);
 }
 
 .change-btn {
     padding: 10px 17px;
 
-    border: 1px solid #444;
+    border: 1px solid rgba(255, 255, 255, 0.45);
     background: transparent;
 
-    color: white;
+    color: var(--white);
 
     font-size: 11px;
     cursor: pointer;
+
+    border-radius: 7px;
 
     transition: 0.2s;
 }
 
 .change-btn:hover {
-    border-color: white;
+    background: var(--white);
+    color: var(--navy);
+    border-color: var(--white);
 }
-
 
 /* =========================================
    FORM CARDS
    ========================================= */
 
 .form-card {
-    background: white;
+    background: var(--white);
 
     border: 1px solid var(--border);
 
     padding: 26px;
 
     margin-bottom: 16px;
+
+    border-radius: 10px;
 }
 
 .card-header {
@@ -470,7 +520,7 @@ a {
 
     padding-bottom: 20px;
 
-    border-bottom: 1px solid #ededed;
+    border-bottom: 1px solid var(--border);
 }
 
 .step-number {
@@ -480,15 +530,19 @@ a {
     display: grid;
     place-items: center;
 
-    background: #f1f1f1;
+    background: var(--navy-light);
 
-    color: var(--red);
+    color: var(--navy);
 
     font-size: 11px;
     font-weight: 700;
+
+    border-radius: 7px;
 }
 
 .card-header h2 {
+    color: var(--navy);
+
     font-size: 17px;
     margin-bottom: 5px;
 }
@@ -499,7 +553,6 @@ a {
     font-size: 12px;
     line-height: 1.6;
 }
-
 
 /* =========================================
    FORM GRID
@@ -524,6 +577,8 @@ a {
 
     margin-bottom: 8px;
 
+    color: var(--navy);
+
     font-size: 12px;
     font-weight: 700;
 }
@@ -533,7 +588,7 @@ a {
     width: 100%;
 
     border: 1px solid var(--border);
-    background: white;
+    background: var(--white);
 
     color: var(--text);
 
@@ -542,6 +597,8 @@ a {
     outline: none;
 
     font-size: 13px;
+
+    border-radius: 7px;
 
     transition: 0.2s;
 }
@@ -553,12 +610,13 @@ a {
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: var(--red);
+    border-color: var(--navy);
+    box-shadow: 0 0 0 3px var(--navy-light);
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: #aaa;
+    color: #98a2b3;
 }
 
 .form-group small {
@@ -566,14 +624,15 @@ a {
 
     margin-top: 7px;
 
-    color: #888;
+    color: var(--muted);
 
     font-size: 10px;
     line-height: 1.5;
 }
 
-
-/* INPUT SYMBOL */
+/* =========================================
+   INPUT SYMBOL
+   ========================================= */
 
 .input-with-symbol {
     position: relative;
@@ -588,7 +647,7 @@ a {
     transform: translateY(-50%);
 
     font-weight: 700;
-    color: var(--red);
+    color: var(--navy);
 
     font-size: 13px;
 }
@@ -597,7 +656,6 @@ a {
     padding-left: 32px;
 }
 
-
 /* =========================================
    UPLOAD
    ========================================= */
@@ -605,7 +663,9 @@ a {
 .upload-area {
     min-height: 175px;
 
-    border: 1px dashed #cfcfcf;
+    border: 1px dashed #b9c5d4;
+
+    background: var(--navy-soft);
 
     display: flex;
     flex-direction: column;
@@ -618,12 +678,14 @@ a {
 
     text-align: center;
 
+    border-radius: 9px;
+
     transition: 0.2s;
 }
 
 .upload-area:hover {
-    border-color: var(--red);
-    background: #fffafa;
+    border-color: var(--navy);
+    background: var(--navy-light);
 }
 
 .upload-icon {
@@ -635,28 +697,32 @@ a {
 
     margin-bottom: 10px;
 
-    background: #f2f2f2;
+    background: var(--white);
 
-    color: var(--red);
+    color: var(--navy);
 
     font-size: 20px;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
 }
 
 .upload-area strong {
+    color: var(--navy);
     font-size: 13px;
 }
 
 .upload-area span {
     margin-top: 5px;
 
-    color: #777;
+    color: var(--muted);
     font-size: 11px;
 }
 
 .upload-area small {
     margin-top: 8px;
 
-    color: #999;
+    color: #98a2b3;
     font-size: 9px;
 }
 
@@ -664,8 +730,9 @@ a {
     display: none;
 }
 
-
-/* FILE LIST */
+/* =========================================
+   FILE LIST
+   ========================================= */
 
 .file-list {
     margin-top: 12px;
@@ -680,11 +747,13 @@ a {
 
     padding: 11px 13px;
 
-    background: #f7f7f7;
+    background: var(--navy-soft);
 
-    border: 1px solid #e7e7e7;
+    border: 1px solid var(--border);
 
     margin-bottom: 6px;
+
+    border-radius: 7px;
 }
 
 .file-info {
@@ -698,6 +767,8 @@ a {
     text-overflow: ellipsis;
     white-space: nowrap;
 
+    color: var(--navy);
+
     font-size: 11px;
     font-weight: 700;
 }
@@ -707,7 +778,7 @@ a {
 
     margin-top: 3px;
 
-    color: #888;
+    color: var(--muted);
     font-size: 9px;
 }
 
@@ -715,13 +786,16 @@ a {
     border: none;
     background: transparent;
 
-    color: var(--red);
+    color: var(--navy);
 
     cursor: pointer;
 
     font-size: 12px;
 }
 
+.remove-file:hover {
+    color: var(--navy-dark);
+}
 
 /* =========================================
    PAYMENT INFO
@@ -735,12 +809,12 @@ a {
 
     margin-bottom: 18px;
 
-    background: #fff;
+    background: var(--navy-light);
 
-    border-left: 3px solid var(--red);
-    border-top: 1px solid var(--border);
-    border-right: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    border: 1px solid #cbd6e2;
+    border-left: 3px solid var(--navy);
+
+    border-radius: 8px;
 }
 
 .payment-icon {
@@ -750,25 +824,29 @@ a {
     display: grid;
     place-items: center;
 
-    background: var(--black);
+    background: var(--white);
 
-    color: white;
+    color: var(--navy);
 
     font-weight: 700;
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
 }
 
 .payment-info h3 {
+    color: var(--navy);
+
     font-size: 13px;
     margin-bottom: 5px;
 }
 
 .payment-info p {
-    color: #666;
+    color: #536174;
 
     font-size: 11px;
     line-height: 1.7;
 }
-
 
 /* =========================================
    AGREEMENT
@@ -785,7 +863,7 @@ a {
 
     cursor: pointer;
 
-    color: #555;
+    color: var(--muted);
 
     font-size: 11px;
     line-height: 1.6;
@@ -794,9 +872,8 @@ a {
 .agreement input {
     margin-top: 2px;
 
-    accent-color: var(--red);
+    accent-color: var(--navy);
 }
-
 
 /* =========================================
    ACTIONS
@@ -820,6 +897,8 @@ a {
 
     cursor: pointer;
 
+    border-radius: 7px;
+
     transition: 0.2s;
 }
 
@@ -828,24 +907,25 @@ a {
     align-items: center;
 
     border: 1px solid var(--border);
-    background: white;
+    background: var(--white);
 
-    color: #555;
+    color: var(--navy);
 }
 
 .cancel-btn:hover {
-    border-color: #999;
+    border-color: var(--navy);
+    background: var(--navy-light);
 }
 
 .submit-btn {
-    border: 1px solid var(--red);
-    background: var(--red);
+    border: 1px solid var(--navy);
+    background: var(--navy);
 
-    color: white;
+    color: var(--white);
 }
 
 .submit-btn:hover {
-    background: var(--red-dark);
+    background: var(--navy-dark);
 }
 
 .submit-btn span {
@@ -856,7 +936,6 @@ a {
     opacity: 0.6;
     cursor: not-allowed;
 }
-
 
 /* =========================================
    FOOTER
@@ -869,13 +948,13 @@ a {
 
     border-top: 1px solid var(--border);
 
-    background: white;
+    background: var(--white);
 
     display: flex;
     justify-content: space-between;
     gap: 20px;
 
-    color: #888;
+    color: var(--muted);
 
     font-size: 10px;
 }
@@ -885,10 +964,13 @@ a {
     gap: 18px;
 }
 
-.footer a:hover {
-    color: var(--red);
+.footer a {
+    color: var(--navy);
 }
 
+.footer a:hover {
+    opacity: 0.65;
+}
 
 /* =========================================
    OVERLAY
@@ -900,7 +982,7 @@ a {
     position: fixed;
     inset: 0;
 
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(7, 23, 43, 0.45);
 
     z-index: 900;
 }
@@ -908,7 +990,6 @@ a {
 .overlay.show {
     display: block;
 }
-
 
 /* =========================================
    SUCCESS MODAL
@@ -924,7 +1005,7 @@ a {
 
     padding: 20px;
 
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(7, 23, 43, 0.5);
 
     z-index: 2000;
 }
@@ -936,11 +1017,14 @@ a {
 .success-modal {
     width: min(100%, 430px);
 
-    background: white;
+    background: var(--white);
 
     padding: 35px;
 
     text-align: center;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
 }
 
 .success-icon {
@@ -952,20 +1036,25 @@ a {
     display: grid;
     place-items: center;
 
-    background: var(--black);
+    background: var(--navy-light);
 
-    color: white;
+    color: var(--navy);
 
     font-size: 25px;
+    font-weight: 700;
+
+    border-radius: 50%;
 }
 
 .success-modal h2 {
+    color: var(--navy);
+
     font-size: 21px;
     margin-bottom: 10px;
 }
 
 .success-modal p {
-    color: #555;
+    color: var(--muted);
 
     font-size: 13px;
     line-height: 1.7;
@@ -974,7 +1063,7 @@ a {
 .success-modal .modal-small {
     margin-top: 7px;
 
-    color: #888;
+    color: #8994a5;
     font-size: 11px;
 }
 
@@ -985,21 +1074,24 @@ a {
 
     padding: 13px;
 
-    border: none;
-    background: var(--red);
+    border: 1px solid var(--navy);
+    background: var(--navy);
 
-    color: white;
+    color: var(--white);
 
     font-size: 12px;
     font-weight: 700;
 
     cursor: pointer;
+
+    border-radius: 7px;
+
+    transition: 0.2s;
 }
 
 .success-modal button:hover {
-    background: var(--red-dark);
+    background: var(--navy-dark);
 }
-
 
 /* =========================================
    TABLET
@@ -1018,9 +1110,7 @@ a {
     .page-content {
         width: min(100% - 35px, 850px);
     }
-
 }
-
 
 /* =========================================
    MOBILE SIDEBAR
@@ -1030,7 +1120,6 @@ a {
 
     .sidebar {
         transform: translateX(-100%);
-
         transition: transform 0.25s ease;
     }
 
@@ -1067,9 +1156,7 @@ a {
         width: min(100% - 28px, 700px);
         padding-top: 25px;
     }
-
 }
-
 
 /* =========================================
    SMALL TABLET / MOBILE
@@ -1107,10 +1194,6 @@ a {
         padding: 20px;
     }
 
-    .card-header {
-        gap: 11px;
-    }
-
     .form-actions {
         flex-direction: column-reverse;
     }
@@ -1125,9 +1208,7 @@ a {
         flex-direction: column;
         padding: 20px;
     }
-
 }
-
 
 /* =========================================
    MOBILE
@@ -1191,9 +1272,7 @@ a {
     .success-modal {
         padding: 28px 20px;
     }
-
 }
-
 
 /* =========================================
    SMALL MOBILE
@@ -1225,5 +1304,4 @@ a {
     .upload-area {
         padding: 20px 10px;
     }
-
 }
