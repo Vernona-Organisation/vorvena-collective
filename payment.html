@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment | VORVENA</title>
+
+    <link rel="stylesheet" href="payment.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="payment-header">
+
+        <div class="header-inner">
+
+            <a href="index.html" class="logo">
+                VORVENA
+            </a>
+
+            <div class="secure-header">
+                <span class="lock-icon">🔒</span>
+                <span>Secure Payment</span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="payment-page">
+
+        <div class="payment-container">
+
+
+            <!-- =========================
+                 BACK BUTTON
+            ========================== -->
+
+            <a href="project-request.html" class="back-button">
+                ← Back to Project Request
+            </a>
+
+
+            <!-- =========================
+                 PAGE INTRO
+            ========================== -->
+
+            <section class="payment-intro">
+
+                <span class="payment-label">
+                    PAYMENT
+                </span>
+
+                <h1>
+                    Complete Your Payment
+                </h1>
+
+                <p>
+                    Secure your project payment to begin working with your selected VORVENA professional.
+                </p>
+
+            </section>
+
+
+            <div class="payment-layout">
+
+
+                <!-- =========================
+                     LEFT SIDE
+                ========================== -->
+
+                <section class="payment-main">
+
+
+                    <!-- PROFESSIONAL -->
+
+                    <div class="payment-card professional-card">
+
+                        <div class="section-heading">
+
+                            <div>
+                                <span class="small-label">
+                                    PROFESSIONAL
+                                </span>
+
+                                <h2 id="professionalName">
+                                    Professional
+                                </h2>
+
+                                <p id="professionalProfession">
+                                    Professional Service
+                                </p>
+                            </div>
+
+                            <span class="verified-badge">
+                                ✓ Verified
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PROJECT -->
+
+                    <div class="payment-card">
+
+                        <div class="card-title">
+                            <h2>Project Details</h2>
+                        </div>
+
+                        <div class="project-details">
+
+                            <div class="detail-row">
+                                <span>Project</span>
+                                <strong id="projectTitle">
+                                    —
+                                </strong>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>Deadline</span>
+                                <strong id="projectDeadline">
+                                    —
+                                </strong>
+                            </div>
+
+                            <div class="detail-row">
+                                <span>Project ID</span>
+                                <strong id="projectId">
+                                    —
+                                </strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PAYMENT METHODS -->
+
+                    <div class="payment-card">
+
+                        <div class="card-title">
+
+                            <div>
+                                <h2>Choose Payment Method</h2>
+
+                                <p>
+                                    Select your preferred payment method.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="payment-methods">
+
+                            <!-- CARD -->
+
+                            <button
+                                type="button"
+                                class="payment-method active"
+                                data-method="card"
+                            >
+
+                                <span class="method-icon">
+                                    💳
+                                </span>
+
+                                <span class="method-content">
+                                    <strong>Card</strong>
+                                    <small>
+                                        Pay securely with your debit or credit card
+                                    </small>
+                                </span>
+
+                                <span class="method-check">
+                                    ✓
+                                </span>
+
+                            </button>
+
+
+                            <!-- TRANSFER -->
+
+                            <button
+                                type="button"
+                                class="payment-method"
+                                data-method="transfer"
+                            >
+
+                                <span class="method-icon">
+                                    🏦
+                                </span>
+
+                                <span class="method-content">
+                                    <strong>Bank Transfer</strong>
+                                    <small>
+                                        Transfer directly to the payment account
+                                    </small>
+                                </span>
+
+                                <span class="method-check">
+                                    ✓
+                                </span>
+
+                            </button>
+
+
+                            <!-- USSD -->
+
+                            <button
+                                type="button"
+                                class="payment-method"
+                                data-method="ussd"
+                            >
+
+                                <span class="method-icon">
+                                    📱
+                                </span>
+
+                                <span class="method-content">
+                                    <strong>USSD</strong>
+                                    <small>
+                                        Pay using your bank's USSD service
+                                    </small>
+                                </span>
+
+                                <span class="method-check">
+                                    ✓
+                                </span>
+
+                            </button>
+
+                        </div>
+
+
+                        <!-- =========================
+                             CARD PAYMENT
+                        ========================== -->
+
+                        <div
+                            class="payment-panel active"
+                            id="cardPanel"
+                        >
+
+                            <div class="secure-notice">
+
+                                <span>🔒</span>
+
+                                <p>
+                                    Your card details are securely processed by our payment provider.
+                                    VORVENA does not store your CVV.
+                                </p>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="cardName">
+                                    Cardholder Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="cardName"
+                                    placeholder="Name on card"
+                                    autocomplete="cc-name"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="cardNumber">
+                                    Card Number
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="cardNumber"
+                                    placeholder="0000 0000 0000 0000"
+                                    maxlength="19"
+                                    inputmode="numeric"
+                                    autocomplete="cc-number"
+                                >
+
+                            </div>
+
+
+                            <div class="card-input-row">
+
+                                <div class="form-group">
+
+                                    <label for="expiry">
+                                        Expiry Date
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="expiry"
+                                        placeholder="MM / YY"
+                                        maxlength="7"
+                                        inputmode="numeric"
+                                        autocomplete="cc-exp"
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="cvv">
+                                        CVV
+                                    </label>
+
+                                    <input
+                                        type="password"
+                                        id="cvv"
+                                        placeholder="•••"
+                                        maxlength="4"
+                                        inputmode="numeric"
+                                        autocomplete="cc-csc"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <p class="payment-provider-note">
+                                In the live version, these card fields will be securely handled through Paystack.
+                            </p>
+
+                        </div>
+
+
+                        <!-- =========================
+                             TRANSFER PAYMENT
+                        ========================== -->
+
+                        <div
+                            class="payment-panel"
+                            id="transferPanel"
+                        >
+
+                            <div class="transfer-intro">
+
+                                <span class="large-method-icon">
+                                    🏦
+                                </span>
+
+                                <div>
+
+                                    <h3>
+                                        Bank Transfer
+                                    </h3>
+
+                                    <p>
+                                        Transfer the exact amount shown below.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="transfer-box">
+
+                                <div class="bank-detail">
+
+                                    <span>Bank Name</span>
+
+                                    <strong id="bankName">
+                                        Payment provider will supply this
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="bank-detail">
+
+                                    <span>Account Name</span>
+
+                                    <strong id="accountName">
+                                        VORVENA
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="bank-detail">
+
+                                    <span>Account Number</span>
+
+                                    <strong
+                                        id="accountNumber"
+                                        class="account-number"
+                                    >
+                                        0000000000
+                                    </strong>
+
+                                    <button
+                                        type="button"
+                                        id="copyAccountBtn"
+                                        class="copy-button"
+                                    >
+                                        Copy
+                                    </button>
+
+                                </div>
+
+
+                                <div class="bank-detail">
+
+                                    <span>Amount</span>
+
+                                    <strong id="transferAmount">
+                                        ₦0
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="transfer-note">
+
+                                <strong>
+                                    Important
+                                </strong>
+
+                                <p>
+                                    Your project will only become active after the payment provider confirms
+                                    that your transfer has been received.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- =========================
+                             USSD PAYMENT
+                        ========================== -->
+
+                        <div
+                            class="payment-panel"
+                            id="ussdPanel"
+                        >
+
+                            <div class="transfer-intro">
+
+                                <span class="large-method-icon">
+                                    📱
+                                </span>
+
+                                <div>
+
+                                    <h3>
+                                        Pay with USSD
+                                    </h3>
+
+                                    <p>
+                                        Select your bank to generate the payment instructions.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="ussdBank">
+                                    Select Bank
+                                </label>
+
+                                <select id="ussdBank">
+
+                                    <option value="">
+                                        Select your bank
+                                    </option>
+
+                                    <option value="access">
+                                        Access Bank
+                                    </option>
+
+                                    <option value="gtb">
+                                        GTBank
+                                    </option>
+
+                                    <option value="firstbank">
+                                        First Bank
+                                    </option>
+
+                                    <option value="uba">
+                                        UBA
+                                    </option>
+
+                                    <option value="zenith">
+                                        Zenith Bank
+                                    </option>
+
+                                    <option value="opay">
+                                        Opay
+                                    </option>
+
+                                    <option value="palmpay">
+                                        PalmPay
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div
+                                class="ussd-code-box"
+                                id="ussdCodeBox"
+                            >
+
+                                <span>
+                                    Your USSD code will appear here
+                                </span>
+
+                            </div>
+
+
+                            <div class="ussd-note">
+
+                                <strong>
+                                    How it works
+                                </strong>
+
+                                <p>
+                                    Select your bank and follow the generated USSD instructions.
+                                    Payment confirmation will be handled by the payment provider.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SECURITY -->
+
+                    <div class="security-card">
+
+                        <span class="security-icon">
+                            🔒
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Your payment is protected
+                            </strong>
+
+                            <p>
+                                Payment verification is required before your project workspace is unlocked.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PAY BUTTON -->
+
+                    <button
+                        type="button"
+                        id="payNowBtn"
+                        class="pay-button"
+                    >
+                        Pay ₦0
+                    </button>
+
+
+                    <p class="payment-footer-note">
+                        By continuing, you agree to VORVENA's payment terms.
+                    </p>
+
+
+                </section>
+
+
+                <!-- =========================
+                     RIGHT SIDEBAR
+                ========================== -->
+
+                <aside class="payment-sidebar">
+
+
+                    <div class="summary-card">
+
+                        <div class="summary-heading">
+
+                            <h2>
+                                Payment Summary
+                            </h2>
+
+                        </div>
+
+
+                        <div class="summary-project">
+
+                            <span>
+                                Project
+                            </span>
+
+                            <strong id="summaryProjectTitle">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-line">
+
+                            <span>
+                                Project Total
+                            </span>
+
+                            <strong id="summaryTotal">
+                                ₦0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-line">
+
+                            <span>
+                                VORVENA — 15%
+                            </span>
+
+                            <strong id="vorvenaFee">
+                                ₦0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-line">
+
+                            <span>
+                                Professional — 85%
+                            </span>
+
+                            <strong id="professionalShare">
+                                ₦0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-divider"></div>
+
+
+                        <div class="client-pays">
+
+                            <span>
+                                Client Pays
+                            </span>
+
+                            <strong id="clientPays">
+                                ₦0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PAYMENT PROTECTION -->
+
+                    <div class="protection-card">
+
+                        <h3>
+                            Payment Protection
+                        </h3>
+
+                        <div class="protection-item">
+                            <span>✓</span>
+                            <p>Secure payment processing</p>
+                        </div>
+
+                        <div class="protection-item">
+                            <span>✓</span>
+                            <p>Payment verification</p>
+                        </div>
+
+                        <div class="protection-item">
+                            <span>✓</span>
+                            <p>Professional payment protection</p>
+                        </div>
+
+                        <div class="protection-item">
+                            <span>✓</span>
+                            <p>Workspace access after confirmation</p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- WORKSPACE NOTICE -->
+
+                    <div class="workspace-notice">
+
+                        <span class="notice-icon">
+                            🔐
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Workspace Locked
+                            </strong>
+
+                            <p>
+                                Your project workspace will automatically open after successful payment verification.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </aside>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         PROCESSING OVERLAY
+    ========================== -->
+
+    <div
+        class="payment-overlay"
+        id="processingOverlay"
+    >
+
+        <div class="processing-box">
+
+            <div class="loader"></div>
+
+            <h2>
+                Processing Payment
+            </h2>
+
+            <p>
+                Please wait while your payment is being processed.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         SUCCESS OVERLAY
+    ========================== -->
+
+    <div
+        class="payment-overlay"
+        id="successOverlay"
+    >
+
+        <div class="success-box">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                Payment Successful
+            </h2>
+
+            <p>
+                Your payment has been confirmed. Your project workspace is now available.
+            </p>
+
+            <button
+                type="button"
+                id="openWorkspaceBtn"
+                class="workspace-button"
+            >
+                Open Project Workspace
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="payment.js"></script>
+
+</body>
+
+</html>

@@ -1,615 +1,549 @@
-/* =========================================
-   TEMPORARY PROJECT DATA
-   Later this will come from Supabase
-========================================= */
+/* =========================================================
+   VORVENA PROJECT WORKSPACE
+   JavaScript
+   ========================================================= */
 
-const project = {
+document.addEventListener("DOMContentLoaded", () => {
 
-    id: "VOR-001",
+    /* =====================================================
+       ELEMENTS
+    ====================================================== */
 
-    title: "Business Website Design",
+    const sidebar = document.getElementById("sidebar");
+    const sidebarOverlay = document.getElementById("sidebarOverlay");
 
-    professional: "David Williams",
+    const menuBtn = document.getElementById("menuBtn");
+    const closeSidebar = document.getElementById("closeSidebar");
 
-    price: 150000,
+    const logoutBtn = document.getElementById("logoutBtn");
 
-    deadline: "September 20, 2026",
+    const notificationBtn = document.getElementById("notificationBtn");
+    const notificationDot = document.getElementById("notificationDot");
 
-    status: "In Progress",
+    const revisionBtn = document.getElementById("revisionBtn");
+    const approveBtn = document.getElementById("approveBtn");
 
-    revisionsUsed: 0,
+    const revisionModal = document.getElementById("revisionModal");
+    const modalClose = document.getElementById("modalClose");
+    const cancelRevision = document.getElementById("cancelRevision");
+    const submitRevision = document.getElementById("submitRevision");
 
-    revisionLimit: 2
+    const revisionMessage = document.getElementById("revisionMessage");
+    const revisionHistory = document.getElementById("revisionHistory");
 
-};
+    const messageForm = document.getElementById("messageForm");
+    const messageInput = document.getElementById("messageInput");
+    const messagesArea = document.getElementById("messagesArea");
 
+    const contactBtn = document.getElementById("contactBtn");
 
-/* =========================================
-   SIDEBAR
-========================================= */
+    const fileButtons = document.querySelectorAll(".file-btn");
 
-const sidebar =
-    document.getElementById("sidebar");
-
-const menuBtn =
-    document.getElementById("menuBtn");
-
-const closeSidebar =
-    document.getElementById("closeSidebar");
-
-const sidebarOverlay =
-    document.getElementById("sidebarOverlay");
-
-
-function openSidebar() {
-
-    sidebar.classList.add("open");
-
-}
+    const actionTitle = document.getElementById("actionTitle");
+    const actionDescription = document.getElementById("actionDescription");
 
 
-function closeSidebarMenu() {
 
-    sidebar.classList.remove("open");
+    /* =====================================================
+       SIDEBAR
+    ====================================================== */
 
-}
+    function openSidebar() {
 
+        if (!sidebar) return;
 
-if (menuBtn) {
+        sidebar.classList.add("open");
 
-    menuBtn.addEventListener(
-        "click",
-        openSidebar
-    );
+        sidebarOverlay.classList.add("show");
 
-}
+        document.body.classList.add("sidebar-open");
 
-
-if (closeSidebar) {
-
-    closeSidebar.addEventListener(
-        "click",
-        closeSidebarMenu
-    );
-
-}
+        if (menuBtn) {
+            menuBtn.setAttribute("aria-expanded", "true");
+        }
+    }
 
 
-if (sidebarOverlay) {
+    function closeSidebarMenu() {
 
-    sidebarOverlay.addEventListener(
-        "click",
-        closeSidebarMenu
-    );
+        if (!sidebar) return;
 
-}
+        sidebar.classList.remove("open");
 
+        sidebarOverlay.classList.remove("show");
 
-/* =========================================
-   CLOSE SIDEBAR AFTER NAVIGATION
-========================================= */
+        document.body.classList.remove("sidebar-open");
 
-const navLinks =
-    document.querySelectorAll(".nav-link");
+        if (menuBtn) {
+            menuBtn.setAttribute("aria-expanded", "false");
+        }
+    }
 
 
-navLinks.forEach(link => {
+    if (menuBtn) {
+        menuBtn.addEventListener("click", openSidebar);
+    }
 
-    link.addEventListener("click", function () {
 
-        if (window.innerWidth <= 1100) {
+    if (closeSidebar) {
+        closeSidebar.addEventListener("click", closeSidebarMenu);
+    }
 
+
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener("click", closeSidebarMenu);
+    }
+
+
+    /* Close mobile sidebar after clicking a link */
+
+    document.querySelectorAll(".nav-link").forEach((link) => {
+
+        link.addEventListener("click", () => {
+
+            if (window.innerWidth <= 768) {
+                closeSidebarMenu();
+            }
+
+        });
+
+    });
+
+
+    /* Automatically close drawer when resizing above tablet */
+
+    window.addEventListener("resize", () => {
+
+        if (window.innerWidth > 768) {
             closeSidebarMenu();
+        }
+
+    });
+
+
+
+    /* =====================================================
+       REVISION MODAL
+    ====================================================== */
+
+    function openRevisionModal() {
+
+        if (!revisionModal) return;
+
+        revisionModal.classList.add("show");
+
+        document.body.classList.add("sidebar-open");
+
+        setTimeout(() => {
+
+            if (revisionMessage) {
+                revisionMessage.focus();
+            }
+
+        }, 150);
+
+    }
+
+
+    function closeRevisionModal() {
+
+        if (!revisionModal) return;
+
+        revisionModal.classList.remove("show");
+
+        document.body.classList.remove("sidebar-open");
+
+    }
+
+
+    if (revisionBtn) {
+
+        revisionBtn.addEventListener("click", () => {
+
+            openRevisionModal();
+
+        });
+
+    }
+
+
+    if (modalClose) {
+        modalClose.addEventListener("click", closeRevisionModal);
+    }
+
+
+    if (cancelRevision) {
+        cancelRevision.addEventListener("click", closeRevisionModal);
+    }
+
+
+    /* Close modal when clicking outside */
+
+    if (revisionModal) {
+
+        revisionModal.addEventListener("click", (event) => {
+
+            if (event.target === revisionModal) {
+
+                closeRevisionModal();
+
+            }
+
+        });
+
+    }
+
+
+    /* ESC key */
+
+    document.addEventListener("keydown", (event) => {
+
+        if (event.key === "Escape") {
+
+            if (
+                revisionModal &&
+                revisionModal.classList.contains("show")
+            ) {
+
+                closeRevisionModal();
+
+            }
+
+            if (
+                sidebar &&
+                sidebar.classList.contains("open")
+            ) {
+
+                closeSidebarMenu();
+
+            }
 
         }
 
     });
 
-});
 
 
-/* =========================================
-   SUPPORT
-========================================= */
+    /* =====================================================
+       SUBMIT REVISION
+    ====================================================== */
 
-const supportBtn =
-    document.getElementById("supportBtn");
+    if (submitRevision) {
 
+        submitRevision.addEventListener("click", () => {
 
-if (supportBtn) {
+            if (!revisionMessage) return;
 
-    supportBtn.addEventListener(
-        "click",
-        function () {
+            const text = revisionMessage.value.trim();
 
-            alert(
-                "VORVENA Support will be connected here."
-            );
+            if (!text) {
 
-        }
-    );
+                revisionMessage.focus();
 
-}
-
-
-/* =========================================
-   NOTIFICATIONS
-========================================= */
-
-const notificationBtn =
-    document.getElementById(
-        "notificationBtn"
-    );
-
-
-if (notificationBtn) {
-
-    notificationBtn.addEventListener(
-        "click",
-        function () {
-
-            alert(
-                "You have 3 new notifications."
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   APPROVE PROJECT
-========================================= */
-
-const approveBtn =
-    document.getElementById("approveBtn");
-
-
-if (approveBtn) {
-
-    approveBtn.addEventListener(
-        "click",
-        function () {
-
-            const confirmation = confirm(
-                "Are you sure you want to approve this work?\n\n" +
-                "Once approved, this project will move toward completion."
-            );
-
-
-            if (!confirmation) {
+                alert("Please describe the changes you want.");
 
                 return;
+            }
+
+
+            const currentRevision =
+                revisionHistory.querySelector(".revision-number");
+
+
+            let revisionNumber = 1;
+
+
+            if (currentRevision) {
+
+                const existingNumber =
+                    parseInt(currentRevision.textContent, 10);
+
+                if (!Number.isNaN(existingNumber)) {
+                    revisionNumber = existingNumber + 1;
+                }
 
             }
 
 
-            project.status = "Approved";
+            const formattedNumber =
+                String(revisionNumber).padStart(2, "0");
 
 
-            const statusElement =
-                document.getElementById(
-                    "projectStatus"
-                );
+            revisionHistory.innerHTML = `
+
+                <span class="revision-number">
+                    ${formattedNumber}
+                </span>
+
+                <p>
+                    ${escapeHTML(text)}
+                </p>
+
+            `;
 
 
-            if (statusElement) {
+            /* Update project action */
 
-                statusElement.textContent =
-                    "Approved";
+            if (actionTitle) {
+
+                actionTitle.textContent =
+                    "Revision requested";
 
             }
 
 
-            approveBtn.textContent =
-                "✓ Work Approved";
+            if (actionDescription) {
+
+                actionDescription.textContent =
+                    "Your revision request has been recorded. The professional can now review your requested changes.";
+
+            }
+
+
+            /* Keep approval disabled */
+
+            if (approveBtn) {
+                approveBtn.disabled = true;
+            }
+
+
+            revisionMessage.value = "";
+
+            closeRevisionModal();
+
+
+            showNotification(
+                "Revision request submitted successfully."
+            );
+
+        });
+
+    }
+
+
+
+    /* =====================================================
+       APPROVE PROJECT
+    ====================================================== */
+
+    if (approveBtn) {
+
+        approveBtn.addEventListener("click", () => {
+
+            if (approveBtn.disabled) {
+                return;
+            }
+
+
+            const confirmApproval = confirm(
+                "Are you sure you want to approve this work?"
+            );
+
+
+            if (!confirmApproval) {
+                return;
+            }
+
 
             approveBtn.disabled = true;
 
-            approveBtn.style.opacity = "0.6";
-
-
-            const revisionBtn =
-                document.getElementById(
-                    "revisionBtn"
-                );
-
-
             if (revisionBtn) {
-
                 revisionBtn.disabled = true;
+            }
 
-                revisionBtn.style.opacity = "0.5";
+
+            if (actionTitle) {
+
+                actionTitle.textContent =
+                    "Project approved";
 
             }
 
 
-            alert(
-                "Work approved successfully."
+            if (actionDescription) {
+
+                actionDescription.textContent =
+                    "The project has been approved successfully. VORVENA can now process the professional's payment.";
+
+            }
+
+
+            showNotification(
+                "Project approved successfully."
             );
 
-        }
-    );
+        });
 
-}
-
-
-/* =========================================
-   REVISION MODAL
-========================================= */
-
-const revisionBtn =
-    document.getElementById("revisionBtn");
-
-const revisionModal =
-    document.getElementById("revisionModal");
-
-const closeRevisionModal =
-    document.getElementById(
-        "closeRevisionModal"
-    );
-
-const cancelRevision =
-    document.getElementById(
-        "cancelRevision"
-    );
+    }
 
 
-function openRevisionModal() {
 
-    revisionModal.classList.add("show");
+    /* =====================================================
+       MESSAGES
+    ====================================================== */
 
-}
+    if (messageForm) {
 
-
-function hideRevisionModal() {
-
-    revisionModal.classList.remove("show");
-
-}
-
-
-if (revisionBtn) {
-
-    revisionBtn.addEventListener(
-        "click",
-        function () {
-
-            if (
-                project.revisionsUsed >=
-                project.revisionLimit
-            ) {
-
-                alert(
-                    "You have used all included revisions."
-                );
-
-                return;
-
-            }
-
-
-            openRevisionModal();
-
-        }
-    );
-
-}
-
-
-if (closeRevisionModal) {
-
-    closeRevisionModal.addEventListener(
-        "click",
-        hideRevisionModal
-    );
-
-}
-
-
-if (cancelRevision) {
-
-    cancelRevision.addEventListener(
-        "click",
-        hideRevisionModal
-    );
-
-}
-
-
-/* =========================================
-   CLOSE MODAL BY CLICKING OUTSIDE
-========================================= */
-
-if (revisionModal) {
-
-    revisionModal.addEventListener(
-        "click",
-        function (event) {
-
-            if (
-                event.target ===
-                revisionModal
-            ) {
-
-                hideRevisionModal();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   REVISION FORM
-========================================= */
-
-const revisionForm =
-    document.getElementById(
-        "revisionForm"
-    );
-
-
-if (revisionForm) {
-
-    revisionForm.addEventListener(
-        "submit",
-        function (event) {
+        messageForm.addEventListener("submit", (event) => {
 
             event.preventDefault();
 
-
-            const revisionMessage =
-                document.getElementById(
-                    "revisionMessage"
-                ).value.trim();
-
-
-            if (!revisionMessage) {
-
-                alert(
-                    "Please describe the changes you need."
-                );
-
+            if (!messageInput || !messagesArea) {
                 return;
-
             }
 
 
-            project.revisionsUsed++;
+            const text = messageInput.value.trim();
 
 
-            project.status =
-                "Revision Requested";
-
-
-            const statusElement =
-                document.getElementById(
-                    "projectStatus"
-                );
-
-
-            if (statusElement) {
-
-                statusElement.textContent =
-                    "Revision Requested";
-
+            if (!text) {
+                messageInput.focus();
+                return;
             }
 
 
-            hideRevisionModal();
+            const messageElement =
+                document.createElement("div");
 
 
-            revisionForm.reset();
+            messageElement.className =
+                "message sent";
 
 
-            alert(
-                "Your revision request has been sent to the professional."
-            );
+            const currentTime =
+                new Date().toLocaleTimeString([], {
+                    hour: "numeric",
+                    minute: "2-digit"
+                });
 
 
-            console.log(
-                "Revision request:",
-                revisionMessage
-            );
+            messageElement.innerHTML = `
+
+                <div class="message-avatar">
+                    JS
+                </div>
+
+                <div class="message-content">
+
+                    <div class="message-top">
+
+                        <strong>
+                            You
+                        </strong>
+
+                        <span>
+                            ${currentTime}
+                        </span>
+
+                    </div>
+
+                    <p>
+                        ${escapeHTML(text)}
+                    </p>
+
+                </div>
+
+            `;
 
 
-            updateRevisionDisplay();
-
-        }
-    );
-
-}
+            messagesArea.appendChild(messageElement);
 
 
-/* =========================================
-   UPDATE REVISION COUNT
-========================================= */
+            messageInput.value = "";
 
-function updateRevisionDisplay() {
-
-    const revisionNumber =
-        document.querySelector(
-            ".revision-number"
-        );
+            messagesArea.scrollTop =
+                messagesArea.scrollHeight;
 
 
-    if (!revisionNumber) {
+            /*
+             * Demo response.
+             *
+             * Later, this section will be replaced
+             * by the real backend messaging system.
+             */
 
-        return;
+            setTimeout(() => {
 
-    }
+                addProfessionalReply();
 
+            }, 900);
 
-    revisionNumber.innerHTML =
-        `${project.revisionsUsed}
-        <span>
-            of ${project.revisionLimit} used
-        </span>`;
-
-}
-
-
-/* =========================================
-   MESSAGE SYSTEM
-========================================= */
-
-const messageInput =
-    document.getElementById(
-        "messageInput"
-    );
-
-const sendMessageBtn =
-    document.getElementById(
-        "sendMessageBtn"
-    );
-
-const messagesArea =
-    document.getElementById(
-        "messagesArea"
-    );
-
-
-function sendMessage() {
-
-    if (!messageInput) {
-
-        return;
+        });
 
     }
 
 
-    const message =
-        messageInput.value.trim();
+
+    /* =====================================================
+       PROFESSIONAL DEMO RESPONSE
+    ====================================================== */
+
+    function addProfessionalReply() {
+
+        if (!messagesArea) return;
 
 
-    if (!message) {
-
-        return;
-
-    }
+        const messageElement =
+            document.createElement("div");
 
 
-    const messageElement =
-        document.createElement("div");
+        messageElement.className =
+            "message";
 
 
-    messageElement.className =
-        "message sent";
+        const currentTime =
+            new Date().toLocaleTimeString([], {
+                hour: "numeric",
+                minute: "2-digit"
+            });
 
 
-    messageElement.innerHTML = `
+        messageElement.innerHTML = `
 
-        <div class="message-content">
+            <div class="message-avatar">
+                AC
+            </div>
 
-            <div class="message-top">
+            <div class="message-content">
 
-                <strong>
-                    You
-                </strong>
+                <div class="message-top">
 
-                <span>
-                    Just now
-                </span>
+                    <strong>
+                        Alex Carter
+                    </strong>
+
+                    <span>
+                        ${currentTime}
+                    </span>
+
+                </div>
+
+                <p>
+                    Thanks for the update. I'll review your message and continue with the project.
+                </p>
 
             </div>
 
-            <p>
-                ${escapeHTML(message)}
-            </p>
-
-        </div>
-
-    `;
+        `;
 
 
-    messagesArea.appendChild(
-        messageElement
-    );
+        messagesArea.appendChild(messageElement);
 
 
-    messageInput.value = "";
+        messagesArea.scrollTop =
+            messagesArea.scrollHeight;
+
+    }
 
 
-    messagesArea.scrollTop =
-        messagesArea.scrollHeight;
 
+    /* =====================================================
+       CONTACT PROFESSIONAL
+    ====================================================== */
 
-    console.log(
-        "Message sent:",
-        message
-    );
+    if (contactBtn) {
 
-}
-
-
-if (sendMessageBtn) {
-
-    sendMessageBtn.addEventListener(
-        "click",
-        sendMessage
-    );
-
-}
-
-
-if (messageInput) {
-
-    messageInput.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (
-                event.key === "Enter" &&
-                !event.shiftKey
-            ) {
-
-                event.preventDefault();
-
-                sendMessage();
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   SECURITY HELPER
-========================================= */
-
-function escapeHTML(text) {
-
-    const div =
-        document.createElement("div");
-
-    div.textContent = text;
-
-    return div.innerHTML;
-
-}
-
-
-/* =========================================
-   MESSAGE PROFESSIONAL
-========================================= */
-
-const messageBtn =
-    document.getElementById(
-        "messageBtn"
-    );
-
-
-if (messageBtn) {
-
-    messageBtn.addEventListener(
-        "click",
-        function () {
+        contactBtn.addEventListener("click", () => {
 
             if (messageInput) {
 
@@ -622,171 +556,242 @@ if (messageBtn) {
 
             }
 
-        }
-    );
+        });
 
-}
-
-
-/* =========================================
-   FILE BUTTONS
-========================================= */
-
-const fileButtons =
-    document.querySelectorAll(
-        ".file-btn"
-    );
+    }
 
 
-fileButtons.forEach(button => {
 
-    button.addEventListener(
-        "click",
-        function () {
+    /* =====================================================
+       FILE BUTTONS
+    ====================================================== */
 
-            alert(
-                "File preview/download will be connected to Supabase Storage later."
+    fileButtons.forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            const fileName =
+                button.dataset.file || "Project file";
+
+
+            /*
+             * Demo behavior.
+             *
+             * Later the backend will connect this button
+             * to the actual secure project file.
+             */
+
+            showNotification(
+                `${fileName} is ready to be connected to the project file system.`
             );
 
-        }
-    );
+        });
 
-});
-
-
-/* =========================================
-   LOGOUT
-========================================= */
-
-const logoutBtn =
-    document.getElementById(
-        "logoutBtn"
-    );
+    });
 
 
-if (logoutBtn) {
 
-    logoutBtn.addEventListener(
-        "click",
-        function () {
+    /* =====================================================
+       NOTIFICATIONS
+    ====================================================== */
 
-            const confirmation =
-                confirm(
-                    "Are you sure you want to log out?"
-                );
+    if (notificationBtn) {
+
+        notificationBtn.addEventListener("click", () => {
+
+            showNotification(
+                "You have 2 project notifications."
+            );
 
 
-            if (!confirmation) {
+            if (notificationDot) {
+                notificationDot.style.display = "none";
+            }
 
+        });
+
+    }
+
+
+
+    /* =====================================================
+       LOGOUT
+    ====================================================== */
+
+    if (logoutBtn) {
+
+        logoutBtn.addEventListener("click", () => {
+
+            const confirmLogout =
+                confirm("Are you sure you want to log out?");
+
+
+            if (!confirmLogout) {
                 return;
-
             }
 
 
             /*
-                FUTURE SUPABASE:
+             * Demo logout.
+             *
+             * When the backend is connected,
+             * this will clear the authenticated session.
+             */
 
-                await supabase.auth.signOut();
-            */
-
-
-            localStorage.removeItem(
-                "vorvenaClient"
-            );
-
+            localStorage.removeItem("vorvenaUser");
 
             window.location.href =
                 "login.html";
 
-        }
-    );
-
-}
-
-
-/* =========================================
-   RESPONSIVE SIDEBAR RESET
-========================================= */
-
-window.addEventListener(
-    "resize",
-    function () {
-
-        if (window.innerWidth > 1100) {
-
-            sidebar.classList.remove(
-                "open"
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================================
-   FUTURE SUPABASE STRUCTURE
-========================================= */
-
-
-/*
-    LATER:
-
-    loadProject();
-
-    supabase
-        .from("projects")
-        .select("*")
-        .eq("id", projectId);
-
-
-    Messages:
-
-    supabase
-        .from("project_messages")
-        .select("*")
-        .eq("project_id", projectId);
-
-
-    Files:
-
-    supabase
-        .from("project_files")
-        .select("*")
-        .eq("project_id", projectId);
-
-
-    Revisions:
-
-    supabase
-        .from("revision_requests")
-        .select("*")
-        .eq("project_id", projectId);
-
-
-    Approve:
-
-    supabase
-        .from("projects")
-        .update({
-            status: "Approved"
-        })
-        .eq("id", projectId);
-
-
-    Request Revision:
-
-    supabase
-        .from("revision_requests")
-        .insert({
-            project_id: projectId,
-            requested_by: user.id,
-            message: revisionMessage
         });
 
-*/
+    }
 
 
-console.log(
-    "VORVENA Project Workspace loaded successfully."
-);
+
+    /* =====================================================
+       NOTIFICATION HELPER
+    ====================================================== */
+
+    function showNotification(message) {
+
+        const existing =
+            document.querySelector(".workspace-toast");
+
+
+        if (existing) {
+            existing.remove();
+        }
+
+
+        const toast =
+            document.createElement("div");
+
+
+        toast.className =
+            "workspace-toast";
+
+
+        toast.textContent =
+            message;
+
+
+        toast.style.position = "fixed";
+
+        toast.style.right = "20px";
+
+        toast.style.bottom = "20px";
+
+        toast.style.maxWidth = "360px";
+
+        toast.style.padding = "13px 16px";
+
+        toast.style.background = "#0B1F3A";
+
+        toast.style.color = "#FFFFFF";
+
+        toast.style.border =
+            "1px solid #0B1F3A";
+
+        toast.style.borderRadius = "8px";
+
+        toast.style.boxShadow =
+            "0 8px 24px rgba(5, 5, 5, 0.15)";
+
+        toast.style.fontSize = "12px";
+
+        toast.style.fontWeight = "700";
+
+        toast.style.zIndex = "3000";
+
+        toast.style.opacity = "0";
+
+        toast.style.transform =
+            "translateY(10px)";
+
+        toast.style.transition =
+            "0.2s ease";
+
+
+        document.body.appendChild(toast);
+
+
+        requestAnimationFrame(() => {
+
+            toast.style.opacity = "1";
+
+            toast.style.transform =
+                "translateY(0)";
+
+        });
+
+
+        setTimeout(() => {
+
+            toast.style.opacity = "0";
+
+            toast.style.transform =
+                "translateY(10px)";
+
+
+            setTimeout(() => {
+
+                toast.remove();
+
+            }, 250);
+
+        }, 3000);
+
+    }
+
+
+
+    /* =====================================================
+       HTML ESCAPE
+       Prevents user-entered messages from becoming HTML.
+    ====================================================== */
+
+    function escapeHTML(value) {
+
+        const div =
+            document.createElement("div");
+
+
+        div.textContent =
+            value;
+
+
+        return div.innerHTML;
+
+    }
+
+
+
+    /* =====================================================
+       INITIAL STATE
+    ====================================================== */
+
+    /*
+     * Keep approval unavailable until the professional
+     * submits completed work.
+     *
+     * Backend will eventually change this dynamically.
+     */
+
+    if (approveBtn) {
+        approveBtn.disabled = true;
+    }
+
+
+    /*
+     * Scroll existing messages to the latest message.
+     */
+
+    if (messagesArea) {
+
+        messagesArea.scrollTop =
+            messagesArea.scrollHeight;
+
+    }
+
+});
