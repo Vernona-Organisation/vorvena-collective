@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,6 +82,11 @@
                     My Profile
                 </a>
 
+                <a href="#" class="nav-link" data-section="payout-settings">
+                    <span class="nav-icon">▤</span>
+                    Payout Settings
+                </a>
+
             </nav>
 
         </div>
@@ -147,7 +153,7 @@
         </header>
 
 
-        <!-- ================= DASHBOARD SECTION ================= -->
+        <!-- ================= DASHBOARD ================= -->
         <section class="dashboard-section page-section active-section" id="dashboardSection">
 
             <div class="page-header">
@@ -224,7 +230,6 @@
             <!-- ================= MAIN GRID ================= -->
             <div class="dashboard-grid">
 
-                <!-- PROJECTS -->
                 <div class="dashboard-card projects-card">
 
                     <div class="card-header">
@@ -243,7 +248,6 @@
 
                     <div class="project-list">
 
-                        <!-- PROJECT 1 -->
                         <div class="project-row">
 
                             <div class="project-main">
@@ -268,6 +272,7 @@
                             </div>
 
                             <div class="project-status">
+
                                 <span class="status active-status">
                                     In Progress
                                 </span>
@@ -277,12 +282,12 @@
                                     data-project="Business Website Design">
                                     Open
                                 </button>
+
                             </div>
 
                         </div>
 
 
-                        <!-- PROJECT 2 -->
                         <div class="project-row">
 
                             <div class="project-main">
@@ -323,7 +328,6 @@
                         </div>
 
 
-                        <!-- PROJECT 3 -->
                         <div class="project-row">
 
                             <div class="project-main">
@@ -371,7 +375,6 @@
                 <!-- RIGHT COLUMN -->
                 <div class="right-column">
 
-                    <!-- EARNINGS -->
                     <div class="dashboard-card earnings-card">
 
                         <div class="card-header">
@@ -413,7 +416,6 @@
                     </div>
 
 
-                    <!-- PAYMENT -->
                     <div class="dashboard-card payout-card">
 
                         <div class="card-header">
@@ -433,6 +435,7 @@
                         </div>
 
                         <div class="payment-status-box">
+
                             <span class="status paid-status">
                                 Paid
                             </span>
@@ -440,6 +443,7 @@
                             <small>
                                 Admin payout completed
                             </small>
+
                         </div>
 
                     </div>
@@ -452,7 +456,6 @@
             <!-- ================= BOTTOM GRID ================= -->
             <div class="bottom-grid">
 
-                <!-- NOTIFICATIONS -->
                 <div class="dashboard-card">
 
                     <div class="card-header">
@@ -526,7 +529,6 @@
                 </div>
 
 
-                <!-- QUICK ACTIONS -->
                 <div class="dashboard-card quick-actions-card">
 
                     <div class="card-header">
@@ -543,30 +545,48 @@
 
                         <button class="quick-action" id="activeProjectsBtn">
                             <span>◉</span>
+
                             <div>
                                 <strong>Active Projects</strong>
                                 <small>Continue your work</small>
                             </div>
+
                             <b>→</b>
                         </button>
 
 
                         <button class="quick-action" id="submittedBtn">
                             <span>✓</span>
+
                             <div>
                                 <strong>Submitted Work</strong>
                                 <small>Track client reviews</small>
                             </div>
+
                             <b>→</b>
                         </button>
 
 
                         <button class="quick-action" id="profileBtn">
                             <span>◯</span>
+
                             <div>
                                 <strong>Update Profile</strong>
                                 <small>Keep your profile current</small>
                             </div>
+
+                            <b>→</b>
+                        </button>
+
+
+                        <button class="quick-action" id="payoutSettingsBtn">
+                            <span>▤</span>
+
+                            <div>
+                                <strong>Payout Settings</strong>
+                                <small>Manage your payout details</small>
+                            </div>
+
                             <b>→</b>
                         </button>
 
@@ -598,22 +618,31 @@
         </section>
 
 
-        <!-- ================= PROJECTS SECTION ================= -->
+        <!-- ================= PROJECTS ================= -->
         <section class="page-section hidden-section" id="projectsSection">
 
             <div class="page-header simple-header">
+
                 <div>
                     <span class="eyebrow">PROJECT MANAGEMENT</span>
+
                     <h1>My Projects</h1>
-                    <p>View and manage all projects assigned to you.</p>
+
+                    <p>
+                        View and manage all projects assigned to you.
+                    </p>
                 </div>
+
             </div>
 
             <div class="dashboard-card full-card">
 
                 <div class="section-placeholder">
+
                     <div class="large-placeholder-icon">▣</div>
+
                     <h2>Your Projects</h2>
+
                     <p>
                         Your complete project workspace will appear here.
                     </p>
@@ -621,6 +650,7 @@
                     <button class="primary-btn" id="projectsComingBtn">
                         Project Workspace
                     </button>
+
                 </div>
 
             </div>
@@ -628,41 +658,57 @@
         </section>
 
 
-        <!-- ================= ACTIVE SECTION ================= -->
+        <!-- ================= ACTIVE ================= -->
         <section class="page-section hidden-section" id="activeSection">
 
             <div class="page-header simple-header">
+
                 <div>
                     <span class="eyebrow">WORKSPACE</span>
+
                     <h1>Active Projects</h1>
-                    <p>Projects you are currently working on.</p>
-                </div>
-            </div>
 
-            <div class="dashboard-card full-card">
-
-                <div class="section-placeholder">
-                    <div class="large-placeholder-icon">◉</div>
-                    <h2>2 Active Projects</h2>
                     <p>
-                        Your active project workspaces will be connected here.
+                        Projects you are currently working on.
                     </p>
                 </div>
 
             </div>
 
+            <div class="dashboard-card full-card">
+
+                <div class="section-placeholder">
+
+                    <div class="large-placeholder-icon">◉</div>
+
+                    <h2>2 Active Projects</h2>
+
+                    <p>
+                        Your active project workspaces will be connected here.
+                    </p>
+
+                </div>
+
+            </div>
+
         </section>
 
 
-        <!-- ================= SUBMITTED SECTION ================= -->
+        <!-- ================= SUBMITTED ================= -->
         <section class="page-section hidden-section" id="submittedSection">
 
             <div class="page-header simple-header">
+
                 <div>
                     <span class="eyebrow">CLIENT REVIEW</span>
+
                     <h1>Submitted Work</h1>
-                    <p>Track work currently waiting for client review.</p>
+
+                    <p>
+                        Track work currently waiting for client review.
+                    </p>
                 </div>
+
             </div>
 
             <div class="dashboard-card full-card">
@@ -670,20 +716,31 @@
                 <div class="submitted-demo">
 
                     <div class="submitted-header">
+
                         <div>
-                            <span class="status review-status">Submitted</span>
+
+                            <span class="status review-status">
+                                Submitted
+                            </span>
+
                             <h2>Brand Logo Design</h2>
+
                             <p>Client: Sarah Creative</p>
+
                         </div>
 
                         <strong>₦80,000</strong>
+
                     </div>
 
                     <div class="review-message">
+
                         <strong>Waiting for client review</strong>
+
                         <p>
                             Your submitted work is currently being reviewed by the client.
                         </p>
+
                     </div>
 
                     <button class="primary-btn" id="reviewProjectBtn">
@@ -697,80 +754,148 @@
         </section>
 
 
-        <!-- ================= EARNINGS SECTION ================= -->
+        <!-- ================= EARNINGS ================= -->
         <section class="page-section hidden-section" id="earningsSection">
 
             <div class="page-header simple-header">
+
                 <div>
                     <span class="eyebrow">FINANCIAL OVERVIEW</span>
+
                     <h1>Earnings</h1>
-                    <p>Track your earnings and completed payouts.</p>
+
+                    <p>
+                        Track your earnings and completed payouts.
+                    </p>
                 </div>
+
             </div>
 
             <div class="stats-grid">
 
                 <div class="stat-card">
+
                     <div class="stat-icon red-icon">₦</div>
 
                     <div class="stat-content">
+
                         <span>Total Earned</span>
+
                         <h2>₦487,500</h2>
-                        <small>All completed projects</small>
+
+                        <small>
+                            All completed projects
+                        </small>
+
                     </div>
+
                 </div>
 
+
                 <div class="stat-card">
+
                     <div class="stat-icon black-icon">◷</div>
 
                     <div class="stat-content">
+
                         <span>Awaiting Payout</span>
+
                         <h2>₦0</h2>
-                        <small>Pending admin payout</small>
+
+                        <small>
+                            Pending admin payout
+                        </small>
+
                     </div>
+
                 </div>
 
+
                 <div class="stat-card">
+
                     <div class="stat-icon light-icon">✓</div>
 
                     <div class="stat-content">
+
                         <span>Paid Projects</span>
+
                         <h2>8</h2>
-                        <small>Completed payouts</small>
+
+                        <small>
+                            Completed payouts
+                        </small>
+
                     </div>
+
                 </div>
 
             </div>
 
+
             <div class="dashboard-card full-card earnings-history">
 
                 <div class="card-header">
+
                     <div>
+
                         <h3>Payment History</h3>
-                        <p>Your previous VORVENA payouts</p>
+
+                        <p>
+                            Your previous VORVENA payouts
+                        </p>
+
                     </div>
+
                 </div>
 
+
                 <div class="payment-history-row">
+
                     <div>
-                        <strong>Previous Website Project</strong>
-                        <span>Completed Sept 5, 2026</span>
+
+                        <strong>
+                            Previous Website Project
+                        </strong>
+
+                        <span>
+                            Completed Sept 5, 2026
+                        </span>
+
                     </div>
 
-                    <strong class="payment-amount">+₦127,500</strong>
+                    <strong class="payment-amount">
+                        +₦127,500
+                    </strong>
 
-                    <span class="status paid-status">Paid</span>
+                    <span class="status paid-status">
+                        Paid
+                    </span>
+
                 </div>
 
+
                 <div class="payment-history-row">
+
                     <div>
-                        <strong>Brand Identity Design</strong>
-                        <span>Completed Aug 27, 2026</span>
+
+                        <strong>
+                            Brand Identity Design
+                        </strong>
+
+                        <span>
+                            Completed Aug 27, 2026
+                        </span>
+
                     </div>
 
-                    <strong class="payment-amount">+₦85,000</strong>
+                    <strong class="payment-amount">
+                        +₦85,000
+                    </strong>
 
-                    <span class="status paid-status">Paid</span>
+                    <span class="status paid-status">
+                        Paid
+                    </span>
+
                 </div>
 
             </div>
@@ -778,48 +903,80 @@
         </section>
 
 
-        <!-- ================= PAYMENTS SECTION ================= -->
+        <!-- ================= PAYMENTS ================= -->
         <section class="page-section hidden-section" id="paymentsSection">
 
             <div class="page-header simple-header">
+
                 <div>
+
                     <span class="eyebrow">PAYOUT STATUS</span>
+
                     <h1>Payment Status</h1>
-                    <p>Track projects awaiting or receiving payouts.</p>
+
+                    <p>
+                        Track projects awaiting or receiving payouts.
+                    </p>
+
                 </div>
+
             </div>
+
 
             <div class="dashboard-card full-card">
 
                 <div class="payment-flow">
 
                     <div class="flow-step completed">
+
                         <span>✓</span>
+
                         <strong>Client Approved</strong>
-                        <small>Project approved</small>
+
+                        <small>
+                            Project approved
+                        </small>
+
                     </div>
 
                     <div class="flow-line"></div>
+
 
                     <div class="flow-step active">
+
                         <span>2</span>
+
                         <strong>Admin Verification</strong>
-                        <small>Admin reviews payout</small>
+
+                        <small>
+                            Admin reviews payout
+                        </small>
+
                     </div>
 
                     <div class="flow-line"></div>
 
+
                     <div class="flow-step">
+
                         <span>3</span>
+
                         <strong>Professional Paid</strong>
-                        <small>85% payout released</small>
+
+                        <small>
+                            85% payout released
+                        </small>
+
                     </div>
 
                 </div>
 
+
                 <div class="payment-explanation">
 
-                    <h3>How VORVENA Payouts Work</h3>
+                    <h3>
+                        How VORVENA Payouts Work
+                    </h3>
 
                     <p>
                         When a client approves your completed work, the project moves to
@@ -827,16 +984,32 @@
                         project and releases your professional payment.
                     </p>
 
+
                     <div class="split-box">
 
                         <div>
-                            <span>Your Share</span>
-                            <strong>85%</strong>
+
+                            <span>
+                                Your Share
+                            </span>
+
+                            <strong>
+                                85%
+                            </strong>
+
                         </div>
 
+
                         <div>
-                            <span>VORVENA</span>
-                            <strong>15%</strong>
+
+                            <span>
+                                VORVENA
+                            </span>
+
+                            <strong>
+                                15%
+                            </strong>
+
                         </div>
 
                     </div>
@@ -848,49 +1021,102 @@
         </section>
 
 
-        <!-- ================= NOTIFICATIONS SECTION ================= -->
+        <!-- ================= NOTIFICATIONS ================= -->
         <section class="page-section hidden-section" id="notificationsSection">
 
             <div class="page-header simple-header">
+
                 <div>
+
                     <span class="eyebrow">UPDATES</span>
+
                     <h1>Notifications</h1>
-                    <p>Important updates about your account and projects.</p>
+
+                    <p>
+                        Important updates about your account and projects.
+                    </p>
+
                 </div>
+
             </div>
+
 
             <div class="dashboard-card full-card">
 
                 <div class="notification-list large-notifications">
 
                     <div class="notification-item unread">
-                        <div class="notification-icon red-notification">$</div>
+
+                        <div class="notification-icon red-notification">
+                            $
+                        </div>
 
                         <div>
-                            <strong>Payment completed</strong>
-                            <p>Your ₦127,500 payout has been completed.</p>
-                            <small>2 hours ago</small>
+
+                            <strong>
+                                Payment completed
+                            </strong>
+
+                            <p>
+                                Your ₦127,500 payout has been completed.
+                            </p>
+
+                            <small>
+                                2 hours ago
+                            </small>
+
                         </div>
+
                     </div>
+
 
                     <div class="notification-item unread">
-                        <div class="notification-icon black-notification">!</div>
+
+                        <div class="notification-icon black-notification">
+                            !
+                        </div>
 
                         <div>
-                            <strong>New project assigned</strong>
-                            <p>You have been selected for a new project.</p>
-                            <small>Yesterday</small>
+
+                            <strong>
+                                New project assigned
+                            </strong>
+
+                            <p>
+                                You have been selected for a new project.
+                            </p>
+
+                            <small>
+                                Yesterday
+                            </small>
+
                         </div>
+
                     </div>
 
+
                     <div class="notification-item">
-                        <div class="notification-icon grey-notification">✓</div>
+
+                        <div class="notification-icon grey-notification">
+                            ✓
+                        </div>
 
                         <div>
-                            <strong>Profile approved</strong>
-                            <p>Your professional profile is active.</p>
-                            <small>3 days ago</small>
+
+                            <strong>
+                                Profile approved
+                            </strong>
+
+                            <p>
+                                Your professional profile is active.
+                            </p>
+
+                            <small>
+                                3 days ago
+                            </small>
+
                         </div>
+
                     </div>
 
                 </div>
@@ -900,16 +1126,25 @@
         </section>
 
 
-        <!-- ================= PROFILE SECTION ================= -->
+        <!-- ================= PROFILE ================= -->
         <section class="page-section hidden-section" id="profileSection">
 
             <div class="page-header simple-header">
+
                 <div>
+
                     <span class="eyebrow">ACCOUNT</span>
+
                     <h1>My Profile</h1>
-                    <p>Manage your professional profile information.</p>
+
+                    <p>
+                        Manage your professional profile information.
+                    </p>
+
                 </div>
+
             </div>
+
 
             <div class="dashboard-card full-card profile-card">
 
@@ -920,41 +1155,71 @@
                     </div>
 
                     <div>
-                        <h2>David Williams</h2>
-                        <p>Web Developer</p>
+
+                        <h2>
+                            David Williams
+                        </h2>
+
+                        <p>
+                            Web Developer
+                        </p>
 
                         <span class="verified-badge">
                             ✓ Verified Professional
                         </span>
+
                     </div>
 
                 </div>
+
 
                 <div class="profile-information">
 
                     <div>
+
                         <span>Email</span>
-                        <strong>david@example.com</strong>
+
+                        <strong>
+                            david@example.com
+                        </strong>
+
                     </div>
 
+
                     <div>
+
                         <span>Profession</span>
-                        <strong>Web Developer</strong>
+
+                        <strong>
+                            Web Developer
+                        </strong>
+
                     </div>
 
+
                     <div>
+
                         <span>Projects Completed</span>
-                        <strong>8</strong>
+
+                        <strong>
+                            8
+                        </strong>
+
                     </div>
 
+
                     <div>
+
                         <span>VORVENA Status</span>
+
                         <strong class="profile-approved">
                             Approved
                         </strong>
+
                     </div>
 
                 </div>
+
 
                 <button class="secondary-btn" id="editProfileBtn">
                     Edit Profile
@@ -965,15 +1230,389 @@
         </section>
 
 
+        <!-- ================= PAYOUT SETTINGS ================= -->
+        <section class="page-section hidden-section" id="payout-settingsSection">
+
+            <div class="page-header simple-header">
+
+                <div>
+
+                    <span class="eyebrow">ACCOUNT PAYOUT</span>
+
+                    <h1>Payout Settings</h1>
+
+                    <p>
+                        Add the account information VORVENA will use when your approved payouts are released.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="payout-settings-layout">
+
+                <!-- MAIN FORM -->
+                <div class="dashboard-card payout-settings-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>Professional Payout Details</h3>
+
+                            <p>
+                                Keep your payout information accurate and up to date.
+                            </p>
+
+                        </div>
+
+                        <span class="settings-icon">
+                            ▤
+                        </span>
+
+                    </div>
+
+
+                    <form id="payoutForm">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="payoutCountry">
+                                    Country
+                                </label>
+
+                                <select id="payoutCountry" required>
+
+                                    <option value="">
+                                        Select country
+                                    </option>
+
+                                    <option value="Nigeria">
+                                        Nigeria
+                                    </option>
+
+                                    <option value="United States">
+                                        United States
+                                    </option>
+
+                                    <option value="United Kingdom">
+                                        United Kingdom
+                                    </option>
+
+                                    <option value="Ghana">
+                                        Ghana
+                                    </option>
+
+                                    <option value="Kenya">
+                                        Kenya
+                                    </option>
+
+                                    <option value="South Africa">
+                                        South Africa
+                                    </option>
+
+                                    <option value="Canada">
+                                        Canada
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="payoutCurrency">
+                                    Payout Currency
+                                </label>
+
+                                <select id="payoutCurrency" required>
+
+                                    <option value="">
+                                        Select currency
+                                    </option>
+
+                                    <option value="NGN">
+                                        NGN — Nigerian Naira
+                                    </option>
+
+                                    <option value="USD">
+                                        USD — US Dollar
+                                    </option>
+
+                                    <option value="GBP">
+                                        GBP — British Pound
+                                    </option>
+
+                                    <option value="EUR">
+                                        EUR — Euro
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="accountHolder">
+                                    Account Holder Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="accountHolder"
+                                    placeholder="Enter account holder name"
+                                    autocomplete="name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="bankName">
+                                    Bank Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="bankName"
+                                    placeholder="Enter bank name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group full-form-group">
+
+                                <label for="accountNumber">
+                                    Account Number
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="accountNumber"
+                                    placeholder="Enter account number"
+                                    inputmode="numeric"
+                                    autocomplete="off"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="payout-security-note">
+
+                            <div class="security-symbol">
+                                ✓
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Secure payout information
+                                </strong>
+
+                                <p>
+                                    This frontend demo does not send your banking information anywhere.
+                                    Real payout processing will be securely connected through the VORVENA backend and payment provider.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-actions">
+
+                            <button
+                                type="button"
+                                class="secondary-btn cancel-payout-btn"
+                                id="cancelPayoutBtn">
+                                Cancel
+                            </button>
+
+                            <button
+                                type="submit"
+                                class="primary-btn save-payout-btn">
+                                Save Payout Details
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <!-- SIDE INFORMATION -->
+                <div class="dashboard-card payout-info-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>How Payouts Work</h3>
+
+                            <p>
+                                Your payout process
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="payout-info-list">
+
+                        <div class="payout-info-item">
+
+                            <span>01</span>
+
+                            <div>
+
+                                <strong>
+                                    Client pays
+                                </strong>
+
+                                <p>
+                                    The client pays for the approved project through VORVENA.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="payout-info-item">
+
+                            <span>02</span>
+
+                            <div>
+
+                                <strong>
+                                    Work is completed
+                                </strong>
+
+                                <p>
+                                    You complete and submit the project through VORVENA.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="payout-info-item">
+
+                            <span>03</span>
+
+                            <div>
+
+                                <strong>
+                                    Client approves
+                                </strong>
+
+                                <p>
+                                    The project moves into the payout process.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="payout-info-item">
+
+                            <span>04</span>
+
+                            <div>
+
+                                <strong>
+                                    Professional payout
+                                </strong>
+
+                                <p>
+                                    After verification, your 85% professional share is released.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="payout-split-mini">
+
+                        <div>
+
+                            <span>
+                                Professional
+                            </span>
+
+                            <strong>
+                                85%
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <span>
+                                VORVENA
+                            </span>
+
+                            <strong>
+                                15%
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
         <!-- FOOTER -->
         <footer class="dashboard-footer">
-            <p>© 2026 VORVENA. All rights reserved.</p>
+
+            <p>
+                © 2026 VORVENA. All rights reserved.
+            </p>
 
             <div>
-                <a href="#">Terms</a>
-                <a href="#">Privacy</a>
-                <a href="#">Guidelines</a>
+
+                <a href="#">
+                    Terms
+                </a>
+
+                <a href="#">
+                    Privacy
+                </a>
+
+                <a href="#">
+                    Guidelines
+                </a>
+
             </div>
+
         </footer>
 
     </main>
@@ -992,7 +1631,9 @@
                 ✓
             </div>
 
-            <h2>Project Workspace</h2>
+            <h2>
+                Project Workspace
+            </h2>
 
             <p>
                 The professional project workspace will open here.
@@ -1011,4 +1652,5 @@
     <script src="professional-dashboard.js"></script>
 
 </body>
+
 </html>

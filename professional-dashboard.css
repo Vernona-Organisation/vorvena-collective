@@ -19,6 +19,7 @@
     --shadow: 0 8px 30px rgba(11, 31, 58, 0.06);
 }
 
+
 /* =========================================================
    RESET
 ========================================================= */
@@ -59,10 +60,12 @@ a {
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
-textarea:focus-visible {
+textarea:focus-visible,
+select:focus-visible {
     outline: 2px solid var(--navy);
     outline-offset: 2px;
 }
+
 
 /* =========================================================
    SIDEBAR
@@ -72,6 +75,7 @@ textarea:focus-visible {
     position: fixed;
     top: 0;
     left: 0;
+
     width: var(--sidebar-width);
     height: 100vh;
 
@@ -280,6 +284,7 @@ textarea:focus-visible {
     color: var(--white);
 }
 
+
 /* =========================================================
    MAIN
 ========================================================= */
@@ -289,6 +294,7 @@ textarea:focus-visible {
     min-height: 100vh;
     padding-bottom: 30px;
 }
+
 
 /* =========================================================
    TOPBAR
@@ -414,6 +420,7 @@ textarea:focus-visible {
     color: var(--muted);
 }
 
+
 /* =========================================================
    PAGE
 ========================================================= */
@@ -467,6 +474,7 @@ textarea:focus-visible {
     line-height: 1.6;
     max-width: 650px;
 }
+
 
 /* =========================================================
    BUTTONS
@@ -531,6 +539,7 @@ textarea:focus-visible {
 .text-btn:hover {
     text-decoration: underline;
 }
+
 
 /* =========================================================
    STATS
@@ -604,6 +613,7 @@ textarea:focus-visible {
     font-weight: 700;
 }
 
+
 /* =========================================================
    DASHBOARD GRID
 ========================================================= */
@@ -642,6 +652,7 @@ textarea:focus-visible {
     color: var(--muted);
     font-size: 10px;
 }
+
 
 /* =========================================================
    PROJECTS
@@ -757,6 +768,7 @@ textarea:focus-visible {
     text-decoration: underline;
 }
 
+
 /* =========================================================
    RIGHT COLUMN
 ========================================================= */
@@ -862,6 +874,7 @@ textarea:focus-visible {
     color: var(--muted);
     font-size: 8px;
 }
+
 
 /* =========================================================
    BOTTOM
@@ -998,6 +1011,7 @@ textarea:focus-visible {
     color: var(--navy);
 }
 
+
 /* =========================================================
    TRUST NOTICE
 ========================================================= */
@@ -1039,6 +1053,7 @@ textarea:focus-visible {
     line-height: 1.6;
     margin-top: 5px;
 }
+
 
 /* =========================================================
    FULL SECTIONS
@@ -1087,6 +1102,7 @@ textarea:focus-visible {
     font-size: 11px;
     margin-bottom: 20px;
 }
+
 
 /* =========================================================
    SUBMITTED
@@ -1141,6 +1157,7 @@ textarea:focus-visible {
     font-size: 9px;
     margin-top: 5px;
 }
+
 
 /* =========================================================
    PAYMENT
@@ -1249,6 +1266,7 @@ textarea:focus-visible {
     color: var(--navy);
 }
 
+
 /* =========================================================
    PAYMENT HISTORY
 ========================================================= */
@@ -1282,6 +1300,7 @@ textarea:focus-visible {
 .payment-history-row .payment-amount {
     color: var(--navy);
 }
+
 
 /* =========================================================
    PROFILE
@@ -1358,6 +1377,226 @@ textarea:focus-visible {
     color: var(--navy);
 }
 
+
+/* =========================================================
+   PAYOUT SETTINGS
+========================================================= */
+
+.payout-settings-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.8fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.payout-settings-card,
+.payout-info-card {
+    min-width: 0;
+}
+
+.settings-icon {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--navy-light);
+    color: var(--navy);
+
+    font-size: 15px;
+    font-weight: 900;
+
+    flex-shrink: 0;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.full-form-group {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    min-height: 44px;
+
+    border: 1px solid var(--border);
+    background: var(--white);
+    color: var(--text);
+
+    padding: 0 13px;
+
+    font-size: 11px;
+
+    transition: 0.2s ease;
+}
+
+.form-group input::placeholder {
+    color: #9aa5b5;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--navy);
+    outline: none;
+}
+
+.payout-security-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    background: var(--navy-light);
+    border: 1px solid var(--border-light);
+
+    padding: 15px;
+
+    margin-top: 20px;
+}
+
+.security-symbol {
+    width: 30px;
+    height: 30px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--navy);
+    color: var(--white);
+
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.payout-security-note strong {
+    display: block;
+    color: var(--navy);
+    font-size: 10px;
+    margin-bottom: 4px;
+}
+
+.payout-security-note p {
+    color: var(--muted);
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.form-actions .secondary-btn,
+.form-actions .primary-btn {
+    width: auto;
+    margin-top: 0;
+}
+
+.cancel-payout-btn {
+    min-width: 110px;
+}
+
+.save-payout-btn {
+    min-width: 170px;
+}
+
+.payout-info-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.payout-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    padding: 15px 0;
+
+    border-top: 1px solid var(--border-light);
+}
+
+.payout-info-item > span {
+    width: 27px;
+    height: 27px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--navy);
+    color: var(--white);
+
+    font-size: 8px;
+    font-weight: 900;
+}
+
+.payout-info-item strong {
+    display: block;
+    color: var(--navy);
+    font-size: 10px;
+    margin-bottom: 4px;
+}
+
+.payout-info-item p {
+    color: var(--muted);
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+.payout-split-mini {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+
+    margin-top: 18px;
+}
+
+.payout-split-mini div {
+    background: var(--navy-soft);
+    border: 1px solid var(--border-light);
+
+    padding: 13px;
+}
+
+.payout-split-mini span {
+    display: block;
+    color: var(--muted);
+    font-size: 8px;
+    margin-bottom: 4px;
+}
+
+.payout-split-mini strong {
+    color: var(--navy);
+    font-size: 18px;
+}
+
+
 /* =========================================================
    FOOTER
 ========================================================= */
@@ -1384,6 +1623,7 @@ textarea:focus-visible {
 .dashboard-footer a:hover {
     color: var(--navy);
 }
+
 
 /* =========================================================
    MODAL
@@ -1473,6 +1713,7 @@ textarea:focus-visible {
     margin-top: 20px;
 }
 
+
 /* =========================================================
    SIDEBAR OVERLAY
 ========================================================= */
@@ -1480,6 +1721,7 @@ textarea:focus-visible {
 .sidebar-overlay {
     display: none;
 }
+
 
 /* =========================================================
    TABLET
@@ -1499,7 +1741,12 @@ textarea:focus-visible {
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
+
+    .payout-settings-layout {
+        grid-template-columns: 1fr;
+    }
 }
+
 
 /* =========================================================
    TABLET 768px
@@ -1567,6 +1814,7 @@ textarea:focus-visible {
     }
 }
 
+
 /* =========================================================
    MOBILE 600px
 ========================================================= */
@@ -1583,10 +1831,6 @@ textarea:focus-visible {
 
     .project-row {
         align-items: flex-start;
-    }
-
-    .project-status {
-        align-items: flex-end;
     }
 
     .payment-flow {
@@ -1607,7 +1851,25 @@ textarea:focus-visible {
         grid-column: 1 / -1;
         justify-self: start;
     }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full-form-group {
+        grid-column: auto;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions .primary-btn,
+    .form-actions .secondary-btn {
+        width: 100%;
+    }
 }
+
 
 /* =========================================================
    MOBILE 425px
@@ -1733,7 +1995,20 @@ textarea:focus-visible {
         flex-direction: column;
         padding: 0 14px;
     }
+
+    .payout-security-note {
+        padding: 13px;
+    }
+
+    .payout-security-note p {
+        font-size: 8px;
+    }
+
+    .payout-split-mini {
+        grid-template-columns: 1fr;
+    }
 }
+
 
 /* =========================================================
    SMALL MOBILE 375px
@@ -1794,5 +2069,11 @@ textarea:focus-visible {
 
     .modal-box {
         padding: 28px 20px;
+    }
+
+    .form-group input,
+    .form-group select {
+        min-height: 42px;
+        font-size: 10px;
     }
 }

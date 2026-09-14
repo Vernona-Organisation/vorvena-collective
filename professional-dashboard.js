@@ -67,6 +67,7 @@ const allProjectsBtn = document.getElementById("allProjectsBtn");
 const activeProjectsBtn = document.getElementById("activeProjectsBtn");
 const submittedBtn = document.getElementById("submittedBtn");
 const profileBtn = document.getElementById("profileBtn");
+const payoutSettingsBtn = document.getElementById("payoutSettingsBtn");
 
 const earningsBtn = document.getElementById("earningsBtn");
 const notificationsBtn = document.getElementById("notificationsBtn");
@@ -78,6 +79,9 @@ const projectButtons = document.querySelectorAll(".project-action");
 const modal = document.getElementById("messageModal");
 const closeModal = document.getElementById("closeModal");
 const modalContinue = document.getElementById("modalContinue");
+
+const payoutForm = document.getElementById("payoutForm");
+const cancelPayoutBtn = document.getElementById("cancelPayoutBtn");
 
 
 /* =========================================================
@@ -203,6 +207,12 @@ if (submittedBtn) {
 if (profileBtn) {
     profileBtn.addEventListener("click", () => {
         showSection("profile");
+    });
+}
+
+if (payoutSettingsBtn) {
+    payoutSettingsBtn.addEventListener("click", () => {
+        showSection("payout-settings");
     });
 }
 
@@ -337,8 +347,180 @@ if (editProfileBtn) {
 
         alert(
             "Profile Editing\n\n" +
-            "Profile editing will be connected to Supabase when the backend is added."
+            "Profile editing will be connected to the VORVENA backend when the backend is added."
         );
+
+    });
+
+}
+
+
+/* =========================================================
+   PAYOUT SETTINGS
+========================================================= */
+
+/*
+    FRONTEND DEMO ONLY
+
+    These payout details are stored temporarily in localStorage.
+
+    IMPORTANT:
+    Real banking information must NOT be handled this way
+    in the production version.
+
+    When the backend is connected:
+
+    Professional
+        ↓
+    Secure backend
+        ↓
+    Payment provider / Paystack
+        ↓
+    Verified payout
+*/
+
+function loadPayoutDetails() {
+
+    const savedDetails =
+        localStorage.getItem("vorvenaPayoutDetails");
+
+    if (!savedDetails || !payoutForm) return;
+
+    try {
+
+        const payoutDetails =
+            JSON.parse(savedDetails);
+
+        const country =
+            document.getElementById("payoutCountry");
+
+        const currency =
+            document.getElementById("payoutCurrency");
+
+        const accountHolder =
+            document.getElementById("accountHolder");
+
+        const bankName =
+            document.getElementById("bankName");
+
+        const accountNumber =
+            document.getElementById("accountNumber");
+
+
+        if (country) {
+            country.value = payoutDetails.country || "";
+        }
+
+        if (currency) {
+            currency.value = payoutDetails.currency || "";
+        }
+
+        if (accountHolder) {
+            accountHolder.value =
+                payoutDetails.accountHolder || "";
+        }
+
+        if (bankName) {
+            bankName.value =
+                payoutDetails.bankName || "";
+        }
+
+        if (accountNumber) {
+            accountNumber.value =
+                payoutDetails.accountNumber || "";
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Unable to load payout details:",
+            error
+        );
+
+    }
+
+}
+
+
+if (payoutForm) {
+
+    payoutForm.addEventListener("submit", event => {
+
+        event.preventDefault();
+
+        const payoutDetails = {
+
+            country:
+                document.getElementById("payoutCountry").value,
+
+            currency:
+                document.getElementById("payoutCurrency").value,
+
+            accountHolder:
+                document.getElementById("accountHolder").value.trim(),
+
+            bankName:
+                document.getElementById("bankName").value.trim(),
+
+            accountNumber:
+                document.getElementById("accountNumber").value.trim()
+
+        };
+
+
+        if (
+            !payoutDetails.country ||
+            !payoutDetails.currency ||
+            !payoutDetails.accountHolder ||
+            !payoutDetails.bankName ||
+            !payoutDetails.accountNumber
+        ) {
+
+            alert(
+                "Please complete all payout fields."
+            );
+
+            return;
+        }
+
+
+        /*
+            FRONTEND DEMO STORAGE ONLY.
+
+            This will later be replaced by a secure
+            backend request.
+        */
+
+        localStorage.setItem(
+            "vorvenaPayoutDetails",
+            JSON.stringify(payoutDetails)
+        );
+
+
+        alert(
+            "Payout details saved successfully.\n\n" +
+            "Real Paystack payout connection will be added when the backend is connected."
+        );
+
+        console.log(
+            "Demo payout details saved:",
+            payoutDetails
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   CANCEL PAYOUT SETTINGS
+========================================================= */
+
+if (cancelPayoutBtn) {
+
+    cancelPayoutBtn.addEventListener("click", () => {
+
+        showSection("dashboard");
 
     });
 
@@ -359,6 +541,7 @@ if (logoutBtn) {
 
         if (!confirmLogout) return;
 
+
         /*
             FRONTEND DEMO ONLY
 
@@ -368,10 +551,17 @@ if (logoutBtn) {
             supabase.auth.signOut()
         */
 
-        localStorage.removeItem("vorvenaProfessional");
-        localStorage.removeItem("vorvenaProfessionalSession");
+        localStorage.removeItem(
+            "vorvenaProfessional"
+        );
 
-        alert("You have been logged out.");
+        localStorage.removeItem(
+            "vorvenaProfessionalSession"
+        );
+
+        alert(
+            "You have been logged out."
+        );
 
         window.location.href = "login.html";
 
@@ -385,13 +575,6 @@ if (logoutBtn) {
 ========================================================= */
 
 function createDemoSession() {
-
-    /*
-        This creates a temporary frontend session.
-
-        We will remove this when Supabase authentication
-        is connected.
-    */
 
     const existingProfessional =
         localStorage.getItem("vorvenaProfessional");
@@ -424,8 +607,15 @@ function updateProjectCounts() {
             project.status === "Submitted"
         ).length;
 
-    console.log("Active projects:", activeProjects);
-    console.log("Submitted projects:", submittedProjects);
+    console.log(
+        "Active projects:",
+        activeProjects
+    );
+
+    console.log(
+        "Submitted projects:",
+        submittedProjects
+    );
 
 }
 
@@ -480,7 +670,7 @@ console.log(
 function handleProjectStatus(status) {
 
     /*
-        FUTURE SUPABASE FLOW:
+        FUTURE BACKEND FLOW:
 
         Hired
            ↓
@@ -516,21 +706,17 @@ function handleProjectStatus(status) {
 function notifyAdminForPayout(project) {
 
     /*
-        IMPORTANT:
+        FUTURE BACKEND FLOW:
 
-        This is NOT active yet because this dashboard
-        currently has no backend.
-
-        Once Supabase is connected, when the client approves:
-
-        1. Project status becomes "awaiting_payout"
-        2. Admin notification is created
-        3. Admin dashboard displays the project
-        4. Admin verifies the project
-        5. Admin pays the professional 85%
-        6. Admin marks payout as completed
-        7. Project becomes "completed"
-        8. Professional receives notification
+        1. Client approves project
+        2. Project becomes "awaiting_payout"
+        3. Admin notification is created
+        4. Admin verifies project
+        5. Backend releases professional payout
+        6. Professional receives 85%
+        7. VORVENA retains 15%
+        8. Project becomes "completed"
+        9. Professional receives notification
     */
 
     console.log(
@@ -561,6 +747,8 @@ window.addEventListener("resize", () => {
 document.addEventListener("DOMContentLoaded", () => {
 
     createDemoSession();
+
+    loadPayoutDetails();
 
     updateProjectCounts();
 
