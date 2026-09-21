@@ -1,21 +1,16 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
     <title>Join Community | VORVENA</title>
 
-    <link rel="stylesheet" href="join.css">
-
-
+    <link rel="stylesheet" href="./join.css">
 </head>
 
 <body>
-
 
     <header class="site-header">
 
@@ -41,15 +36,20 @@
 
             </nav>
 
-            <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                type="button"
+                aria-label="Open menu"
+                aria-expanded="false">
+
                 <span></span>
                 <span></span>
+
             </button>
 
         </div>
 
-
-        <!-- MOBILE NAV -->
 
         <nav class="mobile-nav" id="mobileNav">
 
@@ -70,11 +70,9 @@
     </header>
 
 
-    <!-- =========================
-     HERO
-========================== -->
-
     <main>
+
+        <!-- HERO -->
 
         <section class="join-hero">
 
@@ -92,6 +90,8 @@
                 <p>
                     Join a professional community built to connect
                     skilled people with meaningful opportunities.
+                    Submit your information to create your professional
+                    account and begin the VORVENA verification process.
                 </p>
 
                 <span>
@@ -103,9 +103,7 @@
         </section>
 
 
-        <!-- =========================
-         APPLICATION
-    ========================== -->
+        <!-- APPLICATION -->
 
         <section class="application-section">
 
@@ -128,9 +126,7 @@
                 <form id="joinForm" novalidate>
 
 
-                    <!-- =========================
-                     PERSONAL INFORMATION
-                ========================== -->
+                    <!-- PERSONAL INFORMATION -->
 
                     <div class="form-section">
 
@@ -152,8 +148,13 @@
                                         FIRST NAME *
                                     </label>
 
-                                    <input type="text" id="firstName" name="firstName" placeholder="Your first name"
-                                        autocomplete="given-name" required>
+                                    <input
+                                        type="text"
+                                        id="firstName"
+                                        name="firstName"
+                                        placeholder="Your first name"
+                                        autocomplete="given-name"
+                                        required>
 
                                 </div>
 
@@ -164,8 +165,13 @@
                                         LAST NAME *
                                     </label>
 
-                                    <input type="text" id="lastName" name="lastName" placeholder="Your last name"
-                                        autocomplete="family-name" required>
+                                    <input
+                                        type="text"
+                                        id="lastName"
+                                        name="lastName"
+                                        placeholder="Your last name"
+                                        autocomplete="family-name"
+                                        required>
 
                                 </div>
 
@@ -176,13 +182,16 @@
                                         EMAIL ADDRESS *
                                     </label>
 
-                                    <input type="email" id="email" name="email" placeholder="you@example.com"
-                                        autocomplete="email" required>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        placeholder="you@example.com"
+                                        autocomplete="email"
+                                        required>
 
                                 </div>
 
-
-                                <!-- PHONE NUMBER -->
 
                                 <div class="form-group">
 
@@ -193,22 +202,30 @@
                                     <div class="phone-input">
 
                                         <div class="phone-code-box">
-                                            <span id="selectedFlag">🇳🇬</span>
+
+                                            <span id="selectedFlag">
+                                                🇳🇬
+                                            </span>
 
                                             <span id="phoneCode">
                                                 +234
                                             </span>
+
                                         </div>
 
-                                        <input type="tel" id="phone" name="phone" placeholder="8012345678"
-                                            autocomplete="tel-national" inputmode="tel" required>
+                                        <input
+                                            type="tel"
+                                            id="phone"
+                                            name="phone"
+                                            placeholder="8012345678"
+                                            autocomplete="tel-national"
+                                            inputmode="tel"
+                                            required>
 
                                     </div>
 
                                 </div>
 
-
-                                <!-- COUNTRY -->
 
                                 <div class="form-group">
 
@@ -216,7 +233,11 @@
                                         COUNTRY *
                                     </label>
 
-                                    <select id="country" name="country" autocomplete="country-name" required>
+                                    <select
+                                        id="country"
+                                        name="country"
+                                        autocomplete="country-name"
+                                        required>
 
                                         <option value="">
                                             Select your country
@@ -233,8 +254,13 @@
                                         CITY *
                                     </label>
 
-                                    <input type="text" id="city" name="city" placeholder="Your city"
-                                        autocomplete="address-level2" required>
+                                    <input
+                                        type="text"
+                                        id="city"
+                                        name="city"
+                                        placeholder="Your city"
+                                        autocomplete="address-level2"
+                                        required>
 
                                 </div>
 
@@ -245,9 +271,7 @@
                     </div>
 
 
-                    <!-- =========================
-                     PROFILE PHOTO
-                ========================== -->
+                    <!-- PROFILE PHOTO -->
 
                     <div class="form-section">
 
@@ -270,12 +294,18 @@
 
                             <div class="upload-area">
 
-                                <label for="profilePicture" class="upload-box">
+                                <label
+                                    for="profilePicture"
+                                    class="upload-box">
 
-                                    <div class="image-preview" id="imagePreview">
+                                    <div
+                                        class="image-preview"
+                                        id="imagePreview">
+
                                         <span>
                                             +
                                         </span>
+
                                     </div>
 
                                     <div class="upload-text">
@@ -292,8 +322,12 @@
 
                                 </label>
 
-                                <input type="file" id="profilePicture" name="profilePicture"
-                                    accept="image/png,image/jpeg,image/webp" required>
+                                <input
+                                    type="file"
+                                    id="profilePicture"
+                                    name="profilePicture"
+                                    accept="image/png,image/jpeg,image/webp"
+                                    required>
 
                             </div>
 
@@ -302,9 +336,7 @@
                     </div>
 
 
-                    <!-- =========================
-                     PROFESSIONAL INFORMATION
-                ========================== -->
+                    <!-- PROFESSIONAL INFORMATION -->
 
                     <div class="form-section">
 
@@ -320,36 +352,93 @@
 
                             <div class="form-grid two-columns">
 
+
                                 <div class="form-group">
 
                                     <label for="profession">
                                         PRIMARY PROFESSION *
                                     </label>
 
-                                    <select id="profession" name="profession" required>
+                                    <select
+                                        id="profession"
+                                        name="profession"
+                                        required>
 
                                         <option value="">
                                             Select your profession
                                         </option>
 
-                                        <option>Frontend Developer</option>
-                                        <option>Backend Developer</option>
-                                        <option>Full Stack Developer</option>
-                                        <option>Graphic Designer</option>
-                                        <option>Motion Designer</option>
-                                        <option>UI/UX Designer</option>
-                                        <option>Social Media Manager</option>
-                                        <option>Affiliate Marketer</option>
-                                        <option>Technical Writer</option>
-                                        <option>DevOps / Cloud Engineer</option>
-                                        <option>AI / Machine Learning Engineer</option>
-                                        <option>Photographer</option>
-                                        <option>QA / Software Tester</option>
-                                        <option>Writer</option>
-                                        <option>Data Analyst</option>
-                                        <option>Digital Marketer</option>
-                                        <option>Cyber Security</option>
-                                        <option>Other</option>
+                                        <option value="Frontend Developer">
+                                            Frontend Developer
+                                        </option>
+
+                                        <option value="Backend Developer">
+                                            Backend Developer
+                                        </option>
+
+                                        <option value="Full Stack Developer">
+                                            Full Stack Developer
+                                        </option>
+
+                                        <option value="Graphic Designer">
+                                            Graphic Designer
+                                        </option>
+
+                                        <option value="Motion Designer">
+                                            Motion Designer
+                                        </option>
+
+                                        <option value="UI/UX Designer">
+                                            UI/UX Designer
+                                        </option>
+
+                                        <option value="Social Media Manager">
+                                            Social Media Manager
+                                        </option>
+
+                                        <option value="Affiliate Marketer">
+                                            Affiliate Marketer
+                                        </option>
+
+                                        <option value="Technical Writer">
+                                            Technical Writer
+                                        </option>
+
+                                        <option value="DevOps / Cloud Engineer">
+                                            DevOps / Cloud Engineer
+                                        </option>
+
+                                        <option value="AI / Machine Learning Engineer">
+                                            AI / Machine Learning Engineer
+                                        </option>
+
+                                        <option value="Photographer">
+                                            Photographer
+                                        </option>
+
+                                        <option value="QA / Software Tester">
+                                            QA / Software Tester
+                                        </option>
+
+                                        <option value="Writer">
+                                            Writer
+                                        </option>
+
+                                        <option value="Data Analyst">
+                                            Data Analyst
+                                        </option>
+
+                                        <option value="Digital Marketer">
+                                            Digital Marketer
+                                        </option>
+
+                                        <option value="Cyber Security">
+                                            Cyber Security
+                                        </option>
+
+                                        <option value="Other">
+                                            Other
+                                        </option>
 
                                     </select>
 
@@ -362,17 +451,34 @@
                                         YEARS OF EXPERIENCE *
                                     </label>
 
-                                    <select id="experience" name="experience" required>
+                                    <select
+                                        id="experience"
+                                        name="experience"
+                                        required>
 
                                         <option value="">
                                             Select experience
                                         </option>
 
-                                        <option>Less than 1 year</option>
-                                        <option>1–2 years</option>
-                                        <option>3–5 years</option>
-                                        <option>6–10 years</option>
-                                        <option>10+ years</option>
+                                        <option value="Less than 1 year">
+                                            Less than 1 year
+                                        </option>
+
+                                        <option value="1–2 years">
+                                            1–2 years
+                                        </option>
+
+                                        <option value="3–5 years">
+                                            3–5 years
+                                        </option>
+
+                                        <option value="6–10 years">
+                                            6–10 years
+                                        </option>
+
+                                        <option value="10+ years">
+                                            10+ years
+                                        </option>
 
                                     </select>
 
@@ -385,8 +491,12 @@
                                         SKILLS *
                                     </label>
 
-                                    <input type="text" id="skills" name="skills"
-                                        placeholder="HTML, CSS, JavaScript, Figma..." required>
+                                    <input
+                                        type="text"
+                                        id="skills"
+                                        name="skills"
+                                        placeholder="HTML, CSS, JavaScript, Figma..."
+                                        required>
 
                                     <small class="field-note">
                                         Separate multiple skills with commas.
@@ -401,7 +511,10 @@
                                         PROFESSIONAL BIO *
                                     </label>
 
-                                    <textarea id="bio" name="bio" rows="6"
+                                    <textarea
+                                        id="bio"
+                                        name="bio"
+                                        rows="6"
                                         placeholder="Tell us about your experience, strengths and the kind of work you do..."
                                         required></textarea>
 
@@ -414,9 +527,7 @@
                     </div>
 
 
-                    <!-- =========================
-                     WORK INFORMATION
-                ========================== -->
+                    <!-- WORK INFORMATION -->
 
                     <div class="form-section">
 
@@ -432,14 +543,19 @@
 
                             <div class="form-grid">
 
+
                                 <div class="form-group">
 
                                     <label for="portfolio">
                                         PORTFOLIO LINK *
                                     </label>
 
-                                    <input type="url" id="portfolio" name="portfolio"
-                                        placeholder="https://yourportfolio.com" required>
+                                    <input
+                                        type="url"
+                                        id="portfolio"
+                                        name="portfolio"
+                                        placeholder="https://yourportfolio.com"
+                                        required>
 
                                 </div>
 
@@ -450,7 +566,10 @@
                                         ADDITIONAL WORK / SOCIAL LINK
                                     </label>
 
-                                    <input type="url" id="additionalLink" name="additionalLink"
+                                    <input
+                                        type="url"
+                                        id="additionalLink"
+                                        name="additionalLink"
                                         placeholder="https://...">
 
                                 </div>
@@ -464,9 +583,16 @@
 
                                     <div class="file-input-wrapper">
 
-                                        <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
+                                        <input
+                                            type="file"
+                                            id="cv"
+                                            name="cv"
+                                            accept=".pdf,.doc,.docx"
+                                            required>
 
-                                        <label for="cv" class="file-label">
+                                        <label
+                                            for="cv"
+                                            class="file-label">
 
                                             <span id="cvName">
                                                 CHOOSE YOUR CV
@@ -494,9 +620,7 @@
                     </div>
 
 
-                    <!-- =========================
-                     ACCOUNT
-                ========================== -->
+                    <!-- ACCOUNT -->
 
                     <div class="form-section">
 
@@ -512,14 +636,20 @@
 
                             <div class="form-grid two-columns">
 
+
                                 <div class="form-group">
 
                                     <label for="password">
                                         PASSWORD *
                                     </label>
 
-                                    <input type="password" id="password" name="password"
-                                        placeholder="Minimum 8 characters" minlength="8" autocomplete="new-password"
+                                    <input
+                                        type="password"
+                                        id="password"
+                                        name="password"
+                                        placeholder="Minimum 8 characters"
+                                        minlength="8"
+                                        autocomplete="new-password"
                                         required>
 
                                 </div>
@@ -531,8 +661,13 @@
                                         CONFIRM PASSWORD *
                                     </label>
 
-                                    <input type="password" id="confirmPassword" name="confirmPassword"
-                                        placeholder="Repeat your password" minlength="8" autocomplete="new-password"
+                                    <input
+                                        type="password"
+                                        id="confirmPassword"
+                                        name="confirmPassword"
+                                        placeholder="Repeat your password"
+                                        minlength="8"
+                                        autocomplete="new-password"
                                         required>
 
                                 </div>
@@ -544,9 +679,7 @@
                     </div>
 
 
-                    <!-- =========================
-                     AGREEMENTS
-                ========================== -->
+                    <!-- AGREEMENT -->
 
                     <div class="form-section agreement-section">
 
@@ -568,13 +701,20 @@
 
                             <div class="agreement-list">
 
+
                                 <label class="agreement-item">
 
-                                    <input type="checkbox" id="terms" required>
+                                    <input
+                                        type="checkbox"
+                                        id="terms"
+                                        name="terms"
+                                        required>
 
                                     <span>
                                         I agree to the
-                                        <a href="./terms.html" target="_blank">
+                                        <a
+                                            href="./terms.html"
+                                            target="_blank">
                                             Terms & Conditions
                                         </a>.
                                     </span>
@@ -584,11 +724,17 @@
 
                                 <label class="agreement-item">
 
-                                    <input type="checkbox" id="privacy" required>
+                                    <input
+                                        type="checkbox"
+                                        id="privacy"
+                                        name="privacy"
+                                        required>
 
                                     <span>
                                         I have read and agree to the
-                                        <a href="./privacy.html" target="_blank">
+                                        <a
+                                            href="./privacy.html"
+                                            target="_blank">
                                             Privacy Policy
                                         </a>.
                                     </span>
@@ -598,11 +744,17 @@
 
                                 <label class="agreement-item">
 
-                                    <input type="checkbox" id="guidelines" required>
+                                    <input
+                                        type="checkbox"
+                                        id="guidelines"
+                                        name="guidelines"
+                                        required>
 
                                     <span>
                                         I agree to follow the
-                                        <a href="./guidelines.html" target="_blank">
+                                        <a
+                                            href="./guidelines.html"
+                                            target="_blank">
                                             Community Guidelines
                                         </a>.
                                     </span>
@@ -612,12 +764,18 @@
 
                                 <label class="agreement-item">
 
-                                    <input type="checkbox" id="paymentAgreement" required>
+                                    <input
+                                        type="checkbox"
+                                        id="paymentAgreement"
+                                        name="paymentAgreement"
+                                        required>
 
                                     <span>
                                         I understand the VORVENA project
                                         payment structure:
-                                        <strong>15% VORVENA / 85% professional</strong>
+                                        <strong>
+                                            15% VORVENA / 85% professional
+                                        </strong>
                                         for applicable approved jobs arranged
                                         through the platform.
                                     </span>
@@ -631,29 +789,30 @@
                     </div>
 
 
-                    <!-- =========================
-                     SUBMIT
-                ========================== -->
+                    <!-- SUBMIT -->
 
                     <div class="submit-area">
 
                         <div>
 
                             <span class="submit-label">
-                                FINAL STEP
+                                APPLICATION STEP
                             </span>
 
                             <p>
-                                Submit your application for review.
+                                Create your professional account.
+                                Verification comes after registration.
                             </p>
 
                         </div>
 
 
-                        <button type="submit" class="submit-btn">
+                        <button
+                            type="submit"
+                            class="submit-btn">
 
                             <span>
-                                SUBMIT APPLICATION
+                                CREATE PROFESSIONAL ACCOUNT
                             </span>
 
                             <span class="submit-arrow">
@@ -665,7 +824,11 @@
                     </div>
 
 
-                    <div class="form-message" id="formMessage" aria-live="polite"></div>
+                    <div
+                        class="form-message"
+                        id="formMessage"
+                        aria-live="polite">
+                    </div>
 
                 </form>
 
@@ -674,9 +837,7 @@
         </section>
 
 
-        <!-- =========================
-         PROCESS
-    ========================== -->
+        <!-- WHAT HAPPENS NEXT -->
 
         <section class="process-section">
 
@@ -688,7 +849,7 @@
 
                 <h2>
                     FROM APPLICATION<br>
-                    TO OPPORTUNITY.
+                    TO VERIFICATION.
                 </h2>
 
             </div>
@@ -696,17 +857,18 @@
 
             <div class="process-grid">
 
+
                 <div class="process-card">
 
                     <span>01</span>
 
                     <h3>
-                        SUBMIT
+                        APPLY
                     </h3>
 
                     <p>
-                        Send your professional information
-                        and work for review.
+                        Submit your professional information
+                        and create your VORVENA account.
                     </p>
 
                 </div>
@@ -717,12 +879,12 @@
                     <span>02</span>
 
                     <h3>
-                        REVIEW
+                        VERIFY
                     </h3>
 
                     <p>
-                        The VORVENA team reviews your
-                        application and portfolio.
+                        Sign in and complete the professional
+                        skill assessment assigned to your profession.
                     </p>
 
                 </div>
@@ -733,12 +895,12 @@
                     <span>03</span>
 
                     <h3>
-                        APPROVAL
+                        REVIEW
                     </h3>
 
                     <p>
-                        Approved professionals can become
-                        visible within the community.
+                        The VORVENA team reviews your assessment
+                        and completes the verification process.
                     </p>
 
                 </div>
@@ -749,12 +911,12 @@
                     <span>04</span>
 
                     <h3>
-                        OPPORTUNITY
+                        ACCESS
                     </h3>
 
                     <p>
-                        Connect with clients and relevant
-                        project opportunities.
+                        Approved professionals receive full
+                        access to the VORVENA platform.
                     </p>
 
                 </div>
@@ -764,9 +926,7 @@
         </section>
 
 
-        <!-- =========================
-         CTA
-    ========================== -->
+        <!-- CTA -->
 
         <section class="join-cta">
 
@@ -788,13 +948,12 @@
     </main>
 
 
-    <!-- =========================
-     FOOTER
-========================== -->
+    <!-- FOOTER -->
 
     <footer class="site-footer">
 
         <div class="footer-top">
+
 
             <div class="footer-brand">
 
@@ -816,10 +975,21 @@
                     EXPLORE
                 </span>
 
-                <a href="./index.html">Home</a>
-                <a href="./community.html">Community</a>
-                <a href="./profiles.html">Profiles</a>
-                <a href="./clients.html">Clients</a>
+                <a href="./index.html">
+                    Home
+                </a>
+
+                <a href="./community.html">
+                    Community
+                </a>
+
+                <a href="./profiles.html">
+                    Profiles
+                </a>
+
+                <a href="./clients.html">
+                    Clients
+                </a>
 
             </div>
 
@@ -847,10 +1017,21 @@
                     LEGAL
                 </span>
 
-                <a href="./terms.html">Terms</a>
-                <a href="./privacy.html">Privacy</a>
-                <a href="./guidelines.html">Guidelines</a>
-                <a href="./feedback.html">Feedback</a>
+                <a href="./terms.html">
+                    Terms
+                </a>
+
+                <a href="./privacy.html">
+                    Privacy
+                </a>
+
+                <a href="./guidelines.html">
+                    Guidelines
+                </a>
+
+                <a href="./feedback.html">
+                    Feedback
+                </a>
 
             </div>
 

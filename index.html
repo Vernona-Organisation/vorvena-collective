@@ -2,21 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <meta name="description"
-        content="VORVENA is a global talent community connecting skilled professionals with clients, businesses and opportunities.">
+    <meta
+        name="description"
+        content="VORVENA connects talented professionals with clients and meaningful opportunities worldwide."
+    >
 
-    <title>VORVENA | Talent Without Borders</title>
+    <title>VORVENA | Connect. Create. Grow.</title>
 
     <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
-    <header class="navbar">
+    <!-- ================================
+         NAVBAR
+    ================================= -->
 
+    <header class="navbar">
         <div class="nav-wrapper">
 
             <a href="index.html" class="logo">
@@ -25,121 +32,138 @@
 
             <nav class="nav-links" id="navLinks">
 
-                <a href="index.html" class="nav-link">
+                <a
+                    href="index.html"
+                    class="nav-link"
+                >
                     Home
                 </a>
 
-                <a href="community.html" class="nav-link">
-                    Community
-                </a>
-
-                <a href="profiles.html" class="nav-link">
+                <a
+                    href="profiles.html"
+                    class="nav-link"
+                >
                     Profiles
                 </a>
 
-                <a href="clients.html" class="nav-link">
+                <a
+                    href="clients.html"
+                    class="nav-link"
+                >
                     Clients
                 </a>
 
-                <a href="join.html" class="nav-link join-link">
+                <!-- Dashboard is only shown when logged in -->
+                <a
+                    href="#"
+                    class="nav-link dashboard-link"
+                    id="dashboardNavLink"
+                >
+                    Dashboard
+                </a>
+
+                <a
+                    href="join.html"
+                    class="nav-link join-link"
+                >
                     Join Community
                 </a>
 
-               
-
             </nav>
 
-            <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                type="button"
+                aria-label="Open menu"
+                aria-expanded="false"
+                aria-controls="navLinks"
+            >
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
         </div>
-
     </header>
 
 
-    <!-- ================= MAIN ================= -->
+    <!-- ================================
+         MAIN
+    ================================= -->
+
     <main>
 
         <!-- HERO -->
         <section class="hero">
 
-            <div class="hero-left">
+            <div class="hero-content">
 
-                <div class="eyebrow">
-                    <span></span>
-                    GLOBAL TALENT COMMUNITY
-                </div>
+                <p class="hero-eyebrow">
+                    A GLOBAL PROFESSIONAL COMMUNITY
+                </p>
 
                 <h1>
-                    Your talent
-                    <br>
-                    deserves a
-                    <em>stage.</em>
+                    Where Talent
+                    <span>Meets Opportunity.</span>
                 </h1>
 
-                <p class="hero-description">
-                    VORVENA brings talented people, ambitious clients
-                    and meaningful opportunities into one growing
-                    global community.
+                <p class="hero-text">
+                    VORVENA connects skilled professionals with clients
+                    looking for meaningful work, trusted expertise,
+                    and exceptional results.
                 </p>
 
                 <div class="hero-actions">
 
-                    <a href="join.html" class="primary-btn">
+                    <a
+                        href="profiles.html"
+                        class="primary-btn"
+                    >
+                        Explore Professionals
+                    </a>
+
+                    <a
+                        href="join.html"
+                        class="secondary-btn"
+                    >
                         Join VORVENA
-                        <span>↗</span>
                     </a>
 
-                    <a href="profiles.html" class="secondary-btn">
-                        Explore Talent
-                    </a>
-
-                </div>
-
-                <div class="hero-note">
-                    <span class="status-dot"></span>
-                    Open to professionals worldwide
                 </div>
 
             </div>
 
+            <div class="hero-visual">
 
-            <!-- HERO VISUAL -->
-            <div class="hero-right">
+                <div class="hero-card hero-card-main">
 
-                <div class="visual-frame">
-
-                    <div class="frame-line line-top"></div>
-                    <div class="frame-line line-bottom"></div>
-
-                    <div class="visual-number">
-                        01
+                    <div class="hero-card-top">
+                        <span>VORVENA</span>
+                        <span class="status-dot"></span>
                     </div>
 
-                    <div class="visual-center">
-
-                        <div class="circle circle-one"></div>
-                        <div class="circle circle-two"></div>
-
-                        <div class="v-mark">
-                            V
-                        </div>
-
+                    <div class="hero-card-content">
+                        <p>Global talent.</p>
+                        <h2>Real opportunities.</h2>
                     </div>
 
-                    <div class="visual-word">
-                        VORVENA
+                    <div class="hero-card-bottom">
+                        <span>Professionals</span>
+                        <strong>+</strong>
+                        <span>Clients</span>
                     </div>
 
-                    <div class="visual-corner">
-                        TALENT<br>
-                        ×<br>
-                        OPPORTUNITY
-                    </div>
+                </div>
 
+                <div class="floating-card floating-card-one">
+                    <span class="floating-number">01</span>
+                    <span>Discover talent</span>
+                </div>
+
+                <div class="floating-card floating-card-two">
+                    <span class="floating-number">02</span>
+                    <span>Build together</span>
                 </div>
 
             </div>
@@ -147,66 +171,72 @@
         </section>
 
 
-        <!-- ================= MARQUEE ================= -->
-        <section class="marquee">
+        <!-- MARQUEE -->
+        <section class="marquee-section">
 
             <div class="marquee-track">
 
-                <span>DEVELOPERS</span>
-                <i>✦</i>
+                <span>VORVENA</span>
+                <span>•</span>
+                <span>GLOBAL TALENT</span>
+                <span>•</span>
+                <span>CREATIVE COLLABORATION</span>
+                <span>•</span>
+                <span>MEANINGFUL WORK</span>
+                <span>•</span>
 
-                <span>DESIGNERS</span>
-                <i>✦</i>
-
-                <span>CREATORS</span>
-                <i>✦</i>
-
-                <span>MARKETERS</span>
-                <i>✦</i>
-
-                <span>FREELANCERS</span>
-                <i>✦</i>
-
-                <span>BUILDERS</span>
-                <i>✦</i>
-
-                <span>DEVELOPERS</span>
-                <i>✦</i>
-
-                <span>DESIGNERS</span>
-                <i>✦</i>
+                <span>VORVENA</span>
+                <span>•</span>
+                <span>GLOBAL TALENT</span>
+                <span>•</span>
+                <span>CREATIVE COLLABORATION</span>
+                <span>•</span>
+                <span>MEANINGFUL WORK</span>
+                <span>•</span>
 
             </div>
 
         </section>
 
 
-        <!-- ================= INTRO ================= -->
-        <section class="intro">
+        <!-- INTRO -->
+        <section class="intro section-padding">
 
-            <div class="section-tag">
-                <span>02</span>
-                THE VORVENA IDEA
+            <div class="section-label">
+                <span>01</span>
+                <span>ABOUT VORVENA</span>
             </div>
 
-            <div class="intro-content">
+            <div class="intro-grid">
 
-                <h2>
-                    We believe great
-                    <span>talent</span>
-                    shouldn't be limited by location.
-                </h2>
+                <div class="intro-heading">
 
-                <div class="intro-side">
+                    <h2>
+                        Built for people
+                        <span>who create.</span>
+                    </h2>
+
+                </div>
+
+                <div class="intro-copy">
 
                     <p>
-                        Whether you're a developer in Lagos, a designer
-                        in London, a photographer in Nairobi or a creative
-                        somewhere completely different, VORVENA gives
-                        you a place to be discovered.
+                        VORVENA is a professional community designed
+                        to bring talented people and forward-thinking
+                        clients together.
                     </p>
 
-                    <a href="community.html" class="arrow-link">
+                    <p>
+                        Whether you are building your career, growing
+                        your business, or searching for the right person
+                        for your next project, VORVENA gives you a place
+                        to connect, collaborate, and grow.
+                    </p>
+
+                    <a
+                        href="profiles.html"
+                        class="text-link"
+                    >
                         Discover the community
                         <span>→</span>
                     </a>
@@ -218,66 +248,76 @@
         </section>
 
 
-        <!-- ================= FEATURES ================= -->
-        <section class="features">
+        <!-- FEATURES -->
+        <section class="features section-padding">
 
-            <div class="section-tag">
-                <span>03</span>
-                HOW IT WORKS
+            <div class="section-heading">
+
+                <div class="section-label">
+                    <span>02</span>
+                    <span>WHY VORVENA</span>
+                </div>
+
+                <h2>
+                    A better way to
+                    <span>work together.</span>
+                </h2>
+
             </div>
 
-            <div class="feature-grid">
+            <div class="features-grid">
 
                 <article class="feature-card">
 
-                    <div class="feature-top">
-                        <span>01</span>
-                        <span>DISCOVER</span>
-                    </div>
+                    <span class="feature-number">
+                        01
+                    </span>
 
                     <div class="feature-icon">
-                        ◇
+                        ↗
                     </div>
 
                     <h3>
-                        Find your people.
+                        Discover Talent
                     </h3>
 
                     <p>
-                        Explore a community filled with professionals
-                        across technology, design, media and other
-                        creative fields.
+                        Find professionals with the skills,
+                        experience, and creative perspective
+                        your project needs.
                     </p>
 
                     <a href="profiles.html">
-                        Explore profiles →
+                        Explore profiles
+                        <span>→</span>
                     </a>
 
                 </article>
 
 
-                <article class="feature-card featured-card">
+                <article class="feature-card feature-card-dark">
 
-                    <div class="feature-top">
-                        <span>02</span>
-                        <span>CONNECT</span>
-                    </div>
+                    <span class="feature-number">
+                        02
+                    </span>
 
                     <div class="feature-icon">
                         +
                     </div>
 
                     <h3>
-                        Meet opportunity.
+                        Build Together
                     </h3>
 
                     <p>
-                        Clients can discover professionals whose
-                        skills and experience match what they need.
+                        Create meaningful professional
+                        relationships built around projects,
+                        ideas, and shared goals.
                     </p>
 
                     <a href="clients.html">
-                        For clients →
+                        Start a project
+                        <span>→</span>
                     </a>
 
                 </article>
@@ -285,26 +325,27 @@
 
                 <article class="feature-card">
 
-                    <div class="feature-top">
-                        <span>03</span>
-                        <span>BUILD</span>
-                    </div>
+                    <span class="feature-number">
+                        03
+                    </span>
 
                     <div class="feature-icon">
-                        ∞
+                        ◎
                     </div>
 
                     <h3>
-                        Turn skills into impact.
+                        Grow Globally
                     </h3>
 
                     <p>
-                        Build relationships, work on meaningful
-                        projects and grow your professional network.
+                        Connect beyond borders and discover
+                        opportunities that can take your
+                        professional journey further.
                     </p>
 
                     <a href="join.html">
-                        Become a member →
+                        Join VORVENA
+                        <span>→</span>
                     </a>
 
                 </article>
@@ -314,62 +355,69 @@
         </section>
 
 
-        <!-- ================= GLOBAL SECTION ================= -->
-        <section class="global">
+        <!-- GLOBAL -->
+        <section class="global-section section-padding">
 
-            <div class="global-left">
+            <div class="global-grid">
 
-                <div class="section-tag light-tag">
-                    <span>04</span>
-                    WITHOUT BORDERS
-                </div>
+                <div class="global-content">
 
-                <h2>
-                    One community.
-                    <br>
-                    <span>Many worlds.</span>
-                </h2>
-
-                <p>
-                    VORVENA welcomes professionals from Nigeria
-                    and beyond. Your country doesn't define the
-                    value of your work.
-                </p>
-
-                <a href="join.html" class="light-link">
-                    Join from anywhere →
-                </a>
-
-            </div>
-
-
-            <div class="global-right">
-
-                <div class="world-orbit">
-
-                    <div class="orbit-ring ring-one"></div>
-                    <div class="orbit-ring ring-two"></div>
-                    <div class="orbit-ring ring-three"></div>
-
-                    <div class="world-v">
-                        V
+                    <div class="section-label light-label">
+                        <span>03</span>
+                        <span>GLOBAL CONNECTION</span>
                     </div>
 
-                    <span class="location location-one">
-                        NG
-                    </span>
+                    <h2>
+                        Talent has
+                        <span>no borders.</span>
+                    </h2>
 
-                    <span class="location location-two">
-                        UK
-                    </span>
+                    <p>
+                        Great work can come from anywhere.
+                        VORVENA creates a space where professionals
+                        and clients can connect regardless of where
+                        they are in the world.
+                    </p>
 
-                    <span class="location location-three">
-                        US
-                    </span>
+                    <div class="global-stats">
 
-                    <span class="location location-four">
-                        KE
-                    </span>
+                        <div class="global-stat">
+                            <strong>01</strong>
+                            <span>Professionals</span>
+                        </div>
+
+                        <div class="global-stat">
+                            <strong>02</strong>
+                            <span>Clients</span>
+                        </div>
+
+                        <div class="global-stat">
+                            <strong>03</strong>
+                            <span>Opportunities</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="global-visual">
+
+                    <div class="world-circle">
+
+                        <div class="circle-ring ring-one"></div>
+                        <div class="circle-ring ring-two"></div>
+                        <div class="circle-ring ring-three"></div>
+
+                        <span class="map-point point-one"></span>
+                        <span class="map-point point-two"></span>
+                        <span class="map-point point-three"></span>
+                        <span class="map-point point-four"></span>
+
+                        <div class="circle-center">
+                            V
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -378,47 +426,72 @@
         </section>
 
 
-        <!-- ================= CTA ================= -->
-        <section class="final-cta">
+        <!-- CTA -->
+        <section class="cta-section section-padding">
 
-            <div class="cta-number">
-                05
+            <div class="cta-inner">
+
+                <div class="section-label">
+                    <span>04</span>
+                    <span>YOUR NEXT STEP</span>
+                </div>
+
+                <h2>
+                    Your next opportunity
+                    <span>could start here.</span>
+                </h2>
+
+                <p>
+                    Join a growing professional community built
+                    around talent, trust, collaboration, and
+                    meaningful opportunities.
+                </p>
+
+                <div class="cta-actions">
+
+                    <a
+                        href="profiles.html"
+                        class="primary-btn"
+                    >
+                        Find a Professional
+                    </a>
+
+                    <a
+                        href="join.html"
+                        class="secondary-btn"
+                    >
+                        Become a Professional
+                    </a>
+
+                </div>
+
             </div>
-
-            <h2>
-                Ready to be
-                <span>seen?</span>
-            </h2>
-
-            <p>
-                Your next opportunity could be closer than you think.
-            </p>
-
-            <a href="join.html" class="cta-btn">
-                Join the community
-                <span>↗</span>
-            </a>
 
         </section>
 
     </main>
 
 
-    <!-- ================= FOOTER ================= -->
+    <!-- ================================
+         FOOTER
+    ================================= -->
+
     <footer class="footer">
 
-        <div class="footer-top">
+        <div class="footer-main">
 
             <div class="footer-brand">
 
-                <a href="index.html" class="footer-logo">
+                <a
+                    href="index.html"
+                    class="footer-logo"
+                >
                     VORVENA
                 </a>
 
                 <p>
-                    Connecting talent,
-                    <br>
-                    creating opportunity.
+                    Connecting people, talent, and
+                    opportunities across the world.
                 </p>
 
             </div>
@@ -426,68 +499,61 @@
 
             <div class="footer-column">
 
-                <h4>EXPLORE</h4>
+                <h4>Explore</h4>
 
-                <a href="community.html">Community</a>
+                <a href="index.html">Home</a>
                 <a href="profiles.html">Profiles</a>
                 <a href="clients.html">Clients</a>
+                <a href="community.html">Community</a>
 
             </div>
 
 
             <div class="footer-column">
 
-                <h4>JOIN</h4>
+                <h4>Join</h4>
 
-                <a href="join.html">Join Community</a>
-               
+                <a href="join.html">
+                    Join Community
+                </a>
+
+                <a href="client-signup.html">
+                    Client Account
+                </a>
 
             </div>
 
 
             <div class="footer-column">
 
-                <h4>LEGAL</h4>
+                <h4>Legal</h4>
 
-                <a href="terms.html">Terms & Conditions</a>
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="guidelines.html">Community Guidelines</a>
+                <a href="#">
+                    Terms
+                </a>
 
-            </div>
+                <a href="#">
+                    Privacy
+                </a>
 
-        </div>
-
-
-        <!-- FEEDBACK -->
-        <div class="feedback">
-
-            <div class="feedback-text">
-
-                <span>YOUR VOICE MATTERS</span>
-
-                <h3>
-                    Help us shape VORVENA.
-                </h3>
+                <a href="#">
+                    Guidelines
+                </a>
 
             </div>
-
-            <a href="feedback.html" class="feedback-btn">
-                Send Feedback
-                <span>↗</span>
-            </a>
 
         </div>
 
 
         <div class="footer-bottom">
 
-            <span>
-                © 2026 VORVENA
-            </span>
+            <p>
+                © 2025 VORVENA. All rights reserved.
+            </p>
 
-            <span>
-                BUILT FOR TALENT. BUILT FOR OPPORTUNITY.
-            </span>
+            <p>
+                Built for global collaboration.
+            </p>
 
         </div>
 
@@ -498,4 +564,3 @@
 
 </body>
 </html>
-

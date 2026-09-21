@@ -1,4 +1,6 @@
-const STORAGE_KEYS = {
+"use strict";
+
+const STORAGE = {
     professionals: "vorvenaProfessionals",
     clients: "vorvenaClients",
     applications: "vorvenaApplications",
@@ -9,3020 +11,2368 @@ const STORAGE_KEYS = {
     notifications: "vorvenaNotifications",
     activity: "vorvenaActivity",
     theme: "vorvenaAdminTheme",
-    adminLoggedIn: "vorvenaAdminLoggedIn"
+    loggedIn: "vorvenaAdminLoggedIn",
+    account: "vorvenaAdminAccount"
+};
+
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => [...document.querySelectorAll(selector)];
+
+const defaultData = {
+
+    professionals: [
+        {
+            id: "PRO-001",
+            name: "Elijah Stephen",
+            profession: "Frontend Developer",
+            email: "elijah@example.com",
+            location: "Eket, Nigeria",
+            jobs: 8,
+            status: "Verified",
+            accountStatus: "Active",
+            online: true,
+            joined: "Sep 2026"
+        },
+        {
+            id: "PRO-002",
+            name: "Daniel John",
+            profession: "Graphic Designer",
+            email: "daniel@example.com",
+            location: "Lagos, Nigeria",
+            jobs: 5,
+            status: "Verified",
+            accountStatus: "Active",
+            online: false,
+            joined: "Sep 2026"
+        },
+        {
+            id: "PRO-003",
+            name: "Sarah Williams",
+            profession: "UI/UX Designer",
+            email: "sarah@example.com",
+            location: "Abuja, Nigeria",
+            jobs: 3,
+            status: "Unverified",
+            accountStatus: "Active",
+            online: true,
+            joined: "Aug 2026"
+        },
+        {
+            id: "PRO-004",
+            name: "David Williams",
+            profession: "Web Developer",
+            email: "david@example.com",
+            location: "Port Harcourt, Nigeria",
+            jobs: 8,
+            status: "Verified",
+            accountStatus: "Active",
+            online: true,
+            joined: "Sep 2026"
+        }
+    ],
+
+    clients: [
+        {
+            id: "CLI-001",
+            name: "Tech Solutions Ltd",
+            email: "client@techsolutions.com",
+            location: "Lagos, Nigeria",
+            projects: 4,
+            status: "Active"
+        },
+        {
+            id: "CLI-002",
+            name: "Bright Media",
+            email: "hello@brightmedia.com",
+            location: "Abuja, Nigeria",
+            projects: 2,
+            status: "Active"
+        },
+        {
+            id: "CLI-003",
+            name: "Nova Business",
+            email: "contact@novabusiness.com",
+            location: "Port Harcourt, Nigeria",
+            projects: 1,
+            status: "Active"
+        },
+        {
+            id: "CLI-004",
+            name: "GreenEdge Studio",
+            email: "contact@greenedge.com",
+            location: "Enugu, Nigeria",
+            projects: 3,
+            status: "Active"
+        }
+    ],
+
+    applications: [
+        {
+            id: "APP-001",
+            name: "Michael James",
+            profession: "Full Stack Developer",
+            email: "michael@example.com",
+            location: "Port Harcourt, Nigeria",
+            experience: "3 Years",
+            skills: ["HTML", "CSS", "JavaScript", "Node.js"],
+            status: "Pending",
+            date: "Sep 18, 2026"
+        },
+        {
+            id: "APP-002",
+            name: "Grace Eno",
+            profession: "Graphic Designer",
+            email: "grace@example.com",
+            location: "Calabar, Nigeria",
+            experience: "2 Years",
+            skills: ["Photoshop", "Illustrator", "Figma"],
+            status: "Pending",
+            date: "Sep 18, 2026"
+        },
+        {
+            id: "APP-003",
+            name: "Brian Okoro",
+            profession: "Backend Developer",
+            email: "brian@example.com",
+            location: "Enugu, Nigeria",
+            experience: "4 Years",
+            skills: ["Node.js", "Python", "MongoDB"],
+            status: "Pending",
+            date: "Sep 17, 2026"
+        }
+    ],
+
+    projects: [
+        {
+            id: "PRJ-001",
+            name: "Business Website",
+            client: "Tech Solutions Ltd",
+            professional: "Elijah Stephen",
+            amount: 150000,
+            status: "In Progress",
+            date: "Sep 16, 2026"
+        },
+        {
+            id: "PRJ-002",
+            name: "Brand Identity Design",
+            client: "Bright Media",
+            professional: "Daniel John",
+            amount: 80000,
+            status: "Completed",
+            date: "Sep 14, 2026"
+        },
+        {
+            id: "PRJ-003",
+            name: "E-commerce Landing Page",
+            client: "Nova Business",
+            professional: "David Williams",
+            amount: 120000,
+            status: "Pending",
+            date: "Sep 18, 2026"
+        },
+        {
+            id: "PRJ-004",
+            name: "Mobile App UI Design",
+            client: "GreenEdge Studio",
+            professional: "Sarah Williams",
+            amount: 95000,
+            status: "In Progress",
+            date: "Sep 17, 2026"
+        }
+    ],
+
+    payments: [
+        {
+            id: "PAY-001",
+            project: "Business Website",
+            client: "Tech Solutions Ltd",
+            professional: "Elijah Stephen",
+            amount: 150000,
+            status: "Paid",
+            date: "Sep 17, 2026"
+        },
+        {
+            id: "PAY-002",
+            project: "Brand Identity Design",
+            client: "Bright Media",
+            professional: "Daniel John",
+            amount: 80000,
+            status: "Paid",
+            date: "Sep 15, 2026"
+        },
+        {
+            id: "PAY-003",
+            project: "E-commerce Landing Page",
+            client: "Nova Business",
+            professional: "David Williams",
+            amount: 120000,
+            status: "Pending",
+            date: "Sep 18, 2026"
+        },
+        {
+            id: "PAY-004",
+            project: "Mobile App UI Design",
+            client: "GreenEdge Studio",
+            professional: "Sarah Williams",
+            amount: 95000,
+            status: "Paid",
+            date: "Sep 18, 2026"
+        }
+    ],
+
+    payouts: [
+        {
+            id: "PAYOUT-001",
+            project: "Business Website",
+            professional: "Elijah Stephen",
+            amount: 127500,
+            status: "Pending",
+            date: "Sep 18, 2026"
+        },
+        {
+            id: "PAYOUT-002",
+            project: "Brand Identity Design",
+            professional: "Daniel John",
+            amount: 68000,
+            status: "Paid",
+            date: "Sep 16, 2026"
+        },
+        {
+            id: "PAYOUT-003",
+            project: "Landing Page",
+            professional: "David Williams",
+            amount: 102000,
+            status: "Pending",
+            date: "Sep 18, 2026"
+        }
+    ],
+
+    messages: [
+        {
+            id: "MSG-001",
+            sender: "Tech Solutions Ltd",
+            message: "We need an update on the website project.",
+            date: "Sep 18, 2026",
+            unread: true
+        },
+        {
+            id: "MSG-002",
+            sender: "Elijah Stephen",
+            message: "The project is progressing well.",
+            date: "Sep 18, 2026",
+            unread: false
+        },
+        {
+            id: "MSG-003",
+            sender: "Bright Media",
+            message: "Can we review the latest brand concepts?",
+            date: "Sep 17, 2026",
+            unread: true
+        }
+    ],
+
+    notifications: [
+        {
+            id: "NOT-001",
+            title: "New professional application",
+            message: "Michael James submitted an application.",
+            date: "Sep 18, 2026",
+            read: false
+        },
+        {
+            id: "NOT-002",
+            title: "New application activity",
+            message: "3 professional applications need attention.",
+            date: "Sep 18, 2026",
+            read: false
+        },
+        {
+            id: "NOT-003",
+            title: "Payment received",
+            message: "Tech Solutions Ltd completed a payment.",
+            date: "Sep 17, 2026",
+            read: true
+        }
+    ],
+
+    activity: [
+        {
+            id: "ACT-001",
+            title: "Admin dashboard initialized",
+            message: "VORVENA admin control center was opened.",
+            date: "Sep 18, 2026"
+        },
+        {
+            id: "ACT-002",
+            title: "Payment received",
+            message: "Payment received from Tech Solutions Ltd.",
+            date: "Sep 17, 2026"
+        },
+        {
+            id: "ACT-003",
+            title: "Application submitted",
+            message: "Michael James submitted a professional application.",
+            date: "Sep 18, 2026"
+        }
+    ]
 };
 
 
-/* =========================================================
-   DEFAULT DATA
-========================================================= */
-
-const defaultProfessionals = [
-    {
-        id: 1,
-        name: "Elijah Stephen",
-        profession: "Frontend Developer",
-        email: "elijah@example.com",
-        location: "Nigeria",
-        jobs: 8,
-        status: "Verified",
-        online: true
-    },
-    {
-        id: 2,
-        name: "Daniel John",
-        profession: "Graphic Designer",
-        email: "daniel@example.com",
-        location: "Lagos, Nigeria",
-        jobs: 12,
-        status: "Verified",
-        online: true
-    },
-    {
-        id: 3,
-        name: "Sarah Williams",
-        profession: "UI/UX Designer",
-        email: "sarah@example.com",
-        location: "Abuja, Nigeria",
-        jobs: 6,
-        status: "Verified",
-        online: false
-    }
-];
-
-
-const defaultClients = [
-    {
-        id: 1,
-        name: "Tech Solutions Ltd",
-        email: "tech@example.com",
-        location: "Lagos, Nigeria",
-        projects: 4,
-        status: "Active"
-    },
-    {
-        id: 2,
-        name: "Bright Media",
-        email: "bright@example.com",
-        location: "Abuja, Nigeria",
-        projects: 2,
-        status: "Active"
-    },
-    {
-        id: 3,
-        name: "Nova Business",
-        email: "nova@example.com",
-        location: "Port Harcourt, Nigeria",
-        projects: 5,
-        status: "Active"
-    }
-];
-
-
-const defaultApplications = [
-    {
-        id: 1,
-        name: "Michael James",
-        profession: "Motion Graphics Designer",
-        email: "michael@example.com",
-        location: "Lagos, Nigeria",
-        date: "2026-09-10",
-        status: "Pending"
-    },
-    {
-        id: 2,
-        name: "Grace Eno",
-        profession: "UI/UX Designer",
-        email: "grace@example.com",
-        location: "Uyo, Nigeria",
-        date: "2026-09-09",
-        status: "Pending"
-    }
-];
-
-
-const defaultProjects = [
-    {
-        id: 1,
-        title: "Business Website",
-        client: "Tech Solutions Ltd",
-        professional: "Elijah Stephen",
-        budget: 150000,
-        status: "Active",
-        date: "2026-09-09"
-    },
-    {
-        id: 2,
-        title: "Brand Identity Design",
-        client: "Bright Media",
-        professional: "Daniel John",
-        budget: 80000,
-        status: "Completed",
-        date: "2026-09-08"
-    }
-];
-
-
-const defaultPayments = [
-    {
-        id: 1,
-        project: "Business Website",
-        client: "Tech Solutions Ltd",
-        professional: "Elijah Stephen",
-        amount: 150000,
-        status: "Paid",
-        date: "2026-09-09"
-    },
-    {
-        id: 2,
-        project: "Brand Identity Design",
-        client: "Bright Media",
-        professional: "Daniel John",
-        amount: 80000,
-        status: "Paid",
-        date: "2026-09-08"
-    }
-];
-
-
-const defaultPayouts = [
-    {
-        id: 1,
-        project: "Business Website",
-        professional: "Elijah Stephen",
-        amount: 127500,
-        status: "Pending",
-        date: "2026-09-09"
-    }
-];
-
-
-const defaultMessages = [
-    {
-        id: 1,
-        name: "Tech Solutions Ltd",
-        message: "We would like an update on our project.",
-        date: "Today",
-        unread: true
-    },
-    {
-        id: 2,
-        name: "Daniel John",
-        message: "I have completed the requested design.",
-        date: "Yesterday",
-        unread: false
-    }
-];
-
-
-const defaultNotifications = [
-    {
-        id: 1,
-        title: "New professional application",
-        message: "A new professional has applied to join VORVENA.",
-        date: "Today",
-        unread: true,
-        icon: "fa-user-plus"
-    },
-    {
-        id: 2,
-        title: "New project payment",
-        message: "A client has completed a project payment.",
-        date: "Today",
-        unread: true,
-        icon: "fa-money-bill"
-    }
-];
-
-
-const defaultActivity = [
-    {
-        id: 1,
-        title: "Admin system started",
-        description: "VORVENA administration system was loaded.",
-        date: "Today",
-        icon: "fa-shield-halved"
-    },
-    {
-        id: 2,
-        title: "Payment received",
-        description: "A project payment was recorded.",
-        date: "Today",
-        icon: "fa-credit-card"
-    }
-];
-
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
-function getData(key, fallback) {
+function load(key) {
     try {
-        const saved = localStorage.getItem(key);
+        const value = localStorage.getItem(key);
 
-        if (saved) {
-            return JSON.parse(saved);
+        if (!value) {
+            localStorage.setItem(key, JSON.stringify(defaultData[key.replace("vorvena", "").toLowerCase()] || []));
+            return JSON.parse(localStorage.getItem(key));
         }
 
-        localStorage.setItem(key, JSON.stringify(fallback));
-
-        return fallback;
-    } catch (error) {
-        console.error("Storage error:", error);
-        return fallback;
+        return JSON.parse(value);
+    } catch {
+        return [];
     }
 }
 
 
-function saveData(key, data) {
+function save(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
 }
 
 
-function getElement(id) {
-    return document.getElementById(id);
+function getProfessionals() {
+    return load(STORAGE.professionals);
+}
+
+function getClients() {
+    return load(STORAGE.clients);
+}
+
+function getApplications() {
+    return load(STORAGE.applications);
+}
+
+function getProjects() {
+    return load(STORAGE.projects);
+}
+
+function getPayments() {
+    return load(STORAGE.payments);
+}
+
+function getPayouts() {
+    return load(STORAGE.payouts);
+}
+
+function getMessages() {
+    return load(STORAGE.messages);
+}
+
+function getNotifications() {
+    return load(STORAGE.notifications);
+}
+
+function getActivity() {
+    return load(STORAGE.activity);
+}
+
+
+function initializeStorage() {
+
+    const mapping = [
+        [STORAGE.professionals, defaultData.professionals],
+        [STORAGE.clients, defaultData.clients],
+        [STORAGE.applications, defaultData.applications],
+        [STORAGE.projects, defaultData.projects],
+        [STORAGE.payments, defaultData.payments],
+        [STORAGE.payouts, defaultData.payouts],
+        [STORAGE.messages, defaultData.messages],
+        [STORAGE.notifications, defaultData.notifications],
+        [STORAGE.activity, defaultData.activity]
+    ];
+
+    mapping.forEach(([key, value]) => {
+        if (!localStorage.getItem(key)) {
+            save(key, value);
+        }
+    });
+
+    if (!localStorage.getItem(STORAGE.account)) {
+        save(STORAGE.account, {
+            phone: "+2348000000000",
+            password: "admin123"
+        });
+    }
 }
 
 
 function formatMoney(amount) {
-    return new Intl.NumberFormat("en-NG", {
-        style: "currency",
-        currency: "NGN",
-        maximumFractionDigits: 0
-    }).format(Number(amount) || 0);
+    return "₦" + Number(amount || 0).toLocaleString("en-NG");
 }
 
 
-function formatNumber(number) {
-    return new Intl.NumberFormat("en-NG").format(Number(number) || 0);
-}
-
-
-function escapeHTML(value) {
-    if (value === null || value === undefined) {
-        return "";
-    }
-
-    return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-}
-
-
-function getInitials(name) {
-    if (!name) return "V";
-
+function initials(name) {
     return name
         .split(" ")
-        .slice(0, 2)
-        .map(word => word.charAt(0))
+        .map(word => word[0])
         .join("")
+        .slice(0, 2)
         .toUpperCase();
 }
 
 
 function statusClass(status) {
-    if (!status) return "info";
 
-    const value = status.toLowerCase();
+    const value = String(status).toLowerCase();
 
     if (
-        value.includes("approved") ||
-        value.includes("verified") ||
-        value.includes("active") ||
+        value.includes("paid") ||
         value.includes("completed") ||
-        value.includes("paid")
+        value.includes("verified") ||
+        value.includes("active")
     ) {
-        return "approved";
+        return "success";
     }
 
     if (
         value.includes("pending") ||
-        value.includes("review") ||
-        value.includes("processing")
+        value.includes("progress") ||
+        value.includes("unverified")
     ) {
-        return "pending";
+        return "warning";
     }
 
     if (
-        value.includes("rejected") ||
+        value.includes("suspended") ||
         value.includes("cancelled") ||
-        value.includes("inactive")
+        value.includes("rejected")
     ) {
-        return "rejected";
+        return "danger";
     }
 
     return "info";
 }
 
 
-/* =========================================================
-   DATA
-========================================================= */
-
-let professionals = getData(
-    STORAGE_KEYS.professionals,
-    defaultProfessionals
-);
-
-let clients = getData(
-    STORAGE_KEYS.clients,
-    defaultClients
-);
-
-let applications = getData(
-    STORAGE_KEYS.applications,
-    defaultApplications
-);
-
-let projects = getData(
-    STORAGE_KEYS.projects,
-    defaultProjects
-);
-
-let payments = getData(
-    STORAGE_KEYS.payments,
-    defaultPayments
-);
-
-let payouts = getData(
-    STORAGE_KEYS.payouts,
-    defaultPayouts
-);
-
-let messages = getData(
-    STORAGE_KEYS.messages,
-    defaultMessages
-);
-
-let notifications = getData(
-    STORAGE_KEYS.notifications,
-    defaultNotifications
-);
-
-let activity = getData(
-    STORAGE_KEYS.activity,
-    defaultActivity
-);
+function statusBadge(status) {
+    return `<span class="status-badge ${statusClass(status)}">${status}</span>`;
+}
 
 
-/* =========================================================
-   DOM READY
-========================================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    initializeTheme();
-
-    setupSidebar();
-
-    setupNavigation();
-
-    setupSearchAndFilters();
-
-    setupModals();
-
-    setupThemeControls();
-
-    setupNotifications();
-
-    setupReports();
-
-    setupSettings();
-
-    setupLogout();
-
-    renderEverything();
-
-    addActivity(
-        "Admin dashboard opened",
-        "The unified VORVENA administration system was opened.",
-        "fa-gauge-high"
-    );
-
-});
+function emptyState(message) {
+    return `
+        <div class="empty-state">
+            <i class="fa-regular fa-folder-open"></i>
+            <p>${message}</p>
+        </div>
+    `;
+}
 
 
-/* =========================================================
-   RENDER EVERYTHING
-========================================================= */
+function showToast(message, type = "success") {
 
-function renderEverything() {
+    const toast = $("#toast");
+    const messageBox = $("#toastMessage");
 
-    renderDashboard();
+    if (!toast || !messageBox) return;
 
-    renderApplications();
+    const icon = toast.querySelector("i");
 
-    renderProfessionals();
+    if (icon) {
+        icon.className = type === "error"
+            ? "fa-solid fa-circle-exclamation"
+            : "fa-solid fa-circle-check";
+    }
 
-    renderClients();
+    messageBox.textContent = message;
 
-    renderProjects();
+    toast.classList.add("show");
 
-    renderMessages();
+    clearTimeout(window.toastTimer);
 
-    renderPayments();
+    window.toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3000);
+}
 
-    renderPayouts();
 
-    renderNotifications();
+function addActivity(title, message) {
+
+    const activities = getActivity();
+
+    activities.unshift({
+        id: "ACT-" + Date.now(),
+        title,
+        message,
+        date: new Date().toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        })
+    });
+
+    save(STORAGE.activity, activities.slice(0, 30));
 
     renderActivity();
-
-    updateNavigationCounts();
-
 }
 
-
-/* =========================================================
-   SIDEBAR
-========================================================= */
-
-function setupSidebar() {
-
-    const menuBtn = getElement("menuBtn");
-    const sidebar = getElement("sidebar");
-    const overlay = getElement("sidebarOverlay");
-
-    if (!menuBtn || !sidebar) return;
-
-
-    menuBtn.addEventListener("click", () => {
-
-        sidebar.classList.toggle("open");
-
-        if (overlay) {
-            overlay.classList.toggle(
-                "show",
-                sidebar.classList.contains("open")
-            );
-        }
-
-    });
-
-
-    if (overlay) {
-
-        overlay.addEventListener("click", () => {
-
-            sidebar.classList.remove("open");
-
-            overlay.classList.remove("show");
-
-        });
-
-    }
-
-
-    window.addEventListener("resize", () => {
-
-        if (window.innerWidth > 900) {
-
-            sidebar.classList.remove("open");
-
-            if (overlay) {
-                overlay.classList.remove("show");
-            }
-
-        }
-
-    });
-
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-function setupNavigation() {
-
-    const navLinks = document.querySelectorAll(
-        ".nav-link[data-section]"
-    );
-
-    const pageTitle = getElement("pageTitle");
-
-    navLinks.forEach(link => {
-
-        link.addEventListener("click", event => {
-
-            event.preventDefault();
-
-            const targetId = link.dataset.section;
-
-            const target = getElement(targetId);
-
-            if (!target) return;
-
-
-            navLinks.forEach(item => {
-                item.classList.remove("active");
-            });
-
-            link.classList.add("active");
-
-
-            if (pageTitle) {
-                pageTitle.textContent =
-                    link.querySelector("span")?.textContent ||
-                    link.textContent.trim();
-            }
-
-
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-
-            closeMobileSidebar();
-
-        });
-
-    });
-
-
-    setupScrollNavigation();
-
-}
-
-
-function setupScrollNavigation() {
-
-    const sections = document.querySelectorAll(".section");
-
-    const navLinks = document.querySelectorAll(
-        ".nav-link[data-section]"
-    );
-
-
-    window.addEventListener("scroll", () => {
-
-        let currentSection = "";
-
-        sections.forEach(section => {
-
-            const sectionTop =
-                section.getBoundingClientRect().top;
-
-            if (sectionTop <= 150) {
-                currentSection = section.id;
-            }
-
-        });
-
-
-        if (!currentSection) return;
-
-
-        navLinks.forEach(link => {
-
-            link.classList.toggle(
-                "active",
-                link.dataset.section === currentSection
-            );
-
-        });
-
-
-        const activeLink = document.querySelector(
-            `.nav-link[data-section="${currentSection}"]`
-        );
-
-        const pageTitle = getElement("pageTitle");
-
-        if (activeLink && pageTitle) {
-
-            pageTitle.textContent =
-                activeLink.querySelector("span")?.textContent ||
-                activeLink.textContent.trim();
-
-        }
-
-    });
-
-}
-
-
-function closeMobileSidebar() {
-
-    const sidebar = getElement("sidebar");
-    const overlay = getElement("sidebarOverlay");
-
-    if (window.innerWidth <= 900) {
-
-        sidebar?.classList.remove("open");
-
-        overlay?.classList.remove("show");
-
-    }
-
-}
-
-
-/* =========================================================
-   DASHBOARD
-========================================================= */
 
 function renderDashboard() {
 
-    const totalProfessionals =
-        getElement("totalProfessionals");
+    const professionals = getProfessionals();
+    const applications = getApplications();
+    const projects = getProjects();
+    const payouts = getPayouts();
 
-    const onlineProfessionals =
-        getElement("onlineProfessionals");
+    const verified = professionals.filter(
+        professional => professional.status === "Verified"
+    ).length;
 
-    const pendingApplications =
-        getElement("pendingApplications");
+    const online = professionals.filter(
+        professional => professional.online && professional.accountStatus === "Active"
+    ).length;
 
-    const awaitingPayout =
-        getElement("awaitingPayout");
+    const pendingApplications = applications.filter(
+        application => application.status === "Pending"
+    ).length;
 
+    const activeProjects = projects.filter(
+        project => project.status === "In Progress"
+    ).length;
 
-    if (totalProfessionals) {
-        totalProfessionals.textContent =
-            formatNumber(professionals.length);
-    }
+    const completedJobs = projects.filter(
+        project => project.status === "Completed"
+    ).length;
 
+    const awaitingPayout = payouts
+        .filter(payout => payout.status === "Pending")
+        .reduce((sum, payout) => sum + Number(payout.amount), 0);
 
-    if (onlineProfessionals) {
+    $("#totalProfessionals").textContent = professionals.length;
+    $("#verifiedProfessionalsCount").textContent = verified;
+    $("#onlineProfessionals").textContent = online;
+    $("#pendingApplications").textContent = pendingApplications;
+    $("#activeProjectsCount").textContent = activeProjects;
+    $("#completedJobsCount").textContent = completedJobs;
+    $("#pendingVerificationCount").textContent = pendingApplications;
+    $("#awaitingPayout").textContent = formatMoney(awaitingPayout);
 
-        const online = professionals.filter(
-            person => person.online === true
-        ).length;
+    $("#currentDate").textContent = new Date().toLocaleDateString("en-NG", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    });
 
-        onlineProfessionals.textContent =
-            formatNumber(online);
+    const recentProjectsBody = $("#recentProjectsBody");
 
-    }
-
-
-    if (pendingApplications) {
-
-        const pending = applications.filter(
-            app =>
-                app.status?.toLowerCase() === "pending"
-        ).length;
-
-        pendingApplications.textContent =
-            formatNumber(pending);
-
-    }
-
-
-    if (awaitingPayout) {
-
-        const pending = payouts
-            .filter(
-                payout =>
-                    payout.status?.toLowerCase() === "pending"
-            )
-            .reduce(
-                (total, payout) =>
-                    total + Number(payout.amount || 0),
-                0
-            );
-
-        awaitingPayout.textContent =
-            formatMoney(pending);
-
-    }
-
-
-    const activeProfessionalsCount =
-        getElement("activeProfessionalsCount");
-
-    const verifiedProfessionalsCount =
-        getElement("verifiedProfessionalsCount");
-
-    const completedJobsCount =
-        getElement("completedJobsCount");
-
-    const activeProjectsCount =
-        getElement("activeProjectsCount");
-
-
-    if (activeProfessionalsCount) {
-
-        activeProfessionalsCount.textContent =
-            professionals.filter(
-                p =>
-                    p.status?.toLowerCase() === "verified" ||
-                    p.status?.toLowerCase() === "active"
-            ).length;
-
-    }
-
-
-    if (verifiedProfessionalsCount) {
-
-        verifiedProfessionalsCount.textContent =
-            professionals.filter(
-                p =>
-                    p.status?.toLowerCase() === "verified"
-            ).length;
-
-    }
-
-
-    if (completedJobsCount) {
-
-        completedJobsCount.textContent =
-            projects.filter(
-                p =>
-                    p.status?.toLowerCase() === "completed"
-            ).length;
-
-    }
-
-
-    if (activeProjectsCount) {
-
-        activeProjectsCount.textContent =
-            projects.filter(
-                p =>
-                    p.status?.toLowerCase() === "active"
-            ).length;
-
-    }
-
-
-    renderDashboardPayouts();
-
-    renderRecentProjects();
-
-}
-
-
-function renderDashboardPayouts() {
-
-    const container =
-        getElement("dashboardPayoutList");
-
-    if (!container) return;
-
-
-    const pending = payouts.filter(
-        payout =>
-            payout.status?.toLowerCase() === "pending"
-    );
-
-
-    if (!pending.length) {
-
-        container.innerHTML = `
-            <div class="empty-state">
-                <i class="fa-solid fa-check"></i>
-                <h3>No pending payouts</h3>
-                <p>All professional payouts are up to date.</p>
-            </div>
-        `;
-
-        return;
-
-    }
-
-
-    container.innerHTML = pending
+    recentProjectsBody.innerHTML = projects
         .slice(0, 5)
-        .map(payout => `
-            <div class="dashboard-payout-item">
-
-                <div>
-                    <strong>
-                        ${escapeHTML(payout.professional)}
-                    </strong>
-
-                    <small>
-                        ${escapeHTML(payout.project)}
-                    </small>
-                </div>
-
-                <span class="amount">
-                    ${formatMoney(payout.amount)}
-                </span>
-
-            </div>
-        `)
-        .join("");
-
-}
-
-
-function renderRecentProjects() {
-
-    const body =
-        getElement("recentProjectsBody");
-
-    if (!body) return;
-
-
-    if (!projects.length) {
-
-        body.innerHTML = `
-            <tr>
-                <td colspan="5">
-                    <div class="empty-state">
-                        <i class="fa-solid fa-folder-open"></i>
-                        <h3>No projects yet</h3>
-                    </div>
-                </td>
-            </tr>
-        `;
-
-        return;
-    }
-
-
-    body.innerHTML = projects
-        .slice()
-        .reverse()
-        .slice(0, 6)
         .map(project => `
             <tr>
-
                 <td>
-                    <strong>
-                        ${escapeHTML(project.title)}
-                    </strong>
+                    <strong>${project.name}</strong>
                 </td>
-
-                <td>
-                    ${escapeHTML(project.client)}
-                </td>
-
-                <td>
-                    ${escapeHTML(project.professional)}
-                </td>
-
-                <td>
-                    ${formatMoney(project.budget)}
-                </td>
-
-                <td>
-                    <span class="status-badge ${statusClass(project.status)}">
-                        ${escapeHTML(project.status)}
-                    </span>
-                </td>
-
+                <td>${project.client}</td>
+                <td>${project.professional}</td>
+                <td class="project-price">${formatMoney(project.amount)}</td>
+                <td>${statusBadge(project.status)}</td>
             </tr>
         `)
         .join("");
 
+    $("#dashboardPayoutList").innerHTML = payouts
+        .slice(0, 4)
+        .map(payout => `
+            <div class="mini-payout">
+                <div class="mini-payout-top">
+                    <div>
+                        <strong>${payout.professional}</strong>
+                        <span>${payout.project}</span>
+                    </div>
+                    <strong class="amount">${formatMoney(payout.amount)}</strong>
+                </div>
+                <div style="margin-top:8px">
+                    ${statusBadge(payout.status)}
+                </div>
+            </div>
+        `)
+        .join("");
 }
 
-
-/* =========================================================
-   APPLICATIONS
-========================================================= */
 
 function renderApplications() {
 
-    const container =
-        getElement("applicationsList");
+    const applications = getApplications();
+    const search = ($("#applicationSearch")?.value || "").toLowerCase();
 
-    const count =
-        getElement("applicationCount");
+    const filtered = applications.filter(application => {
 
+        const text = `
+            ${application.name}
+            ${application.profession}
+            ${application.email}
+            ${application.location}
+        `.toLowerCase();
 
-    if (!container) return;
+        return text.includes(search);
+    });
 
+    const pending = applications.filter(
+        application => application.status === "Pending"
+    ).length;
 
-    const pendingApplications =
-        applications.filter(
-            app =>
-                app.status?.toLowerCase() === "pending"
-        );
+    $("#applicationCount").textContent = pending;
+    $("#applicationNavCount").textContent = pending;
 
-
-    if (count) {
-        count.textContent =
-            applications.length;
-    }
-
-
-    if (!applications.length) {
-
-        container.innerHTML = createEmptyState(
-            "No applications",
-            "There are currently no professional applications.",
-            "fa-user-plus"
-        );
-
+    if (!filtered.length) {
+        $("#applicationsList").innerHTML = emptyState("No applications found.");
         return;
-
     }
 
+    $("#applicationsList").innerHTML = filtered.map(application => `
+        <article class="application-card">
 
-    container.innerHTML = applications
-        .map(app => `
+            <div class="card-top">
+                <div class="card-person">
+                    <div class="card-avatar">${initials(application.name)}</div>
 
-            <article class="application-card">
+                    <div class="card-person-info">
+                        <h4>${application.name}</h4>
+                        <span>${application.profession}</span>
+                    </div>
+                </div>
 
-                <div class="application-top">
+                ${statusBadge(application.status)}
+            </div>
 
-                    <div style="display:flex; gap:11px; align-items:center;">
+            <div class="card-details">
 
-                        <div class="application-avatar">
-                            ${getInitials(app.name)}
+                <div class="detail-row">
+                    <span>Email</span>
+                    <strong>${application.email}</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>Location</span>
+                    <strong>${application.location}</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>Experience</span>
+                    <strong>${application.experience}</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>Applied</span>
+                    <strong>${application.date}</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>Skills</span>
+                    <strong>${application.skills.join(", ")}</strong>
+                </div>
+
+            </div>
+
+            <div class="card-actions">
+
+                <button class="action-btn success"
+                    data-action="approve-application"
+                    data-id="${application.id}">
+                    <i class="fa-solid fa-check"></i>
+                    Approve
+                </button>
+
+                <button class="action-btn danger"
+                    data-action="reject-application"
+                    data-id="${application.id}">
+                    <i class="fa-solid fa-xmark"></i>
+                    Reject
+                </button>
+
+            </div>
+
+        </article>
+    `).join("");
+}
+
+
+function renderProfessionals() {
+
+    const professionals = getProfessionals();
+
+    const search = ($("#professionalSearch")?.value || "").toLowerCase();
+    const filter = $("#professionalFilter")?.value || "all";
+
+    const filtered = professionals.filter(professional => {
+
+        const searchText = `
+            ${professional.name}
+            ${professional.profession}
+            ${professional.email}
+            ${professional.location}
+        `.toLowerCase();
+
+        const matchesSearch = searchText.includes(search);
+
+        let matchesFilter = true;
+
+        if (filter === "online") {
+            matchesFilter = professional.online === true;
+        }
+
+        if (filter === "verified") {
+            matchesFilter = professional.status === "Verified";
+        }
+
+        if (filter === "unverified") {
+            matchesFilter = professional.status === "Unverified";
+        }
+
+        if (filter === "active") {
+            matchesFilter = professional.accountStatus === "Active";
+        }
+
+        if (filter === "suspended") {
+            matchesFilter = professional.accountStatus === "Suspended";
+        }
+
+        return matchesSearch && matchesFilter;
+    });
+
+    const table = $("#professionalsTable");
+
+    if (!filtered.length) {
+        table.innerHTML = `
+            <tr>
+                <td colspan="7">
+                    ${emptyState("No professionals found.")}
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
+    table.innerHTML = filtered.map(professional => {
+
+        const suspendLabel =
+            professional.accountStatus === "Suspended"
+                ? "Reactivate"
+                : "Suspend";
+
+        const suspendClass =
+            professional.accountStatus === "Suspended"
+                ? "success"
+                : "warning";
+
+        const verifyLabel =
+            professional.status === "Verified"
+                ? "Unverify"
+                : "Verify";
+
+        return `
+            <tr>
+
+                <td>
+                    <div class="table-name">
+                        <div class="table-avatar">
+                            ${initials(professional.name)}
                         </div>
 
                         <div>
-                            <h3>
-                                ${escapeHTML(app.name)}
-                            </h3>
+                            <strong>${professional.name}</strong>
+                            <small>${professional.email}</small>
+                        </div>
+                    </div>
+                </td>
 
-                            <p>
-                                ${escapeHTML(app.profession)}
-                            </p>
+                <td>${professional.profession}</td>
+
+                <td>${professional.location}</td>
+
+                <td>${professional.jobs}</td>
+
+                <td>
+                    ${statusBadge(professional.status)}
+                    ${professional.online
+                        ? `<span class="online-badge"><span class="online-dot"></span> Online</span>`
+                        : ""}
+                </td>
+
+                <td>
+                    ${statusBadge(professional.accountStatus)}
+                </td>
+
+                <td>
+                    <div class="card-actions">
+
+                        <button class="action-btn"
+                            title="Edit"
+                            data-action="edit-professional"
+                            data-id="${professional.id}">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+
+                        <button class="action-btn ${suspendClass}"
+                            title="${suspendLabel}"
+                            data-action="toggle-professional"
+                            data-id="${professional.id}">
+                            <i class="fa-solid fa-ban"></i>
+                        </button>
+
+                        <button class="action-btn success"
+                            title="${verifyLabel}"
+                            data-action="toggle-verification"
+                            data-id="${professional.id}">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </button>
+
+                        <button class="action-btn danger"
+                            title="Delete"
+                            data-action="delete-professional"
+                            data-id="${professional.id}">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+
+                    </div>
+                </td>
+
+            </tr>
+        `;
+    }).join("");
+}
+
+
+function renderClients() {
+
+    const clients = getClients();
+    const search = ($("#clientSearch")?.value || "").toLowerCase();
+
+    const filtered = clients.filter(client => {
+
+        const text = `
+            ${client.name}
+            ${client.email}
+            ${client.location}
+        `.toLowerCase();
+
+        return text.includes(search);
+    });
+
+    if (!filtered.length) {
+        $("#clientsList").innerHTML = emptyState("No clients found.");
+        return;
+    }
+
+    $("#clientsList").innerHTML = filtered.map(client => {
+
+        const suspendLabel =
+            client.status === "Suspended"
+                ? "Reactivate"
+                : "Suspend";
+
+        return `
+            <article class="client-card">
+
+                <div class="card-top">
+
+                    <div class="card-person">
+                        <div class="card-avatar">
+                            ${initials(client.name)}
                         </div>
 
+                        <div class="card-person-info">
+                            <h4>${client.name}</h4>
+                            <span>${client.email}</span>
+                        </div>
                     </div>
 
-                    <span class="status-badge ${statusClass(app.status)}">
-                        ${escapeHTML(app.status)}
-                    </span>
+                    ${statusBadge(client.status)}
 
                 </div>
 
+                <div class="card-details">
 
-                <div class="application-details">
-
-                    <div class="application-detail">
-                        <span>Email</span>
-                        <strong>
-                            ${escapeHTML(app.email)}
-                        </strong>
-                    </div>
-
-                    <div class="application-detail">
+                    <div class="detail-row">
                         <span>Location</span>
-                        <strong>
-                            ${escapeHTML(app.location)}
-                        </strong>
+                        <strong>${client.location}</strong>
                     </div>
 
-                    <div class="application-detail">
-                        <span>Applied</span>
-                        <strong>
-                            ${escapeHTML(app.date)}
-                        </strong>
+                    <div class="detail-row">
+                        <span>Projects</span>
+                        <strong>${client.projects}</strong>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>Client ID</span>
+                        <strong>${client.id}</strong>
                     </div>
 
                 </div>
 
+                <div class="card-actions">
 
-                <div class="application-actions">
-
-                    <button
-                        class="action-btn success"
-                        onclick="approveApplication(${app.id})"
-                    >
-                        <i class="fa-solid fa-check"></i>
-                        Approve
+                    <button class="action-btn"
+                        data-action="edit-client"
+                        data-id="${client.id}">
+                        <i class="fa-solid fa-pen"></i>
+                        Edit
                     </button>
 
-                    <button
-                        class="action-btn danger"
-                        onclick="rejectApplication(${app.id})"
-                    >
-                        <i class="fa-solid fa-xmark"></i>
-                        Reject
+                    <button class="action-btn warning"
+                        data-action="toggle-client"
+                        data-id="${client.id}">
+                        <i class="fa-solid fa-ban"></i>
+                        ${suspendLabel}
+                    </button>
+
+                    <button class="action-btn danger"
+                        data-action="delete-client"
+                        data-id="${client.id}">
+                        <i class="fa-solid fa-trash"></i>
+                        Delete
                     </button>
 
                 </div>
 
             </article>
-
-        `)
-        .join("");
-
+        `;
+    }).join("");
 }
 
 
-/* =========================================================
-   APPLICATION ACTIONS
-========================================================= */
+function renderProjects() {
+
+    const projects = getProjects();
+    const filter = $("#projectFilter")?.value || "all";
+
+    const filtered = projects.filter(project => {
+
+        if (filter === "all") return true;
+
+        return project.status.toLowerCase() === filter;
+    });
+
+    if (!filtered.length) {
+        $("#projectsList").innerHTML = emptyState("No projects found.");
+        return;
+    }
+
+    $("#projectsList").innerHTML = filtered.map(project => `
+        <article class="project-card">
+
+            <div class="card-top">
+
+                <div class="card-person">
+                    <div class="card-avatar">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+
+                    <div class="card-person-info">
+                        <h4>${project.name}</h4>
+                        <span>${project.id}</span>
+                    </div>
+                </div>
+
+                ${statusBadge(project.status)}
+
+            </div>
+
+            <div class="card-details">
+
+                <div class="detail-row">
+                    <span>Client</span>
+                    <strong>${project.client}</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>Professional</span>
+                    <strong>${project.professional}</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>Amount</span>
+                    <strong class="project-price">${formatMoney(project.amount)}</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>Date</span>
+                    <strong>${project.date}</strong>
+                </div>
+
+            </div>
+
+        </article>
+    `).join("");
+}
+
+
+function renderMessages() {
+
+    const messages = getMessages();
+
+    const unread = messages.filter(message => message.unread).length;
+
+    $("#messageCount").textContent = unread;
+    $("#messageNavCount").textContent = unread;
+
+    $("#messagesList").innerHTML = messages.map(message => `
+        <article
+            class="message-item ${message.unread ? "unread" : ""}"
+            data-action="read-message"
+            data-id="${message.id}"
+        >
+
+            <div class="message-avatar">
+                ${initials(message.sender)}
+            </div>
+
+            <div class="message-content">
+
+                <div class="message-header">
+                    <strong>${message.sender}</strong>
+                    <span>${message.date}</span>
+                </div>
+
+                <p>${message.message}</p>
+
+            </div>
+
+        </article>
+    `).join("");
+}
+
+
+function renderPayments() {
+
+    const payments = getPayments();
+
+    const paidPayments = payments.filter(
+        payment => payment.status === "Paid"
+    );
+
+    const total = paidPayments.reduce(
+        (sum, payment) => sum + Number(payment.amount),
+        0
+    );
+
+    const revenue = total * 0.15;
+    const professional = total * 0.85;
+
+    const pending = payments
+        .filter(payment => payment.status === "Pending")
+        .reduce((sum, payment) => sum + Number(payment.amount), 0);
+
+    $("#totalPaymentVolume").textContent = formatMoney(total);
+    $("#vorvenaRevenue").textContent = formatMoney(revenue);
+    $("#professionalEarnings").textContent = formatMoney(professional);
+    $("#pendingPaymentAmount").textContent = formatMoney(pending);
+
+    $("#paymentsTableBody").innerHTML = payments.map(payment => `
+        <tr>
+
+            <td>
+                <strong>${payment.project}</strong>
+                <small style="display:block;color:var(--muted);margin-top:3px">
+                    ${payment.id}
+                </small>
+            </td>
+
+            <td>${payment.client}</td>
+
+            <td>${payment.professional}</td>
+
+            <td class="project-price">${formatMoney(payment.amount)}</td>
+
+            <td>${statusBadge(payment.status)}</td>
+
+            <td>${payment.date}</td>
+
+        </tr>
+    `).join("");
+}
+
+
+function renderPayouts() {
+
+    const payouts = getPayouts();
+
+    const pending = payouts.filter(
+        payout => payout.status === "Pending"
+    ).length;
+
+    $("#payoutNavCount").textContent = pending;
+
+    $("#payoutsList").innerHTML = payouts.map(payout => `
+        <article class="payout-card">
+
+            <div class="card-top">
+
+                <div class="card-person">
+                    <div class="card-avatar">
+                        ${initials(payout.professional)}
+                    </div>
+
+                    <div class="card-person-info">
+                        <h4>${payout.professional}</h4>
+                        <span>${payout.project}</span>
+                    </div>
+                </div>
+
+                ${statusBadge(payout.status)}
+
+            </div>
+
+            <div class="payout-amount">
+                ${formatMoney(payout.amount)}
+            </div>
+
+            <div class="card-details">
+
+                <div class="detail-row">
+                    <span>Payout ID</span>
+                    <strong>${payout.id}</strong>
+                </div>
+
+                <div class="detail-row">
+                    <span>Date</span>
+                    <strong>${payout.date}</strong>
+                </div>
+
+            </div>
+
+            <div class="card-actions">
+
+                ${
+                    payout.status === "Pending"
+                    ? `
+                        <button class="action-btn success"
+                            data-action="process-payout"
+                            data-id="${payout.id}">
+                            <i class="fa-solid fa-money-bill-transfer"></i>
+                            Process Payout
+                        </button>
+                    `
+                    : `
+                        <button class="action-btn" disabled>
+                            <i class="fa-solid fa-check"></i>
+                            Already Paid
+                        </button>
+                    `
+                }
+
+            </div>
+
+        </article>
+    `).join("");
+}
+
+
+function renderNotifications() {
+
+    const notifications = getNotifications();
+
+    const unread = notifications.filter(
+        notification => !notification.read
+    ).length;
+
+    $("#notificationNavCount").textContent = unread;
+
+    const dot = $("#notificationDot");
+
+    if (dot) {
+        dot.style.display = unread ? "block" : "none";
+    }
+
+    const container = $(".notification-list");
+
+    container.innerHTML = notifications.map(notification => `
+        <article class="notification-item ${!notification.read ? "unread" : ""}">
+
+            <div class="notification-icon">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+
+            <div class="notification-content">
+
+                <strong>${notification.title}</strong>
+
+                <p>${notification.message}</p>
+
+                <span>${notification.date}</span>
+
+            </div>
+
+            ${
+                !notification.read
+                ? `
+                    <button class="action-btn"
+                        data-action="read-notification"
+                        data-id="${notification.id}">
+                        Mark read
+                    </button>
+                `
+                : ""
+            }
+
+        </article>
+    `).join("");
+}
+
+
+function renderActivity() {
+
+    const activities = getActivity();
+
+    $("#activityLog").innerHTML = activities.map(activity => `
+        <article class="activity-item">
+
+            <div class="activity-icon">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+            </div>
+
+            <div class="activity-content">
+
+                <strong>${activity.title}</strong>
+
+                <p>${activity.message}</p>
+
+                <span>${activity.date}</span>
+
+            </div>
+
+        </article>
+    `).join("");
+}
+
+
+function renderAll() {
+    renderDashboard();
+    renderApplications();
+    renderProfessionals();
+    renderClients();
+    renderProjects();
+    renderMessages();
+    renderPayments();
+    renderPayouts();
+    renderNotifications();
+    renderActivity();
+}
+
+
+function openProfessionalEdit(id) {
+
+    const professional = getProfessionals().find(
+        item => item.id === id
+    );
+
+    if (!professional) return;
+
+    $("#editId").value = professional.id;
+    $("#editName").value = professional.name;
+    $("#editProfession").value = professional.profession;
+    $("#editEmail").value = professional.email;
+    $("#editLocation").value = professional.location;
+    $("#editJobs").value = professional.jobs;
+    $("#editStatus").value = professional.accountStatus;
+
+    $("#editModal").classList.add("active");
+}
+
+
+function openClientEdit(id) {
+
+    const client = getClients().find(
+        item => item.id === id
+    );
+
+    if (!client) return;
+
+    $("#editClientId").value = client.id;
+    $("#editClientName").value = client.name;
+    $("#editClientEmail").value = client.email;
+    $("#editClientLocation").value = client.location;
+    $("#editClientProjects").value = client.projects;
+    $("#editClientStatus").value = client.status;
+
+    $("#clientEditModal").classList.add("active");
+}
+
+
+function openDeleteModal(id, type) {
+
+    let item;
+
+    if (type === "professional") {
+        item = getProfessionals().find(person => person.id === id);
+    }
+
+    if (type === "client") {
+        item = getClients().find(client => client.id === id);
+    }
+
+    if (!item) return;
+
+    $("#deleteTargetId").value = id;
+    $("#deleteTargetType").value = type;
+    $("#deleteTargetName").textContent = item.name;
+
+    $("#deleteModalTitle").textContent =
+        type === "professional"
+            ? "Delete Professional"
+            : "Delete Client";
+
+    $("#deleteModal").classList.add("active");
+}
+
+
+function openSuspendModal(id, type) {
+
+    let item;
+
+    if (type === "professional") {
+        item = getProfessionals().find(person => person.id === id);
+    }
+
+    if (type === "client") {
+        item = getClients().find(client => client.id === id);
+    }
+
+    if (!item) return;
+
+    const suspended = item.accountStatus === "Suspended" ||
+        item.status === "Suspended";
+
+    $("#suspendTargetId").value = id;
+    $("#suspendTargetType").value = type;
+    $("#suspendTargetName").textContent = item.name;
+
+    $("#suspendActionText").textContent =
+        suspended ? "reactivate " : "suspend ";
+
+    $("#suspendModalTitle").textContent =
+        suspended ? "Reactivate Account" : "Suspend Account";
+
+    $("#confirmSuspend").textContent =
+        suspended ? "Reactivate" : "Suspend";
+
+    $("#confirmSuspend").className =
+        suspended ? "primary-btn" : "warning-btn";
+
+    $("#suspendModal").classList.add("active");
+}
+
+
+function openPayoutModal(id) {
+
+    const payout = getPayouts().find(
+        item => item.id === id
+    );
+
+    if (!payout) return;
+
+    $("#payoutId").value = payout.id;
+    $("#payoutProfessional").textContent = payout.professional;
+    $("#payoutAmount").textContent = formatMoney(payout.amount);
+
+    $("#payoutModal").classList.add("active");
+}
+
+
+function closeModals() {
+    $$(".modal-overlay").forEach(modal => {
+        modal.classList.remove("active");
+    });
+}
+
 
 function approveApplication(id) {
 
-    const index =
-        applications.findIndex(app => app.id === id);
+    const applications = getApplications();
 
-    if (index === -1) return;
-
-
-    const application = applications[index];
-
-
-    professionals.push({
-        id: Date.now(),
-        name: application.name,
-        profession: application.profession,
-        email: application.email,
-        location: application.location,
-        jobs: 0,
-        status: "Verified",
-        online: false
-    });
-
-
-    applications[index].status = "Approved";
-
-
-    saveData(
-        STORAGE_KEYS.applications,
-        applications
+    const application = applications.find(
+        item => item.id === id
     );
 
-    saveData(
-        STORAGE_KEYS.professionals,
-        professionals
+    if (!application) return;
+
+    application.status = "Approved";
+
+    save(STORAGE.applications, applications);
+
+    const professionals = getProfessionals();
+
+    const existing = professionals.find(
+        professional =>
+            professional.email.toLowerCase() === application.email.toLowerCase()
     );
 
+    if (!existing) {
 
-    addNotification(
-        "Professional approved",
-        `${application.name} has been approved to join VORVENA.`,
-        "fa-user-check"
-    );
+        professionals.push({
+            id: "PRO-" + String(Date.now()).slice(-5),
+            name: application.name,
+            profession: application.profession,
+            email: application.email,
+            location: application.location,
+            jobs: 0,
+            status: "Verified",
+            accountStatus: "Active",
+            online: false,
+            joined: new Date().toLocaleDateString("en-NG", {
+                month: "short",
+                year: "numeric"
+            })
+        });
 
+        save(STORAGE.professionals, professionals);
+    }
 
     addActivity(
-        "Professional approved",
-        `${application.name} was approved.`,
-        "fa-user-check"
+        "Professional application approved",
+        `${application.name} was approved and added to the professional community.`
     );
 
+    showToast(`${application.name} approved successfully.`);
 
-    renderEverything();
-
-    showToast(
-        `${application.name} has been approved.`
-    );
-
+    renderAll();
 }
 
 
 function rejectApplication(id) {
 
-    const index =
-        applications.findIndex(app => app.id === id);
+    const applications = getApplications();
 
-    if (index === -1) return;
-
-
-    applications[index].status = "Rejected";
-
-
-    saveData(
-        STORAGE_KEYS.applications,
-        applications
+    const application = applications.find(
+        item => item.id === id
     );
 
+    if (!application) return;
+
+    application.status = "Rejected";
+
+    save(STORAGE.applications, applications);
 
     addActivity(
         "Application rejected",
-        `${applications[index].name}'s application was rejected.`,
-        "fa-user-xmark"
+        `${application.name}'s professional application was rejected.`
     );
 
+    showToast(`${application.name}'s application was rejected.`);
 
-    renderEverything();
-
-    showToast("Application rejected.");
-
+    renderAll();
 }
 
 
-/* =========================================================
-   PROFESSIONALS
-========================================================= */
+function toggleProfessionalVerification(id) {
 
-function renderProfessionals(search = "", filter = "all") {
+    const professionals = getProfessionals();
 
-    const table =
-        getElement("professionalsTable");
+    const professional = professionals.find(
+        item => item.id === id
+    );
 
-    if (!table) return;
+    if (!professional) return;
 
+    if (professional.status === "Verified") {
+        professional.status = "Unverified";
 
-    let filtered = [...professionals];
-
-
-    if (search) {
-
-        const query =
-            search.toLowerCase();
-
-        filtered = filtered.filter(person =>
-
-            person.name?.toLowerCase().includes(query) ||
-
-            person.profession?.toLowerCase().includes(query) ||
-
-            person.email?.toLowerCase().includes(query) ||
-
-            person.location?.toLowerCase().includes(query)
-
+        addActivity(
+            "Professional verification removed",
+            `${professional.name} was changed to Unverified.`
         );
 
-    }
+        showToast(`${professional.name} is now unverified.`);
+    } else {
+        professional.status = "Verified";
 
-
-    if (filter !== "all") {
-
-        filtered = filtered.filter(
-            person =>
-                person.status?.toLowerCase() ===
-                filter.toLowerCase()
+        addActivity(
+            "Professional verified",
+            `${professional.name} received a verified status.`
         );
 
+        showToast(`${professional.name} is now verified.`);
     }
 
+    save(STORAGE.professionals, professionals);
 
-    if (!filtered.length) {
-
-        table.innerHTML = `
-            <tr>
-                <td colspan="7">
-                    <div class="empty-state">
-                        <i class="fa-solid fa-users"></i>
-                        <h3>No professionals found</h3>
-                        <p>Try changing your search or filter.</p>
-                    </div>
-                </td>
-            </tr>
-        `;
-
-        return;
-
-    }
-
-
-    table.innerHTML = filtered
-        .map(person => `
-
-            <tr>
-
-                <td>
-                    <div style="display:flex;align-items:center;gap:9px;">
-
-                        <div class="person-avatar">
-                            ${getInitials(person.name)}
-                        </div>
-
-                        <strong>
-                            ${escapeHTML(person.name)}
-                        </strong>
-
-                    </div>
-                </td>
-
-                <td>
-                    ${escapeHTML(person.profession)}
-                </td>
-
-                <td>
-                    ${escapeHTML(person.email)}
-                </td>
-
-                <td>
-                    ${escapeHTML(person.location)}
-                </td>
-
-                <td>
-                    ${formatNumber(person.jobs)}
-                </td>
-
-                <td>
-                    <span class="status-badge ${statusClass(person.status)}">
-                        ${escapeHTML(person.status)}
-                    </span>
-                </td>
-
-                <td>
-
-                    <div style="display:flex;gap:5px;">
-
-                        <button
-                            class="action-btn"
-                            onclick="openEditModal(${person.id})"
-                            title="Edit"
-                        >
-                            <i class="fa-solid fa-pen"></i>
-                        </button>
-
-                        <button
-                            class="action-btn danger"
-                            onclick="openDeleteModal(${person.id})"
-                            title="Delete"
-                        >
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-
-                    </div>
-
-                </td>
-
-            </tr>
-
-        `)
-        .join("");
-
+    renderAll();
 }
 
 
-/* =========================================================
-   CLIENTS
-========================================================= */
+function toggleProfessionalAccount(id) {
 
-function renderClients(search = "") {
+    const professionals = getProfessionals();
 
-    const container =
-        getElement("clientsList");
+    const professional = professionals.find(
+        item => item.id === id
+    );
 
-    if (!container) return;
+    if (!professional) return;
 
+    const wasSuspended = professional.accountStatus === "Suspended";
 
-    let filtered = [...clients];
+    professional.accountStatus =
+        wasSuspended ? "Active" : "Suspended";
 
+    save(STORAGE.professionals, professionals);
 
-    if (search) {
+    addActivity(
+        wasSuspended
+            ? "Professional account reactivated"
+            : "Professional account suspended",
+        `${professional.name}'s account was ${wasSuspended ? "reactivated" : "suspended"}.`
+    );
 
-        const query =
-            search.toLowerCase();
+    showToast(
+        `${professional.name} has been ${wasSuspended ? "reactivated" : "suspended"}.`
+    );
 
-        filtered = filtered.filter(client =>
-
-            client.name?.toLowerCase().includes(query) ||
-
-            client.email?.toLowerCase().includes(query) ||
-
-            client.location?.toLowerCase().includes(query)
-
-        );
-
-    }
-
-
-    if (!filtered.length) {
-
-        container.innerHTML = createEmptyState(
-            "No clients found",
-            "Try changing your search.",
-            "fa-building"
-        );
-
-        return;
-
-    }
-
-
-    container.innerHTML = filtered
-        .map(client => `
-
-            <article class="client-card">
-
-                <div class="client-top">
-
-                    <div style="display:flex;gap:11px;align-items:center;">
-
-                        <div class="client-avatar">
-                            ${getInitials(client.name)}
-                        </div>
-
-                        <div>
-                            <h3>
-                                ${escapeHTML(client.name)}
-                            </h3>
-
-                            <p>
-                                ${escapeHTML(client.location)}
-                            </p>
-                        </div>
-
-                    </div>
-
-                    <span class="status-badge ${statusClass(client.status)}">
-                        ${escapeHTML(client.status)}
-                    </span>
-
-                </div>
-
-
-                <div class="client-details">
-
-                    <div class="client-detail">
-                        <span>Email</span>
-                        <strong>
-                            ${escapeHTML(client.email)}
-                        </strong>
-                    </div>
-
-                    <div class="client-detail">
-                        <span>Projects</span>
-                        <strong>
-                            ${formatNumber(client.projects)}
-                        </strong>
-                    </div>
-
-                </div>
-
-
-                <div class="client-actions">
-
-                    <button
-                        class="action-btn primary"
-                        onclick="viewClient(${client.id})"
-                    >
-                        <i class="fa-solid fa-eye"></i>
-                        View Client
-                    </button>
-
-                </div>
-
-            </article>
-
-        `)
-        .join("");
-
+    renderAll();
 }
 
 
-function viewClient(id) {
+function toggleClientAccount(id) {
 
-    const client =
-        clients.find(item => item.id === id);
+    const clients = getClients();
+
+    const client = clients.find(
+        item => item.id === id
+    );
 
     if (!client) return;
 
+    const suspended = client.status === "Suspended";
 
-    showToast(
-        `${client.name} — ${client.email}`
-    );
+    client.status = suspended ? "Active" : "Suspended";
 
-}
-
-
-/* =========================================================
-   PROJECTS
-========================================================= */
-
-function renderProjects(filter = "all") {
-
-    const container =
-        getElement("projectsList");
-
-    if (!container) return;
-
-
-    let filtered = [...projects];
-
-
-    if (filter !== "all") {
-
-        filtered = filtered.filter(
-            project =>
-                project.status?.toLowerCase() ===
-                filter.toLowerCase()
-        );
-
-    }
-
-
-    if (!filtered.length) {
-
-        container.innerHTML = createEmptyState(
-            "No projects found",
-            "There are no projects matching this filter.",
-            "fa-folder-open"
-        );
-
-        return;
-
-    }
-
-
-    container.innerHTML = filtered
-        .map(project => `
-
-            <article class="project-card">
-
-                <div class="project-top">
-
-                    <div>
-                        <h3>
-                            ${escapeHTML(project.title)}
-                        </h3>
-
-                        <p>
-                            ${escapeHTML(project.client)}
-                        </p>
-                    </div>
-
-                    <span class="status-badge ${statusClass(project.status)}">
-                        ${escapeHTML(project.status)}
-                    </span>
-
-                </div>
-
-
-                <div class="project-details">
-
-                    <div class="project-detail">
-                        <span>Professional</span>
-                        <strong>
-                            ${escapeHTML(project.professional)}
-                        </strong>
-                    </div>
-
-                    <div class="project-detail">
-                        <span>Budget</span>
-                        <strong>
-                            ${formatMoney(project.budget)}
-                        </strong>
-                    </div>
-
-                    <div class="project-detail">
-                        <span>Date</span>
-                        <strong>
-                            ${escapeHTML(project.date)}
-                        </strong>
-                    </div>
-
-                </div>
-
-
-                <div class="project-actions">
-
-                    <button
-                        class="action-btn primary"
-                        onclick="viewProject(${project.id})"
-                    >
-                        <i class="fa-solid fa-eye"></i>
-                        View
-                    </button>
-
-                </div>
-
-            </article>
-
-        `)
-        .join("");
-
-}
-
-
-function viewProject(id) {
-
-    const project =
-        projects.find(item => item.id === id);
-
-    if (!project) return;
-
-
-    showToast(
-        `${project.title} — ${formatMoney(project.budget)}`
-    );
-
-}
-
-
-/* =========================================================
-   MESSAGES
-========================================================= */
-
-function renderMessages() {
-
-    const container =
-        getElement("messagesList");
-
-    if (!container) return;
-
-
-    if (!messages.length) {
-
-        container.innerHTML = createEmptyState(
-            "No messages",
-            "Your admin inbox is currently empty.",
-            "fa-envelope"
-        );
-
-        return;
-
-    }
-
-
-    container.innerHTML = messages
-        .map(message => `
-
-            <div class="message-item">
-
-                <div class="message-avatar">
-                    ${getInitials(message.name)}
-                </div>
-
-                <div class="message-content">
-
-                    <div class="message-header">
-
-                        <strong>
-                            ${escapeHTML(message.name)}
-                        </strong>
-
-                        <small>
-                            ${escapeHTML(message.date)}
-                        </small>
-
-                    </div>
-
-                    <p>
-                        ${escapeHTML(message.message)}
-                    </p>
-
-                </div>
-
-                ${
-                    message.unread
-                        ? `
-                            <span class="status-badge info">
-                                New
-                            </span>
-                          `
-                        : ""
-                }
-
-            </div>
-
-        `)
-        .join("");
-
-}
-
-
-/* =========================================================
-   PAYMENTS
-========================================================= */
-
-function renderPayments() {
-
-    const table =
-        getElement("paymentsTableBody");
-
-    const totalPaymentVolume =
-        getElement("totalPaymentVolume");
-
-    const vorvenaRevenue =
-        getElement("vorvenaRevenue");
-
-    const professionalEarnings =
-        getElement("professionalEarnings");
-
-    const pendingPaymentAmount =
-        getElement("pendingPaymentAmount");
-
-
-    const totalVolume = payments.reduce(
-        (total, payment) =>
-            total + Number(payment.amount || 0),
-        0
-    );
-
-
-    const revenue =
-        totalVolume * 0.15;
-
-    const professionalMoney =
-        totalVolume * 0.85;
-
-    const pending = payments
-        .filter(
-            payment =>
-                payment.status?.toLowerCase() === "pending"
-        )
-        .reduce(
-            (total, payment) =>
-                total + Number(payment.amount || 0),
-            0
-        );
-
-
-    if (totalPaymentVolume) {
-        totalPaymentVolume.textContent =
-            formatMoney(totalVolume);
-    }
-
-    if (vorvenaRevenue) {
-        vorvenaRevenue.textContent =
-            formatMoney(revenue);
-    }
-
-    if (professionalEarnings) {
-        professionalEarnings.textContent =
-            formatMoney(professionalMoney);
-    }
-
-    if (pendingPaymentAmount) {
-        pendingPaymentAmount.textContent =
-            formatMoney(pending);
-    }
-
-
-    if (!table) return;
-
-
-    if (!payments.length) {
-
-        table.innerHTML = `
-            <tr>
-                <td colspan="7">
-                    <div class="empty-state">
-                        <i class="fa-solid fa-credit-card"></i>
-                        <h3>No payments</h3>
-                    </div>
-                </td>
-            </tr>
-        `;
-
-        return;
-
-    }
-
-
-    table.innerHTML = payments
-        .map(payment => `
-
-            <tr>
-
-                <td>
-                    ${escapeHTML(payment.project)}
-                </td>
-
-                <td>
-                    ${escapeHTML(payment.client)}
-                </td>
-
-                <td>
-                    ${escapeHTML(payment.professional)}
-                </td>
-
-                <td>
-                    ${formatMoney(payment.amount)}
-                </td>
-
-                <td>
-                    ${formatMoney(payment.amount * 0.15)}
-                </td>
-
-                <td>
-                    ${formatMoney(payment.amount * 0.85)}
-                </td>
-
-                <td>
-                    <span class="status-badge ${statusClass(payment.status)}">
-                        ${escapeHTML(payment.status)}
-                    </span>
-                </td>
-
-            </tr>
-
-        `)
-        .join("");
-
-}
-
-
-/* =========================================================
-   PAYOUTS
-========================================================= */
-
-function renderPayouts() {
-
-    const container =
-        getElement("payoutsList");
-
-    if (!container) return;
-
-
-    if (!payouts.length) {
-
-        container.innerHTML = createEmptyState(
-            "No payouts",
-            "There are currently no professional payouts.",
-            "fa-money-bill-transfer"
-        );
-
-        return;
-
-    }
-
-
-    container.innerHTML = payouts
-        .map(payout => `
-
-            <article class="payout-card">
-
-                <div class="payout-top">
-
-                    <div>
-                        <h3>
-                            ${escapeHTML(payout.professional)}
-                        </h3>
-
-                        <p>
-                            ${escapeHTML(payout.project)}
-                        </p>
-                    </div>
-
-                    <span class="status-badge ${statusClass(payout.status)}">
-                        ${escapeHTML(payout.status)}
-                    </span>
-
-                </div>
-
-
-                <div class="payout-details">
-
-                    <div class="payout-detail">
-                        <span>Payout amount</span>
-                        <strong>
-                            ${formatMoney(payout.amount)}
-                        </strong>
-                    </div>
-
-                    <div class="payout-detail">
-                        <span>Date</span>
-                        <strong>
-                            ${escapeHTML(payout.date)}
-                        </strong>
-                    </div>
-
-                </div>
-
-
-                <div class="payout-actions">
-
-                    ${
-                        payout.status?.toLowerCase() === "pending"
-                            ? `
-                                <button
-                                    class="action-btn primary"
-                                    onclick="openPayoutModal(${payout.id})"
-                                >
-                                    <i class="fa-solid fa-money-bill-transfer"></i>
-                                    Process Payout
-                                </button>
-                              `
-                            : `
-                                <button
-                                    class="action-btn"
-                                    disabled
-                                >
-                                    <i class="fa-solid fa-check"></i>
-                                    Processed
-                                </button>
-                              `
-                    }
-
-                </div>
-
-            </article>
-
-        `)
-        .join("");
-
-}
-
-
-/* =========================================================
-   NOTIFICATIONS
-========================================================= */
-
-function renderNotifications() {
-
-    const container =
-        document.querySelector(".notification-list");
-
-    if (!container) return;
-
-
-    if (!notifications.length) {
-
-        container.innerHTML = createEmptyState(
-            "No notifications",
-            "You're all caught up.",
-            "fa-bell"
-        );
-
-        return;
-
-    }
-
-
-    container.innerHTML = notifications
-        .map(notification => `
-
-            <div class="notification-item ${
-                notification.unread ? "unread" : ""
-            }">
-
-                <div class="notification-icon">
-
-                    <i class="fa-solid ${
-                        escapeHTML(
-                            notification.icon ||
-                            "fa-bell"
-                        )
-                    }"></i>
-
-                </div>
-
-                <div class="notification-content">
-
-                    <strong>
-                        ${escapeHTML(notification.title)}
-                    </strong>
-
-                    <p>
-                        ${escapeHTML(notification.message)}
-                    </p>
-
-                    <small>
-                        ${escapeHTML(notification.date)}
-                    </small>
-
-                </div>
-
-            </div>
-
-        `)
-        .join("");
-
-}
-
-
-/* =========================================================
-   ACTIVITY
-========================================================= */
-
-function renderActivity() {
-
-    const container =
-        getElement("activityLog");
-
-    if (!container) return;
-
-
-    if (!activity.length) {
-
-        container.innerHTML = createEmptyState(
-            "No activity",
-            "Admin activity will appear here.",
-            "fa-clock-rotate-left"
-        );
-
-        return;
-
-    }
-
-
-    container.innerHTML = activity
-        .slice()
-        .reverse()
-        .map(item => `
-
-            <div class="activity-item">
-
-                <div class="activity-icon">
-
-                    <i class="fa-solid ${
-                        escapeHTML(
-                            item.icon ||
-                            "fa-circle"
-                        )
-                    }"></i>
-
-                </div>
-
-                <div class="activity-content">
-
-                    <strong>
-                        ${escapeHTML(item.title)}
-                    </strong>
-
-                    <p>
-                        ${escapeHTML(item.description)}
-                    </p>
-
-                    <small>
-                        ${escapeHTML(item.date)}
-                    </small>
-
-                </div>
-
-            </div>
-
-        `)
-        .join("");
-
-}
-
-
-/* =========================================================
-   ADD ACTIVITY
-========================================================= */
-
-function addActivity(title, description, icon) {
-
-    const item = {
-        id: Date.now(),
-        title,
-        description,
-        date: new Date().toLocaleString("en-NG"),
-        icon
-    };
-
-
-    activity.push(item);
-
-
-    if (activity.length > 100) {
-        activity = activity.slice(-100);
-    }
-
-
-    saveData(
-        STORAGE_KEYS.activity,
-        activity
-    );
-
-
-    renderActivity();
-
-}
-
-
-/* =========================================================
-   ADD NOTIFICATION
-========================================================= */
-
-function addNotification(title, message, icon) {
-
-    const notification = {
-        id: Date.now(),
-        title,
-        message,
-        date: new Date().toLocaleString("en-NG"),
-        unread: true,
-        icon
-    };
-
-
-    notifications.push(notification);
-
-
-    if (notifications.length > 50) {
-        notifications = notifications.slice(-50);
-    }
-
-
-    saveData(
-        STORAGE_KEYS.notifications,
-        notifications
-    );
-
-
-    renderNotifications();
-
-    updateNavigationCounts();
-
-}
-
-
-/* =========================================================
-   NAVIGATION COUNTS
-========================================================= */
-
-function updateNavigationCounts() {
-
-    const applicationNavCount =
-        getElement("applicationNavCount");
-
-    const messageNavCount =
-        getElement("messageNavCount");
-
-    const payoutNavCount =
-        getElement("payoutNavCount");
-
-    const notificationNavCount =
-        getElement("notificationNavCount");
-
-
-    if (applicationNavCount) {
-
-        applicationNavCount.textContent =
-            applications.filter(
-                app =>
-                    app.status?.toLowerCase() === "pending"
-            ).length;
-
-    }
-
-
-    if (messageNavCount) {
-
-        messageNavCount.textContent =
-            messages.filter(
-                message => message.unread
-            ).length;
-
-    }
-
-
-    if (payoutNavCount) {
-
-        payoutNavCount.textContent =
-            payouts.filter(
-                payout =>
-                    payout.status?.toLowerCase() === "pending"
-            ).length;
-
-    }
-
-
-    if (notificationNavCount) {
-
-        notificationNavCount.textContent =
-            notifications.filter(
-                notification =>
-                    notification.unread
-            ).length;
-
-    }
-
-}
-
-
-/* =========================================================
-   SEARCH + FILTERS
-========================================================= */
-
-function setupSearchAndFilters() {
-
-    const applicationSearch =
-        getElement("applicationSearch");
-
-    const professionalSearch =
-        getElement("professionalSearch");
-
-    const professionalFilter =
-        getElement("professionalFilter");
-
-    const clientSearch =
-        getElement("clientSearch");
-
-    const projectFilter =
-        getElement("projectFilter");
-
-
-    applicationSearch?.addEventListener(
-        "input",
-        () => {
-
-            const query =
-                applicationSearch.value.toLowerCase();
-
-            const cards =
-                document.querySelectorAll(
-                    ".application-card"
-                );
-
-            cards.forEach(card => {
-
-                card.style.display =
-                    card.textContent
-                        .toLowerCase()
-                        .includes(query)
-                        ? ""
-                        : "none";
-
-            });
-
-        }
-    );
-
-
-    professionalSearch?.addEventListener(
-        "input",
-        () => {
-
-            renderProfessionals(
-                professionalSearch.value,
-                professionalFilter?.value || "all"
-            );
-
-        }
-    );
-
-
-    professionalFilter?.addEventListener(
-        "change",
-        () => {
-
-            renderProfessionals(
-                professionalSearch?.value || "",
-                professionalFilter.value
-            );
-
-        }
-    );
-
-
-    clientSearch?.addEventListener(
-        "input",
-        () => {
-
-            renderClients(
-                clientSearch.value
-            );
-
-        }
-    );
-
-
-    projectFilter?.addEventListener(
-        "change",
-        () => {
-
-            renderProjects(
-                projectFilter.value
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   MODALS
-========================================================= */
-
-let selectedProfessionalId = null;
-let selectedPayoutId = null;
-
-
-function setupModals() {
-
-    getElement("closeEditModal")
-        ?.addEventListener(
-            "click",
-            closeEditModal
-        );
-
-    getElement("cancelEdit")
-        ?.addEventListener(
-            "click",
-            closeEditModal
-        );
-
-
-    getElement("closeDeleteModal")
-        ?.addEventListener(
-            "click",
-            closeDeleteModal
-        );
-
-    getElement("cancelDelete")
-        ?.addEventListener(
-            "click",
-            closeDeleteModal
-        );
-
-
-    getElement("closePayoutModal")
-        ?.addEventListener(
-            "click",
-            closePayoutModal
-        );
-
-    getElement("cancelPayout")
-        ?.addEventListener(
-            "click",
-            closePayoutModal
-        );
-
-
-    getElement("confirmDelete")
-        ?.addEventListener(
-            "click",
-            confirmDelete
-        );
-
-
-    getElement("confirmPayout")
-        ?.addEventListener(
-            "click",
-            confirmPayout
-        );
-
-
-    getElement("editProfessionalForm")
-        ?.addEventListener(
-            "submit",
-            saveProfessionalEdit
-        );
-
-
-    document.querySelectorAll(".modal-overlay")
-        .forEach(modal => {
-
-            modal.addEventListener(
-                "click",
-                event => {
-
-                    if (event.target === modal) {
-                        modal.classList.remove("active");
-                    }
-
-                }
-            );
-
-        });
-
-
-    document.addEventListener(
-        "keydown",
-        event => {
-
-            if (event.key === "Escape") {
-
-                document.querySelectorAll(
-                    ".modal-overlay.active"
-                ).forEach(modal => {
-                    modal.classList.remove("active");
-                });
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   EDIT PROFESSIONAL
-========================================================= */
-
-function openEditModal(id) {
-
-    const professional =
-        professionals.find(
-            person => person.id === id
-        );
-
-    if (!professional) return;
-
-
-    selectedProfessionalId = id;
-
-
-    getElement("editId").value =
-        professional.id;
-
-    getElement("editName").value =
-        professional.name || "";
-
-    getElement("editProfession").value =
-        professional.profession || "";
-
-    getElement("editEmail").value =
-        professional.email || "";
-
-    getElement("editLocation").value =
-        professional.location || "";
-
-    getElement("editJobs").value =
-        professional.jobs || 0;
-
-    getElement("editStatus").value =
-        professional.status || "Verified";
-
-
-    getElement("editModal")
-        ?.classList.add("active");
-
-}
-
-
-function closeEditModal() {
-
-    getElement("editModal")
-        ?.classList.remove("active");
-
-    selectedProfessionalId = null;
-
-}
-
-
-function saveProfessionalEdit(event) {
-
-    event.preventDefault();
-
-
-    if (selectedProfessionalId === null) return;
-
-
-    const professional =
-        professionals.find(
-            person =>
-                person.id === selectedProfessionalId
-        );
-
-    if (!professional) return;
-
-
-    professional.name =
-        getElement("editName").value.trim();
-
-    professional.profession =
-        getElement("editProfession").value.trim();
-
-    professional.email =
-        getElement("editEmail").value.trim();
-
-    professional.location =
-        getElement("editLocation").value.trim();
-
-    professional.jobs =
-        Number(getElement("editJobs").value) || 0;
-
-    professional.status =
-        getElement("editStatus").value;
-
-
-    saveData(
-        STORAGE_KEYS.professionals,
-        professionals
-    );
-
+    save(STORAGE.clients, clients);
 
     addActivity(
-        "Professional updated",
-        `${professional.name}'s profile was updated.`,
-        "fa-user-pen"
+        suspended
+            ? "Client account reactivated"
+            : "Client account suspended",
+        `${client.name}'s account was ${suspended ? "reactivated" : "suspended"}.`
     );
 
+    showToast(
+        `${client.name} has been ${suspended ? "reactivated" : "suspended"}.`
+    );
 
-    renderEverything();
-
-    closeEditModal();
-
-    showToast("Professional updated successfully.");
-
+    renderAll();
 }
 
 
-/* =========================================================
-   DELETE PROFESSIONAL
-========================================================= */
+function deleteRecord() {
 
-function openDeleteModal(id) {
+    const id = $("#deleteTargetId").value;
+    const type = $("#deleteTargetType").value;
 
-    selectedProfessionalId = id;
+    if (type === "professional") {
 
-    getElement("deleteModal")
-        ?.classList.add("active");
+        const professionals = getProfessionals();
 
-}
-
-
-function closeDeleteModal() {
-
-    getElement("deleteModal")
-        ?.classList.remove("active");
-
-    selectedProfessionalId = null;
-
-}
-
-
-function confirmDelete() {
-
-    if (selectedProfessionalId === null) return;
-
-
-    const professional =
-        professionals.find(
-            person =>
-                person.id === selectedProfessionalId
+        const person = professionals.find(
+            professional => professional.id === id
         );
 
-
-    if (!professional) return;
-
-
-    professionals =
-        professionals.filter(
-            person =>
-                person.id !== selectedProfessionalId
+        save(
+            STORAGE.professionals,
+            professionals.filter(
+                professional => professional.id !== id
+            )
         );
 
+        addActivity(
+            "Professional deleted",
+            `${person?.name || "Professional"} was removed from VORVENA.`
+        );
 
-    saveData(
-        STORAGE_KEYS.professionals,
-        professionals
-    );
+        showToast("Professional deleted successfully.");
+    }
 
+    if (type === "client") {
 
-    addActivity(
-        "Professional deleted",
-        `${professional.name} was removed from the professional directory.`,
-        "fa-user-minus"
-    );
+        const clients = getClients();
 
-
-    renderEverything();
-
-    closeDeleteModal();
-
-    showToast("Professional deleted.");
-
-}
-
-
-/* =========================================================
-   PAYOUT MODAL
-========================================================= */
-
-function openPayoutModal(id) {
-
-    const payout =
-        payouts.find(
+        const client = clients.find(
             item => item.id === id
         );
 
-    if (!payout) return;
-
-
-    selectedPayoutId = id;
-
-
-    const projectName =
-        getElement("payoutProjectName");
-
-    if (projectName) {
-
-        projectName.textContent =
-            `${payout.project} — ${formatMoney(payout.amount)}`;
-
-    }
-
-
-    getElement("payoutModal")
-        ?.classList.add("active");
-
-}
-
-
-function closePayoutModal() {
-
-    getElement("payoutModal")
-        ?.classList.remove("active");
-
-    selectedPayoutId = null;
-
-}
-
-
-function confirmPayout() {
-
-    if (selectedPayoutId === null) return;
-
-
-    const payout =
-        payouts.find(
-            item =>
-                item.id === selectedPayoutId
+        save(
+            STORAGE.clients,
+            clients.filter(item => item.id !== id)
         );
 
-    if (!payout) return;
+        addActivity(
+            "Client deleted",
+            `${client?.name || "Client"} was removed from VORVENA.`
+        );
 
+        showToast("Client deleted successfully.");
+    }
+
+    closeModals();
+    renderAll();
+}
+
+
+function confirmSuspendAction() {
+
+    const id = $("#suspendTargetId").value;
+    const type = $("#suspendTargetType").value;
+
+    if (type === "professional") {
+        toggleProfessionalAccount(id);
+    }
+
+    if (type === "client") {
+        toggleClientAccount(id);
+    }
+
+    closeModals();
+}
+
+
+function processPayout() {
+
+    const id = $("#payoutId").value;
+
+    const payouts = getPayouts();
+
+    const payout = payouts.find(
+        item => item.id === id
+    );
+
+    if (!payout) return;
 
     payout.status = "Paid";
 
-
-    saveData(
-        STORAGE_KEYS.payouts,
-        payouts
-    );
-
+    save(STORAGE.payouts, payouts);
 
     addActivity(
         "Professional payout processed",
-        `${payout.professional} received ${formatMoney(payout.amount)}.`,
-        "fa-money-bill-transfer"
+        `${formatMoney(payout.amount)} was marked as paid to ${payout.professional}.`
     );
-
-
-    addNotification(
-        "Payout processed",
-        `Payout for ${payout.professional} has been processed.`,
-        "fa-money-bill-transfer"
-    );
-
-
-    renderEverything();
-
-    closePayoutModal();
-
-    showToast("Payout processed successfully.");
-
-}
-
-
-/* =========================================================
-   THEME
-========================================================= */
-
-function initializeTheme() {
-
-    const savedTheme =
-        localStorage.getItem(
-            STORAGE_KEYS.theme
-        );
-
-
-    if (savedTheme === "dark") {
-
-        document.body.classList.add(
-            "dark-theme"
-        );
-
-    } else {
-
-        document.body.classList.remove(
-            "dark-theme"
-        );
-
-    }
-
-
-    updateThemeIcon();
-
-}
-
-
-function setupThemeControls() {
-
-    getElement("themeToggle")
-        ?.addEventListener(
-            "click",
-            toggleTheme
-        );
-
-
-    getElement("settingsThemeBtn")
-        ?.addEventListener(
-            "click",
-            toggleTheme
-        );
-
-}
-
-
-function toggleTheme() {
-
-    document.body.classList.toggle(
-        "dark-theme"
-    );
-
-
-    const isDark =
-        document.body.classList.contains(
-            "dark-theme"
-        );
-
-
-    localStorage.setItem(
-        STORAGE_KEYS.theme,
-        isDark ? "dark" : "light"
-    );
-
-
-    updateThemeIcon();
 
     showToast(
-        isDark
-            ? "Dark mode enabled."
-            : "Light mode enabled."
+        `${formatMoney(payout.amount)} payout processed successfully.`
     );
 
+    closeModals();
+    renderAll();
 }
 
 
-function updateThemeIcon() {
+function saveProfessional(event) {
 
-    const themeToggle =
-        getElement("themeToggle");
+    event.preventDefault();
 
-    if (!themeToggle) return;
+    const id = $("#editId").value;
 
+    const professionals = getProfessionals();
 
-    const icon =
-        themeToggle.querySelector("i");
+    const professional = professionals.find(
+        item => item.id === id
+    );
 
-    if (!icon) return;
+    if (!professional) return;
 
+    professional.name = $("#editName").value.trim();
+    professional.profession = $("#editProfession").value.trim();
+    professional.email = $("#editEmail").value.trim();
+    professional.location = $("#editLocation").value.trim();
+    professional.jobs = Number($("#editJobs").value);
+    professional.accountStatus = $("#editStatus").value;
 
-    const isDark =
-        document.body.classList.contains(
-            "dark-theme"
-        );
+    save(STORAGE.professionals, professionals);
 
+    addActivity(
+        "Professional profile updated",
+        `${professional.name}'s admin profile information was updated.`
+    );
 
-    icon.className =
-        isDark
-            ? "fa-solid fa-sun"
-            : "fa-solid fa-moon";
+    showToast(`${professional.name} updated successfully.`);
 
+    closeModals();
+    renderAll();
 }
 
 
-/* =========================================================
-   NOTIFICATION CONTROLS
-========================================================= */
+function saveClient(event) {
 
-function setupNotifications() {
+    event.preventDefault();
 
-    const notificationBtn =
-        getElement("notificationBtn");
+    const id = $("#editClientId").value;
 
-    const markRead =
-        getElement("markNotificationsRead");
+    const clients = getClients();
 
-
-    notificationBtn?.addEventListener(
-        "click",
-        () => {
-
-            const section =
-                getElement("notifications");
-
-            section?.scrollIntoView({
-                behavior: "smooth"
-            });
-
-        }
+    const client = clients.find(
+        item => item.id === id
     );
 
+    if (!client) return;
 
-    markRead?.addEventListener(
-        "click",
-        markAllNotificationsRead
+    client.name = $("#editClientName").value.trim();
+    client.email = $("#editClientEmail").value.trim();
+    client.location = $("#editClientLocation").value.trim();
+    client.projects = Number($("#editClientProjects").value);
+    client.status = $("#editClientStatus").value;
+
+    save(STORAGE.clients, clients);
+
+    addActivity(
+        "Client profile updated",
+        `${client.name}'s admin profile information was updated.`
     );
 
+    showToast(`${client.name} updated successfully.`);
+
+    closeModals();
+    renderAll();
+}
+
+
+function markMessageRead(id) {
+
+    const messages = getMessages();
+
+    const message = messages.find(
+        item => item.id === id
+    );
+
+    if (!message) return;
+
+    message.unread = false;
+
+    save(STORAGE.messages, messages);
+
+    renderMessages();
+}
+
+
+function markNotificationRead(id) {
+
+    const notifications = getNotifications();
+
+    const notification = notifications.find(
+        item => item.id === id
+    );
+
+    if (!notification) return;
+
+    notification.read = true;
+
+    save(STORAGE.notifications, notifications);
+
+    renderNotifications();
 }
 
 
 function markAllNotificationsRead() {
 
-    notifications =
-        notifications.map(
-            notification => ({
-                ...notification,
-                unread: false
-            })
-        );
+    const notifications = getNotifications();
 
-
-    saveData(
-        STORAGE_KEYS.notifications,
-        notifications
+    notifications.forEach(
+        notification => notification.read = true
     );
 
-
-    renderNotifications();
-
-    updateNavigationCounts();
-
-    updateNotificationDot();
-
-    showToast(
-        "All notifications marked as read."
-    );
-
-}
-
-
-function updateNotificationDot() {
-
-    const dot =
-        getElement("notificationDot");
-
-    if (!dot) return;
-
-
-    const unread =
-        notifications.some(
-            notification =>
-                notification.unread
-        );
-
-
-    dot.style.display =
-        unread ? "block" : "none";
-
-}
-
-
-/* =========================================================
-   REPORTS
-========================================================= */
-
-function setupReports() {
-
-    document.querySelectorAll(
-        ".report-btn[data-report]"
-    ).forEach(button => {
-
-        button.addEventListener(
-            "click",
-            () => {
-
-                const report =
-                    button.dataset.report;
-
-                generateReport(report);
-
-            }
-        );
-
-    });
-
-}
-
-
-function generateReport(type) {
-
-    let message = "";
-
-
-    switch (type) {
-
-        case "professionals":
-            message =
-                `Professionals: ${professionals.length}`;
-            break;
-
-        case "clients":
-            message =
-                `Clients: ${clients.length}`;
-            break;
-
-        case "projects":
-            message =
-                `Projects: ${projects.length}`;
-            break;
-
-        case "payments":
-
-            const total =
-                payments.reduce(
-                    (sum, payment) =>
-                        sum + Number(payment.amount || 0),
-                    0
-                );
-
-            message =
-                `Payment volume: ${formatMoney(total)}`;
-
-            break;
-
-        default:
-            message =
-                "Report generated successfully.";
-
-    }
-
+    save(STORAGE.notifications, notifications);
 
     addActivity(
-        "Report generated",
-        message,
-        "fa-chart-column"
+        "Notifications marked as read",
+        "All administrator notifications were marked as read."
     );
 
+    showToast("All notifications marked as read.");
 
-    showToast(message);
-
+    renderAll();
 }
 
 
-/* =========================================================
-   SETTINGS
-========================================================= */
+function initializeNavigation() {
 
-function setupSettings() {
+    const links = $$(".nav-link");
 
-    updateNotificationDot();
+    links.forEach(link => {
 
-    const commission =
-        document.querySelector(
-            ".commission-display"
-        );
+        link.addEventListener("click", event => {
 
-    if (commission) {
+            event.preventDefault();
 
-        commission.innerHTML = `
-            <div class="commission-box">
+            const sectionId = link.dataset.section;
+            const section = document.getElementById(sectionId);
 
-                <strong>15%</strong>
+            if (!section) return;
 
-                <span>
-                    VORVENA Commission
-                </span>
+            section.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
 
-            </div>
+            history.replaceState(null, "", `#${sectionId}`);
 
-            <div class="commission-box">
+            links.forEach(item => item.classList.remove("active"));
 
-                <strong>85%</strong>
+            link.classList.add("active");
 
-                <span>
-                    Professional Earnings
-                </span>
+            $("#pageTitle").textContent =
+                link.dataset.title || "Dashboard";
 
-            </div>
-        `;
-
-    }
-
-}
+            closeSidebar();
+        });
+    });
 
 
-/* =========================================================
-   LOGOUT
-========================================================= */
+    const sections = $$(".section");
 
-function setupLogout() {
+    const observer = new IntersectionObserver(
+        entries => {
 
-    const logoutBtn =
-        getElement("logoutBtn");
+            const visible = entries
+                .filter(entry => entry.isIntersecting)
+                .sort((a, b) =>
+                    b.intersectionRatio - a.intersectionRatio
+                )[0];
 
-    logoutBtn?.addEventListener(
-        "click",
-        () => {
+            if (!visible) return;
 
-            const confirmed =
-                confirm(
-                    "Are you sure you want to log out of the admin system?"
+            const current = visible.target.id;
+
+            links.forEach(link => {
+                link.classList.toggle(
+                    "active",
+                    link.dataset.section === current
                 );
+            });
 
-
-            if (!confirmed) return;
-
-
-            localStorage.removeItem(
-                STORAGE_KEYS.adminLoggedIn
+            const activeLink = links.find(
+                link => link.dataset.section === current
             );
 
+            if (activeLink) {
+                $("#pageTitle").textContent =
+                    activeLink.dataset.title;
+            }
 
-            addActivity(
-                "Admin logged out",
-                "The administrator logged out of the VORVENA system.",
-                "fa-right-from-bracket"
-            );
-
-
-            showToast(
-                "Logging out..."
-            );
-
-
-            setTimeout(() => {
-
-                /*
-                 * Change this path later if your
-                 * admin login page has another name.
-                 */
-
-                window.location.href =
-                    "admin-login.html";
-
-            }, 900);
-
+        },
+        {
+            root: null,
+            threshold: [0.15, 0.35, 0.6]
         }
     );
 
+    sections.forEach(section => observer.observe(section));
+
+
+    if (window.location.hash) {
+
+        const id = window.location.hash.substring(1);
+        const section = document.getElementById(id);
+
+        if (section) {
+            setTimeout(() => {
+                section.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }, 200);
+        }
+    }
 }
 
 
-/* =========================================================
-   TOAST
-========================================================= */
-
-let toastTimeout;
-
-
-function showToast(message) {
-
-    const toast =
-        getElement("toast");
-
-    const toastMessage =
-        getElement("toastMessage");
-
-
-    if (!toast || !toastMessage) return;
-
-
-    toastMessage.textContent =
-        message;
-
-
-    toast.classList.add("show");
-
-
-    clearTimeout(toastTimeout);
-
-
-    toastTimeout =
-        setTimeout(() => {
-
-            toast.classList.remove("show");
-
-        }, 3000);
-
+function openSidebar() {
+    $("#sidebar")?.classList.add("open");
+    $("#sidebarOverlay")?.classList.add("active");
 }
 
 
-/* =========================================================
-   EMPTY STATE
-========================================================= */
-
-function createEmptyState(
-    title,
-    message,
-    icon = "fa-folder-open"
-) {
-
-    return `
-        <div class="empty-state">
-
-            <i class="fa-solid ${icon}"></i>
-
-            <h3>
-                ${escapeHTML(title)}
-            </h3>
-
-            <p>
-                ${escapeHTML(message)}
-            </p>
-
-        </div>
-    `;
-
+function closeSidebar() {
+    $("#sidebar")?.classList.remove("open");
+    $("#sidebarOverlay")?.classList.remove("active");
 }
 
 
-/* =========================================================
-   GLOBAL FUNCTIONS
-   Needed because buttons are created dynamically
-========================================================= */
+function initializeMobileMenu() {
 
-window.approveApplication =
-    approveApplication;
+    $("#menuBtn")?.addEventListener("click", openSidebar);
 
-window.rejectApplication =
-    rejectApplication;
-
-window.openEditModal =
-    openEditModal;
-
-window.openDeleteModal =
-    openDeleteModal;
-
-window.openPayoutModal =
-    openPayoutModal;
-
-window.viewClient =
-    viewClient;
-
-window.viewProject =
-    viewProject;
+    $("#sidebarOverlay")?.addEventListener(
+        "click",
+        closeSidebar
+    );
+}
 
 
-/* =========================================================
-   INITIAL NOTIFICATION DOT
-========================================================= */
+function initializeTheme() {
 
-setTimeout(() => {
-    updateNotificationDot();
-}, 100);
+    const savedTheme = localStorage.getItem(STORAGE.theme);
+
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-theme");
+    }
+
+    updateThemeIcon();
+
+    $("#themeToggle")?.addEventListener(
+        "click",
+        toggleTheme
+    );
+
+    $("#settingsThemeBtn")?.addEventListener(
+        "click",
+        toggleTheme
+    );
+}
+
+
+function toggleTheme() {
+
+    document.body.classList.toggle("dark-theme");
+
+    const dark = document.body.classList.contains("dark-theme");
+
+    localStorage.setItem(
+        STORAGE.theme,
+        dark ? "dark" : "light"
+    );
+
+    updateThemeIcon();
+
+    showToast(
+        dark
+            ? "Dark mode enabled."
+            : "Light mode enabled."
+    );
+}
+
+
+function updateThemeIcon() {
+
+    const button = $("#themeToggle");
+
+    if (!button) return;
+
+    const icon = button.querySelector("i");
+
+    if (!icon) return;
+
+    const dark = document.body.classList.contains("dark-theme");
+
+    icon.className = dark
+        ? "fa-solid fa-sun"
+        : "fa-solid fa-moon";
+}
+
+
+function initializeSearchAndFilters() {
+
+    $("#applicationSearch")?.addEventListener(
+        "input",
+        renderApplications
+    );
+
+    $("#professionalSearch")?.addEventListener(
+        "input",
+        renderProfessionals
+    );
+
+    $("#professionalFilter")?.addEventListener(
+        "change",
+        renderProfessionals
+    );
+
+    $("#clientSearch")?.addEventListener(
+        "input",
+        renderClients
+    );
+
+    $("#projectFilter")?.addEventListener(
+        "change",
+        renderProjects
+    );
+}
+
+
+function initializeModalEvents() {
+
+    $("#closeEditModal")?.addEventListener(
+        "click",
+        closeModals
+    );
+
+    $("#cancelEdit")?.addEventListener(
+        "click",
+        closeModals
+    );
+
+    $("#closeClientEditModal")?.addEventListener(
+        "click",
+        closeModals
+    );
+
+    $("#cancelClientEdit")?.addEventListener(
+        "click",
+        closeModals
+    );
+
+    $("#closePayoutModal")?.addEventListener(
+        "click",
+        closeModals
+    );
+
+    $("#cancelPayout")?.addEventListener(
+        "click",
+        closeModals
+    );
+
+    $("#cancelDelete")?.addEventListener(
+        "click",
+        closeModals
+    );
+
+    $("#cancelSuspend")?.addEventListener(
+        "click",
+        closeModals
+    );
+
+    $("#confirmDelete")?.addEventListener(
+        "click",
+        deleteRecord
+    );
+
+    $("#confirmSuspend")?.addEventListener(
+        "click",
+        confirmSuspendAction
+    );
+
+    $("#confirmPayout")?.addEventListener(
+        "click",
+        processPayout
+    );
+
+    $("#editProfessionalForm")?.addEventListener(
+        "submit",
+        saveProfessional
+    );
+
+    $("#clientEditForm")?.addEventListener(
+        "submit",
+        saveClient
+    );
+
+    $$(".modal-overlay").forEach(modal => {
+
+        modal.addEventListener("click", event => {
+
+            if (event.target === modal) {
+                closeModals();
+            }
+
+        });
+    });
+}
+
+
+function initializeActionDelegation() {
+
+    document.addEventListener("click", event => {
+
+        const button = event.target.closest("[data-action]");
+
+        if (!button) return;
+
+        const action = button.dataset.action;
+        const id = button.dataset.id;
+
+        if (action === "approve-application") {
+            approveApplication(id);
+        }
+
+        if (action === "reject-application") {
+            rejectApplication(id);
+        }
+
+        if (action === "edit-professional") {
+            openProfessionalEdit(id);
+        }
+
+        if (action === "toggle-professional") {
+            openSuspendModal(id, "professional");
+        }
+
+        if (action === "toggle-verification") {
+            toggleProfessionalVerification(id);
+        }
+
+        if (action === "delete-professional") {
+            openDeleteModal(id, "professional");
+        }
+
+        if (action === "edit-client") {
+            openClientEdit(id);
+        }
+
+        if (action === "toggle-client") {
+            openSuspendModal(id, "client");
+        }
+
+        if (action === "delete-client") {
+            openDeleteModal(id, "client");
+        }
+
+        if (action === "process-payout") {
+            openPayoutModal(id);
+        }
+
+        if (action === "read-message") {
+            markMessageRead(id);
+        }
+
+        if (action === "read-notification") {
+            markNotificationRead(id);
+        }
+    });
+}
+
+
+function initializeNotifications() {
+
+    $("#notificationBtn")?.addEventListener("click", () => {
+
+        const section = $("#notifications");
+
+        section?.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+        history.replaceState(
+            null,
+            "",
+            "#notifications"
+        );
+    });
+
+    $("#markNotificationsRead")?.addEventListener(
+        "click",
+        markAllNotificationsRead
+    );
+}
+
+
+function initializeReports() {
+
+    $$(".report-btn").forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const type = button.dataset.report;
+
+            const names = {
+                community: "Community report",
+                financial: "Financial report",
+                projects: "Projects report"
+            };
+
+            addActivity(
+                "Report generated",
+                `${names[type]} was generated from the admin dashboard.`
+            );
+
+            showToast(`${names[type]} generated successfully.`);
+        });
+    });
+}
+
+
+function initializeSupport() {
+
+    $("#supportBtn")?.addEventListener("click", () => {
+
+        showToast(
+            "Admin support center is ready for backend integration."
+        );
+    });
+}
+
+
+function initializeLogout() {
+
+    $("#logoutBtn")?.addEventListener("click", () => {
+
+        const confirmed = window.confirm(
+            "Are you sure you want to logout from the VORVENA Admin Center?"
+        );
+
+        if (!confirmed) return;
+
+        localStorage.setItem(
+            STORAGE.loggedIn,
+            "false"
+        );
+
+        addActivity(
+            "Admin logout",
+            "Administrator logged out of the dashboard."
+        );
+
+        showToast("Admin session ended.");
+    });
+}
+
+
+function initializeSecurity() {
+
+    $("#openSecurityBtn")?.addEventListener(
+        "click",
+        () => {
+            $("#securityModal")?.classList.add("active");
+        }
+    );
+
+    $("#closeSecurityModal")?.addEventListener(
+        "click",
+        closeModals
+    );
+
+    $("#cancelSecurity")?.addEventListener(
+        "click",
+        closeModals
+    );
+
+
+    $$(".password-toggle").forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            const target = document.getElementById(
+                button.dataset.target
+            );
+
+            if (!target) return;
+
+            const icon = button.querySelector("i");
+
+            if (target.type === "password") {
+
+                target.type = "text";
+
+                icon.className =
+                    "fa-solid fa-eye-slash";
+
+            } else {
+
+                target.type = "password";
+
+                icon.className =
+                    "fa-solid fa-eye";
+            }
+        });
+    });
+
+
+    $("#securityForm")?.addEventListener(
+        "submit",
+        saveSecurity
+    );
+}
+
+
+function saveSecurity(event) {
+
+    event.preventDefault();
+
+    const currentPassword =
+        $("#currentAdminPassword").value;
+
+    const newPhone =
+        $("#newAdminPhone").value.trim();
+
+    const newPassword =
+        $("#newAdminPassword").value;
+
+    const confirmPassword =
+        $("#confirmAdminPassword").value;
+
+    const account =
+        JSON.parse(
+            localStorage.getItem(STORAGE.account)
+        );
+
+    if (currentPassword !== account.password) {
+
+        showToast(
+            "Current admin password is incorrect.",
+            "error"
+        );
+
+        return;
+    }
+
+    if (
+        newPassword &&
+        newPassword !== confirmPassword
+    ) {
+
+        showToast(
+            "New passwords do not match.",
+            "error"
+        );
+
+        return;
+    }
+
+    if (newPhone) {
+        account.phone = newPhone;
+    }
+
+    if (newPassword) {
+        account.password = newPassword;
+    }
+
+    save(STORAGE.account, account);
+
+    addActivity(
+        "Admin security updated",
+        "Administrator security settings were updated."
+    );
+
+    showToast("Admin security settings saved.");
+
+    $("#securityForm").reset();
+
+    closeModals();
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    initializeStorage();
+
+    initializeTheme();
+
+    initializeNavigation();
+
+    initializeMobileMenu();
+
+    initializeSearchAndFilters();
+
+    initializeModalEvents();
+
+    initializeActionDelegation();
+
+    initializeNotifications();
+
+    initializeReports();
+
+    initializeSupport();
+
+    initializeLogout();
+
+    initializeSecurity();
+
+    renderAll();
+
+});

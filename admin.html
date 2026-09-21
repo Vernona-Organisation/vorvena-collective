@@ -1,2470 +1,1012 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-        content="VORVENA Admin Dashboard and Community Management System">
-
-    <title>VORVENA Admin</title>
-
-    <!-- ================= FONTS & ICONS ================= -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <!-- ================= ADMIN CSS ================= -->
+    <meta name="description" content="VORVENA Admin Control Center">
+    <title>VORVENA | Admin Control Center</title>
 
     <link rel="stylesheet" href="admin.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
 
-    <!-- =====================================================
-         MOBILE SIDEBAR OVERLAY
-    ====================================================== -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-logo">
+        <div class="logo-mark">V</div>
+        <div>
+            <h2>VORVENA</h2>
+            <span>Admin Center</span>
+        </div>
+    </div>
+
+    <nav class="sidebar-nav">
+
+        <a href="#dashboard" class="nav-link active" data-section="dashboard" data-title="Dashboard">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="#applications" class="nav-link" data-section="applications" data-title="Applications">
+            <i class="fa-solid fa-file-circle-check"></i>
+            <span>Applications</span>
+            <b id="applicationNavCount">0</b>
+        </a>
+
+        <a href="#professionals" class="nav-link" data-section="professionals" data-title="Professionals">
+            <i class="fa-solid fa-users"></i>
+            <span>Professionals</span>
+        </a>
+
+        <a href="#clients" class="nav-link" data-section="clients" data-title="Clients">
+            <i class="fa-solid fa-building"></i>
+            <span>Clients</span>
+        </a>
+
+        <a href="#projects" class="nav-link" data-section="projects" data-title="Projects">
+            <i class="fa-solid fa-briefcase"></i>
+            <span>Projects</span>
+        </a>
+
+        <a href="#messages" class="nav-link" data-section="messages" data-title="Messages">
+            <i class="fa-solid fa-comments"></i>
+            <span>Messages</span>
+            <b id="messageNavCount">0</b>
+        </a>
+
+        <a href="#payments" class="nav-link" data-section="payments" data-title="Payments">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Payments</span>
+        </a>
+
+        <a href="#payouts" class="nav-link" data-section="payouts" data-title="Payouts">
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            <span>Payouts</span>
+            <b id="payoutNavCount">0</b>
+        </a>
+
+        <a href="#notifications" class="nav-link" data-section="notifications" data-title="Notifications">
+            <i class="fa-solid fa-bell"></i>
+            <span>Notifications</span>
+            <b id="notificationNavCount">0</b>
+        </a>
+
+        <a href="#activity" class="nav-link" data-section="activity" data-title="Activity">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Activity</span>
+        </a>
+
+        <a href="#reports" class="nav-link" data-section="reports" data-title="Reports">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Reports</span>
+        </a>
+
+        <a href="#settings" class="nav-link" data-section="settings" data-title="Settings">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+        </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+        <button id="supportBtn" class="side-bottom-btn">
+            <i class="fa-solid fa-headset"></i>
+            <span>Support</span>
+        </button>
+
+        <button id="logoutBtn" class="side-bottom-btn logout-btn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </button>
+
+    </div>
+
+</aside>
 
 
-    <!-- =====================================================
-         ADMIN LAYOUT
-    ====================================================== -->
+<main class="main-content">
 
-    <div class="admin-layout">
+    <header class="topbar">
 
+        <div class="topbar-left">
+            <button id="menuBtn" class="icon-btn mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
 
-        <!-- =================================================
-             SIDEBAR
-        ================================================== -->
+            <div>
+                <span class="topbar-label">VORVENA</span>
+                <h1 id="pageTitle">Dashboard</h1>
+            </div>
+        </div>
 
-        <aside class="sidebar" id="sidebar">
+        <div class="topbar-right">
 
-            <!-- LOGO -->
+            <button id="themeToggle" class="icon-btn" title="Toggle theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
 
-            <div class="sidebar-logo">
+            <button id="notificationBtn" class="notification-button" title="Notifications">
+                <i class="fa-solid fa-bell"></i>
+                <span id="notificationDot"></span>
+            </button>
 
-                <span>V</span>
-
+            <div class="admin-profile">
+                <div class="admin-avatar">A</div>
                 <div>
-                    <strong>VORVENA</strong>
-                    <small>ADMIN CONTROL</small>
+                    <strong>VORVENA Admin</strong>
+                    <span>Administrator</span>
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <div class="page-content">
+
+        <!-- DASHBOARD -->
+        <section class="section" id="dashboard">
+
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">CONTROL CENTER</span>
+                    <h2>Dashboard Overview</h2>
+                    <p>Monitor VORVENA activity, professionals, clients and payments.</p>
+                </div>
+
+                <div class="date-box">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span id="currentDate"></span>
+                </div>
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+                    <div>
+                        <span>Total Professionals</span>
+                        <strong id="totalProfessionals">0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-circle-check"></i></div>
+                    <div>
+                        <span>Verified Professionals</span>
+                        <strong id="verifiedProfessionalsCount">0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-circle"></i></div>
+                    <div>
+                        <span>Online Professionals</span>
+                        <strong id="onlineProfessionals">0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-file"></i></div>
+                    <div>
+                        <span>Pending Applications</span>
+                        <strong id="pendingApplications">0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div>
+                        <span>Active Projects</span>
+                        <strong id="activeProjectsCount">0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-check-double"></i></div>
+                    <div>
+                        <span>Completed Jobs</span>
+                        <strong id="completedJobsCount">0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-user-clock"></i></div>
+                    <div>
+                        <span>Pending Verification</span>
+                        <strong id="pendingVerificationCount">0</strong>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-wallet"></i></div>
+                    <div>
+                        <span>Awaiting Payout</span>
+                        <strong id="awaitingPayout">₦0</strong>
+                    </div>
                 </div>
 
             </div>
 
 
-            <!-- ADMIN PROFILE -->
+            <div class="dashboard-grid">
 
-            <div class="sidebar-admin">
+                <div class="panel large-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Recent Projects</h3>
+                            <span>Latest platform projects</span>
+                        </div>
+                        <a href="#projects" class="view-link">View all</a>
+                    </div>
 
-                <div class="sidebar-admin-avatar">
-                    AD
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Project</th>
+                                    <th>Client</th>
+                                    <th>Professional</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentProjectsBody"></tbody>
+                        </table>
+                    </div>
                 </div>
 
-                <div>
-                    <strong>Admin</strong>
-                    <small>Administrator</small>
-                </div>
 
-                <span class="admin-status-dot"></span>
+                <div class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Recent Payouts</h3>
+                            <span>Professional payouts</span>
+                        </div>
+                        <a href="#payouts" class="view-link">View all</a>
+                    </div>
+
+                    <div id="dashboardPayoutList" class="mini-list"></div>
+                </div>
 
             </div>
 
-
-            <!-- NAVIGATION -->
-
-            <nav class="sidebar-nav" aria-label="Admin navigation">
+        </section>
 
 
-                <!-- OVERVIEW -->
+        <!-- APPLICATIONS -->
+        <section class="section" id="applications">
 
-                <a href="#dashboard"
-                    class="nav-link active"
-                    data-section="dashboard">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">PROFESSIONAL ENTRY</span>
+                    <h2>Applications</h2>
+                    <p>Manage professionals who want to join the VORVENA community.</p>
+                </div>
 
-                    <span class="nav-icon">
-                        <i class="fa-solid fa-gauge-high"></i>
-                    </span>
+                <div class="section-counter">
+                    <span>Pending</span>
+                    <strong id="applicationCount">0</strong>
+                </div>
+            </div>
 
-                    <span>Dashboard</span>
+            <div class="toolbar">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input id="applicationSearch" type="search" placeholder="Search applications...">
+                </div>
+            </div>
 
-                </a>
+            <div id="applicationsList" class="card-grid"></div>
 
-
-                <!-- APPLICATIONS -->
-
-                <a href="#applications"
-                    class="nav-link"
-                    data-section="applications">
-
-                    <span class="nav-icon">
-                        <i class="fa-solid fa-file-circle-check"></i>
-                    </span>
-
-                    <span>Applications</span>
-
-                    <span class="nav-count" id="applicationNavCount">
-                        4
-                    </span>
-
-                </a>
+        </section>
 
 
-                <!-- PROFESSIONALS -->
+        <!-- PROFESSIONALS -->
+        <section class="section" id="professionals">
 
-                <a href="#professionals"
-                    class="nav-link"
-                    data-section="professionals">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">COMMUNITY MANAGEMENT</span>
+                    <h2>Professionals</h2>
+                    <p>Manage approved professionals and their platform access.</p>
+                </div>
+            </div>
 
-                    <span class="nav-icon">
+            <div class="toolbar">
+
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input id="professionalSearch" type="search" placeholder="Search professionals...">
+                </div>
+
+                <select id="professionalFilter" class="filter-select">
+                    <option value="all">All Professionals</option>
+                    <option value="online">Online</option>
+                    <option value="verified">Verified</option>
+                    <option value="unverified">Unverified</option>
+                    <option value="active">Active</option>
+                    <option value="suspended">Suspended</option>
+                </select>
+
+            </div>
+
+            <div class="table-panel">
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Professional</th>
+                                <th>Profession</th>
+                                <th>Location</th>
+                                <th>Jobs</th>
+                                <th>Status</th>
+                                <th>Account</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="professionalsTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- CLIENTS -->
+        <section class="section" id="clients">
+
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">CLIENT MANAGEMENT</span>
+                    <h2>Clients</h2>
+                    <p>Manage clients using the VORVENA platform.</p>
+                </div>
+            </div>
+
+            <div class="toolbar">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input id="clientSearch" type="search" placeholder="Search clients...">
+                </div>
+            </div>
+
+            <div id="clientsList" class="card-grid"></div>
+
+        </section>
+
+
+        <!-- PROJECTS -->
+        <section class="section" id="projects">
+
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">PROJECT MANAGEMENT</span>
+                    <h2>Projects</h2>
+                    <p>Track work moving through the VORVENA platform.</p>
+                </div>
+            </div>
+
+            <div class="toolbar">
+                <select id="projectFilter" class="filter-select">
+                    <option value="all">All Projects</option>
+                    <option value="pending">Pending</option>
+                    <option value="in progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </div>
+
+            <div id="projectsList" class="card-grid"></div>
+
+        </section>
+
+
+        <!-- MESSAGES -->
+        <section class="section" id="messages">
+
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">PLATFORM COMMUNICATION</span>
+                    <h2>Messages</h2>
+                    <p>Monitor communication activity across VORVENA workspaces.</p>
+                </div>
+
+                <div class="section-counter">
+                    <span>Unread</span>
+                    <strong id="messageCount">0</strong>
+                </div>
+            </div>
+
+            <div id="messagesList" class="message-list"></div>
+
+        </section>
+
+
+        <!-- PAYMENTS -->
+        <section class="section" id="payments">
+
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">FINANCIAL CONTROL</span>
+                    <h2>Payments</h2>
+                    <p>Monitor client payments and VORVENA platform revenue.</p>
+                </div>
+            </div>
+
+            <div class="finance-grid">
+
+                <div class="finance-card">
+                    <span>Total Payment Volume</span>
+                    <strong id="totalPaymentVolume">₦0</strong>
+                    <small>All recorded payments</small>
+                </div>
+
+                <div class="finance-card">
+                    <span>VORVENA Revenue</span>
+                    <strong id="vorvenaRevenue">₦0</strong>
+                    <small>15% platform share</small>
+                </div>
+
+                <div class="finance-card">
+                    <span>Professional Earnings</span>
+                    <strong id="professionalEarnings">₦0</strong>
+                    <small>85% professional share</small>
+                </div>
+
+                <div class="finance-card">
+                    <span>Pending Payments</span>
+                    <strong id="pendingPaymentAmount">₦0</strong>
+                    <small>Awaiting confirmation</small>
+                </div>
+
+            </div>
+
+            <div class="table-panel">
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Payment</th>
+                                <th>Client</th>
+                                <th>Professional</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="paymentsTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- PAYOUTS -->
+        <section class="section" id="payouts">
+
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">PROFESSIONAL PAYOUTS</span>
+                    <h2>Payouts</h2>
+                    <p>Release approved earnings to professionals.</p>
+                </div>
+            </div>
+
+            <div id="payoutsList" class="card-grid"></div>
+
+        </section>
+
+
+        <!-- NOTIFICATIONS -->
+        <section class="section" id="notifications">
+
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">ADMIN ALERTS</span>
+                    <h2>Notifications</h2>
+                    <p>Important updates requiring admin attention.</p>
+                </div>
+
+                <button id="markNotificationsRead" class="secondary-btn">
+                    <i class="fa-solid fa-check-double"></i>
+                    Mark all read
+                </button>
+            </div>
+
+            <div class="notification-list"></div>
+
+        </section>
+
+
+        <!-- ACTIVITY -->
+        <section class="section" id="activity">
+
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">SYSTEM HISTORY</span>
+                    <h2>Activity Log</h2>
+                    <p>Track important actions performed across the dashboard.</p>
+                </div>
+            </div>
+
+            <div id="activityLog" class="activity-list"></div>
+
+        </section>
+
+
+        <!-- REPORTS -->
+        <section class="section" id="reports">
+
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">DATA & INSIGHTS</span>
+                    <h2>Reports</h2>
+                    <p>Generate administrative summaries for VORVENA.</p>
+                </div>
+            </div>
+
+            <div class="report-grid">
+
+                <button class="report-btn" data-report="community">
+                    <div class="report-icon">
                         <i class="fa-solid fa-users"></i>
-                    </span>
+                    </div>
+                    <div>
+                        <strong>Community Report</strong>
+                        <span>Professionals, verification and activity</span>
+                    </div>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
 
-                    <span>Professionals</span>
-
-                </a>
-
-
-                <!-- CLIENTS -->
-
-                <a href="#clients"
-                    class="nav-link"
-                    data-section="clients">
-
-                    <span class="nav-icon">
-                        <i class="fa-solid fa-building"></i>
-                    </span>
-
-                    <span>Clients</span>
-
-                </a>
-
-
-                <!-- PROJECTS -->
-
-                <a href="#projects"
-                    class="nav-link"
-                    data-section="projects">
-
-                    <span class="nav-icon">
-                        <i class="fa-solid fa-briefcase"></i>
-                    </span>
-
-                    <span>Projects</span>
-
-                </a>
-
-
-                <!-- MESSAGES -->
-
-                <a href="#messages"
-                    class="nav-link"
-                    data-section="messages">
-
-                    <span class="nav-icon">
-                        <i class="fa-solid fa-comments"></i>
-                    </span>
-
-                    <span>Messages</span>
-
-                    <span class="nav-count" id="messageNavCount">
-                        3
-                    </span>
-
-                </a>
-
-
-                <!-- PAYMENTS -->
-
-                <a href="#payments"
-                    class="nav-link"
-                    data-section="payments">
-
-                    <span class="nav-icon">
-                        <i class="fa-solid fa-credit-card"></i>
-                    </span>
-
-                    <span>Payments</span>
-
-                </a>
-
-
-                <!-- PAYOUTS -->
-
-                <a href="#payouts"
-                    class="nav-link"
-                    data-section="payouts">
-
-                    <span class="nav-icon">
-                        <i class="fa-solid fa-money-bill-transfer"></i>
-                    </span>
-
-                    <span>Payouts</span>
-
-                    <span class="nav-count danger-count" id="payoutNavCount">
-                        2
-                    </span>
-
-                </a>
-
-
-                <!-- NOTIFICATIONS -->
-
-                <a href="#notifications"
-                    class="nav-link"
-                    data-section="notifications">
-
-                    <span class="nav-icon">
-                        <i class="fa-solid fa-bell"></i>
-                    </span>
-
-                    <span>Notifications</span>
-
-                    <span class="nav-count" id="notificationNavCount">
-                        4
-                    </span>
-
-                </a>
-
-
-                <!-- ACTIVITY -->
-
-                <a href="#activity"
-                    class="nav-link"
-                    data-section="activity">
-
-                    <span class="nav-icon">
-                        <i class="fa-solid fa-clock-rotate-left"></i>
-                    </span>
-
-                    <span>Activity</span>
-
-                </a>
-
-
-                <!-- REPORTS -->
-
-                <a href="#reports"
-                    class="nav-link"
-                    data-section="reports">
-
-                    <span class="nav-icon">
+                <button class="report-btn" data-report="financial">
+                    <div class="report-icon">
                         <i class="fa-solid fa-chart-column"></i>
-                    </span>
-
-                    <span>Reports</span>
-
-                </a>
-
-
-                <!-- SETTINGS -->
-
-                <a href="#settings"
-                    class="nav-link"
-                    data-section="settings">
-
-                    <span class="nav-icon">
-                        <i class="fa-solid fa-gear"></i>
-                    </span>
-
-                    <span>Settings</span>
-
-                </a>
-
-            </nav>
-
-
-            <!-- SIDEBAR BOTTOM -->
-
-            <div class="sidebar-bottom">
-
-                <button
-                    type="button"
-                    class="sidebar-bottom-btn"
-                    id="supportBtn">
-
-                    <span class="nav-icon">
-                        <i class="fa-solid fa-headset"></i>
-                    </span>
-
-                    <span>Support</span>
-
+                    </div>
+                    <div>
+                        <strong>Financial Report</strong>
+                        <span>Payments, revenue and payouts</span>
+                    </div>
+                    <i class="fa-solid fa-arrow-right"></i>
                 </button>
 
-
-                <button
-                    type="button"
-                    class="logout-btn"
-                    id="logoutBtn">
-
-                    <span class="nav-icon">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                    </span>
-
-                    <span>Logout</span>
-
+                <button class="report-btn" data-report="projects">
+                    <div class="report-icon">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <div>
+                        <strong>Projects Report</strong>
+                        <span>Project activity and completion</span>
+                    </div>
+                    <i class="fa-solid fa-arrow-right"></i>
                 </button>
 
             </div>
 
-        </aside>
+        </section>
 
 
+        <!-- SETTINGS -->
+        <section class="section" id="settings">
 
-        <!-- =================================================
-             MAIN CONTENT
-        ================================================== -->
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">ADMIN CONFIGURATION</span>
+                    <h2>Settings</h2>
+                    <p>Manage dashboard preferences and administrator security.</p>
+                </div>
+            </div>
 
-        <main class="main-content">
+            <div class="settings-grid">
 
+                <div class="settings-card">
 
-            <!-- =================================================
-                 TOPBAR
-            ================================================== -->
+                    <div class="settings-card-heading">
+                        <div class="settings-icon">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <div>
+                            <h3>Appearance</h3>
+                            <p>Choose your dashboard appearance.</p>
+                        </div>
+                    </div>
 
-            <header class="topbar">
-
-                <div class="topbar-left">
-
-                    <button
-                        type="button"
-                        class="menu-btn"
-                        id="menuBtn"
-                        aria-label="Open navigation"
-                        aria-expanded="false">
-
-                        <i class="fa-solid fa-bars"></i>
-
+                    <button id="settingsThemeBtn" class="settings-action">
+                        <span>
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                            Toggle Dark / Light Mode
+                        </span>
+                        <i class="fa-solid fa-chevron-right"></i>
                     </button>
 
+                </div>
 
-                    <div class="topbar-heading">
 
-                        <span class="top-label">
-                            VORVENA ADMIN
-                        </span>
+                <div class="settings-card">
 
-                        <h1 id="pageTitle">
-                            Dashboard
-                        </h1>
+                    <div class="settings-card-heading">
+                        <div class="settings-icon">
+                            <i class="fa-solid fa-percent"></i>
+                        </div>
+                        <div>
+                            <h3>Platform Commission</h3>
+                            <p>Current VORVENA revenue structure.</p>
+                        </div>
+                    </div>
 
+                    <div class="commission-box">
+                        <div>
+                            <span>Professional</span>
+                            <strong>85%</strong>
+                        </div>
+
+                        <div>
+                            <span>VORVENA</span>
+                            <strong>15%</strong>
+                        </div>
                     </div>
 
                 </div>
 
 
-                <div class="topbar-right">
+                <div class="settings-card">
 
-
-                    <!-- THEME -->
-
-                    <button
-                        type="button"
-                        class="theme-toggle"
-                        id="themeToggle"
-                        aria-label="Toggle theme">
-
-                        <i class="fa-solid fa-moon"></i>
-
-                    </button>
-
-
-                    <!-- NOTIFICATIONS -->
-
-                    <button
-                        type="button"
-                        class="notification-btn"
-                        id="notificationBtn"
-                        aria-label="View notifications">
-
-                        <i class="fa-solid fa-bell"></i>
-
-                        <span id="notificationDot"></span>
-
-                    </button>
-
-
-                    <!-- ADMIN -->
-
-                    <div class="admin-profile">
-
-                        <div class="admin-avatar">
-                            AD
+                    <div class="settings-card-heading">
+                        <div class="settings-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
                         </div>
-
-                        <div class="admin-info">
-
-                            <strong>Admin</strong>
-
-                            <small>
-                                VORVENA Administrator
-                            </small>
-
+                        <div>
+                            <h3>Admin Security</h3>
+                            <p>Change administrator phone or password.</p>
                         </div>
-
                     </div>
+
+                    <button class="settings-action" id="openSecurityBtn">
+                        <span>
+                            <i class="fa-solid fa-lock"></i>
+                            Security Settings
+                        </span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
 
                 </div>
 
-            </header>
-
-
-
-            <!-- =================================================
-                 PAGE CONTENT
-            ================================================== -->
-
-            <div class="page-content">
-
-
-                <!-- =================================================
-                     DASHBOARD
-                ================================================== -->
-
-                <section
-                    class="section"
-                    id="dashboard"
-                    data-page-title="Dashboard">
-
-
-                    <div class="page-heading">
-
-                        <div>
-
-                            <span class="section-label">
-                                OVERVIEW
-                            </span>
-
-                            <h2>
-                                Admin Dashboard
-                            </h2>
-
-                            <p>
-                                Monitor VORVENA's community,
-                                professionals, projects,
-                                applications and platform activity.
-                            </p>
-
-                        </div>
-
-                        <div class="dashboard-date">
-
-                            <i class="fa-regular fa-calendar"></i>
-
-                            <span id="currentDate">
-                                Loading date...
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- MAIN STATS -->
-
-                    <div class="stats-grid dashboard-stats">
-
-
-                        <div class="stat-card">
-
-                            <div class="stat-icon">
-
-                                <i class="fa-solid fa-users"></i>
-
-                            </div>
-
-                            <div>
-
-                                <span>Total Professionals</span>
-
-                                <strong id="totalProfessionals">
-                                    5
-                                </strong>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="stat-card">
-
-                            <div class="stat-icon online">
-
-                                <i class="fa-solid fa-circle"></i>
-
-                            </div>
-
-                            <div>
-
-                                <span>Online Professionals</span>
-
-                                <strong id="onlineProfessionals">
-                                    3
-                                </strong>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="stat-card">
-
-                            <div class="stat-icon">
-
-                                <i class="fa-solid fa-file-circle-check"></i>
-
-                            </div>
-
-                            <div>
-
-                                <span>Pending Applications</span>
-
-                                <strong id="pendingApplications">
-                                    4
-                                </strong>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="stat-card">
-
-                            <div class="stat-icon money">
-
-                                <i class="fa-solid fa-money-bill-transfer"></i>
-
-                            </div>
-
-                            <div>
-
-                                <span>Awaiting Payout</span>
-
-                                <strong id="awaitingPayout">
-                                    2
-                                </strong>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- DASHBOARD OVERVIEW GRID -->
-
-                    <div class="dashboard-grid">
-
-
-                        <!-- COMMUNITY ACTIVITY -->
-
-                        <div class="dashboard-card">
-
-                            <div class="card-header">
-
-                                <div>
-
-                                    <span class="section-label">
-                                        COMMUNITY
-                                    </span>
-
-                                    <h3>
-                                        Community Activity
-                                    </h3>
-
-                                </div>
-
-                                <button
-                                    type="button"
-                                    class="text-btn"
-                                    data-target="professionals">
-
-                                    View Professionals
-                                </button>
-
-                            </div>
-
-
-                            <div class="activity-summary">
-
-
-                                <div class="mini-stat">
-
-                                    <span>
-                                        Active Professionals
-                                    </span>
-
-                                    <strong id="activeProfessionalsCount">
-                                        5
-                                    </strong>
-
-                                </div>
-
-
-                                <div class="mini-stat">
-
-                                    <span>
-                                        Verified Professionals
-                                    </span>
-
-                                    <strong id="verifiedProfessionalsCount">
-                                        3
-                                    </strong>
-
-                                </div>
-
-
-                                <div class="mini-stat">
-
-                                    <span>
-                                        Completed Jobs
-                                    </span>
-
-                                    <strong id="completedJobsCount">
-                                        45
-                                    </strong>
-
-                                </div>
-
-
-                                <div class="mini-stat">
-
-                                    <span>
-                                        Active Projects
-                                    </span>
-
-                                    <strong id="activeProjectsCount">
-                                        3
-                                    </strong>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <!-- AWAITING PAYOUT -->
-
-                        <div class="dashboard-card">
-
-                            <div class="card-header">
-
-                                <div>
-
-                                    <span class="section-label">
-                                        FINANCE
-                                    </span>
-
-                                    <h3>
-                                        Awaiting Payout
-                                    </h3>
-
-                                </div>
-
-                                <button
-                                    type="button"
-                                    class="text-btn"
-                                    data-target="payouts">
-
-                                    View All
-                                </button>
-
-                            </div>
-
-
-                            <div
-                                class="dashboard-payout-list"
-                                id="dashboardPayoutList">
-
-                                <!-- JS will populate -->
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- RECENT PROJECTS -->
-
-                    <div class="dashboard-card full-width">
-
-                        <div class="card-header">
-
-                            <div>
-
-                                <span class="section-label">
-                                    PROJECTS
-                                </span>
-
-                                <h3>
-                                    Recent Projects
-                                </h3>
-
-                            </div>
-
-                            <button
-                                type="button"
-                                class="text-btn"
-                                data-target="projects">
-
-                                Manage Projects
-                            </button>
-
-                        </div>
-
-
-                        <div class="recent-projects-table">
-
-                            <div class="table-scroll">
-
-                                <table>
-
-                                    <thead>
-
-                                        <tr>
-
-                                            <th>Project</th>
-                                            <th>Client</th>
-                                            <th>Professional</th>
-                                            <th>Amount</th>
-                                            <th>Status</th>
-                                            <th></th>
-
-                                        </tr>
-
-                                    </thead>
-
-                                    <tbody id="recentProjectsBody">
-
-                                        <!-- JS will populate -->
-
-                                    </tbody>
-
-                                </table>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-
-                <!-- =================================================
-                     APPLICATIONS
-                ================================================== -->
-
-                <section
-                    class="section"
-                    id="applications"
-                    data-page-title="Applications">
-
-
-                    <div class="section-page-heading">
-
-                        <div>
-
-                            <span class="section-label">
-                                COMMUNITY MANAGEMENT
-                            </span>
-
-                            <h2>
-                                Professional Applications
-                            </h2>
-
-                            <p>
-                                Review and manage people applying
-                                to join the VORVENA professional community.
-                            </p>
-
-                        </div>
-
-                        <span
-                            class="result-count"
-                            id="applicationCount">
-                            4 Pending
-                        </span>
-
-                    </div>
-
-
-                    <div class="management-section">
-
-
-                        <div class="section-header">
-
-                            <div>
-
-                                <span class="section-label">
-                                    PENDING REVIEW
-                                </span>
-
-                                <h3>
-                                    Applications
-                                </h3>
-
-                            </div>
-
-
-                            <div class="section-actions">
-
-                                <div class="search-box">
-
-                                    <span>
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </span>
-
-                                    <input
-                                        type="search"
-                                        class="section-search"
-                                        id="applicationSearch"
-                                        placeholder="Search applications...">
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div
-                            class="application-grid"
-                            id="applicationsList">
-
-                            <!-- JS will populate -->
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-
-                <!-- =================================================
-                     PROFESSIONALS
-                ================================================== -->
-
-                <section
-                    class="section"
-                    id="professionals"
-                    data-page-title="Professionals">
-
-
-                    <div class="section-page-heading">
-
-                        <div>
-
-                            <span class="section-label">
-                                COMMUNITY
-                            </span>
-
-                            <h2>
-                                Professionals
-                            </h2>
-
-                            <p>
-                                Manage approved professionals,
-                                verification, activity and account status.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="management-section">
-
-
-                        <div class="section-header">
-
-                            <div>
-
-                                <span class="section-label">
-                                    DIRECTORY
-                                </span>
-
-                                <h3>
-                                    Professional Directory
-                                </h3>
-
-                            </div>
-
-
-                            <div class="section-actions">
-
-                                <div class="search-box">
-
-                                    <span>
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </span>
-
-                                    <input
-                                        type="search"
-                                        id="professionalSearch"
-                                        placeholder="Search professionals...">
-
-                                </div>
-
-
-                                <select id="professionalFilter">
-
-                                    <option value="all">
-                                        All Professionals
-                                    </option>
-
-                                    <option value="online">
-                                        Online
-                                    </option>
-
-                                    <option value="verified">
-                                        Verified
-                                    </option>
-
-                                    <option value="unverified">
-                                        Unverified
-                                    </option>
-
-                                    <option value="active">
-                                        Active
-                                    </option>
-
-                                    <option value="suspended">
-                                        Suspended
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="professional-table-wrapper">
-
-                            <table class="professional-table">
-
-                                <thead>
-
-                                    <tr>
-
-                                        <th>
-                                            Professional
-                                        </th>
-
-                                        <th>
-                                            Profession
-                                        </th>
-
-                                        <th>
-                                            Location
-                                        </th>
-
-                                        <th>
-                                            Status
-                                        </th>
-
-                                        <th>
-                                            Verification
-                                        </th>
-
-                                        <th>
-                                            Jobs
-                                        </th>
-
-                                        <th>
-                                            Joined
-                                        </th>
-
-                                        <th>
-                                            Actions
-                                        </th>
-
-                                    </tr>
-
-                                </thead>
-
-                                <tbody id="professionalsTable">
-
-                                    <!-- JS will populate -->
-
-                                </tbody>
-
-                            </table>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-
-                <!-- =================================================
-                     CLIENTS
-                ================================================== -->
-
-                <section
-                    class="section"
-                    id="clients"
-                    data-page-title="Clients">
-
-
-                    <div class="section-page-heading">
-
-                        <div>
-
-                            <span class="section-label">
-                                CLIENT MANAGEMENT
-                            </span>
-
-                            <h2>
-                                Clients
-                            </h2>
-
-                            <p>
-                                Monitor client accounts, projects
-                                and platform spending.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="management-section">
-
-
-                        <div class="section-header">
-
-                            <div>
-
-                                <span class="section-label">
-                                    CLIENT DIRECTORY
-                                </span>
-
-                                <h3>
-                                    Registered Clients
-                                </h3>
-
-                            </div>
-
-
-                            <div class="section-actions">
-
-                                <div class="search-box">
-
-                                    <span>
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </span>
-
-                                    <input
-                                        type="search"
-                                        id="clientSearch"
-                                        placeholder="Search clients...">
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div
-                            class="client-grid"
-                            id="clientsList">
-
-                            <!-- JS will populate -->
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-
-                <!-- =================================================
-                     PROJECTS
-                ================================================== -->
-
-                <section
-                    class="section"
-                    id="projects"
-                    data-page-title="Projects">
-
-
-                    <div class="section-page-heading">
-
-                        <div>
-
-                            <span class="section-label">
-                                PROJECT MANAGEMENT
-                            </span>
-
-                            <h2>
-                                Projects
-                            </h2>
-
-                            <p>
-                                Track active, submitted, revision,
-                                completed and payout-ready projects.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="management-section">
-
-
-                        <div class="section-header">
-
-                            <div>
-
-                                <span class="section-label">
-                                    PROJECT DIRECTORY
-                                </span>
-
-                                <h3>
-                                    Community Projects
-                                </h3>
-
-                            </div>
-
-
-                            <div class="section-actions">
-
-                                <select id="projectFilter">
-
-                                    <option value="all">
-                                        All Projects
-                                    </option>
-
-                                    <option value="in_progress">
-                                        In Progress
-                                    </option>
-
-                                    <option value="submitted">
-                                        Submitted
-                                    </option>
-
-                                    <option value="revision_requested">
-                                        Revision Requested
-                                    </option>
-
-                                    <option value="awaiting_payout">
-                                        Awaiting Payout
-                                    </option>
-
-                                    <option value="completed">
-                                        Completed
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-
-                        <div
-                            class="project-grid"
-                            id="projectsList">
-
-                            <!-- JS will populate -->
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-
-                <!-- =================================================
-                     MESSAGES
-                ================================================== -->
-
-                <section
-                    class="section"
-                    id="messages"
-                    data-page-title="Messages">
-
-
-                    <div class="section-page-heading">
-
-                        <div>
-
-                            <span class="section-label">
-                                COMMUNICATION
-                            </span>
-
-                            <h2>
-                                Messages
-                            </h2>
-
-                            <p>
-                                Monitor conversations between clients
-                                and VORVENA professionals.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="management-section">
-
-
-                        <div class="section-header">
-
-                            <div>
-
-                                <span class="section-label">
-                                    RECENT CONVERSATIONS
-                                </span>
-
-                                <h3>
-                                    Community Messages
-                                </h3>
-
-                            </div>
-
-                        </div>
-
-
-                        <div
-                            class="message-list"
-                            id="messagesList">
-
-                            <!-- JS will populate -->
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-
-                <!-- =================================================
-                     PAYMENTS
-                ================================================== -->
-
-                <section
-                    class="section"
-                    id="payments"
-                    data-page-title="Payments">
-
-
-                    <div class="section-page-heading">
-
-                        <div>
-
-                            <span class="section-label">
-                                FINANCIAL CONTROL
-                            </span>
-
-                            <h2>
-                                Payments
-                            </h2>
-
-                            <p>
-                                Monitor project payments,
-                                platform revenue and professional earnings.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="finance-grid">
-
-
-                        <div class="finance-card">
-
-                            <div class="finance-icon">
-                                <i class="fa-solid fa-wallet"></i>
-                            </div>
-
-                            <span>
-                                Total Platform Volume
-                            </span>
-
-                            <strong id="totalPaymentVolume">
-                                ₦650,000
-                            </strong>
-
-                        </div>
-
-
-                        <div class="finance-card">
-
-                            <div class="finance-icon">
-                                <i class="fa-solid fa-building-columns"></i>
-                            </div>
-
-                            <span>
-                                VORVENA Revenue
-                            </span>
-
-                            <strong id="vorvenaRevenue">
-                                ₦97,500
-                            </strong>
-
-                        </div>
-
-
-                        <div class="finance-card">
-
-                            <div class="finance-icon">
-                                <i class="fa-solid fa-user-check"></i>
-                            </div>
-
-                            <span>
-                                Professional Earnings
-                            </span>
-
-                            <strong id="professionalEarnings">
-                                ₦552,500
-                            </strong>
-
-                        </div>
-
-
-                        <div class="finance-card">
-
-                            <div class="finance-icon">
-                                <i class="fa-solid fa-hourglass-half"></i>
-                            </div>
-
-                            <span>
-                                Pending Payments
-                            </span>
-
-                            <strong id="pendingPaymentAmount">
-                                ₦0
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="management-section">
-
-                        <div class="section-header">
-
-                            <div>
-
-                                <span class="section-label">
-                                    PAYMENT BREAKDOWN
-                                </span>
-
-                                <h3>
-                                    Financial Overview
-                                </h3>
-
-                            </div>
-
-                            <div class="payout-summary">
-                                Professional:
-                                <strong>85%</strong>
-                                &nbsp;•&nbsp;
-                                VORVENA:
-                                <strong>15%</strong>
-                            </div>
-
-                        </div>
-
-
-                        <div class="payment-table-wrapper">
-
-                            <table class="professional-table">
-
-                                <thead>
-
-                                    <tr>
-
-                                        <th>Project</th>
-                                        <th>Amount</th>
-                                        <th>Professional</th>
-                                        <th>Professional Share</th>
-                                        <th>VORVENA Fee</th>
-                                        <th>Status</th>
-
-                                    </tr>
-
-                                </thead>
-
-                                <tbody id="paymentsTableBody">
-
-                                    <!-- JS will populate -->
-
-                                </tbody>
-
-                            </table>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-
-                <!-- =================================================
-                     PAYOUTS
-                ================================================== -->
-
-                <section
-                    class="section"
-                    id="payouts"
-                    data-page-title="Payouts">
-
-
-                    <div class="section-page-heading">
-
-                        <div>
-
-                            <span class="section-label">
-                                FINANCIAL CONTROL
-                            </span>
-
-                            <h2>
-                                Professional Payouts
-                            </h2>
-
-                            <p>
-                                Release completed project earnings
-                                to approved professionals.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="management-section">
-
-
-                        <div class="section-header">
-
-                            <div>
-
-                                <span class="section-label">
-                                    PAYOUT QUEUE
-                                </span>
-
-                                <h3>
-                                    Awaiting Payout
-                                </h3>
-
-                            </div>
-
-
-                            <div class="payout-summary">
-
-                                Professional receives
-                                <strong>85%</strong>
-
-                                &nbsp;•&nbsp;
-
-                                VORVENA receives
-                                <strong>15%</strong>
-
-                            </div>
-
-                        </div>
-
-
-                        <div
-                            class="payout-grid"
-                            id="payoutsList">
-
-                            <!-- JS will populate -->
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-
-                <!-- =================================================
-                     NOTIFICATIONS
-                ================================================== -->
-
-                <section
-                    class="section"
-                    id="notifications"
-                    data-page-title="Notifications">
-
-
-                    <div class="section-page-heading">
-
-                        <div>
-
-                            <span class="section-label">
-                                SYSTEM
-                            </span>
-
-                            <h2>
-                                Notifications
-                            </h2>
-
-                            <p>
-                                Important platform alerts and
-                                administrative notifications.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="management-section">
-
-
-                        <div class="section-header">
-
-                            <div>
-
-                                <span class="section-label">
-                                    ALERT CENTER
-                                </span>
-
-                                <h3>
-                                    Recent Notifications
-                                </h3>
-
-                            </div>
-
-                            <button
-                                type="button"
-                                class="text-btn"
-                                id="markNotificationsRead">
-
-                                Mark all read
-                            </button>
-
-                        </div>
-
-
-                        <div class="notification-list">
-
-
-                            <div class="notification-item unread">
-
-                                <div class="notification-icon">
-                                    <i class="fa-solid fa-user-plus"></i>
-                                </div>
-
-                                <div>
-
-                                    <strong>
-                                        New professional application
-                                    </strong>
-
-                                    <p>
-                                        A new professional is waiting
-                                        for administrative review.
-                                    </p>
-
-                                    <small>
-                                        Recently
-                                    </small>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="notification-item unread">
-
-                                <div class="notification-icon">
-                                    <i class="fa-solid fa-money-bill-transfer"></i>
-                                </div>
-
-                                <div>
-
-                                    <strong>
-                                        Payout awaiting processing
-                                    </strong>
-
-                                    <p>
-                                        A completed project is ready
-                                        for professional payout.
-                                    </p>
-
-                                    <small>
-                                        Recently
-                                    </small>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="notification-item unread">
-
-                                <div class="notification-icon">
-                                    <i class="fa-solid fa-briefcase"></i>
-                                </div>
-
-                                <div>
-
-                                    <strong>
-                                        Project submitted
-                                    </strong>
-
-                                    <p>
-                                        A professional has submitted
-                                        a project for client review.
-                                    </p>
-
-                                    <small>
-                                        Recently
-                                    </small>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="notification-item">
-
-                                <div class="notification-icon">
-                                    <i class="fa-solid fa-comments"></i>
-                                </div>
-
-                                <div>
-
-                                    <strong>
-                                        New community message
-                                    </strong>
-
-                                    <p>
-                                        A new message has been received
-                                        through the platform.
-                                    </p>
-
-                                    <small>
-                                        Recently
-                                    </small>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-
-                <!-- =================================================
-                     ACTIVITY
-                ================================================== -->
-
-                <section
-                    class="section"
-                    id="activity"
-                    data-page-title="Activity">
-
-
-                    <div class="section-page-heading">
-
-                        <div>
-
-                            <span class="section-label">
-                                SYSTEM LOG
-                            </span>
-
-                            <h2>
-                                Admin Activity
-                            </h2>
-
-                            <p>
-                                Review important administrative
-                                actions performed on the platform.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="management-section">
-
-
-                        <div class="section-header">
-
-                            <div>
-
-                                <span class="section-label">
-                                    ACTIVITY LOG
-                                </span>
-
-                                <h3>
-                                    Recent Activity
-                                </h3>
-
-                            </div>
-
-                        </div>
-
-
-                        <div
-                            class="activity-log"
-                            id="activityLog">
-
-                            <!-- JS will populate -->
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-
-                <!-- =================================================
-                     REPORTS
-                ================================================== -->
-
-                <section
-                    class="section"
-                    id="reports"
-                    data-page-title="Reports">
-
-
-                    <div class="section-page-heading">
-
-                        <div>
-
-                            <span class="section-label">
-                                ANALYTICS
-                            </span>
-
-                            <h2>
-                                Reports
-                            </h2>
-
-                            <p>
-                                Review platform performance and
-                                generate administrative reports.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="management-section">
-
-
-                        <div class="section-header">
-
-                            <div>
-
-                                <span class="section-label">
-                                    REPORT CENTER
-                                </span>
-
-                                <h3>
-                                    Available Reports
-                                </h3>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="report-grid">
-
-
-                            <div class="report-card">
-
-                                <div class="report-icon">
-                                    <i class="fa-solid fa-chart-line"></i>
-                                </div>
-
-                                <div>
-
-                                    <h4>
-                                        Community Report
-                                    </h4>
-
-                                    <p>
-                                        Overview of professionals,
-                                        applications and community growth.
-                                    </p>
-
-                                </div>
-
-                                <button
-                                    type="button"
-                                    class="report-btn"
-                                    data-report="community">
-
-                                    View Report
-
-                                </button>
-
-                            </div>
-
-
-                            <div class="report-card">
-
-                                <div class="report-icon">
-                                    <i class="fa-solid fa-money-bill-trend-up"></i>
-                                </div>
-
-                                <div>
-
-                                    <h4>
-                                        Financial Report
-                                    </h4>
-
-                                    <p>
-                                        Review platform payments,
-                                        earnings and commission.
-                                    </p>
-
-                                </div>
-
-                                <button
-                                    type="button"
-                                    class="report-btn"
-                                    data-report="financial">
-
-                                    View Report
-
-                                </button>
-
-                            </div>
-
-
-                            <div class="report-card">
-
-                                <div class="report-icon">
-                                    <i class="fa-solid fa-briefcase"></i>
-                                </div>
-
-                                <div>
-
-                                    <h4>
-                                        Project Report
-                                    </h4>
-
-                                    <p>
-                                        Review project statuses,
-                                        completion and payout activity.
-                                    </p>
-
-                                </div>
-
-                                <button
-                                    type="button"
-                                    class="report-btn"
-                                    data-report="projects">
-
-                                    View Report
-
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-
-                <!-- =================================================
-                     SETTINGS
-                ================================================== -->
-
-                <section
-                    class="section"
-                    id="settings"
-                    data-page-title="Settings">
-
-
-                    <div class="section-page-heading">
-
-                        <div>
-
-                            <span class="section-label">
-                                ADMIN CONTROL
-                            </span>
-
-                            <h2>
-                                Settings
-                            </h2>
-
-                            <p>
-                                Manage your administrative dashboard
-                                preferences.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="settings-grid">
-
-
-                        <div class="settings-card">
-
-                            <div class="settings-card-header">
-
-                                <div class="settings-icon">
-
-                                    <i class="fa-solid fa-moon"></i>
-
-                                </div>
-
-                                <div>
-
-                                    <h3>
-                                        Appearance
-                                    </h3>
-
-                                    <p>
-                                        Switch between light and dark
-                                        dashboard themes.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-
-                            <button
-                                type="button"
-                                class="primary-btn"
-                                id="settingsThemeBtn">
-
-                                Toggle Theme
-
-                            </button>
-
-                        </div>
-
-
-                        <div class="settings-card">
-
-                            <div class="settings-card-header">
-
-                                <div class="settings-icon">
-
-                                    <i class="fa-solid fa-shield-halved"></i>
-
-                                </div>
-
-                                <div>
-
-                                    <h3>
-                                        Admin Security
-                                    </h3>
-
-                                    <p>
-                                        Your dashboard is protected by
-                                        administrator access controls.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-
-                            <span class="settings-status">
-
-                                <i class="fa-solid fa-circle-check"></i>
-
-                                Administrator Access Active
-
-                            </span>
-
-                        </div>
-
-
-                        <div class="settings-card">
-
-                            <div class="settings-card-header">
-
-                                <div class="settings-icon">
-
-                                    <i class="fa-solid fa-percent"></i>
-
-                                </div>
-
-                                <div>
-
-                                    <h3>
-                                        Platform Commission
-                                    </h3>
-
-                                    <p>
-                                        Current VORVENA project commission
-                                        configuration.
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="commission-display">
-
-                                <div>
-
-                                    <strong>85%</strong>
-
-                                    <span>
-                                        Professional
-                                    </span>
-
-                                </div>
-
-                                <div>
-
-                                    <strong>15%</strong>
-
-                                    <span>
-                                        VORVENA
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-
-                <!-- =================================================
-                     FOOTER
-                ================================================== -->
-
-                <footer class="admin-footer">
-
-                    <span>
-                        © 2026
-                        <strong>VORVENA</strong>.
-                        Admin Control Center.
-                    </span>
-
-                    <span>
-                        Community Management System
-                    </span>
-
-                </footer>
-
-
             </div>
 
-        </main>
+        </section>
 
     </div>
 
 
+    <footer class="admin-footer">
+        <span>© 2026 VORVENA. Admin Control Center.</span>
+        <span>Built for secure platform management.</span>
+    </footer>
 
-    <!-- =====================================================
-         EDIT PROFESSIONAL MODAL
-    ====================================================== -->
-
-    <div
-        class="modal-overlay"
-        id="editModal"
-        aria-hidden="true">
+</main>
 
 
-        <div
-            class="modal"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="editModalTitle">
+<!-- PROFESSIONAL EDIT MODAL -->
+<div class="modal-overlay" id="editModal">
 
+    <div class="modal">
 
-            <button
-                type="button"
-                class="modal-close"
-                id="closeEditModal"
-                aria-label="Close modal">
+        <div class="modal-header">
+            <div>
+                <span class="eyebrow">PROFESSIONAL</span>
+                <h3>Edit Professional</h3>
+            </div>
 
-                &times;
-
+            <button id="closeEditModal" class="modal-close">
+                <i class="fa-solid fa-xmark"></i>
             </button>
+        </div>
 
+        <form id="editProfessionalForm">
 
-            <span class="section-label">
-                PROFESSIONAL MANAGEMENT
-            </span>
+            <input type="hidden" id="editId">
 
-            <h2 id="editModalTitle">
-                Edit Professional
-            </h2>
+            <div class="form-grid">
 
+                <div class="form-group">
+                    <label>Name</label>
+                    <input id="editName" required>
+                </div>
 
-            <form id="editProfessionalForm">
+                <div class="form-group">
+                    <label>Profession</label>
+                    <input id="editProfession" required>
+                </div>
 
-                <input
-                    type="hidden"
-                    id="editId">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input id="editEmail" type="email" required>
+                </div>
 
+                <div class="form-group">
+                    <label>Location</label>
+                    <input id="editLocation" required>
+                </div>
 
-                <label>
+                <div class="form-group">
+                    <label>Successful Jobs</label>
+                    <input id="editJobs" type="number" min="0" required>
+                </div>
 
-                    Full Name
-
-                    <input
-                        type="text"
-                        id="editName"
-                        required>
-
-                </label>
-
-
-                <label>
-
-                    Profession
-
-                    <input
-                        type="text"
-                        id="editProfession"
-                        required>
-
-                </label>
-
-
-                <label>
-
-                    Email
-
-                    <input
-                        type="email"
-                        id="editEmail"
-                        required>
-
-                </label>
-
-
-                <label>
-
-                    Location
-
-                    <input
-                        type="text"
-                        id="editLocation"
-                        required>
-
-                </label>
-
-
-                <label>
-
-                    Completed Jobs
-
-                    <input
-                        type="number"
-                        id="editJobs"
-                        min="0"
-                        required>
-
-                </label>
-
-
-                <label>
-
-                    Account Status
-
+                <div class="form-group">
+                    <label>Account Status</label>
                     <select id="editStatus">
-
-                        <option value="active">
-                            Active
-                        </option>
-
-                        <option value="suspended">
-                            Suspended
-                        </option>
-
+                        <option value="Active">Active</option>
+                        <option value="Suspended">Suspended</option>
                     </select>
-
-                </label>
-
-
-                <div class="modal-actions">
-
-                    <button
-                        type="button"
-                        class="cancel-btn"
-                        id="cancelEdit">
-
-                        Cancel
-
-                    </button>
-
-
-                    <button
-                        type="submit"
-                        class="primary-btn">
-
-                        Save Changes
-
-                    </button>
-
                 </div>
 
-            </form>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =====================================================
-         DELETE PROFESSIONAL MODAL
-    ====================================================== -->
-
-    <div
-        class="modal-overlay"
-        id="deleteModal"
-        aria-hidden="true">
-
-
-        <div
-            class="modal small-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="deleteModalTitle">
-
-
-            <button
-                type="button"
-                class="modal-close"
-                id="closeDeleteModal"
-                aria-label="Close modal">
-
-                &times;
-
-            </button>
-
-
-            <div class="danger-icon">
-
-                <i class="fa-solid fa-trash"></i>
-
             </div>
-
-
-            <span class="section-label">
-                DANGER ZONE
-            </span>
-
-            <h2 id="deleteModalTitle">
-                Delete Professional
-            </h2>
-
-
-            <p>
-
-                Are you sure you want to permanently remove this
-                professional from the VORVENA community?
-
-                This action cannot be undone.
-
-            </p>
-
 
             <div class="modal-actions">
-
-                <button
-                    type="button"
-                    class="cancel-btn"
-                    id="cancelDelete">
-
-                    Cancel
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="delete-btn"
-                    id="confirmDelete">
-
-                    Delete Professional
-
-                </button>
-
+                <button type="button" id="cancelEdit" class="secondary-btn">Cancel</button>
+                <button type="submit" class="primary-btn">Save Changes</button>
             </div>
 
-        </div>
+        </form>
 
     </div>
 
+</div>
 
 
-    <!-- =====================================================
-         PAYOUT CONFIRMATION MODAL
-    ====================================================== -->
+<!-- CLIENT EDIT MODAL -->
+<div class="modal-overlay" id="clientEditModal">
 
-    <div
-        class="modal-overlay"
-        id="payoutModal"
-        aria-hidden="true">
+    <div class="modal">
 
+        <div class="modal-header">
+            <div>
+                <span class="eyebrow">CLIENT</span>
+                <h3>Edit Client</h3>
+            </div>
 
-        <div
-            class="modal small-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="payoutModalTitle">
-
-
-            <button
-                type="button"
-                class="modal-close"
-                id="closePayoutModal"
-                aria-label="Close modal">
-
-                &times;
-
+            <button id="closeClientEditModal" class="modal-close">
+                <i class="fa-solid fa-xmark"></i>
             </button>
+        </div>
 
+        <form id="clientEditForm">
 
-            <div class="settings-icon payout-modal-icon">
+            <input type="hidden" id="editClientId">
 
-                <i class="fa-solid fa-money-bill-transfer"></i>
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>Company / Client Name</label>
+                    <input id="editClientName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input id="editClientEmail" type="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Location</label>
+                    <input id="editClientLocation" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Projects</label>
+                    <input id="editClientProjects" type="number" min="0" required>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Status</label>
+                    <select id="editClientStatus">
+                        <option value="Active">Active</option>
+                        <option value="Suspended">Suspended</option>
+                    </select>
+                </div>
 
             </div>
-
-
-            <span class="section-label">
-                PAYOUT CONFIRMATION
-            </span>
-
-            <h2 id="payoutModalTitle">
-                Process Payout
-            </h2>
-
-
-            <p>
-
-                You are about to release the professional's
-                85% project earnings.
-
-            </p>
-
-
-            <div class="payout-confirmation-box">
-
-                <span>
-                    Project
-                </span>
-
-                <strong id="payoutProjectName">
-                    Project
-                </strong>
-
-            </div>
-
 
             <div class="modal-actions">
-
-                <button
-                    type="button"
-                    class="cancel-btn"
-                    id="cancelPayout">
-
-                    Cancel
-
-                </button>
-
-
-                <button
-                    type="button"
-                    class="primary-btn"
-                    id="confirmPayout">
-
-                    Confirm Payout
-
-                </button>
-
+                <button type="button" id="cancelClientEdit" class="secondary-btn">Cancel</button>
+                <button type="submit" class="primary-btn">Save Changes</button>
             </div>
 
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- DELETE MODAL -->
+<div class="modal-overlay" id="deleteModal">
+
+    <div class="modal small-modal">
+
+        <div class="danger-icon">
+            <i class="fa-solid fa-trash"></i>
+        </div>
+
+        <h3 id="deleteModalTitle">Delete Account</h3>
+
+        <p>
+            Are you sure you want to delete
+            <strong id="deleteTargetName"></strong>?
+            This action cannot be undone.
+        </p>
+
+        <input type="hidden" id="deleteTargetId">
+        <input type="hidden" id="deleteTargetType">
+
+        <div class="modal-actions">
+            <button id="cancelDelete" class="secondary-btn">Cancel</button>
+            <button id="confirmDelete" class="danger-btn">Delete</button>
         </div>
 
     </div>
 
+</div>
 
 
-    <!-- =====================================================
-         TOAST
-    ====================================================== -->
+<!-- SUSPEND MODAL -->
+<div class="modal-overlay" id="suspendModal">
 
-    <div
-        class="admin-toast"
-        id="toast"
-        role="status"
-        aria-live="polite">
+    <div class="modal small-modal">
 
-        <div class="toast-icon">
-
-            <i class="fa-solid fa-check"></i>
-
+        <div class="warning-icon">
+            <i class="fa-solid fa-ban"></i>
         </div>
 
-        <span id="toastMessage">
-            Action completed successfully.
-        </span>
+        <h3 id="suspendModalTitle">Suspend Account</h3>
+
+        <p>
+            Are you sure you want to
+            <strong id="suspendActionText">suspend</strong>
+            <strong id="suspendTargetName"></strong>?
+        </p>
+
+        <input type="hidden" id="suspendTargetId">
+        <input type="hidden" id="suspendTargetType">
+
+        <div class="modal-actions">
+            <button id="cancelSuspend" class="secondary-btn">Cancel</button>
+            <button id="confirmSuspend" class="warning-btn">Confirm</button>
+        </div>
 
     </div>
 
+</div>
 
 
-    <!-- =====================================================
-         ADMIN JAVASCRIPT
-    ====================================================== -->
+<!-- PAYOUT MODAL -->
+<div class="modal-overlay" id="payoutModal">
 
-    <script src="admin.js"></script>
+    <div class="modal small-modal">
+
+        <div class="modal-header">
+            <div>
+                <span class="eyebrow">PAYOUT</span>
+                <h3>Process Payout</h3>
+            </div>
+
+            <button id="closePayoutModal" class="modal-close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <input type="hidden" id="payoutId">
+
+        <div class="payout-summary">
+            <div>
+                <span>Professional</span>
+                <strong id="payoutProfessional"></strong>
+            </div>
+
+            <div>
+                <span>Amount</span>
+                <strong id="payoutAmount"></strong>
+            </div>
+        </div>
+
+        <p class="modal-note">
+            Confirming this payout will change the payout status to Paid.
+        </p>
+
+        <div class="modal-actions">
+            <button id="cancelPayout" class="secondary-btn">Cancel</button>
+            <button id="confirmPayout" class="primary-btn">
+                Confirm Payout
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- SECURITY MODAL -->
+<div class="modal-overlay" id="securityModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+            <div>
+                <span class="eyebrow">ADMIN SECURITY</span>
+                <h3>Security Settings</h3>
+            </div>
+
+            <button id="closeSecurityModal" class="modal-close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <form id="securityForm">
+
+            <div class="form-group">
+                <label>Current Admin Password</label>
+                <div class="password-input">
+                    <input id="currentAdminPassword" type="password" required>
+                    <button type="button" class="password-toggle" data-target="currentAdminPassword">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>New Phone Number</label>
+                <input id="newAdminPhone" type="tel" placeholder="Optional">
+            </div>
+
+            <div class="form-group">
+                <label>New Password</label>
+                <div class="password-input">
+                    <input id="newAdminPassword" type="password" placeholder="Optional">
+                    <button type="button" class="password-toggle" data-target="newAdminPassword">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Confirm New Password</label>
+                <div class="password-input">
+                    <input id="confirmAdminPassword" type="password" placeholder="Optional">
+                    <button type="button" class="password-toggle" data-target="confirmAdminPassword">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" id="cancelSecurity" class="secondary-btn">Cancel</button>
+                <button type="submit" class="primary-btn">Save Security</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<div class="admin-toast" id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMessage"></span>
+</div>
+
+<script src="admin.js"></script>
 
 </body>
-
 </html>

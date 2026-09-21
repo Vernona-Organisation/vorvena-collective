@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Verification | VORVENA</title>
+    <link rel="stylesheet" href="verification.css">
+</head>
+<body>
+
+<header class="verification-header">
+    <div class="header-inner">
+        <a href="index.html" class="logo">VORVENA</a>
+
+        <div class="header-title">
+            <span>Professional Verification</span>
+        </div>
+
+        <div class="header-status">
+            <span class="status-dot"></span>
+            Secure Assessment
+        </div>
+    </div>
+</header>
+
+<main class="verification-page">
+
+    <section class="intro-screen" id="introScreen">
+
+        <div class="intro-card">
+
+            <div class="verification-badge">
+                Professional Verification
+            </div>
+
+            <h1>Complete Your Professional Verification</h1>
+
+            <p class="intro-description">
+                Your verification assessment helps VORVENA confirm your professional
+                skills before you gain full access to the professional community.
+            </p>
+
+            <div class="profession-display">
+                <span>Your Profession</span>
+                <strong id="professionName">Frontend Developer</strong>
+            </div>
+
+            <div class="assessment-grid">
+
+                <div class="info-box">
+                    <span class="info-label">Questions</span>
+                    <strong>10</strong>
+                    <small>5 MCQ · 3 Written · 2 Practical</small>
+                </div>
+
+                <div class="info-box">
+                    <span class="info-label">Time Limit</span>
+                    <strong>45 Min</strong>
+                    <small>Timer cannot be paused</small>
+                </div>
+
+                <div class="info-box">
+                    <span class="info-label">Attempts</span>
+                    <strong>1</strong>
+                    <small>One verification attempt</small>
+                </div>
+
+                <div class="info-box">
+                    <span class="info-label">Review</span>
+                    <strong>Admin</strong>
+                    <small>Manual review after submission</small>
+                </div>
+
+            </div>
+
+            <div class="rules-section">
+                <h3>Before You Begin</h3>
+
+                <ul>
+                    <li>Answer all questions as accurately as possible.</li>
+                    <li>The assessment timer continues even if you leave the tab.</li>
+                    <li>Leaving the assessment will automatically submit your attempt.</li>
+                    <li>Practical tasks require you to upload your project files.</li>
+                    <li>Your submission will be reviewed by the VORVENA team.</li>
+                    <li>Do not share your assessment with another person.</li>
+                </ul>
+            </div>
+
+            <div class="start-warning">
+                <strong>Important:</strong>
+                Once the assessment begins, the timer cannot be paused.
+            </div>
+
+            <button class="primary-btn start-btn" id="startAssessment">
+                Begin Assessment
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section class="test-screen hidden" id="testScreen">
+
+        <div class="test-topbar">
+
+            <div class="test-profession">
+                <span>Verification Test</span>
+                <strong id="testProfession">Frontend Developer</strong>
+            </div>
+
+            <div class="test-controls">
+                <div class="integrity-status">
+                    <span class="status-dot"></span>
+                    <span id="integrityText">Assessment Active</span>
+                </div>
+
+                <button class="fullscreen-btn" id="fullscreenBtn">
+                    Fullscreen
+                </button>
+
+                <div class="timer" id="timer">
+                    45:00
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="test-container">
+
+            <div class="progress-section">
+
+                <div class="progress-top">
+                    <span id="questionCounter">Question 1 of 10</span>
+                    <span id="progressPercent">10%</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+
+            </div>
+
+
+            <div class="test-layout">
+
+                <aside class="question-sidebar">
+
+                    <div class="sidebar-title">
+                        Questions
+                    </div>
+
+                    <div class="question-navigation" id="questionNavigation"></div>
+
+                    <div class="sidebar-note">
+                        <strong>Assessment Notice</strong>
+                        <p>
+                            Leaving this assessment will submit your current attempt.
+                        </p>
+                    </div>
+
+                </aside>
+
+
+                <section class="question-area">
+
+                    <div class="question-card">
+
+                        <div class="question-type" id="questionType">
+                            Multiple Choice
+                        </div>
+
+                        <h2 id="questionTitle"></h2>
+
+                        <div id="questionContent"></div>
+
+                    </div>
+
+
+                    <div class="question-actions">
+
+                        <button class="secondary-btn" id="previousBtn">
+                            Previous
+                        </button>
+
+                        <button class="primary-btn" id="nextBtn">
+                            Next Question
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="submitted-screen hidden" id="submittedScreen">
+
+        <div class="submitted-card">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <div class="verification-badge">
+                Submission Received
+            </div>
+
+            <h1>Verification Under Review</h1>
+
+            <p>
+                Your professional verification assessment has been submitted
+                successfully and is now waiting for review by the VORVENA team.
+            </p>
+
+            <div class="submission-details">
+
+                <div>
+                    <span>Profession</span>
+                    <strong id="submittedProfession">Frontend Developer</strong>
+                </div>
+
+                <div>
+                    <span>Status</span>
+                    <strong>Under Review</strong>
+                </div>
+
+                <div>
+                    <span>Submission</span>
+                    <strong id="submissionType">Completed</strong>
+                </div>
+
+            </div>
+
+            <div class="next-step-box">
+                <strong>What happens next?</strong>
+                <p>
+                    Our team will review your assessment. If additional verification
+                    is required, you may be contacted for a short live verification.
+                </p>
+            </div>
+
+            <a href="index.html" class="primary-btn home-btn">
+                Return to VORVENA
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<div class="leave-modal" id="leaveModal">
+
+    <div class="leave-modal-box">
+
+        <div class="leave-modal-icon">!</div>
+
+        <h2>Leave Verification Test?</h2>
+
+        <p>
+            You are currently taking your professional verification test.
+            If you leave this page, your current test will be submitted
+            automatically to the VORVENA admin team.
+        </p>
+
+        <div class="leave-modal-actions">
+
+            <button type="button" class="stay-btn" id="stayBtn">
+                Stay on Test
+            </button>
+
+            <button type="button" class="leave-btn" id="leaveSubmitBtn">
+                Leave & Submit
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="toast" id="toast"></div>
+
+<script src="verification.js"></script>
+
+</body>
+</html>

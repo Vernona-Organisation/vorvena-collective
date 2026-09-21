@@ -1,42 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =====================================================
+    /* =========================
        MOBILE NAVIGATION
-    ===================================================== */
+    ========================= */
 
     const menuBtn = document.getElementById("menuBtn");
     const mobileNav = document.getElementById("mobileNav");
 
-    const navLinks = document.querySelectorAll(
-        ".desktop-nav a, .mobile-nav a"
-    );
-
-    function closeMobileMenu() {
-
-        if (!menuBtn || !mobileNav) return;
-
-        mobileNav.classList.remove("show");
-        menuBtn.classList.remove("active");
-
-        menuBtn.setAttribute("aria-expanded", "false");
-        menuBtn.setAttribute("aria-label", "Open menu");
-    }
-
-
     if (menuBtn && mobileNav) {
-
-        menuBtn.setAttribute("aria-expanded", "false");
 
         menuBtn.addEventListener("click", () => {
 
-            const isOpen =
-                mobileNav.classList.toggle("show");
+            const isOpen = mobileNav.classList.toggle("show");
 
             menuBtn.classList.toggle("active", isOpen);
 
             menuBtn.setAttribute(
                 "aria-expanded",
-                isOpen
+                String(isOpen)
             );
 
             menuBtn.setAttribute(
@@ -47,19 +28,47 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
-        mobileNav.querySelectorAll("a").forEach(link => {
+        mobileNav.querySelectorAll("a").forEach((link) => {
 
             link.addEventListener("click", () => {
-                closeMobileMenu();
+
+                mobileNav.classList.remove("show");
+
+                menuBtn.classList.remove("active");
+
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuBtn.setAttribute(
+                    "aria-label",
+                    "Open menu"
+                );
+
             });
 
         });
 
 
-        document.addEventListener("keydown", event => {
+        document.addEventListener("keydown", (event) => {
 
             if (event.key === "Escape") {
-                closeMobileMenu();
+
+                mobileNav.classList.remove("show");
+
+                menuBtn.classList.remove("active");
+
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuBtn.setAttribute(
+                    "aria-label",
+                    "Open menu"
+                );
+
             }
 
         });
@@ -68,7 +77,21 @@ document.addEventListener("DOMContentLoaded", () => {
         window.addEventListener("resize", () => {
 
             if (window.innerWidth > 768) {
-                closeMobileMenu();
+
+                mobileNav.classList.remove("show");
+
+                menuBtn.classList.remove("active");
+
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                menuBtn.setAttribute(
+                    "aria-label",
+                    "Open menu"
+                );
+
             }
 
         });
@@ -76,191 +99,373 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
-       ACTIVE NAVIGATION
-    ===================================================== */
+    /* =========================
+       ROLE-BASED DASHBOARD
+    ========================= */
 
-    let currentPage =
-        window.location.pathname.split("/").pop();
+    const dashboardLinks = [
+        document.getElementById("dashboardNavLink"),
+        document.getElementById("mobileDashboardNavLink")
+    ].filter(Boolean);
 
-    if (!currentPage) {
-        currentPage = "index.html";
+
+    const loggedIn =
+        sessionStorage.getItem("vorvenaUserLoggedIn") === "true";
+
+
+    let user = null;
+
+    try {
+
+        user = JSON.parse(
+            sessionStorage.getItem("vorvenaLoggedInUser") || "null"
+        );
+
+    } catch (error) {
+
+        user = null;
+
     }
 
-    navLinks.forEach(link => {
 
-        let linkPage =
-            link.getAttribute("href");
+    let dashboardHref = null;
 
-        if (!linkPage) return;
 
-        linkPage =
-            linkPage.split("/").pop().split("#")[0];
+    if (
+        loggedIn &&
+        user &&
+        user.accountType === "client"
+    ) {
 
-        if (linkPage === currentPage) {
+        dashboardHref = "clients-dashboard.html";
 
-            link.classList.add("active");
+    }
+
+
+    if (
+        loggedIn &&
+        user &&
+        user.accountType === "professional"
+    ) {
+
+        dashboardHref = "professional-dashboard.html";
+
+    }
+
+
+    dashboardLinks.forEach((link) => {
+
+        if (dashboardHref) {
+
+            link.href = dashboardHref;
+
+            link.hidden = false;
 
         } else {
 
-            link.classList.remove("active");
+            link.hidden = true;
 
         }
 
     });
 
 
-    /* =====================================================
-       CLIENT LOGIN STATUS
-    ===================================================== */
+    /* =========================
+       ACTIVE NAVIGATION
+    ========================= */
+
+    let currentPage =
+        window.location.pathname
+            .split("/")
+            .pop();
+
+
+    if (!currentPage) {
+        currentPage = "index.html";
+    }
+
+
+    document
+        .querySelectorAll(
+            ".desktop-nav a, .mobile-nav a"
+        )
+        .forEach((link) => {
+
+            const href = link.getAttribute("href");
+
+            if (
+                href &&
+                !href.startsWith("#") &&
+                !href.startsWith("http")
+            ) {
+
+                const cleanHref =
+                    href.split("#")[0];
+
+                if (
+                    cleanHref === currentPage &&
+                    cleanHref !== "clients.html"
+                ) {
+
+                    link.classList.add("active");
+
+                }
+
+            }
+
+        });
+
+
+    /* =========================
+       CLIENT SESSION
+    ========================= */
 
     const isClientLoggedIn =
         sessionStorage.getItem("vorvenaUserLoggedIn") === "true";
 
-    let loggedInUser = null;
+
+    let clientUser = null;
 
     try {
 
-        const storedUser =
-            sessionStorage.getItem("vorvenaLoggedInUser");
-
-        if (storedUser) {
-            loggedInUser = JSON.parse(storedUser);
-        }
+        clientUser = JSON.parse(
+            sessionStorage.getItem(
+                "vorvenaLoggedInUser"
+            ) || "null"
+        );
 
     } catch (error) {
 
-        loggedInUser = null;
+        clientUser = null;
 
     }
 
 
-    /* =====================================================
+    /*
+       Only use client information
+       when the logged-in account is a client.
+    */
+
+    if (
+        !isClientLoggedIn ||
+        !clientUser ||
+        clientUser.accountType !== "client"
+    ) {
+
+        clientUser = null;
+
+    }
+
+
+    /* =========================
        SELECTED PROFESSIONAL
-    ===================================================== */
+    ========================= */
 
-    const selectedProfessionalBox =
-        document.getElementById("selectedProfessional");
+    const selectedProfessionalRaw =
+        sessionStorage.getItem(
+            "vorvenaSelectedProfessional"
+        );
 
-    const selectedProfessionalName =
-        document.getElementById("selectedProfessionalName");
-
-    const selectedProfessionalProfession =
-        document.getElementById("selectedProfessionalProfession");
-
-    const selectedProfessionalSkills =
-        document.getElementById("selectedProfessionalSkills");
-
-    const changeProfessional =
-        document.getElementById("changeProfessional");
 
     let selectedProfessional = null;
 
 
-    try {
+    if (selectedProfessionalRaw) {
 
-        const storedProfessional =
-            sessionStorage.getItem(
-                "vorvenaSelectedProfessional"
-            );
-
-        if (storedProfessional) {
+        try {
 
             selectedProfessional =
-                JSON.parse(storedProfessional);
+                JSON.parse(
+                    selectedProfessionalRaw
+                );
+
+        } catch (error) {
+
+            selectedProfessional = null;
 
         }
-
-    } catch (error) {
-
-        selectedProfessional = null;
 
     }
 
 
-    /* =====================================================
-       DISPLAY SELECTED PROFESSIONAL
-    ===================================================== */
+    const selectedProfessionalBox =
+        document.getElementById(
+            "selectedProfessionalBox"
+        );
 
-    function displaySelectedProfessional() {
+    const selectedProfessionalName =
+        document.getElementById(
+            "selectedProfessionalName"
+        );
 
-        if (
-            !selectedProfessional ||
-            !selectedProfessionalBox
-        ) {
-            return;
-        }
+    const selectedProfessionalDetails =
+        document.getElementById(
+            "selectedProfessionalDetails"
+        );
+
+    const selectedProfessionalInput =
+        document.getElementById(
+            "selectedProfessional"
+        );
+
+
+    if (
+        selectedProfessional &&
+        selectedProfessionalBox
+    ) {
+
+        selectedProfessionalBox.hidden = false;
 
 
         if (selectedProfessionalName) {
 
             selectedProfessionalName.textContent =
-                selectedProfessional.name || "Professional";
+                selectedProfessional.name ||
+                selectedProfessional.fullName ||
+                "Selected Professional";
 
         }
 
 
-        if (selectedProfessionalProfession) {
+        if (selectedProfessionalDetails) {
 
-            selectedProfessionalProfession.textContent =
-                selectedProfessional.profession || "Professional";
+            const profession =
+                selectedProfessional.profession ||
+                selectedProfessional.role ||
+                selectedProfessional.title ||
+                "Professional";
+
+            const location =
+                selectedProfessional.location ||
+                selectedProfessional.city ||
+                "";
+
+            selectedProfessionalDetails.textContent =
+                location
+                    ? `${profession} • ${location}`
+                    : profession;
 
         }
 
 
-        if (selectedProfessionalSkills) {
+        if (selectedProfessionalInput) {
 
-            selectedProfessionalSkills.textContent =
-                selectedProfessional.skills ||
-                "Skills available on profile";
+            selectedProfessionalInput.value =
+                JSON.stringify(
+                    selectedProfessional
+                );
 
         }
-
-
-        selectedProfessionalBox.classList.add("show");
 
     }
 
 
-    displaySelectedProfessional();
-
-
-    /* =====================================================
-       CHANGE PROFESSIONAL
-    ===================================================== */
-
-
-
-    /* =====================================================
+    /* =========================
        PROJECT REQUEST FORM
-    ===================================================== */
+    ========================= */
 
     const projectForm =
-        document.getElementById("projectForm");
+        document.getElementById(
+            "projectRequestForm"
+        );
 
     const formMessage =
-        document.getElementById("formMessage");
+        document.getElementById(
+            "formMessage"
+        );
 
     const submitButton =
-        projectForm
-            ? projectForm.querySelector(".submit-btn")
-            : null;
+        document.getElementById(
+            "submitProjectBtn"
+        );
+
+    const clientEmailInput =
+        document.getElementById(
+            "clientEmail"
+        );
+
+    const clientNameInput =
+        document.getElementById(
+            "clientName"
+        );
+
+    const projectSubject =
+        document.getElementById(
+            "projectSubject"
+        );
 
 
-    if (projectForm && formMessage) {
+    /*
+       If the client is logged in,
+       prefill the known client information.
+    */
+
+    if (clientUser) {
+
+        const clientName =
+            clientUser.fullName ||
+            clientUser.name ||
+            "";
+
+
+        const clientEmail =
+            clientUser.email ||
+            "";
+
+
+        if (
+            clientNameInput &&
+            clientName &&
+            !clientNameInput.value
+        ) {
+
+            clientNameInput.value =
+                clientName;
+
+        }
+
+
+        if (clientEmailInput) {
+
+            clientEmailInput.value =
+                clientEmail;
+
+        }
+
+
+        if (
+            projectSubject &&
+            selectedProfessional
+        ) {
+
+            const professionalName =
+                selectedProfessional.name ||
+                selectedProfessional.fullName ||
+                "Professional";
+
+            projectSubject.value =
+                `VORVENA Project Request - ${professionalName}`;
+
+        }
+
+    }
+
+
+    if (projectForm) {
 
         projectForm.addEventListener(
             "submit",
-            async event => {
+            async (event) => {
 
                 event.preventDefault();
 
 
-                /* -----------------------------------------
-                   CHECK LOGIN
-                ----------------------------------------- */
+                /*
+                   A project request requires
+                   a logged-in client.
+                */
 
-                if (!isClientLoggedIn || !loggedInUser) {
+                if (!clientUser) {
 
                     sessionStorage.setItem(
                         "vorvenaHiringIntent",
@@ -268,12 +473,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     );
 
 
-                    formMessage.innerHTML =
-                        "<strong>CLIENT LOGIN REQUIRED</strong><br>" +
-                        "Please log in or create a client account before submitting a project request.";
+                    if (formMessage) {
 
-                    formMessage.style.color =
-                        "#b00020";
+                        formMessage.textContent =
+                            "Please log in to submit a project request.";
+
+                    }
 
 
                     setTimeout(() => {
@@ -288,18 +493,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
-                /* -----------------------------------------
-                   CHECK SELECTED PROFESSIONAL
-                ----------------------------------------- */
+                /*
+                   A selected professional is required
+                   when the request comes from a
+                   professional profile.
+                */
 
                 if (!selectedProfessional) {
 
-                    formMessage.innerHTML =
-                        "<strong>SELECT A PROFESSIONAL</strong><br>" +
-                        "Please return to the Profiles page and choose the professional you want to hire.";
+                    if (formMessage) {
 
-                    formMessage.style.color =
-                        "#b00020";
+                        formMessage.textContent =
+                            "Please select a professional before submitting your project.";
+
+                    }
 
 
                     setTimeout(() => {
@@ -314,10 +521,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
-                /* -----------------------------------------
-                   FORM VALIDATION
-                ----------------------------------------- */
-
                 if (!projectForm.checkValidity()) {
 
                     projectForm.reportValidity();
@@ -327,302 +530,151 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
-                /* -----------------------------------------
-                   FORMSPREE ENDPOINT
-                ----------------------------------------- */
-
-                const formAction =
-                    projectForm.getAttribute("action");
-
-                if (
-                    !formAction ||
-                    formAction === "YOUR_FORMSPREE_ENDPOINT"
-                ) {
-
-                    formMessage.textContent =
-                        "Something went wrong. Please try again later.";
-
-                    formMessage.style.color =
-                        "#b00020";
-
-                    return;
-
-                }
-
-
-                /* -----------------------------------------
-                   DISABLE SUBMIT BUTTON
-                ----------------------------------------- */
-
                 if (submitButton) {
 
                     submitButton.disabled = true;
 
-                    submitButton.style.opacity = "0.6";
-
-                    submitButton.style.cursor =
-                        "not-allowed";
-
-                    submitButton.innerHTML =
-                        'Sending Request <span>...</span>';
+                    submitButton.textContent =
+                        "SUBMITTING...";
 
                 }
 
 
-                formMessage.textContent =
-                    "Sending your project request...";
+                if (formMessage) {
 
-                formMessage.style.color =
-                    "#555";
+                    formMessage.textContent =
+                        "Submitting your project request...";
+
+                }
+
+
+                /*
+                   Keep client session information
+                   attached to the request.
+                */
+
+                if (clientEmailInput) {
+
+                    clientEmailInput.value =
+                        clientUser.email || "";
+
+                }
+
+
+                const formData =
+                    new FormData(projectForm);
+
+
+                formData.append(
+                    "clientName",
+                    clientUser.fullName ||
+                    clientUser.name ||
+                    ""
+                );
+
+
+                formData.append(
+                    "clientEmail",
+                    clientUser.email ||
+                    ""
+                );
+
+
+                formData.append(
+                    "accountType",
+                    "client"
+                );
+
+
+                formData.append(
+                    "selectedProfessionalData",
+                    JSON.stringify(
+                        selectedProfessional
+                    )
+                );
 
 
                 try {
 
-                    /* -------------------------------------
-                       COLLECT FORM DATA
-                    ------------------------------------- */
-
-                    const formData =
-                        new FormData(projectForm);
-
-
-                    /* -------------------------------------
-                       ADD CLIENT INFORMATION
-                    ------------------------------------- */
-
-                    formData.append(
-                        "client_name",
-                        loggedInUser.fullName ||
-                        sessionStorage.getItem(
-                            "vorvenaClientName"
-                        ) ||
-                        ""
-                    );
-
-
-                    formData.append(
-                        "client_email",
-                        loggedInUser.email ||
-                        sessionStorage.getItem(
-                            "vorvenaClientEmail"
-                        ) ||
-                        ""
-                    );
-
-
-                    formData.append(
-                        "client_account_type",
-                        "client"
-                    );
-
-
-                    /* -------------------------------------
-                       ADD SELECTED PROFESSIONAL
-                    ------------------------------------- */
-
-                    formData.append(
-                        "selected_professional",
-                        selectedProfessional.name || ""
-                    );
-
-
-                    formData.append(
-                        "professional_profession",
-                        selectedProfessional.profession || ""
-                    );
-
-
-                    formData.append(
-                        "professional_skills",
-                        selectedProfessional.skills || ""
-                    );
-
-
-                    /* -------------------------------------
-                       SEND TO FORMSPREE
-                    ------------------------------------- */
-
                     const response =
                         await fetch(
-                            formAction,
+                            projectForm.action,
                             {
                                 method: "POST",
                                 body: formData,
                                 headers: {
-                                    "Accept":
+                                    Accept:
                                         "application/json"
                                 }
                             }
                         );
 
 
-                    /* -------------------------------------
-                       SUCCESS
-                    ------------------------------------- */
+                    if (!response.ok) {
 
-                    if (response.ok) {
-
-                        formMessage.innerHTML =
-                            "<strong>REQUEST RECEIVED</strong><br>" +
-                            "Your request to work with " +
-                            (selectedProfessional.name || "the professional") +
-                            " has been successfully submitted to VORVENA.";
-
-                        formMessage.style.color =
-                            "#111";
-
-
-                        projectForm.reset();
-
-
-                        /* ---------------------------------
-                           CLEAR HIRING SESSION
-                        --------------------------------- */
-
-                        sessionStorage.removeItem(
-                            "vorvenaHiringIntent"
+                        throw new Error(
+                            "Unable to submit request."
                         );
 
-                        sessionStorage.removeItem(
-                            "vorvenaSelectedProfessional"
-                        );
+                    }
 
 
-                        /* ---------------------------------
-                           HIDE PROFESSIONAL BOX
-                        --------------------------------- */
+                    if (formMessage) {
 
-                        if (selectedProfessionalBox) {
+                        formMessage.textContent =
+                            "Your project request has been submitted successfully.";
 
-                            selectedProfessionalBox.classList.remove(
-                                "show"
-                            );
-
-                        }
+                    }
 
 
-                        /* ---------------------------------
-                           RESTORE BUTTON
-                        --------------------------------- */
-
-                        if (submitButton) {
-
-                            submitButton.disabled = false;
-
-                            submitButton.style.opacity =
-                                "1";
-
-                            submitButton.style.cursor =
-                                "pointer";
-
-                            submitButton.innerHTML =
-                                'Request Submitted <span>✓</span>';
-
-                        }
+                    projectForm.reset();
 
 
-                        setTimeout(() => {
+                    if (selectedProfessionalBox) {
 
-                            if (submitButton) {
+                        selectedProfessionalBox.hidden =
+                            true;
 
-                                submitButton.innerHTML =
-                                    'Submit Project Request <span>↗</span>';
-
-                            }
-
-                        }, 4000);
+                    }
 
 
-                    } else {
+                    sessionStorage.removeItem(
+                        "vorvenaHiringIntent"
+                    );
 
-                        /* ---------------------------------
-                           FORMSPREE ERROR
-                        --------------------------------- */
-
-                        let errorMessage =
-                            "We couldn't submit your request. Please try again.";
-
-
-                        try {
-
-                            const data =
-                                await response.json();
-
-                            if (
-                                data &&
-                                data.errors &&
-                                data.errors.length
-                            ) {
-
-                                errorMessage =
-                                    data.errors
-                                        .map(
-                                            error =>
-                                                error.message
-                                        )
-                                        .join(", ");
-
-                            }
-
-                        } catch (error) {
-
-                            /* Use default error */
-
-                        }
+                    sessionStorage.removeItem(
+                        "vorvenaSelectedProfessional"
+                    );
 
 
-                        formMessage.innerHTML =
-                            "<strong>SUBMISSION FAILED</strong><br>" +
-                            errorMessage;
+                    if (submitButton) {
 
-                        formMessage.style.color =
-                            "#b00020";
-
-
-                        if (submitButton) {
-
-                            submitButton.disabled = false;
-
-                            submitButton.style.opacity =
-                                "1";
-
-                            submitButton.style.cursor =
-                                "pointer";
-
-                            submitButton.innerHTML =
-                                'Try Again <span>↻</span>';
-
-                        }
+                        submitButton.textContent =
+                            "REQUEST SUBMITTED";
 
                     }
 
 
                 } catch (error) {
 
-                    /* -------------------------------------
-                       NETWORK ERROR
-                    ------------------------------------- */
+                    console.error(error);
 
-                    formMessage.innerHTML =
-                        "<strong>CONNECTION ERROR</strong><br>" +
-                        "We couldn't connect to the VORVENA request system. Please check your internet connection and try again.";
 
-                    formMessage.style.color =
-                        "#b00020";
+                    if (formMessage) {
+
+                        formMessage.textContent =
+                            "Something went wrong. Please try again.";
+
+                    }
 
 
                     if (submitButton) {
 
-                        submitButton.disabled = false;
+                        submitButton.disabled =
+                            false;
 
-                        submitButton.style.opacity =
-                            "1";
-
-                        submitButton.style.cursor =
-                            "pointer";
-
-                        submitButton.innerHTML =
-                            'Try Again <span>↻</span>';
+                        submitButton.textContent =
+                            "SUBMIT PROJECT REQUEST";
 
                     }
 
@@ -634,42 +686,43 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =====================================================
-       HASH / PROJECT REQUEST
-    ===================================================== */
+    /* =========================
+       PROJECT REQUEST HASH
+    ========================= */
 
     if (
-        window.location.hash === "#project-request"
+        window.location.hash ===
+        "#project-request"
     ) {
 
         setTimeout(() => {
 
             const requestSection =
-                document.querySelector(
-                    ".request-section"
+                document.getElementById(
+                    "project-request"
                 );
+
 
             if (requestSection) {
 
                 requestSection.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
+                    behavior: "smooth"
                 });
 
             }
 
-        }, 300);
+        }, 200);
 
     }
 
 
-    /* =====================================================
-       SCROLL REVEAL
-    ===================================================== */
+    /* =========================
+       REVEAL ANIMATION
+    ========================= */
 
     const revealElements =
         document.querySelectorAll(
-            ".benefit-card, .process-item, .access-box, .payment-box, .global-content"
+            ".feature-card, .process-card, .request-info-card, .structure-card"
         );
 
 
@@ -677,17 +730,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const observer =
             new IntersectionObserver(
-                (entries, observer) => {
+                (entries, observerInstance) => {
 
-                    entries.forEach(entry => {
+                    entries.forEach((entry) => {
 
                         if (entry.isIntersecting) {
 
                             entry.target.classList.add(
-                                "show"
+                                "visible"
                             );
 
-                            observer.unobserve(
+                            observerInstance.unobserve(
                                 entry.target
                             );
 
@@ -702,22 +755,17 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
-        revealElements.forEach(element => {
-
-            element.classList.add("reveal");
+        revealElements.forEach((element) => {
 
             observer.observe(element);
 
         });
 
-    } else {
-
-        revealElements.forEach(element => {
-
-            element.classList.add("show");
-
-        });
-
     }
+
+
+    console.log(
+        "VORVENA Clients page loaded successfully."
+    );
 
 });

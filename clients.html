@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,926 +11,810 @@
 
 <body>
 
-    <!-- ================= HEADER ================= -->
+<header class="site-header">
 
-    <header class="site-header">
+    <div class="nav-container">
 
-        <div class="nav-container">
+        <a href="index.html" class="logo">VORVENA</a>
+
+        <nav class="desktop-nav" id="desktopNav">
+
+            <a href="index.html">Home</a>
+
+            <a href="profiles.html">Profiles</a>
+
+            <a href="clients.html" class="active">Clients</a>
+
+            <!-- Dashboard appears only when logged in -->
+            <a
+                href="#"
+                class="dashboard-link"
+                id="dashboardNavLink"
+                hidden
+            >
+                Dashboard
+            </a>
+
+            <a href="join.html">Join Community</a>
+
+        </nav>
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Open menu"
+            aria-expanded="false"
+            type="button"
+        >
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav">
+
+        <a href="index.html">Home</a>
+
+        <a href="profiles.html">Profiles</a>
+
+        <a href="clients.html" class="active">Clients</a>
+
+        <!-- Dashboard appears only when logged in -->
+        <a
+            href="#"
+            class="dashboard-link"
+            id="mobileDashboardNavLink"
+            hidden
+        >
+            Dashboard
+        </a>
+
+        <a href="join.html">Join Community</a>
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    <!-- HERO -->
+    <section class="hero-section">
+
+        <div class="hero-content">
+
+            <span class="eyebrow">VORVENA FOR CLIENTS</span>
+
+            <h1>
+                FIND THE
+                <span>RIGHT TALENT.</span>
+            </h1>
+
+            <p>
+                Connect with skilled professionals who can bring your
+                project, business, or creative vision to life.
+            </p>
+
+            <div class="hero-actions">
+
+                <a href="profiles.html" class="primary-btn">
+                    Explore Profiles
+                </a>
+
+                <a href="#how-it-works" class="secondary-btn">
+                    How It Works
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+
+            <div class="hero-card">
+
+                <span class="card-label">VORVENA</span>
+
+                <h3>
+                    Talent without
+                    unnecessary barriers.
+                </h3>
+
+                <p>
+                    Discover professionals, review their work,
+                    and build the right team for your project.
+                </p>
+
+                <div class="card-line"></div>
+
+                <div class="hero-card-footer">
+                    <span>Clients</span>
+                    <span>Professionals</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- WHY VORVENA -->
+    <section class="section why-section">
+
+        <div class="section-heading">
+
+            <span class="eyebrow">WHY VORVENA</span>
+
+            <h2>
+                A better way to
+                <span>find talent.</span>
+            </h2>
+
+            <p>
+                VORVENA creates a professional environment where
+                clients can discover skilled people and manage
+                projects with clarity.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+            <article class="feature-card">
+
+                <span class="feature-number">01</span>
+
+                <h3>Verified Talent</h3>
+
+                <p>
+                    Discover professionals who have gone through
+                    the VORVENA professional onboarding process.
+                </p>
+
+            </article>
+
+
+            <article class="feature-card">
+
+                <span class="feature-number">02</span>
+
+                <h3>Clear Process</h3>
+
+                <p>
+                    From discovering talent to submitting project
+                    requests, every stage is designed to remain clear.
+                </p>
+
+            </article>
+
+
+            <article class="feature-card">
+
+                <span class="feature-number">03</span>
+
+                <h3>Professional Structure</h3>
+
+                <p>
+                    Projects are structured around clear responsibilities,
+                    communication, and professional delivery.
+                </p>
+
+            </article>
+
+
+            <article class="feature-card">
+
+                <span class="feature-number">04</span>
+
+                <h3>Global Access</h3>
+
+                <p>
+                    Connect with professionals from different
+                    locations and backgrounds.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+    <section class="section process-section" id="how-it-works">
+
+        <div class="section-heading">
+
+            <span class="eyebrow">HOW IT WORKS</span>
+
+            <h2>
+                From idea to
+                <span>execution.</span>
+            </h2>
+
+            <p>
+                A straightforward process designed to help clients
+                move from an idea to a professional project.
+            </p>
+
+        </div>
+
+
+        <div class="process-grid">
+
+            <article class="process-card">
+
+                <span class="process-number">01</span>
+
+                <h3>Explore</h3>
+
+                <p>
+                    Browse professional profiles and discover
+                    people whose skills match your needs.
+                </p>
+
+            </article>
+
+
+            <article class="process-card">
+
+                <span class="process-number">02</span>
+
+                <h3>Select</h3>
+
+                <p>
+                    Review a professional's profile, skills,
+                    experience, and portfolio.
+                </p>
+
+            </article>
+
+
+            <article class="process-card">
+
+                <span class="process-number">03</span>
+
+                <h3>Request</h3>
+
+                <p>
+                    Submit your project requirements through
+                    the VORVENA project request system.
+                </p>
+
+            </article>
+
+
+            <article class="process-card">
+
+                <span class="process-number">04</span>
+
+                <h3>Work</h3>
+
+                <p>
+                    Collaborate with your selected professional
+                    and move your project forward.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- CLIENT ACCESS -->
+    <section class="access-section">
+
+        <div class="access-content">
+
+            <div>
+
+                <span class="eyebrow">CLIENT ACCESS</span>
+
+                <h2>
+                    Ready to start
+                    <span>a project?</span>
+                </h2>
+
+                <p>
+                    Sign in to your VORVENA client account to manage
+                    your projects and submit project requests.
+                </p>
+
+            </div>
+
+            <a href="login.html" class="primary-btn">
+                Client Login
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECT REQUEST -->
+    <section class="section request-section" id="project-request">
+
+        <div class="section-heading">
+
+            <span class="eyebrow">PROJECT REQUEST</span>
+
+            <h2>
+                Tell us about
+                <span>your project.</span>
+            </h2>
+
+            <p>
+                Provide the basic details of your project so the
+                VORVENA process can connect you with the appropriate
+                professional.
+            </p>
+
+        </div>
+
+
+        <div class="request-layout">
+
+            <div class="request-info">
+
+                <div class="request-info-card">
+
+                    <span class="info-number">01</span>
+
+                    <h3>Describe your project</h3>
+
+                    <p>
+                        Tell us what you need, what you want to achieve,
+                        and any important requirements.
+                    </p>
+
+                </div>
+
+
+                <div class="request-info-card">
+
+                    <span class="info-number">02</span>
+
+                    <h3>Set your expectations</h3>
+
+                    <p>
+                        Provide your expected budget and timeline
+                        so the project can be structured appropriately.
+                    </p>
+
+                </div>
+
+
+                <div class="request-info-card">
+
+                    <span class="info-number">03</span>
+
+                    <h3>Connect with talent</h3>
+
+                    <p>
+                        Your project information can be used to
+                        coordinate the next stage of the process.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form
+                class="project-form"
+                id="projectRequestForm"
+                action="https://formspree.io/f/mjyvjyly"
+                method="POST"
+            >
+
+                <input
+                    type="hidden"
+                    name="_subject"
+                    id="projectSubject"
+                    value="New VORVENA Project Request"
+                >
+
+                <input
+                    type="hidden"
+                    name="clientEmail"
+                    id="clientEmail"
+                >
+
+                <input
+                    type="hidden"
+                    name="clientAccountType"
+                    value="client"
+                >
+
+                <input
+                    type="hidden"
+                    name="selectedProfessional"
+                    id="selectedProfessional"
+                >
+
+
+                <div
+                    class="selected-professional"
+                    id="selectedProfessionalBox"
+                    hidden
+                >
+
+                    <span>SELECTED PROFESSIONAL</span>
+
+                    <strong id="selectedProfessionalName">
+                        —
+                    </strong>
+
+                    <small id="selectedProfessionalDetails">
+                        —
+                    </small>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="clientName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="clientName"
+                        name="clientName"
+                        placeholder="Your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="service">
+                        Service Needed
+                    </label>
+
+                    <select
+                        id="service"
+                        name="service"
+                        required
+                    >
+
+                        <option value="">
+                            Select a service
+                        </option>
+
+                        <option value="Web Development">
+                            Web Development
+                        </option>
+
+                        <option value="Graphic Design">
+                            Graphic Design
+                        </option>
+
+                        <option value="Branding">
+                            Branding
+                        </option>
+
+                        <option value="Social Media Management">
+                            Social Media Management
+                        </option>
+
+                        <option value="Marketing">
+                            Marketing
+                        </option>
+
+                        <option value="Content Creation">
+                            Content Creation
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="projectDescription">
+                        Project Description
+                    </label>
+
+                    <textarea
+                        id="projectDescription"
+                        name="projectDescription"
+                        rows="6"
+                        placeholder="Describe your project..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="budget">
+                            Budget
+                        </label>
+
+                        <input
+                            type="text"
+                            id="budget"
+                            name="budget"
+                            placeholder="e.g. ₦150,000"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="timeline">
+                            Timeline
+                        </label>
+
+                        <input
+                            type="text"
+                            id="timeline"
+                            name="timeline"
+                            placeholder="e.g. 2 weeks"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="form-message"
+                    id="formMessage"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                    id="submitProjectBtn"
+                >
+                    SUBMIT PROJECT REQUEST
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECT STRUCTURE -->
+    <section class="section structure-section">
+
+        <div class="section-heading">
+
+            <span class="eyebrow">PROJECT STRUCTURE</span>
+
+            <h2>
+                A transparent
+                <span>structure.</span>
+            </h2>
+
+            <p>
+                VORVENA uses a simple project structure designed
+                to clearly separate platform and professional earnings.
+            </p>
+
+        </div>
+
+
+        <div class="structure-grid">
+
+            <article class="structure-card">
+
+                <span class="structure-percentage">
+                    15%
+                </span>
+
+                <h3>VORVENA</h3>
+
+                <p>
+                    Platform and operational structure.
+                </p>
+
+            </article>
+
+
+            <article class="structure-card featured">
+
+                <span class="structure-percentage">
+                    85%
+                </span>
+
+                <h3>Professional</h3>
+
+                <p>
+                    Professional project earnings.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRIVACY -->
+    <section class="section privacy-section">
+
+        <div class="privacy-box">
+
+            <span class="eyebrow">PRIVACY</span>
+
+            <h2>
+                Your project
+                information matters.
+            </h2>
+
+            <p>
+                Project information should only be used for the
+                purposes necessary to support your VORVENA experience
+                and project coordination.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- GLOBAL -->
+    <section class="global-section">
+
+        <div class="global-content">
+
+            <span class="eyebrow">GLOBAL COMMUNITY</span>
+
+            <h2>
+                Talent can come
+                <span>from anywhere.</span>
+            </h2>
+
+            <p>
+                VORVENA is designed to connect clients with
+                professionals across different locations and fields.
+            </p>
+
+            <a href="profiles.html" class="secondary-btn">
+                Explore Professionals
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta-section">
+
+        <div class="cta-content">
+
+            <span class="eyebrow">
+                START YOUR PROJECT
+            </span>
+
+            <h2>
+                Build something
+                <span>meaningful.</span>
+            </h2>
+
+            <p>
+                Find the right professional for your next project.
+            </p>
+
+            <a href="profiles.html" class="primary-btn">
+                Explore Profiles
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="footer-grid">
+
+        <div class="footer-brand">
 
             <a href="index.html" class="logo">
                 VORVENA
             </a>
 
-            <nav class="desktop-nav">
-
-                <a href="./index.html">Home</a>
-                <a href="./community.html">Community</a>
-                <a href="./profiles.html">Profiles</a>
-                <a href="./clients.html" class="active">Clients</a>
-                <a href="./join.html">Join Community</a>
-
-            </nav>
-
-            <button
-                class="menu-btn"
-                id="menuBtn"
-                aria-label="Open menu"
-                aria-expanded="false"
-                type="button"
-            >
-                <span></span>
-                <span></span>
-            </button>
+            <p>
+                A professional community connecting clients
+                with skilled talent.
+            </p>
 
         </div>
 
-        <nav class="mobile-nav" id="mobileNav">
 
-            <a href="./index.html">Home</a>
-            <a href="./community.html">Community</a>
-            <a href="./profiles.html">Profiles</a>
-            <a href="./clients.html" class="active">Clients</a>
-            <a href="./join.html">Join Community</a>
+        <div class="footer-column">
 
-        </nav>
+            <h4>Explore</h4>
 
-    </header>
+            <a href="index.html">Home</a>
 
+            <a href="community.html">Community</a>
 
-    <!-- ================= MAIN ================= -->
+            <a href="profiles.html">Profiles</a>
 
-    <main>
-
-
-        <!-- ================= HERO ================= -->
-
-        <section class="hero">
-
-            <div class="hero-number">
-                01 / CLIENTS
-            </div>
-
-            <div class="hero-content">
-
-                <h1>
-                    FIND THE
-                    <span>RIGHT TALENT.</span>
-                </h1>
-
-                <p>
-                    Connect with skilled professionals who can turn
-                    your ideas, projects and business goals into reality.
-                </p>
-
-                <div class="hero-actions">
-
-                    <a href="profiles.html" class="btn btn-dark">
-                        Explore Profiles
-                        <span>↗</span>
-                    </a>
-
-                    <a href="#how-it-works" class="btn btn-light">
-                        How It Works
-                    </a>
-
-                </div>
-
-            </div>
-
-            <div class="hero-bottom">
-
-                <span>FOR BUSINESSES</span>
-                <span>FOR STARTUPS</span>
-                <span>FOR INDIVIDUALS</span>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= WHY VORVENA ================= -->
-
-        <section class="why-section">
-
-            <div class="section-label">
-                02 / WHY VORVENA
-            </div>
-
-            <div class="why-grid">
-
-                <div class="why-heading">
-
-                    <h2>
-                        Talent is everywhere.
-                        <span>The right connection matters.</span>
-                    </h2>
-
-                </div>
-
-                <div class="why-copy">
-
-                    <p>
-                        Finding someone with the right skills should not
-                        mean searching through endless profiles or dealing
-                        with uncertainty.
-                    </p>
-
-                    <p>
-                        VORVENA brings professionals and clients together
-                        through a structured community built around skills,
-                        trust and opportunity.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="benefits-grid">
-
-                <article class="benefit-card">
-
-                    <span class="benefit-number">01</span>
-
-                    <h3>Approved Talent</h3>
-
-                    <p>
-                        Discover professionals who have gone through
-                        VORVENA's review process.
-                    </p>
-
-                </article>
-
-
-                <article class="benefit-card">
-
-                    <span class="benefit-number">02</span>
-
-                    <h3>Skill-Based Discovery</h3>
-
-                    <p>
-                        Search for professionals based on the exact
-                        skills and services your project needs.
-                    </p>
-
-                </article>
-
-
-                <article class="benefit-card">
-
-                    <span class="benefit-number">03</span>
-
-                    <h3>Structured Process</h3>
-
-                    <p>
-                        VORVENA helps create a clearer process from
-                        project request to completion.
-                    </p>
-
-                </article>
-
-
-                <article class="benefit-card">
-
-                    <span class="benefit-number">04</span>
-
-                    <h3>Human Support</h3>
-
-                    <p>
-                        Approved projects can be handled through the
-                        VORVENA administration team.
-                    </p>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= HOW IT WORKS ================= -->
-
-        <section
-            class="process-section"
-            id="how-it-works"
-        >
-
-            <div class="section-label">
-                03 / HOW IT WORKS
-            </div>
-
-            <div class="process-header">
-
-                <h2>
-                    FROM IDEA
-                    <span>TO EXECUTION.</span>
-                </h2>
-
-                <p>
-                    A simple process designed to make finding and
-                    working with talent easier.
-                </p>
-
-            </div>
-
-
-            <div class="process-list">
-
-                <div class="process-item">
-
-                    <span>01</span>
-
-                    <div>
-
-                        <h3>Explore</h3>
-
-                        <p>
-                            Browse professional profiles and discover
-                            people with the skills you need.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="process-item">
-
-                    <span>02</span>
-
-                    <div>
-
-                        <h3>Select</h3>
-
-                        <p>
-                            Review a professional's skills, experience
-                            and portfolio.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="process-item">
-
-                    <span>03</span>
-
-                    <div>
-
-                        <h3>Request</h3>
-
-                        <p>
-                            When you're ready, sign in as a client and
-                            submit your project request.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="process-item">
-
-                    <span>04</span>
-
-                    <div>
-
-                        <h3>Build</h3>
-
-                        <p>
-                            Once approved and agreed, the professional
-                            gets to work on your project.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= CLIENT ACCESS ================= -->
-
-        <section class="access-section">
-
-            <div class="access-box">
-
-                <div class="section-label">
-                    04 / CLIENT ACCESS
-                </div>
-
-                <div class="access-content">
-
-                    <h2>
-                        BROWSE FIRST.
-                        <span>SIGN IN WHEN READY.</span>
-                    </h2>
-
-                    <p>
-                        You don't need an account just to explore VORVENA.
-                        Browse professional profiles freely and discover
-                        the right talent for your project.
-                    </p>
-
-                    <p>
-                        When you decide to work with someone, you'll be
-                        asked to sign in or create a client account so
-                        your project can be properly managed.
-                    </p>
-
-                    <a
-                        href="./login.html"
-                        class="text-link"
-                    >
-                        Client Login
-                        <span>↗</span>
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= PROJECT REQUEST ================= -->
-
-        <section
-            class="request-section"
-            id="project-request"
-        >
-
-            <div class="section-label">
-                05 / PROJECT REQUEST
-            </div>
-
-            <div class="request-grid">
-
-
-                <!-- ================= REQUEST INTRO ================= -->
-
-                <div class="request-intro">
-
-                    <h2>
-                        HAVE A
-                        <span>PROJECT?</span>
-                    </h2>
-
-                    <p>
-                        Tell us what you need and VORVENA can help
-                        connect your project with the right professional.
-                    </p>
-
-                </div>
-
-
-                <!-- ================= REQUEST FORM ================= -->
-
-                <div class="request-form-area">
-
-                    <form
-                        class="project-form"
-                        id="projectForm"
-                        action="https://formspree.io/f/mjyvjyly"
-                        method="POST"
-                    >
-
-
-                        <!-- ================= CLIENT NAME ================= -->
-
-                        <div class="form-group">
-
-                            <label for="name">
-                                NAME
-                            </label>
-
-                            <input
-                                type="text"
-                                id="name"
-                                name="client_name"
-                                placeholder="Enter your name"
-                                autocomplete="name"
-                                required
-                            >
-
-                        </div>
-
-
-                        <!-- ================= SERVICE ================= -->
-
-                        <div class="form-group">
-
-                            <label for="service">
-                                SERVICE
-                            </label>
-
-                            <select
-                                id="service"
-                                name="service"
-                                required
-                            >
-
-                                <option value="">
-                                    Select a service
-                                </option>
-
-                                <option value="Frontend Development">
-                                    Frontend Development
-                                </option>
-
-                                <option value="Backend Development">
-                                    Backend Development
-                                </option>
-
-                                <option value="Full Stack Development">
-                                    Full Stack Development
-                                </option>
-
-                                <option value="Graphic Design">
-                                    Graphic Design
-                                </option>
-
-                                <option value="Motion Design">
-                                    Motion Design
-                                </option>
-
-                                <option value="UI/UX Design">
-                                    UI/UX Design
-                                </option>
-
-                                <option value="Digital Marketing">
-                                    Digital Marketing
-                                </option>
-
-                                <option value="Social Media Management">
-                                    Social Media Management
-                                </option>
-
-                                <option value="Writing">
-                                    Writing
-                                </option>
-
-                                <option value="Photography">
-                                    Photography
-                                </option>
-
-                                <option value="Other">
-                                    Other
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <!-- ================= PROJECT DESCRIPTION ================= -->
-
-                        <div class="form-group">
-
-                            <label for="project">
-                                PROJECT DESCRIPTION
-                            </label>
-
-                            <textarea
-                                id="project"
-                                name="project_description"
-                                rows="5"
-                                placeholder="Tell us about your project..."
-                                required
-                            ></textarea>
-
-                        </div>
-
-
-                        <!-- ================= BUDGET + TIMELINE ================= -->
-
-                        <div class="form-row">
-
-
-                            <!-- BUDGET -->
-
-                            <div class="form-group">
-
-                                <label for="budget">
-                                    BUDGET
-                                </label>
-
-                                <select
-                                    id="budget"
-                                    name="budget"
-                                    required
-                                >
-
-                                    <option value="">
-                                        Select budget
-                                    </option>
-
-                                    <option value="Under ₦100,000">
-                                        Under ₦100,000
-                                    </option>
-
-                                    <option value="₦100,000 – ₦250,000">
-                                        ₦100,000 – ₦250,000
-                                    </option>
-
-                                    <option value="₦250,000 – ₦500,000">
-                                        ₦250,000 – ₦500,000
-                                    </option>
-
-                                    <option value="₦500,000 – ₦1,000,000">
-                                        ₦500,000 – ₦1,000,000
-                                    </option>
-
-                                    <option value="₦1,000,000+">
-                                        ₦1,000,000+
-                                    </option>
-
-                                    <option value="International / USD">
-                                        International / USD
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-
-                            <!-- TIMELINE -->
-
-                            <div class="form-group">
-
-                                <label for="timeline">
-                                    TIMELINE
-                                </label>
-
-                                <select
-                                    id="timeline"
-                                    name="timeline"
-                                    required
-                                >
-
-                                    <option value="">
-                                        Select timeline
-                                    </option>
-
-                                    <option value="Under 1 week">
-                                        Under 1 week
-                                    </option>
-
-                                    <option value="1 – 2 weeks">
-                                        1 – 2 weeks
-                                    </option>
-
-                                    <option value="2 – 4 weeks">
-                                        2 – 4 weeks
-                                    </option>
-
-                                    <option value="1 – 3 months">
-                                        1 – 3 months
-                                    </option>
-
-                                    <option value="Flexible">
-                                        Flexible
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-
-                        </div>
-
-
-                        <!-- ================= HIDDEN CLIENT EMAIL ================= -->
-
-                        <input
-                            type="hidden"
-                            name="client_email"
-                            id="formClientEmail"
-                        >
-
-
-                        <!-- ================= EMAIL SUBJECT ================= -->
-
-                        <input
-                            type="hidden"
-                            name="_subject"
-                            value="New VORVENA Project Request"
-                        >
-
-
-                        <!-- ================= SUBMIT ================= -->
-
-                        <button
-                            type="submit"
-                            class="submit-btn"
-                        >
-
-                            Submit Project Request
-
-                            <span>↗</span>
-
-                        </button>
-
-
-                        <!-- ================= FORM MESSAGE ================= -->
-
-                        <p
-                            class="form-message"
-                            id="formMessage"
-                        ></p>
-
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= PAYMENT ================= -->
-
-        <section class="payment-section">
-
-            <div class="section-label">
-                06 / PROJECT STRUCTURE
-            </div>
-
-            <div class="payment-grid">
-
-                <div>
-
-                    <h2>
-                        CLEAR TERMS.
-                        <span>FAIR VALUE.</span>
-                    </h2>
-
-                </div>
-
-
-                <div class="payment-content">
-
-                    <p>
-                        For approved projects arranged through VORVENA,
-                        the current platform structure is:
-                    </p>
-
-
-                    <div class="payment-box">
-
-                        <div class="payment-side">
-
-                            <strong>15%</strong>
-
-                            <span>
-                                VORVENA
-                            </span>
-
-                        </div>
-
-
-                        <div class="payment-divider">
-                            +
-                        </div>
-
-
-                        <div class="payment-side">
-
-                            <strong>85%</strong>
-
-                            <span>
-                                PROFESSIONAL
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <p class="payment-note">
-                        15% is retained by VORVENA for its platform and
-                        administrative role, while 85% goes to the
-                        professional completing the approved project.
-                    </p>
-
-                    <p class="payment-note">
-                        Project scope, deadlines, deliverables, payment
-                        arrangements, cancellations, refunds and disputes
-                        are handled according to the applicable project
-                        agreement and VORVENA process.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= PRIVACY ================= -->
-
-        <section class="privacy-section">
-
-            <div class="privacy-inner">
-
-                <div class="section-label">
-                    07 / PRIVACY
-                </div>
-
-                <h2>
-                    PROFESSIONAL
-                    <span>INFORMATION.</span>
-                </h2>
-
-                <p>
-                    Clients can see information that helps them evaluate
-                    a professional's suitability for a project, such as
-                    their profession, skills, bio, experience and
-                    portfolio.
-                </p>
-
-                <p>
-                    Private information such as passwords, CV files,
-                    private administrative notes and other sensitive
-                    account information is not publicly displayed.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= GLOBAL ================= -->
-
-        <section class="global-section">
-
-            <div class="global-number">
-                08
-            </div>
-
-            <div class="global-content">
-
-                <span>
-                    GLOBAL COMMUNITY
-                </span>
-
-                <h2>
-                    LOCAL ROOTS.
-                    <br>
-                    GLOBAL TALENT.
-                </h2>
-
-                <p>
-                    VORVENA is built to connect clients with professionals
-                    from Nigeria and beyond.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= CTA ================= -->
-
-        <section class="final-cta">
-
-            <div class="section-label">
-                09 / GET STARTED
-            </div>
-
-            <h2>
-                YOUR NEXT
-                <span>PROJECT STARTS HERE.</span>
-            </h2>
-
-            <div class="cta-actions">
-
-                <a
-                    href="profiles.html"
-                    class="btn btn-dark"
-                >
-                    Explore Profiles
-                    <span>↗</span>
-                </a>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer class="site-footer">
-
-        <div class="footer-top">
-
-
-            <div class="footer-brand">
-
-                <a
-                    href="index.html"
-                    class="footer-logo"
-                >
-                    VORVENA
-                </a>
-
-                <p>
-                    Talent. Trust. Opportunity.
-                </p>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h4>
-                    EXPLORE
-                </h4>
-
-                <a href="./index.html">
-                    Home
-                </a>
-
-                <a href="./community.html">
-                    Community
-                </a>
-
-                <a href="./profiles.html">
-                    Profiles
-                </a>
-
-                <a href="./clients.html">
-                    Clients
-                </a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h4>
-                    JOIN
-                </h4>
-
-                <a href="./join.html">
-                    Join Community
-                </a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h4>
-                    LEGAL
-                </h4>
-
-                <a href="terms.html">
-                    Terms & Conditions
-                </a>
-
-                <a href="privacy.html">
-                    Privacy Policy
-                </a>
-
-                <a href="guidelines.html">
-                    Community Guidelines
-                </a>
-
-                <a href="feedback.html">
-                    Feedback
-                </a>
-
-            </div>
+            <a href="clients.html">Clients</a>
 
         </div>
 
 
-        <div class="footer-bottom">
+        <div class="footer-column">
 
-            <span>
-                © 2026 VORVENA
-            </span>
+            <h4>Join</h4>
 
-            <span>
-                Built for talent. Built for opportunity.
-            </span>
+            <a href="join.html">
+                Join Community
+            </a>
+
+            <a href="client-signup.html">
+                Client Account
+            </a>
 
         </div>
 
-    </footer>
+
+        <div class="footer-column">
+
+            <h4>Legal</h4>
+
+            <a href="#">
+                Terms
+            </a>
+
+            <a href="#">
+                Privacy
+            </a>
+
+            <a href="#">
+                Guidelines
+            </a>
+
+        </div>
+
+    </div>
 
 
-    <!-- ================= JAVASCRIPT ================= -->
+    <div class="footer-bottom">
 
-    <script src="clients.js?v=3"></script>
+        <p>
+            © 2026 VORVENA. All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="clients.js?v=4"></script>
 
 </body>
-
 </html>

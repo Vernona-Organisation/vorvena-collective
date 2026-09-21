@@ -1,89 +1,97 @@
 /* =========================================
    VORVENA CLIENT DASHBOARD
-   Connected to frontend authentication
+   FRONTEND-ONLY AUTH / SESSION
 ========================================= */
 
-
-/* =========================================
-   AUTHENTICATION CHECK
-========================================= */
-
-const loggedIn = sessionStorage.getItem("vorvenaUserLoggedIn");
-const storedUser = sessionStorage.getItem("vorvenaLoggedInUser");
+document.addEventListener("DOMContentLoaded", () => {
 
 
-// If client is not logged in, send them to login
-if (loggedIn !== "true" || !storedUser) {
+    /* =========================================
+       AUTHENTICATION CHECK
+    ========================================= */
 
-    window.location.href = "login.html";
+    const loggedIn =
+        sessionStorage.getItem(
+            "vorvenaUserLoggedIn"
+        );
 
-}
-
-
-// Get logged-in user
-let client = null;
-
-try {
-
-    client = JSON.parse(storedUser);
-
-} catch (error) {
-
-    console.error("Unable to read logged-in client.");
-
-    sessionStorage.clear();
-
-    window.location.href = "login.html";
-
-}
+    const storedUser =
+        sessionStorage.getItem(
+            "vorvenaLoggedInUser"
+        );
 
 
-/* =========================================
-   MAKE SURE USER IS A CLIENT
-========================================= */
-
-if (
-    client &&
-    client.accountType &&
-    client.accountType !== "client"
-) {
-
-    sessionStorage.clear();
-
-    window.location.href = "login.html";
-
-}
+    if (
+        loggedIn !== "true" ||
+        !storedUser
+    ) {
+        window.location.href = "login.html";
+        return;
+    }
 
 
-/* =========================================
-   CLIENT INFORMATION
-========================================= */
+    let client = null;
 
-if (client) {
+    try {
+
+        client = JSON.parse(storedUser);
+
+    } catch (error) {
+
+        console.error(
+            "Unable to read logged-in client."
+        );
+
+        sessionStorage.clear();
+
+        window.location.href = "login.html";
+
+        return;
+    }
+
+
+    /* Only clients can access this dashboard */
+
+    if (
+        !client ||
+        !client.accountType ||
+        client.accountType !== "client"
+    ) {
+
+        sessionStorage.clear();
+
+        window.location.href = "login.html";
+
+        return;
+    }
+
+
+    /* =========================================
+       CLIENT INFORMATION
+    ========================================= */
 
     const fullName =
         client.fullName ||
         client.name ||
         "Client";
 
-    const nameParts =
-        fullName.trim().split(/\s+/);
-
     const firstName =
-        nameParts[0] || "Client";
+        fullName.trim().split(/\s+/)[0] ||
+        "Client";
 
 
-    // Generate initials automatically
     const initials =
-        nameParts
+        fullName
+            .trim()
+            .split(/\s+/)
+            .filter(Boolean)
             .slice(0, 2)
-            .map(name => name.charAt(0).toUpperCase())
-            .join("");
+            .map(
+                name =>
+                    name.charAt(0).toUpperCase()
+            )
+            .join("") || "CL";
 
-
-    /* =========================================
-       UPDATE CLIENT NAME
-    ========================================= */
 
     const clientName =
         document.getElementById("clientName");
@@ -93,6 +101,12 @@ if (client) {
 
     const welcomeName =
         document.getElementById("welcomeName");
+
+    const clientAvatar =
+        document.getElementById("clientAvatar");
+
+    const topClientAvatar =
+        document.getElementById("topClientAvatar");
 
 
     if (clientName) {
@@ -107,577 +121,547 @@ if (client) {
         welcomeName.textContent = firstName;
     }
 
-
-    /* =========================================
-       UPDATE AVATARS
-    ========================================= */
-
-    const avatars =
-        document.querySelectorAll(
-            ".profile-avatar, .small-avatar"
-        );
-
-
-    avatars.forEach(avatar => {
-
-        avatar.textContent =
-            initials || "C";
-
-    });
-
-}
-
-
-/* =========================================
-   TEMPORARY PROJECT DATA
-   Will later come from Supabase
-========================================= */
-
-const projects = [
-
-    {
-        id: "project001",
-        title: "Business Website Design",
-        professional: "David Williams",
-        price: 150000,
-        deadline: "Sept 20",
-        status: "In Progress"
-    },
-
-    {
-        id: "project002",
-        title: "Brand Logo Design",
-        professional: "Sarah Creative",
-        price: 80000,
-        deadline: "Sept 15",
-        status: "Review"
-    },
-
-    {
-        id: "project003",
-        title: "Social Media Management",
-        professional: "Michael Adams",
-        price: 120000,
-        deadline: "Sept 30",
-        status: "In Progress"
+    if (clientAvatar) {
+        clientAvatar.textContent = initials;
     }
 
-];
+    if (topClientAvatar) {
+        topClientAvatar.textContent = initials;
+    }
 
 
-/* =========================================
-   MOBILE SIDEBAR
-========================================= */
+    /* =========================================
+       PROJECT DATA
+    ========================================= */
 
-const sidebar =
-    document.getElementById("sidebar");
-
-const menuBtn =
-    document.getElementById("menuBtn");
-
-const closeSidebar =
-    document.getElementById("closeSidebar");
-
-const sidebarOverlay =
-    document.getElementById("sidebarOverlay");
-
-
-function openSidebar() {
-
-    if (!sidebar) return;
-
-    sidebar.classList.add("open");
-
-}
-
-
-function closeSidebarMenu() {
-
-    if (!sidebar) return;
-
-    sidebar.classList.remove("open");
-
-}
-
-
-/* =========================================
-   OPEN SIDEBAR
-========================================= */
-
-if (menuBtn) {
-
-    menuBtn.addEventListener(
-        "click",
-        openSidebar
-    );
-
-}
-
-
-/* =========================================
-   CLOSE SIDEBAR
-========================================= */
-
-if (closeSidebar) {
-
-    closeSidebar.addEventListener(
-        "click",
-        closeSidebarMenu
-    );
-
-}
-
-
-if (sidebarOverlay) {
-
-    sidebarOverlay.addEventListener(
-        "click",
-        closeSidebarMenu
-    );
-
-}
-
-
-/* =========================================
-   CLOSE SIDEBAR AFTER NAVIGATION
-========================================= */
-
-const navLinks =
-    document.querySelectorAll(".nav-link");
-
-
-navLinks.forEach(link => {
-
-    link.addEventListener(
-        "click",
-        function () {
-
-            if (window.innerWidth <= 1100) {
-
-                closeSidebarMenu();
-
-            }
-
+    const projects = [
+        {
+            name: "Business Website Design",
+            professional: "David Williams",
+            budget: 150000,
+            due: "Sept 20",
+            status: "In Progress"
+        },
+        {
+            name: "Brand Logo Design",
+            professional: "Sarah Creative",
+            budget: 80000,
+            due: "Sept 15",
+            status: "Review"
+        },
+        {
+            name: "Social Media Management",
+            professional: "Michael Adams",
+            budget: 120000,
+            due: "Sept 30",
+            status: "In Progress"
         }
-    );
-
-});
+    ];
 
 
-/* =========================================
-   NOTIFICATION BUTTON
-========================================= */
+    /* =========================================
+       PROJECT STATS
+    ========================================= */
 
-const notificationBtn =
-    document.getElementById(
-        "notificationBtn"
-    );
-
-
-if (notificationBtn) {
-
-    notificationBtn.addEventListener(
-        "click",
-        function () {
-
-            alert(
-                "You have 3 recent notifications."
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   SUPPORT BUTTON
-========================================= */
-
-const supportBtn =
-    document.getElementById(
-        "supportBtn"
-    );
-
-
-if (supportBtn) {
-
-    supportBtn.addEventListener(
-        "click",
-        function () {
-
-            alert(
-                "VORVENA Support will be connected here."
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   LOGOUT
-========================================= */
-
-const logoutBtn =
-    document.getElementById(
-        "logoutBtn"
-    );
-
-
-if (logoutBtn) {
-
-    logoutBtn.addEventListener(
-        "click",
-        function () {
-
-            const confirmLogout =
-                confirm(
-                    "Are you sure you want to log out?"
-                );
-
-
-            if (!confirmLogout) {
-                return;
-            }
-
-
-            /*
-                FRONTEND AUTH VERSION
-
-                Remove only the active session.
-
-                We DO NOT remove
-                vorvenaClientAccount because
-                the client may want to log in again.
-            */
-
-
-            sessionStorage.removeItem(
-                "vorvenaLoggedInUser"
-            );
-
-            sessionStorage.removeItem(
-                "vorvenaUserLoggedIn"
-            );
-
-            sessionStorage.removeItem(
-                "vorvenaClientName"
-            );
-
-            sessionStorage.removeItem(
-                "vorvenaClientEmail"
-            );
-
-            sessionStorage.removeItem(
-                "vorvenaAccountType"
-            );
-
-
-            // Remove unfinished hiring session
-            sessionStorage.removeItem(
-                "vorvenaHiringIntent"
-            );
-
-            sessionStorage.removeItem(
-                "vorvenaSelectedProfessional"
-            );
-
-
-            // Return to login
-            window.location.href =
-                "login.html";
-
-        }
-    );
-
-}
-
-
-/* =========================================
-   ACTIVE PROJECT COUNT
-========================================= */
-
-const activeProjects =
-    document.getElementById(
-        "activeProjects"
-    );
-
-
-if (activeProjects) {
-
-    const activeCount =
+    const activeProjects =
         projects.filter(
             project =>
                 project.status === "In Progress"
         ).length;
 
 
-    activeProjects.textContent =
-        activeCount;
+    const activeProjectsElement =
+        document.getElementById(
+            "activeProjects"
+        );
 
-}
-
-
-/* =========================================
-   COMPLETED PROJECT COUNT
-========================================= */
-
-const completedProjects =
-    document.getElementById(
-        "completedProjects"
-    );
-
-
-if (completedProjects) {
-
-    const completedCount =
-        projects.filter(
-            project =>
-                project.status === "Completed"
-        ).length;
+    if (activeProjectsElement) {
+        activeProjectsElement.textContent =
+            activeProjects;
+    }
 
 
     /*
-        Temporary fallback.
+     * Keep the existing dashboard defaults
+     * for completed/pending until real project
+     * data is connected.
+     */
 
-        This will be connected to
-        real project data later.
-    */
+    const completedProjectsElement =
+        document.getElementById(
+            "completedProjects"
+        );
 
-    if (completedCount > 0) {
+    const pendingProjectsElement =
+        document.getElementById(
+            "pendingProjects"
+        );
 
-        completedProjects.textContent =
-            completedCount;
 
+    if (
+        completedProjectsElement &&
+        !completedProjectsElement.textContent.trim()
+    ) {
+        completedProjectsElement.textContent = "4";
     }
 
-}
-
-
-/* =========================================
-   PENDING PROJECT COUNT
-========================================= */
-
-const pendingProjects =
-    document.getElementById(
-        "pendingProjects"
-    );
-
-
-if (pendingProjects) {
-
-    const pendingCount =
-        projects.filter(
-            project =>
-                project.status === "Pending"
-        ).length;
-
-
-    if (pendingCount > 0) {
-
-        pendingProjects.textContent =
-            pendingCount;
-
+    if (
+        pendingProjectsElement &&
+        !pendingProjectsElement.textContent.trim()
+    ) {
+        pendingProjectsElement.textContent = "1";
     }
 
-}
+
+    /* =========================================
+       SIDEBAR
+    ========================================= */
+
+    const sidebar =
+        document.getElementById("sidebar");
+
+    const menuBtn =
+        document.getElementById("menuBtn");
+
+    const closeSidebar =
+        document.getElementById("closeSidebar");
+
+    const sidebarOverlay =
+        document.getElementById(
+            "sidebarOverlay"
+        );
 
 
-/* =========================================
-   PROJECT CLICK
-========================================= */
+    function openSidebar() {
 
-const projectItems =
-    document.querySelectorAll(
-        ".project-item"
-    );
+        if (!sidebar) {
+            return;
+        }
+
+        sidebar.classList.add("open");
+
+        if (menuBtn) {
+            menuBtn.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+        }
+    }
 
 
-projectItems.forEach(
-    (projectElement, index) => {
+    function closeSidebarMenu() {
 
-        projectElement.style.cursor =
-            "pointer";
+        if (!sidebar) {
+            return;
+        }
+
+        sidebar.classList.remove("open");
+
+        if (menuBtn) {
+            menuBtn.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+        }
+    }
 
 
-        projectElement.addEventListener(
+    if (menuBtn) {
+
+        menuBtn.addEventListener(
             "click",
-            function () {
+            () => {
 
-                const selectedProject =
-                    projects[index];
+                if (
+                    sidebar &&
+                    sidebar.classList.contains("open")
+                ) {
+                    closeSidebarMenu();
+                } else {
+                    openSidebar();
+                }
+
+            }
+        );
+    }
 
 
-                if (!selectedProject) {
+    if (closeSidebar) {
+
+        closeSidebar.addEventListener(
+            "click",
+            closeSidebarMenu
+        );
+    }
+
+
+    if (sidebarOverlay) {
+
+        sidebarOverlay.addEventListener(
+            "click",
+            closeSidebarMenu
+        );
+    }
+
+
+    /* Close mobile sidebar after navigation */
+
+    const sidebarLinks =
+        document.querySelectorAll(
+            ".sidebar-link"
+        );
+
+
+    sidebarLinks.forEach(link => {
+
+        link.addEventListener(
+            "click",
+            () => {
+
+                if (window.innerWidth <= 1100) {
+                    closeSidebarMenu();
+                }
+
+            }
+        );
+
+    });
+
+
+    /* =========================================
+       NOTIFICATIONS
+    ========================================= */
+
+    const notificationBtn =
+        document.getElementById(
+            "notificationBtn"
+        );
+
+
+    if (notificationBtn) {
+
+        notificationBtn.addEventListener(
+            "click",
+            () => {
+
+                alert(
+                    "You have 3 recent notifications."
+                );
+
+            }
+        );
+    }
+
+
+    /* =========================================
+       SUPPORT
+    ========================================= */
+
+    const supportBtn =
+        document.getElementById(
+            "supportBtn"
+        );
+
+
+    if (supportBtn) {
+
+        supportBtn.addEventListener(
+            "click",
+            () => {
+
+                alert(
+                    "VORVENA Support will be connected here."
+                );
+
+            }
+        );
+    }
+
+
+    /* =========================================
+       LOGOUT
+    ========================================= */
+
+    const logoutBtn =
+        document.getElementById(
+            "logoutBtn"
+        );
+
+
+    if (logoutBtn) {
+
+        logoutBtn.addEventListener(
+            "click",
+            () => {
+
+                const confirmed =
+                    confirm(
+                        "Are you sure you want to log out?"
+                    );
+
+
+                if (!confirmed) {
                     return;
                 }
 
 
-                /*
-                    FUTURE PROJECT WORKSPACE:
+                sessionStorage.removeItem(
+                    "vorvenaLoggedInUser"
+                );
 
-                    window.location.href =
-                    `project-workspace.html?id=${selectedProject.id}`;
-                */
+                sessionStorage.removeItem(
+                    "vorvenaUserLoggedIn"
+                );
+
+                sessionStorage.removeItem(
+                    "vorvenaClientName"
+                );
+
+                sessionStorage.removeItem(
+                    "vorvenaClientEmail"
+                );
+
+                sessionStorage.removeItem(
+                    "vorvenaAccountType"
+                );
+
+                sessionStorage.removeItem(
+                    "vorvenaHiringIntent"
+                );
+
+                sessionStorage.removeItem(
+                    "vorvenaSelectedProfessional"
+                );
 
 
-                console.log(
-                    "Selected project:",
-                    selectedProject
+                window.location.href =
+                    "login.html";
+            }
+        );
+    }
+
+
+    /* =========================================
+       PROJECT WORKSPACE
+    ========================================= */
+
+    const projectModal =
+        document.getElementById(
+            "projectModal"
+        );
+
+    const modalBackdrop =
+        document.getElementById(
+            "modalBackdrop"
+        );
+
+    const modalClose =
+        document.getElementById(
+            "modalClose"
+        );
+
+    const modalAction =
+        document.getElementById(
+            "modalAction"
+        );
+
+    const modalProjectTitle =
+        document.getElementById(
+            "modalProjectTitle"
+        );
+
+
+    function openProjectModal(projectName) {
+
+        if (!projectModal) {
+            return;
+        }
+
+        if (modalProjectTitle) {
+            modalProjectTitle.textContent =
+                projectName;
+        }
+
+        projectModal.classList.add("show");
+
+        projectModal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        document.body.style.overflow =
+            "hidden";
+    }
+
+
+    function closeProjectModal() {
+
+        if (!projectModal) {
+            return;
+        }
+
+        projectModal.classList.remove("show");
+
+        projectModal.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        document.body.style.overflow =
+            "";
+    }
+
+
+    const projectItems =
+        document.querySelectorAll(
+            ".project-item"
+        );
+
+
+    projectItems.forEach(item => {
+
+        item.addEventListener(
+            "click",
+            () => {
+
+                const projectName =
+                    item.dataset.project ||
+                    "Project Workspace";
+
+                openProjectModal(
+                    projectName
                 );
 
             }
         );
 
+    });
+
+
+    if (modalClose) {
+
+        modalClose.addEventListener(
+            "click",
+            closeProjectModal
+        );
     }
-);
 
 
-/* =========================================
-   FIND PROFESSIONAL BUTTONS
-========================================= */
+    if (modalBackdrop) {
 
-const findProfessionalLinks =
-    document.querySelectorAll(
-        'a[href="community.html"]'
+        modalBackdrop.addEventListener(
+            "click",
+            closeProjectModal
+        );
+    }
+
+
+    if (modalAction) {
+
+        modalAction.addEventListener(
+            "click",
+            closeProjectModal
+        );
+    }
+
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (event.key === "Escape") {
+                closeProjectModal();
+            }
+
+        }
     );
 
 
-findProfessionalLinks.forEach(link => {
+    /* =========================================
+       RESPONSIVE SIDEBAR RESET
+    ========================================= */
 
-    const text =
-        link.textContent
-            .trim()
-            .toLowerCase();
+    window.addEventListener(
+        "resize",
+        () => {
+
+            if (
+                window.innerWidth > 1100
+            ) {
+                closeSidebarMenu();
+            }
+
+        }
+    );
 
 
-    if (
-        text.includes("find a professional") ||
-        text.includes("find professionals")
-    ) {
+    /* =========================================
+       PAGE VISIBILITY AUTH CHECK
+    ========================================= */
 
-        link.setAttribute(
-            "href",
-            "profiles.html"
+    window.addEventListener(
+        "pageshow",
+        () => {
+
+            const currentLoggedIn =
+                sessionStorage.getItem(
+                    "vorvenaUserLoggedIn"
+                );
+
+            const currentUser =
+                sessionStorage.getItem(
+                    "vorvenaLoggedInUser"
+                );
+
+
+            if (
+                currentLoggedIn !== "true" ||
+                !currentUser
+            ) {
+
+                window.location.href =
+                    "login.html";
+
+            }
+
+        }
+    );
+
+
+    /* =========================================
+       CLEANUP OLD COMMUNITY LINKS
+    ========================================= */
+
+    const pageLinks =
+        document.querySelectorAll(
+            'a[href="community.html"]'
         );
 
-    }
+
+    pageLinks.forEach(link => {
+
+        const text =
+            link.textContent
+                .trim()
+                .toLowerCase();
+
+
+        if (
+            text.includes(
+                "find a professional"
+            ) ||
+            text.includes(
+                "find professionals"
+            )
+        ) {
+            link.href = "profiles.html";
+        }
+
+    });
+
+
+    console.log(
+        "VORVENA Client Dashboard loaded successfully."
+    );
 
 });
-
-
-/* =========================================
-   RESPONSIVE SIDEBAR RESET
-========================================= */
-
-window.addEventListener(
-    "resize",
-    function () {
-
-        if (
-            window.innerWidth > 1100 &&
-            sidebar
-        ) {
-
-            sidebar.classList.remove(
-                "open"
-            );
-
-        }
-
-    }
-);
-
-
-/* =========================================
-   PROTECT DASHBOARD WHEN TAB IS RESTORED
-========================================= */
-
-window.addEventListener(
-    "pageshow",
-    function () {
-
-        const currentLogin =
-            sessionStorage.getItem(
-                "vorvenaUserLoggedIn"
-            );
-
-        const currentUser =
-            sessionStorage.getItem(
-                "vorvenaLoggedInUser"
-            );
-
-
-        if (
-            currentLogin !== "true" ||
-            !currentUser
-        ) {
-
-            window.location.href =
-                "login.html";
-
-        }
-
-    }
-);
-
-
-/* =========================================
-   FUTURE SUPABASE FUNCTIONS
-========================================= */
-
-
-/*
-async function loadClientDashboard() {
-
-    // Get logged-in client
-
-    const {
-        data: { user }
-    } = await supabase.auth.getUser();
-
-
-    if (!user) {
-
-        window.location.href =
-            "login.html";
-
-        return;
-    }
-
-
-    // Get client profile
-
-    const { data: profile } =
-        await supabase
-            .from("profiles")
-            .select("*")
-            .eq("id", user.id)
-            .single();
-
-
-    // Get client's projects
-
-    const { data: projects } =
-        await supabase
-            .from("projects")
-            .select("*")
-            .eq("client_id", user.id);
-
-
-    console.log(profile);
-    console.log(projects);
-
-}
-*/
-
-
-/* =========================================
-   DASHBOARD READY
-========================================= */
-
-console.log(
-    "VORVENA Client Dashboard loaded successfully."
-);
