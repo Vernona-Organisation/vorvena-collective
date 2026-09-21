@@ -137,6 +137,14 @@ section {
 }
 
 
+/* Hidden dashboard link */
+
+.desktop-nav a[hidden],
+.mobile-nav a[hidden] {
+    display: none !important;
+}
+
+
 /* =========================================================
    MENU BUTTON
 ========================================================= */
@@ -248,7 +256,6 @@ section {
 
 /* =========================================================
    HERO
-   MEET THE PEOPLE BEHIND THE TALENT
 ========================================================= */
 
 .hero {

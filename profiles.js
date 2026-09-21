@@ -20,7 +20,14 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".hire-btn");
 
     const navLinks =
-        document.querySelectorAll(".desktop-nav a, .mobile-nav a");
+        document.querySelectorAll(
+            ".desktop-nav a, .mobile-nav a"
+        );
+
+    const dashboardLinks =
+        document.querySelectorAll(
+            "#dashboardNavLink, #mobileDashboardNavLink"
+        );
 
 
     /* =========================
@@ -34,7 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const isOpen =
                 mobileNav.classList.toggle("show");
 
-            menuBtn.classList.toggle("active", isOpen);
+            menuBtn.classList.toggle(
+                "active",
+                isOpen
+            );
 
             menuBtn.setAttribute(
                 "aria-expanded",
@@ -43,7 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             menuBtn.setAttribute(
                 "aria-label",
-                isOpen ? "Close menu" : "Open menu"
+                isOpen
+                    ? "Close menu"
+                    : "Open menu"
             );
 
         });
@@ -51,76 +63,162 @@ document.addEventListener("DOMContentLoaded", () => {
 
         /* Close after clicking a link */
 
-        mobileNav.querySelectorAll("a").forEach(link => {
+        mobileNav
+            .querySelectorAll("a")
+            .forEach(link => {
 
-            link.addEventListener("click", () => {
+                link.addEventListener("click", () => {
 
-                mobileNav.classList.remove("show");
-                menuBtn.classList.remove("active");
+                    mobileNav.classList.remove("show");
 
-                menuBtn.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
+                    menuBtn.classList.remove("active");
 
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Open menu"
-                );
+                    menuBtn.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    menuBtn.setAttribute(
+                        "aria-label",
+                        "Open menu"
+                    );
+
+                });
 
             });
-
-        });
 
 
         /* Close with Escape */
 
-        document.addEventListener("keydown", event => {
+        document.addEventListener(
+            "keydown",
+            event => {
 
-            if (event.key === "Escape") {
+                if (event.key === "Escape") {
 
-                mobileNav.classList.remove("show");
-                menuBtn.classList.remove("active");
+                    mobileNav.classList.remove("show");
 
-                menuBtn.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
+                    menuBtn.classList.remove("active");
 
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Open menu"
-                );
+                    menuBtn.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    menuBtn.setAttribute(
+                        "aria-label",
+                        "Open menu"
+                    );
+
+                }
 
             }
-
-        });
+        );
 
 
         /* Close when returning to desktop */
 
-        window.addEventListener("resize", () => {
+        window.addEventListener(
+            "resize",
+            () => {
 
-            if (window.innerWidth > 768) {
+                if (window.innerWidth > 768) {
 
-                mobileNav.classList.remove("show");
-                menuBtn.classList.remove("active");
+                    mobileNav.classList.remove("show");
 
-                menuBtn.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
+                    menuBtn.classList.remove("active");
 
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Open menu"
-                );
+                    menuBtn.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    menuBtn.setAttribute(
+                        "aria-label",
+                        "Open menu"
+                    );
+
+                }
 
             }
-
-        });
+        );
 
     }
+
+
+    /* =========================
+       DASHBOARD NAVIGATION
+    ========================= */
+
+    const loggedIn =
+        sessionStorage.getItem(
+            "vorvenaUserLoggedIn"
+        ) === "true";
+
+
+    let user = null;
+
+    try {
+
+        user = JSON.parse(
+            sessionStorage.getItem(
+                "vorvenaLoggedInUser"
+            ) || "null"
+        );
+
+    } catch (error) {
+
+        user = null;
+
+    }
+
+
+    let dashboardHref = null;
+
+
+    /* CLIENT */
+
+    if (
+        loggedIn &&
+        user &&
+        user.accountType === "client"
+    ) {
+
+        dashboardHref =
+            "client-dashboard.html";
+
+    }
+
+
+    /* APPROVED PROFESSIONAL ONLY */
+
+    if (
+        loggedIn &&
+        user &&
+        user.accountType === "professional" &&
+        user.status === "approved"
+    ) {
+
+        dashboardHref =
+            "professional-dashboard.html";
+
+    }
+
+
+    dashboardLinks.forEach(link => {
+
+        if (dashboardHref) {
+
+            link.href = dashboardHref;
+            link.hidden = false;
+
+        } else {
+
+            link.hidden = true;
+
+        }
+
+    });
 
 
     /* =========================
@@ -128,22 +226,32 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================= */
 
     let currentPage =
-        window.location.pathname.split("/").pop();
+        window.location.pathname
+            .split("/")
+            .pop();
 
     if (!currentPage) {
         currentPage = "index.html";
     }
+
 
     navLinks.forEach(link => {
 
         const linkPage =
             link.getAttribute("href");
 
-        if (linkPage === currentPage) {
+        if (
+            linkPage &&
+            linkPage !== "#" &&
+            linkPage === currentPage
+        ) {
 
             link.classList.add("active");
 
-        } else {
+        } else if (
+            linkPage &&
+            linkPage !== "#"
+        ) {
 
             link.classList.remove("active");
 
@@ -160,13 +268,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const searchValue =
             searchInput
-                ? searchInput.value.toLowerCase().trim()
+                ? searchInput.value
+                    .toLowerCase()
+                    .trim()
                 : "";
+
 
         const professionValue =
             professionFilter
-                ? professionFilter.value.toLowerCase()
+                ? professionFilter.value
+                    .toLowerCase()
                 : "all";
+
 
         let visibleProfiles = 0;
 
@@ -174,13 +287,24 @@ document.addEventListener("DOMContentLoaded", () => {
         profileCards.forEach(card => {
 
             const name =
-                (card.dataset.name || "").toLowerCase();
+                (
+                    card.dataset.name ||
+                    ""
+                ).toLowerCase();
+
 
             const profession =
-                (card.dataset.profession || "").toLowerCase();
+                (
+                    card.dataset.profession ||
+                    ""
+                ).toLowerCase();
+
 
             const skills =
-                (card.dataset.skills || "").toLowerCase();
+                (
+                    card.dataset.skills ||
+                    ""
+                ).toLowerCase();
 
 
             const matchesSearch =
@@ -194,7 +318,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 profession === professionValue;
 
 
-            if (matchesSearch && matchesProfession) {
+            if (
+                matchesSearch &&
+                matchesProfession
+            ) {
 
                 card.style.display = "";
 
@@ -214,7 +341,10 @@ document.addEventListener("DOMContentLoaded", () => {
         ========================= */
 
         const emptyState =
-            document.getElementById("emptyState");
+            document.getElementById(
+                "emptyState"
+            );
+
 
         if (emptyState) {
 
@@ -254,50 +384,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
     hireButtons.forEach(button => {
 
-        button.addEventListener("click", () => {
+        button.addEventListener(
+            "click",
+            () => {
 
-            const card =
-                button.closest(".profile-card");
-
-            if (!card) return;
-
-
-            const professional = {
-
-                id:
-                    card.dataset.id || "",
-
-                name:
-                    card.dataset.name || "",
-
-                profession:
-                    card.dataset.profession || "",
-
-                skills:
-                    card.dataset.skills || "",
-
-                profile:
-                    card.dataset.profile || ""
-
-            };
+                const card =
+                    button.closest(
+                        ".profile-card"
+                    );
 
 
-            sessionStorage.setItem(
-                "vorvenaSelectedProfessional",
-                JSON.stringify(professional)
-            );
+                if (!card) return;
 
 
-            sessionStorage.setItem(
-                "vorvenaHiringIntent",
-                "true"
-            );
+                const professional = {
+
+                    id:
+                        card.dataset.id ||
+                        "",
+
+                    name:
+                        card.dataset.name ||
+                        "",
+
+                    profession:
+                        card.dataset.profession ||
+                        "",
+
+                    skills:
+                        card.dataset.skills ||
+                        "",
+
+                    profile:
+                        card.dataset.profile ||
+                        ""
+
+                };
 
 
-            window.location.href =
-                "login.html";
+                sessionStorage.setItem(
+                    "vorvenaSelectedProfessional",
+                    JSON.stringify(
+                        professional
+                    )
+                );
 
-        });
+
+                sessionStorage.setItem(
+                    "vorvenaHiringIntent",
+                    "true"
+                );
+
+
+                window.location.href =
+                    "login.html";
+
+            }
+        );
 
     });
 
@@ -307,7 +450,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================= */
 
     const revealElements =
-        document.querySelectorAll(".profile-card");
+        document.querySelectorAll(
+            ".profile-card"
+        );
 
 
     if (
@@ -321,9 +466,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     entries.forEach(entry => {
 
-                        if (entry.isIntersecting) {
+                        if (
+                            entry.isIntersecting
+                        ) {
 
-                            entry.target.classList.add("show");
+                            entry.target.classList.add(
+                                "show"
+                            );
 
                             observer.unobserve(
                                 entry.target
