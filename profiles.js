@@ -1,11 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =========================
-       ELEMENTS
-    ========================= */
+    const menuBtn =
+        document.getElementById("menuBtn");
 
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileNav = document.getElementById("mobileNav");
+    const navLinks =
+        document.getElementById("navLinks");
+
+    const navItems =
+        document.querySelectorAll(".nav-link");
+
+    const dashboardLink =
+        document.getElementById("dashboardNavLink");
+
 
     const searchInput =
         document.getElementById("searchInput");
@@ -19,104 +25,206 @@ document.addEventListener("DOMContentLoaded", () => {
     const hireButtons =
         document.querySelectorAll(".hire-btn");
 
-    const navLinks =
-        document.querySelectorAll(
-            ".desktop-nav a, .mobile-nav a"
+
+    /* =========================================
+       DASHBOARD ROLE ROUTING
+    ========================================= */
+
+    function setupDashboardLink() {
+
+        if (!dashboardLink) {
+            return;
+        }
+
+        const loggedIn =
+            sessionStorage.getItem(
+                "vorvenaUserLoggedIn"
+            ) === "true";
+
+        const storedUser =
+            sessionStorage.getItem(
+                "vorvenaLoggedInUser"
+            );
+
+
+        /* Logged out */
+
+        if (!loggedIn || !storedUser) {
+
+            dashboardLink.classList.remove(
+                "visible"
+            );
+
+            dashboardLink.href = "#";
+
+            return;
+        }
+
+
+        let user = null;
+
+        try {
+
+            user = JSON.parse(storedUser);
+
+        } catch (error) {
+
+            console.error(
+                "Unable to read logged-in user."
+            );
+
+            dashboardLink.classList.remove(
+                "visible"
+            );
+
+            dashboardLink.href = "#";
+
+            return;
+        }
+
+
+        if (!user || !user.accountType) {
+
+            dashboardLink.classList.remove(
+                "visible"
+            );
+
+            dashboardLink.href = "#";
+
+            return;
+        }
+
+
+        /* Client */
+
+        if (user.accountType === "client") {
+
+            dashboardLink.href =
+                "clients-dashboard.html";
+
+            dashboardLink.classList.add(
+                "visible"
+            );
+
+            return;
+        }
+
+
+        /* Professional */
+
+        if (
+            user.accountType ===
+            "professional"
+        ) {
+
+            dashboardLink.href =
+                "professional-dashboard.html";
+
+            dashboardLink.classList.add(
+                "visible"
+            );
+
+            return;
+        }
+
+
+        /* Unknown account type */
+
+        dashboardLink.classList.remove(
+            "visible"
         );
 
-    const dashboardLinks =
-        document.querySelectorAll(
-            "#dashboardNavLink, #mobileDashboardNavLink"
-        );
+        dashboardLink.href = "#";
+
+    }
 
 
-    /* =========================
+    /* =========================================
        MOBILE MENU
-    ========================= */
+    ========================================= */
 
-    if (menuBtn && mobileNav) {
+    function closeMobileMenu() {
 
-        menuBtn.addEventListener("click", () => {
+        if (!menuBtn || !navLinks) {
+            return;
+        }
 
-            const isOpen =
-                mobileNav.classList.toggle("show");
+        navLinks.classList.remove("open");
 
-            menuBtn.classList.toggle(
-                "active",
-                isOpen
-            );
+        menuBtn.classList.remove("active");
 
-            menuBtn.setAttribute(
-                "aria-expanded",
-                isOpen
-            );
+        menuBtn.setAttribute(
+            "aria-expanded",
+            "false"
+        );
 
-            menuBtn.setAttribute(
-                "aria-label",
-                isOpen
-                    ? "Close menu"
-                    : "Open menu"
+        menuBtn.setAttribute(
+            "aria-label",
+            "Open menu"
+        );
+
+    }
+
+
+    if (menuBtn && navLinks) {
+
+        menuBtn.addEventListener(
+            "click",
+            () => {
+
+                const isOpen =
+                    navLinks.classList.toggle(
+                        "open"
+                    );
+
+                menuBtn.classList.toggle(
+                    "active",
+                    isOpen
+                );
+
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    String(isOpen)
+                );
+
+                menuBtn.setAttribute(
+                    "aria-label",
+                    isOpen
+                        ? "Close menu"
+                        : "Open menu"
+                );
+
+            }
+        );
+
+
+        navItems.forEach((link) => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    closeMobileMenu();
+
+                }
             );
 
         });
 
 
-        /* Close after clicking a link */
-
-        mobileNav
-            .querySelectorAll("a")
-            .forEach(link => {
-
-                link.addEventListener("click", () => {
-
-                    mobileNav.classList.remove("show");
-
-                    menuBtn.classList.remove("active");
-
-                    menuBtn.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                    menuBtn.setAttribute(
-                        "aria-label",
-                        "Open menu"
-                    );
-
-                });
-
-            });
-
-
-        /* Close with Escape */
-
         document.addEventListener(
             "keydown",
-            event => {
+            (event) => {
 
                 if (event.key === "Escape") {
 
-                    mobileNav.classList.remove("show");
-
-                    menuBtn.classList.remove("active");
-
-                    menuBtn.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                    menuBtn.setAttribute(
-                        "aria-label",
-                        "Open menu"
-                    );
+                    closeMobileMenu();
 
                 }
 
             }
         );
 
-
-        /* Close when returning to desktop */
 
         window.addEventListener(
             "resize",
@@ -124,19 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (window.innerWidth > 768) {
 
-                    mobileNav.classList.remove("show");
-
-                    menuBtn.classList.remove("active");
-
-                    menuBtn.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                    menuBtn.setAttribute(
-                        "aria-label",
-                        "Open menu"
-                    );
+                    closeMobileMenu();
 
                 }
 
@@ -146,99 +242,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
-       DASHBOARD NAVIGATION
-    ========================= */
-
-    const loggedIn =
-        sessionStorage.getItem(
-            "vorvenaUserLoggedIn"
-        ) === "true";
-
-
-    let user = null;
-
-    try {
-
-        user = JSON.parse(
-            sessionStorage.getItem(
-                "vorvenaLoggedInUser"
-            ) || "null"
-        );
-
-    } catch (error) {
-
-        user = null;
-
-    }
-
-
-    let dashboardHref = null;
-
-
-    /* CLIENT */
-
-    if (
-        loggedIn &&
-        user &&
-        user.accountType === "client"
-    ) {
-
-        dashboardHref =
-            "client-dashboard.html";
-
-    }
-
-
-    /* APPROVED PROFESSIONAL ONLY */
-
-    if (
-        loggedIn &&
-        user &&
-        user.accountType === "professional" &&
-        user.status === "approved"
-    ) {
-
-        dashboardHref =
-            "professional-dashboard.html";
-
-    }
-
-
-    dashboardLinks.forEach(link => {
-
-        if (dashboardHref) {
-
-            link.href = dashboardHref;
-            link.hidden = false;
-
-        } else {
-
-            link.hidden = true;
-
-        }
-
-    });
-
-
-    /* =========================
-       ACTIVE NAV
-    ========================= */
+    /* =========================================
+       ACTIVE PAGE
+    ========================================= */
 
     let currentPage =
         window.location.pathname
             .split("/")
             .pop();
 
+
     if (!currentPage) {
         currentPage = "index.html";
     }
 
 
-    navLinks.forEach(link => {
+    navItems.forEach((link) => {
 
         const linkPage =
             link.getAttribute("href");
+
 
         if (
             linkPage &&
@@ -248,10 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             link.classList.add("active");
 
-        } else if (
-            linkPage &&
-            linkPage !== "#"
-        ) {
+        } else {
 
             link.classList.remove("active");
 
@@ -260,9 +280,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =========================
+    /* =========================================
+       INITIALIZE DASHBOARD
+    ========================================= */
+
+    setupDashboardLink();
+
+
+    /* =========================================
        SEARCH + FILTER
-    ========================= */
+    ========================================= */
 
     function filterProfiles() {
 
@@ -378,9 +405,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
+    /* =========================================
        HIRE PROFESSIONAL
-    ========================= */
+    ========================================= */
 
     hireButtons.forEach(button => {
 
@@ -445,9 +472,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =========================
+    /* =========================================
        SCROLL REVEAL
-    ========================= */
+    ========================================= */
 
     const revealElements =
         document.querySelectorAll(
@@ -500,9 +527,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
+    /* =========================================
        INITIAL FILTER
-    ========================= */
+    ========================================= */
 
     filterProfiles();
 

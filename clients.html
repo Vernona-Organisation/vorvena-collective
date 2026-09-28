@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Clients | VORVENA</title>
 
     <link rel="stylesheet" href="clients.css">
 </head>
+
 
 <body>
 
@@ -15,36 +20,75 @@
 
     <div class="nav-container">
 
-        <a href="index.html" class="logo">VORVENA</a>
+        <a
+            href="index.html"
+            class="logo"
+        >
+            VORVENA
+        </a>
 
-        <nav class="desktop-nav" id="desktopNav">
 
-            <a href="index.html">Home</a>
+        <!-- DESKTOP NAV -->
 
-            <a href="profiles.html">Profiles</a>
+        <nav
+            class="desktop-nav"
+            id="desktopNav"
+            aria-label="Main navigation"
+        >
 
-            <a href="clients.html" class="active">Clients</a>
+            <a
+                href="index.html"
+                class="nav-link"
+            >
+                Home
+            </a>
 
-            <!-- Dashboard appears only when logged in -->
+            <a
+                href="profiles.html"
+                class="nav-link"
+            >
+                Profiles
+            </a>
+
+            <a
+                href="clients.html"
+                class="nav-link"
+            >
+                Clients
+            </a>
+
+
+            <!-- Dashboard is controlled by JS -->
+
             <a
                 href="#"
-                class="dashboard-link"
+                class="nav-link dashboard-link"
                 id="dashboardNavLink"
                 hidden
             >
                 Dashboard
             </a>
 
-            <a href="join.html">Join Community</a>
+
+            <a
+                href="join.html"
+                class="nav-link"
+            >
+                Join Community
+            </a>
 
         </nav>
+
+
+        <!-- MOBILE MENU BUTTON -->
 
         <button
             class="menu-btn"
             id="menuBtn"
+            type="button"
             aria-label="Open menu"
             aria-expanded="false"
-            type="button"
+            aria-controls="mobileNav"
         >
             <span></span>
             <span></span>
@@ -52,39 +96,75 @@
 
     </div>
 
-    <nav class="mobile-nav" id="mobileNav">
 
-        <a href="index.html">Home</a>
+    <!-- MOBILE NAV -->
 
-        <a href="profiles.html">Profiles</a>
+    <nav
+        class="mobile-nav"
+        id="mobileNav"
+        aria-label="Mobile navigation"
+    >
 
-        <a href="clients.html" class="active">Clients</a>
+        <a
+            href="index.html"
+            class="nav-link"
+        >
+            Home
+        </a>
 
-        <!-- Dashboard appears only when logged in -->
+        <a
+            href="profiles.html"
+            class="nav-link"
+        >
+            Profiles
+        </a>
+
+        <a
+            href="clients.html"
+            class="nav-link"
+        >
+            Clients
+        </a>
+
+
+        <!-- Dashboard is controlled by JS -->
+
         <a
             href="#"
-            class="dashboard-link"
+            class="nav-link dashboard-link"
             id="mobileDashboardNavLink"
             hidden
         >
             Dashboard
         </a>
 
-        <a href="join.html">Join Community</a>
+
+        <a
+            href="join.html"
+            class="nav-link"
+        >
+            Join Community
+        </a>
 
     </nav>
 
 </header>
 
 
+
 <main>
 
-    <!-- HERO -->
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
     <section class="hero-section">
 
         <div class="hero-content">
 
-            <span class="eyebrow">VORVENA FOR CLIENTS</span>
+            <span class="eyebrow">
+                VORVENA FOR CLIENTS
+            </span>
 
             <h1>
                 FIND THE
@@ -98,11 +178,17 @@
 
             <div class="hero-actions">
 
-                <a href="profiles.html" class="primary-btn">
+                <a
+                    href="profiles.html"
+                    class="primary-btn"
+                >
                     Explore Profiles
                 </a>
 
-                <a href="#how-it-works" class="secondary-btn">
+                <a
+                    href="#how-it-works"
+                    class="secondary-btn"
+                >
                     How It Works
                 </a>
 
@@ -110,11 +196,14 @@
 
         </div>
 
+
         <div class="hero-visual">
 
             <div class="hero-card">
 
-                <span class="card-label">VORVENA</span>
+                <span class="card-label">
+                    VORVENA
+                </span>
 
                 <h3>
                     Talent without
@@ -129,8 +218,15 @@
                 <div class="card-line"></div>
 
                 <div class="hero-card-footer">
-                    <span>Clients</span>
-                    <span>Professionals</span>
+
+                    <span>
+                        Clients
+                    </span>
+
+                    <span>
+                        Professionals
+                    </span>
+
                 </div>
 
             </div>
@@ -140,12 +236,18 @@
     </section>
 
 
-    <!-- WHY VORVENA -->
+
+    <!-- =========================================
+         WHY VORVENA
+    ========================================== -->
+
     <section class="section why-section">
 
         <div class="section-heading">
 
-            <span class="eyebrow">WHY VORVENA</span>
+            <span class="eyebrow">
+                WHY VORVENA
+            </span>
 
             <h2>
                 A better way to
@@ -165,9 +267,13 @@
 
             <article class="feature-card">
 
-                <span class="feature-number">01</span>
+                <span class="feature-number">
+                    01
+                </span>
 
-                <h3>Verified Talent</h3>
+                <h3>
+                    Verified Talent
+                </h3>
 
                 <p>
                     Discover professionals who have gone through
@@ -179,9 +285,13 @@
 
             <article class="feature-card">
 
-                <span class="feature-number">02</span>
+                <span class="feature-number">
+                    02
+                </span>
 
-                <h3>Clear Process</h3>
+                <h3>
+                    Clear Process
+                </h3>
 
                 <p>
                     From discovering talent to submitting project
@@ -193,9 +303,13 @@
 
             <article class="feature-card">
 
-                <span class="feature-number">03</span>
+                <span class="feature-number">
+                    03
+                </span>
 
-                <h3>Professional Structure</h3>
+                <h3>
+                    Professional Structure
+                </h3>
 
                 <p>
                     Projects are structured around clear responsibilities,
@@ -207,9 +321,13 @@
 
             <article class="feature-card">
 
-                <span class="feature-number">04</span>
+                <span class="feature-number">
+                    04
+                </span>
 
-                <h3>Global Access</h3>
+                <h3>
+                    Global Access
+                </h3>
 
                 <p>
                     Connect with professionals from different
@@ -223,12 +341,21 @@
     </section>
 
 
-    <!-- HOW IT WORKS -->
-    <section class="section process-section" id="how-it-works">
+
+    <!-- =========================================
+         HOW IT WORKS
+    ========================================== -->
+
+    <section
+        class="section process-section"
+        id="how-it-works"
+    >
 
         <div class="section-heading">
 
-            <span class="eyebrow">HOW IT WORKS</span>
+            <span class="eyebrow">
+                HOW IT WORKS
+            </span>
 
             <h2>
                 From idea to
@@ -247,9 +374,13 @@
 
             <article class="process-card">
 
-                <span class="process-number">01</span>
+                <span class="process-number">
+                    01
+                </span>
 
-                <h3>Explore</h3>
+                <h3>
+                    Explore
+                </h3>
 
                 <p>
                     Browse professional profiles and discover
@@ -261,9 +392,13 @@
 
             <article class="process-card">
 
-                <span class="process-number">02</span>
+                <span class="process-number">
+                    02
+                </span>
 
-                <h3>Select</h3>
+                <h3>
+                    Select
+                </h3>
 
                 <p>
                     Review a professional's profile, skills,
@@ -275,9 +410,13 @@
 
             <article class="process-card">
 
-                <span class="process-number">03</span>
+                <span class="process-number">
+                    03
+                </span>
 
-                <h3>Request</h3>
+                <h3>
+                    Request
+                </h3>
 
                 <p>
                     Submit your project requirements through
@@ -289,9 +428,13 @@
 
             <article class="process-card">
 
-                <span class="process-number">04</span>
+                <span class="process-number">
+                    04
+                </span>
 
-                <h3>Work</h3>
+                <h3>
+                    Work
+                </h3>
 
                 <p>
                     Collaborate with your selected professional
@@ -305,14 +448,20 @@
     </section>
 
 
-    <!-- CLIENT ACCESS -->
+
+    <!-- =========================================
+         CLIENT ACCESS
+    ========================================== -->
+
     <section class="access-section">
 
         <div class="access-content">
 
             <div>
 
-                <span class="eyebrow">CLIENT ACCESS</span>
+                <span class="eyebrow">
+                    CLIENT ACCESS
+                </span>
 
                 <h2>
                     Ready to start
@@ -326,7 +475,11 @@
 
             </div>
 
-            <a href="login.html" class="primary-btn">
+
+            <a
+                href="login.html"
+                class="primary-btn"
+            >
                 Client Login
             </a>
 
@@ -335,12 +488,21 @@
     </section>
 
 
-    <!-- PROJECT REQUEST -->
-    <section class="section request-section" id="project-request">
+
+    <!-- =========================================
+         PROJECT REQUEST
+    ========================================== -->
+
+    <section
+        class="section request-section"
+        id="project-request"
+    >
 
         <div class="section-heading">
 
-            <span class="eyebrow">PROJECT REQUEST</span>
+            <span class="eyebrow">
+                PROJECT REQUEST
+            </span>
 
             <h2>
                 Tell us about
@@ -362,9 +524,13 @@
 
                 <div class="request-info-card">
 
-                    <span class="info-number">01</span>
+                    <span class="info-number">
+                        01
+                    </span>
 
-                    <h3>Describe your project</h3>
+                    <h3>
+                        Describe your project
+                    </h3>
 
                     <p>
                         Tell us what you need, what you want to achieve,
@@ -376,9 +542,13 @@
 
                 <div class="request-info-card">
 
-                    <span class="info-number">02</span>
+                    <span class="info-number">
+                        02
+                    </span>
 
-                    <h3>Set your expectations</h3>
+                    <h3>
+                        Set your expectations
+                    </h3>
 
                     <p>
                         Provide your expected budget and timeline
@@ -390,9 +560,13 @@
 
                 <div class="request-info-card">
 
-                    <span class="info-number">03</span>
+                    <span class="info-number">
+                        03
+                    </span>
 
-                    <h3>Connect with talent</h3>
+                    <h3>
+                        Connect with talent
+                    </h3>
 
                     <p>
                         Your project information can be used to
@@ -403,6 +577,9 @@
 
             </div>
 
+
+
+            <!-- PROJECT FORM -->
 
             <form
                 class="project-form"
@@ -418,17 +595,20 @@
                     value="New VORVENA Project Request"
                 >
 
+
                 <input
                     type="hidden"
                     name="clientEmail"
                     id="clientEmail"
                 >
 
+
                 <input
                     type="hidden"
                     name="clientAccountType"
                     value="client"
                 >
+
 
                 <input
                     type="hidden"
@@ -443,7 +623,9 @@
                     hidden
                 >
 
-                    <span>SELECTED PROFESSIONAL</span>
+                    <span>
+                        SELECTED PROFESSIONAL
+                    </span>
 
                     <strong id="selectedProfessionalName">
                         —
@@ -454,6 +636,7 @@
                     </small>
 
                 </div>
+
 
 
                 <div class="form-group">
@@ -471,6 +654,7 @@
                     >
 
                 </div>
+
 
 
                 <div class="form-group">
@@ -522,6 +706,7 @@
                 </div>
 
 
+
                 <div class="form-group">
 
                     <label for="projectDescription">
@@ -537,6 +722,7 @@
                     ></textarea>
 
                 </div>
+
 
 
                 <div class="form-row">
@@ -577,12 +763,14 @@
                 </div>
 
 
+
                 <div
                     class="form-message"
                     id="formMessage"
                     role="status"
                     aria-live="polite"
                 ></div>
+
 
 
                 <button
@@ -600,12 +788,18 @@
     </section>
 
 
-    <!-- PROJECT STRUCTURE -->
+
+    <!-- =========================================
+         PROJECT STRUCTURE
+    ========================================== -->
+
     <section class="section structure-section">
 
         <div class="section-heading">
 
-            <span class="eyebrow">PROJECT STRUCTURE</span>
+            <span class="eyebrow">
+                PROJECT STRUCTURE
+            </span>
 
             <h2>
                 A transparent
@@ -628,7 +822,9 @@
                     15%
                 </span>
 
-                <h3>VORVENA</h3>
+                <h3>
+                    VORVENA
+                </h3>
 
                 <p>
                     Platform and operational structure.
@@ -643,7 +839,9 @@
                     85%
                 </span>
 
-                <h3>Professional</h3>
+                <h3>
+                    Professional
+                </h3>
 
                 <p>
                     Professional project earnings.
@@ -656,12 +854,18 @@
     </section>
 
 
-    <!-- PRIVACY -->
+
+    <!-- =========================================
+         PRIVACY
+    ========================================== -->
+
     <section class="section privacy-section">
 
         <div class="privacy-box">
 
-            <span class="eyebrow">PRIVACY</span>
+            <span class="eyebrow">
+                PRIVACY
+            </span>
 
             <h2>
                 Your project
@@ -679,12 +883,18 @@
     </section>
 
 
-    <!-- GLOBAL -->
+
+    <!-- =========================================
+         GLOBAL COMMUNITY
+    ========================================== -->
+
     <section class="global-section">
 
         <div class="global-content">
 
-            <span class="eyebrow">GLOBAL COMMUNITY</span>
+            <span class="eyebrow">
+                GLOBAL COMMUNITY
+            </span>
 
             <h2>
                 Talent can come
@@ -696,7 +906,10 @@
                 professionals across different locations and fields.
             </p>
 
-            <a href="profiles.html" class="secondary-btn">
+            <a
+                href="profiles.html"
+                class="secondary-btn"
+            >
                 Explore Professionals
             </a>
 
@@ -705,7 +918,11 @@
     </section>
 
 
-    <!-- CTA -->
+
+    <!-- =========================================
+         CTA
+    ========================================== -->
+
     <section class="cta-section">
 
         <div class="cta-content">
@@ -723,7 +940,10 @@
                 Find the right professional for your next project.
             </p>
 
-            <a href="profiles.html" class="primary-btn">
+            <a
+                href="profiles.html"
+                class="primary-btn"
+            >
                 Explore Profiles
             </a>
 
@@ -734,13 +954,21 @@
 </main>
 
 
+
+<!-- =========================================
+     FOOTER
+========================================== -->
+
 <footer class="site-footer">
 
     <div class="footer-grid">
 
         <div class="footer-brand">
 
-            <a href="index.html" class="logo">
+            <a
+                href="index.html"
+                class="logo"
+            >
                 VORVENA
             </a>
 
@@ -754,22 +982,34 @@
 
         <div class="footer-column">
 
-            <h4>Explore</h4>
+            <h4>
+                Explore
+            </h4>
 
-            <a href="index.html">Home</a>
+            <a href="index.html">
+                Home
+            </a>
 
-            <a href="community.html">Community</a>
+            <a href="community.html">
+                Community
+            </a>
 
-            <a href="profiles.html">Profiles</a>
+            <a href="profiles.html">
+                Profiles
+            </a>
 
-            <a href="clients.html">Clients</a>
+            <a href="clients.html">
+                Clients
+            </a>
 
         </div>
 
 
         <div class="footer-column">
 
-            <h4>Join</h4>
+            <h4>
+                Join
+            </h4>
 
             <a href="join.html">
                 Join Community
@@ -784,7 +1024,9 @@
 
         <div class="footer-column">
 
-            <h4>Legal</h4>
+            <h4>
+                Legal
+            </h4>
 
             <a href="#">
                 Terms
@@ -814,7 +1056,8 @@
 </footer>
 
 
-<script src="clients.js?v=4"></script>
+
+<script src="clients.js?v=5"></script>
 
 </body>
 </html>

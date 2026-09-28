@@ -22,29 +22,29 @@
                 VORVENA
             </a>
 
-            <nav class="desktop-nav">
+            <nav class="nav-links" id="navLinks">
 
-                <a href="index.html">
+                <a href="index.html" class="nav-link">
                     Home
                 </a>
 
-                <a href="profiles.html" class="active">
+                <a href="profiles.html" class="nav-link">
                     Profiles
                 </a>
 
-                <a href="clients.html">
+                <a href="clients.html" class="nav-link">
                     Clients
                 </a>
 
                 <a
                     href="#"
                     id="dashboardNavLink"
-                    hidden
+                    class="nav-link dashboard-link"
                 >
                     Dashboard
                 </a>
 
-                <a href="join.html">
+                <a href="join.html" class="nav-link">
                     Join Community
                 </a>
 
@@ -63,59 +63,21 @@
 
         </div>
 
-
-        <!-- MOBILE NAV -->
-
-        <nav class="mobile-nav" id="mobileNav">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="profiles.html" class="active">
-                Profiles
-            </a>
-
-            <a href="clients.html">
-                Clients
-            </a>
-
-            <a
-                href="#"
-                id="mobileDashboardNavLink"
-                hidden
-            >
-                Dashboard
-            </a>
-
-            <a href="join.html">
-                Join Community
-            </a>
-
-        </nav>
-
     </header>
 
 
-    <main>
+    <!-- ================= MAIN ================= -->
 
+    <main>
 
         <!-- ================= HERO ================= -->
 
         <section class="hero">
 
             <div class="hero-top">
-
-                <span>
-                    01 / PROFILES
-                </span>
-
-                <span>
-                    VORVENA TALENT NETWORK
-                </span>
-
+                <span>01 / PROFILES</span>
+                <span>VORVENA TALENT NETWORK</span>
             </div>
-
 
             <div class="hero-content">
 
@@ -132,7 +94,6 @@
 
             </div>
 
-
             <div class="hero-bottom">
 
                 <span>DEVELOPERS</span>
@@ -145,7 +106,6 @@
         </section>
 
 
-
         <!-- ================= DISCOVER ================= -->
 
         <section class="discover-section">
@@ -153,7 +113,6 @@
             <div class="section-label">
                 02 / DISCOVER TALENT
             </div>
-
 
             <div class="discover-header">
 
@@ -165,7 +124,6 @@
                     </h2>
 
                 </div>
-
 
                 <p>
                     Search through the VORVENA community and discover
@@ -258,253 +216,242 @@
             </div>
 
 
-
             <!-- ================= PROFILE GRID ================= -->
 
             <div class="profiles-grid" id="profilesGrid">
 
 
-                <!-- PROFILE 01 -->
+                <!-- ================= ALEX CARTER ================= -->
 
                 <article
                     class="profile-card"
+                    data-id="alex-carter"
                     data-name="Alex Carter"
                     data-profession="Frontend Developer"
                     data-skills="html css javascript react frontend"
+                    data-profile="alex-carter"
                 >
 
-                    <div class="profile-image">
+                    <div class="profile-top">
 
-                        <div class="image-placeholder">
-                            AC
+                        <div class="profile-number">
+                            01
                         </div>
 
-                        <span class="profile-number">
-                            01
+                        <div class="profile-location">
+                            Nigeria
+                        </div>
+
+                    </div>
+
+
+                    <!-- PROFILE PICTURE -->
+
+                    <div class="profile-avatar">
+
+                        <img
+                            src="images/alex-carter.jpg"
+                            alt="Alex Carter"
+                        >
+
+                    </div>
+
+
+                    <div class="profile-content">
+
+                        <h3>
+                            Alex Carter
+                        </h3>
+
+                        <span class="profile-role">
+                            Frontend Developer
                         </span>
 
-                    </div>
-
-
-                    <div class="profile-info">
-
-                        <div class="profile-heading">
-
-                            <div>
-
-                                <h3>
-                                    Alex Carter
-                                </h3>
-
-                                <span>
-                                    Frontend Developer
-                                </span>
-
-                            </div>
-
-                            <span class="location">
-                                Nigeria
-                            </span>
-
-                        </div>
-
-
                         <p>
-                            Builds responsive and modern digital
-                            experiences with a focus on performance,
-                            usability and clean interfaces.
+                            Builds responsive and modern digital experiences
+                            with a focus on performance, usability and clean
+                            interfaces.
                         </p>
 
-
-                        <div class="skills">
-
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                            <span>React</span>
-
-                        </div>
+                    </div>
 
 
-                        <div class="profile-actions">
+                    <div class="profile-skills">
 
-                            <button
-                                class="hire-btn"
-                                data-professional="Alex Carter"
-                                type="button"
-                            >
-                                Hire This Professional
-                                <span>↗</span>
-                            </button>
-
-                        </div>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>React</span>
 
                     </div>
+
+
+                    <button
+                        class="hire-btn"
+                        data-professional="Alex Carter"
+                        type="button"
+                    >
+                        Hire Professional
+                        <span>↗</span>
+                    </button>
 
                 </article>
 
 
 
-                <!-- PROFILE 02 -->
+                <!-- ================= MAYA JOHNSON ================= -->
 
                 <article
                     class="profile-card"
+                    data-id="maya-johnson"
                     data-name="Maya Johnson"
                     data-profession="Graphic Designer"
                     data-skills="graphic design branding photoshop illustrator"
+                    data-profile="maya-johnson"
                 >
 
-                    <div class="profile-image">
+                    <div class="profile-top">
 
-                        <div class="image-placeholder">
-                            MJ
+                        <div class="profile-number">
+                            02
                         </div>
 
-                        <span class="profile-number">
-                            02
+                        <div class="profile-location">
+                            Ghana
+                        </div>
+
+                    </div>
+
+
+                    <!-- PROFILE PICTURE -->
+
+                    <div class="profile-avatar">
+
+                        <img
+                            src="images/maya-johnson.jpg"
+                            alt="Maya Johnson"
+                        >
+
+                    </div>
+
+
+                    <div class="profile-content">
+
+                        <h3>
+                            Maya Johnson
+                        </h3>
+
+                        <span class="profile-role">
+                            Graphic Designer
                         </span>
 
-                    </div>
-
-
-                    <div class="profile-info">
-
-                        <div class="profile-heading">
-
-                            <div>
-
-                                <h3>
-                                    Maya Johnson
-                                </h3>
-
-                                <span>
-                                    Graphic Designer
-                                </span>
-
-                            </div>
-
-                            <span class="location">
-                                Ghana
-                            </span>
-
-                        </div>
-
-
                         <p>
-                            Creates strong visual identities,
-                            marketing materials and brand systems
-                            designed to make businesses stand out.
+                            Creates strong visual identities, marketing
+                            materials and brand systems designed to make
+                            businesses stand out.
                         </p>
 
-
-                        <div class="skills">
-
-                            <span>Branding</span>
-                            <span>Photoshop</span>
-                            <span>Illustrator</span>
-
-                        </div>
+                    </div>
 
 
-                        <div class="profile-actions">
+                    <div class="profile-skills">
 
-                            <button
-                                class="hire-btn"
-                                data-professional="Maya Johnson"
-                                type="button"
-                            >
-                                Hire This Professional
-                                <span>↗</span>
-                            </button>
-
-                        </div>
+                        <span>Branding</span>
+                        <span>Photoshop</span>
+                        <span>Illustrator</span>
 
                     </div>
+
+
+                    <button
+                        class="hire-btn"
+                        data-professional="Maya Johnson"
+                        type="button"
+                    >
+                        Hire Professional
+                        <span>↗</span>
+                    </button>
 
                 </article>
 
 
 
-                <!-- PROFILE 03 -->
+                <!-- ================= DANIEL SMITH ================= -->
 
                 <article
                     class="profile-card"
+                    data-id="daniel-smith"
                     data-name="Daniel Smith"
                     data-profession="Motion Designer"
                     data-skills="motion graphics animation after effects video"
+                    data-profile="daniel-smith"
                 >
 
-                    <div class="profile-image">
+                    <div class="profile-top">
 
-                        <div class="image-placeholder">
-                            DS
+                        <div class="profile-number">
+                            03
                         </div>
 
-                        <span class="profile-number">
-                            03
+                        <div class="profile-location">
+                            Nigeria
+                        </div>
+
+                    </div>
+
+
+                    <!-- PROFILE PICTURE -->
+
+                    <div class="profile-avatar">
+
+                        <img
+                            src="images/daniel-smith.jpg"
+                            alt="Daniel Smith"
+                        >
+
+                    </div>
+
+
+                    <div class="profile-content">
+
+                        <h3>
+                            Daniel Smith
+                        </h3>
+
+                        <span class="profile-role">
+                            Motion Designer
                         </span>
 
-                    </div>
-
-
-                    <div class="profile-info">
-
-                        <div class="profile-heading">
-
-                            <div>
-
-                                <h3>
-                                    Daniel Smith
-                                </h3>
-
-                                <span>
-                                    Motion Designer
-                                </span>
-
-                            </div>
-
-                            <span class="location">
-                                Nigeria
-                            </span>
-
-                        </div>
-
-
                         <p>
-                            Creates motion graphics, animations and
-                            visual content for brands, campaigns
-                            and digital experiences.
+                            Creates motion graphics, animations and visual
+                            content for brands, campaigns and digital
+                            experiences.
                         </p>
 
-
-                        <div class="skills">
-
-                            <span>Animation</span>
-                            <span>After Effects</span>
-                            <span>Motion</span>
-
-                        </div>
+                    </div>
 
 
-                        <div class="profile-actions">
+                    <div class="profile-skills">
 
-                            <button
-                                class="hire-btn"
-                                data-professional="Daniel Smith"
-                                type="button"
-                            >
-                                Hire This Professional
-                                <span>↗</span>
-                            </button>
-
-                        </div>
+                        <span>Animation</span>
+                        <span>After Effects</span>
+                        <span>Motion</span>
 
                     </div>
+
+
+                    <button
+                        class="hire-btn"
+                        data-professional="Daniel Smith"
+                        type="button"
+                    >
+                        Hire Professional
+                        <span>↗</span>
+                    </button>
 
                 </article>
 
             </div>
-
 
 
             <!-- EMPTY STATE -->
@@ -536,7 +483,6 @@
                 03 / FOR CLIENTS
             </div>
 
-
             <div class="flow-grid">
 
                 <div class="flow-heading">
@@ -550,6 +496,7 @@
 
 
                 <div class="flow-content">
+
 
                     <div class="flow-item">
 
@@ -647,7 +594,6 @@
                 04 / PROJECT STRUCTURE
             </div>
 
-
             <div class="payment-grid">
 
                 <div>
@@ -663,8 +609,8 @@
                 <div class="payment-content">
 
                     <p>
-                        For approved projects arranged through
-                        VORVENA, the current platform structure is:
+                        For approved projects arranged through VORVENA,
+                        the current platform structure is:
                     </p>
 
 
@@ -750,7 +696,6 @@
             <span class="section-label">
                 06 / JOIN VORVENA
             </span>
-
 
             <h2>
                 YOUR NEXT
@@ -885,7 +830,6 @@
         </div>
 
     </footer>
-
 
 
     <script src="profiles.js"></script>

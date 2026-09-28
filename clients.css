@@ -24,7 +24,9 @@
 }
 
 
-/* RESET */
+/* =========================================
+   RESET
+========================================= */
 
 * {
     margin: 0;
@@ -38,10 +40,15 @@ html {
 
 body {
     min-height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+
     color: var(--text);
     background: var(--white);
-    overflow-x: hidden;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 }
 
 a {
@@ -57,24 +64,29 @@ select {
 }
 
 
-/* =========================
+/* =========================================
    NAVBAR
-========================= */
+========================================= */
 
 .site-header {
-    width: 100%;
     position: sticky;
     top: 0;
     z-index: 1000;
+
+    width: 100%;
+
     background: var(--glass);
+
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+
     border-bottom: 1px solid var(--line);
 }
 
 .nav-container {
     width: min(1400px, 92%);
     min-height: 82px;
+
     margin: 0 auto;
 
     display: flex;
@@ -84,10 +96,15 @@ select {
 
 .logo {
     color: var(--navy);
+
     font-size: 25px;
     font-weight: 900;
+
     letter-spacing: -1.5px;
 }
+
+
+/* DESKTOP NAV */
 
 .desktop-nav {
     display: flex;
@@ -97,12 +114,17 @@ select {
 
 .desktop-nav a {
     position: relative;
+
+    padding: 10px 0;
+
     color: #344054;
+
     font-size: 13px;
     font-weight: 700;
+
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    padding: 10px 0;
+
     transition:
         color 0.25s ease,
         opacity 0.25s ease;
@@ -110,6 +132,7 @@ select {
 
 .desktop-nav a::after {
     content: "";
+
     position: absolute;
     left: 0;
     bottom: 0;
@@ -118,9 +141,11 @@ select {
     height: 2px;
 
     border-radius: 10px;
+
     background: var(--navy);
 
-    transition: width 0.25s ease;
+    transition:
+        width 0.25s ease;
 }
 
 .desktop-nav a:hover {
@@ -138,7 +163,7 @@ select {
 }
 
 
-/* Dashboard */
+/* DASHBOARD */
 
 .desktop-nav .dashboard-link {
     color: var(--navy);
@@ -153,7 +178,9 @@ select {
 }
 
 
-/* HAMBURGER */
+/* =========================================
+   HAMBURGER
+========================================= */
 
 .menu-btn {
     display: none;
@@ -189,15 +216,21 @@ select {
 }
 
 .menu-btn.active span:first-child {
-    transform: translateY(4px) rotate(45deg);
+    transform:
+        translateY(4px)
+        rotate(45deg);
 }
 
 .menu-btn.active span:last-child {
-    transform: translateY(-4px) rotate(-45deg);
+    transform:
+        translateY(-4px)
+        rotate(-45deg);
 }
 
 
-/* MOBILE NAV */
+/* =========================================
+   MOBILE NAV
+========================================= */
 
 .mobile-nav {
     display: none;
@@ -213,7 +246,8 @@ select {
 
     border-top: 1px solid var(--line);
 
-    box-shadow: 0 20px 40px rgba(2, 8, 23, 0.08);
+    box-shadow:
+        0 20px 40px rgba(2, 8, 23, 0.08);
 }
 
 .mobile-nav.show {
@@ -248,13 +282,15 @@ select {
 }
 
 
-/* =========================
+/* =========================================
    GENERAL
-========================= */
+========================================= */
 
 .section {
     width: min(1200px, 90%);
+
     margin: 0 auto;
+
     padding: 110px 0;
 }
 
@@ -274,6 +310,7 @@ select {
 
 .section-heading {
     max-width: 700px;
+
     margin-bottom: 60px;
 }
 
@@ -282,8 +319,11 @@ select {
 
     color: var(--navy-950);
 
-    font-size: clamp(38px, 5vw, 64px);
+    font-size:
+        clamp(38px, 5vw, 64px);
+
     line-height: 1.05;
+
     letter-spacing: -2.5px;
 }
 
@@ -303,9 +343,9 @@ select {
 }
 
 
-/* =========================
+/* =========================================
    BUTTONS
-========================= */
+========================================= */
 
 .primary-btn,
 .secondary-btn {
@@ -338,25 +378,29 @@ select {
 
 .primary-btn:hover {
     transform: translateY(-2px);
+
     background: var(--navy-800);
 }
 
 .secondary-btn {
     color: var(--navy);
+
     border: 1px solid var(--navy);
+
     background: transparent;
 }
 
 .secondary-btn:hover {
     transform: translateY(-2px);
+
     color: var(--white);
     background: var(--navy);
 }
 
 
-/* =========================
+/* =========================================
    HERO
-========================= */
+========================================= */
 
 .hero-section {
     width: 100%;
@@ -365,8 +409,13 @@ select {
     padding: 100px 5%;
 
     display: grid;
-    grid-template-columns: 1.05fr 0.95fr;
+
+    grid-template-columns:
+        1.05fr
+        0.95fr;
+
     align-items: center;
+
     gap: 80px;
 
     background:
@@ -391,8 +440,11 @@ select {
 
     color: var(--navy-950);
 
-    font-size: clamp(52px, 7vw, 92px);
+    font-size:
+        clamp(52px, 7vw, 92px);
+
     line-height: 0.95;
+
     letter-spacing: -5px;
 }
 
@@ -409,7 +461,9 @@ select {
 
 .hero-actions {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 12px;
 }
 
@@ -423,7 +477,6 @@ select {
 
 .hero-card {
     width: min(100%, 480px);
-
     min-height: 430px;
 
     padding: 45px;
@@ -446,7 +499,8 @@ select {
             var(--navy-950)
         );
 
-    box-shadow: 0 30px 80px rgba(2, 8, 23, 0.18);
+    box-shadow:
+        0 30px 80px rgba(2, 8, 23, 0.18);
 }
 
 .card-label {
@@ -465,6 +519,7 @@ select {
 
     font-size: 38px;
     line-height: 1.05;
+
     letter-spacing: -1.5px;
 }
 
@@ -488,6 +543,7 @@ select {
 
 .hero-card-footer {
     display: flex;
+
     justify-content: space-between;
 
     color: rgba(255, 255, 255, 0.65);
@@ -500,14 +556,15 @@ select {
 }
 
 
-/* =========================
+/* =========================================
    FEATURE GRID
-========================= */
+========================================= */
 
 .feature-grid {
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns:
+        repeat(4, 1fr);
 
     gap: 16px;
 }
@@ -525,11 +582,13 @@ select {
 
     transition:
         transform 0.25s ease,
-        box-shadow 0.25s ease;
+        box-shadow 0.25s ease,
+        opacity 0.5s ease;
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
+
     box-shadow: var(--shadow);
 }
 
@@ -560,9 +619,9 @@ select {
 }
 
 
-/* =========================
+/* =========================================
    PROCESS
-========================= */
+========================================= */
 
 .process-section {
     background: var(--navy-soft);
@@ -571,7 +630,8 @@ select {
 .process-grid {
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns:
+        repeat(4, 1fr);
 
     gap: 16px;
 }
@@ -582,6 +642,8 @@ select {
     border: 1px solid var(--line);
 
     background: var(--white);
+
+    transition: opacity 0.5s ease;
 }
 
 .process-number {
@@ -611,9 +673,9 @@ select {
 }
 
 
-/* =========================
+/* =========================================
    ACCESS
-========================= */
+========================================= */
 
 .access-section {
     padding: 90px 5%;
@@ -631,9 +693,11 @@ select {
 
 .access-content {
     width: min(1200px, 90%);
+
     margin: 0 auto;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
@@ -643,7 +707,8 @@ select {
 .access-content h2 {
     margin-bottom: 15px;
 
-    font-size: clamp(38px, 5vw, 62px);
+    font-size:
+        clamp(38px, 5vw, 62px);
 
     line-height: 1;
 
@@ -659,14 +724,16 @@ select {
 }
 
 
-/* =========================
+/* =========================================
    PROJECT REQUEST
-========================= */
+========================================= */
 
 .request-layout {
     display: grid;
 
-    grid-template-columns: 0.8fr 1.2fr;
+    grid-template-columns:
+        0.8fr
+        1.2fr;
 
     gap: 70px;
 
@@ -675,6 +742,7 @@ select {
 
 .request-info {
     display: grid;
+
     gap: 15px;
 }
 
@@ -684,6 +752,8 @@ select {
     border: 1px solid var(--line);
 
     background: var(--navy-soft);
+
+    transition: opacity 0.5s ease;
 }
 
 .info-number {
@@ -713,7 +783,9 @@ select {
 }
 
 
-/* FORM */
+/* =========================================
+   FORM
+========================================= */
 
 .project-form {
     padding: 40px;
@@ -727,9 +799,12 @@ select {
 
 .selected-professional {
     margin-bottom: 25px;
+
     padding: 20px;
 
-    border: 1px solid rgba(23, 78, 166, 0.2);
+    border:
+        1px solid
+        rgba(23, 78, 166, 0.2);
 
     background: var(--navy-soft);
 }
@@ -781,17 +856,16 @@ select {
 .form-group select {
     width: 100%;
 
-    border: 1px solid var(--line);
-
-    background: #fff;
-
-    color: var(--text);
-
     padding: 14px 15px;
+
+    border: 1px solid var(--line);
+    border-radius: 0;
 
     outline: none;
 
-    border-radius: 0;
+    color: var(--text);
+
+    background: #fff;
 
     transition:
         border-color 0.2s ease,
@@ -799,8 +873,9 @@ select {
 }
 
 .form-group textarea {
-    resize: vertical;
     min-height: 140px;
+
+    resize: vertical;
 }
 
 .form-group input:focus,
@@ -808,13 +883,17 @@ select {
 .form-group select:focus {
     border-color: var(--blue);
 
-    box-shadow: 0 0 0 3px rgba(23, 78, 166, 0.08);
+    box-shadow:
+        0 0 0 3px
+        rgba(23, 78, 166, 0.08);
 }
 
 .form-row {
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        1fr
+        1fr;
 
     gap: 15px;
 }
@@ -832,7 +911,6 @@ select {
 
 .submit-btn {
     width: 100%;
-
     min-height: 54px;
 
     border: none;
@@ -854,19 +932,22 @@ select {
 
 .submit-btn:hover {
     background: var(--navy-800);
+
     transform: translateY(-2px);
 }
 
 .submit-btn:disabled {
     opacity: 0.6;
+
     cursor: not-allowed;
+
     transform: none;
 }
 
 
-/* =========================
+/* =========================================
    STRUCTURE
-========================= */
+========================================= */
 
 .structure-section {
     background: var(--navy-soft);
@@ -875,7 +956,9 @@ select {
 .structure-grid {
     display: grid;
 
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:
+        1fr
+        1fr;
 
     gap: 20px;
 }
@@ -886,12 +969,15 @@ select {
     border: 1px solid var(--line);
 
     background: var(--white);
+
+    transition: opacity 0.5s ease;
 }
 
 .structure-card.featured {
     color: var(--white);
 
     background: var(--navy-950);
+
     border-color: var(--navy-950);
 }
 
@@ -921,9 +1007,9 @@ select {
 }
 
 
-/* =========================
+/* =========================================
    PRIVACY
-========================= */
+========================================= */
 
 .privacy-box {
     max-width: 900px;
@@ -940,9 +1026,11 @@ select {
 
     margin-bottom: 20px;
 
-    font-size: clamp(36px, 5vw, 58px);
+    font-size:
+        clamp(36px, 5vw, 58px);
 
     line-height: 1.05;
+
     letter-spacing: -2px;
 }
 
@@ -955,9 +1043,9 @@ select {
 }
 
 
-/* =========================
+/* =========================================
    GLOBAL
-========================= */
+========================================= */
 
 .global-section {
     padding: 130px 5%;
@@ -975,16 +1063,20 @@ select {
 
 .global-content {
     width: min(900px, 90%);
+
     margin: 0 auto;
+
     text-align: center;
 }
 
 .global-content h2 {
     margin-bottom: 20px;
 
-    font-size: clamp(42px, 6vw, 72px);
+    font-size:
+        clamp(42px, 6vw, 72px);
 
     line-height: 1;
+
     letter-spacing: -3px;
 }
 
@@ -1000,18 +1092,21 @@ select {
 
 .global-content .secondary-btn {
     color: var(--white);
-    border-color: rgba(255, 255, 255, 0.5);
+
+    border-color:
+        rgba(255, 255, 255, 0.5);
 }
 
 .global-content .secondary-btn:hover {
     color: var(--navy-950);
+
     background: var(--white);
 }
 
 
-/* =========================
+/* =========================================
    CTA
-========================= */
+========================================= */
 
 .cta-section {
     padding: 120px 5%;
@@ -1021,6 +1116,7 @@ select {
 
 .cta-content {
     width: min(850px, 90%);
+
     margin: 0 auto;
 
     text-align: center;
@@ -1029,9 +1125,11 @@ select {
 .cta-content h2 {
     margin-bottom: 20px;
 
-    font-size: clamp(42px, 6vw, 76px);
+    font-size:
+        clamp(42px, 6vw, 76px);
 
     line-height: 0.98;
+
     letter-spacing: -3px;
 }
 
@@ -1044,9 +1142,9 @@ select {
 }
 
 
-/* =========================
+/* =========================================
    FOOTER
-========================= */
+========================================= */
 
 .site-footer {
     padding: 70px 5% 30px;
@@ -1058,11 +1156,16 @@ select {
 
 .footer-grid {
     width: min(1200px, 90%);
+
     margin: 0 auto 60px;
 
     display: grid;
 
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns:
+        2fr
+        1fr
+        1fr
+        1fr;
 
     gap: 50px;
 }
@@ -1084,7 +1187,9 @@ select {
 
 .footer-column {
     display: flex;
+
     flex-direction: column;
+
     gap: 13px;
 }
 
@@ -1096,13 +1201,15 @@ select {
     font-size: 12px;
 
     text-transform: uppercase;
+
     letter-spacing: 1px;
 }
 
 .footer-column a {
     font-size: 13px;
 
-    transition: color 0.2s ease;
+    transition:
+        color 0.2s ease;
 }
 
 .footer-column a:hover {
@@ -1111,25 +1218,56 @@ select {
 
 .footer-bottom {
     width: min(1200px, 90%);
+
     margin: 0 auto;
 
     padding-top: 25px;
 
-    border-top: 1px solid var(--line-dark);
+    border-top:
+        1px solid
+        var(--line-dark);
 
     font-size: 12px;
 }
 
 
-/* =========================
+/* =========================================
+   REVEAL ANIMATION
+========================================= */
+
+.feature-card,
+.process-card,
+.request-info-card,
+.structure-card {
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+.feature-card.visible,
+.process-card.visible,
+.request-info-card.visible,
+.structure-card.visible {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================
    1100px
-========================= */
+========================================= */
 
 @media (max-width: 1100px) {
 
     .feature-grid,
     .process-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
     .hero-section {
@@ -1139,9 +1277,9 @@ select {
 }
 
 
-/* =========================
+/* =========================================
    768px
-========================= */
+========================================= */
 
 @media (max-width: 768px) {
 
@@ -1168,12 +1306,15 @@ select {
     }
 
     .hero-content h1 {
-        font-size: clamp(48px, 12vw, 75px);
+        font-size:
+            clamp(48px, 12vw, 75px);
+
         letter-spacing: -3px;
     }
 
     .section {
         width: 88%;
+
         padding: 85px 0;
     }
 
@@ -1181,11 +1322,13 @@ select {
         width: 88%;
 
         flex-direction: column;
+
         align-items: flex-start;
     }
 
     .request-layout {
         grid-template-columns: 1fr;
+
         gap: 40px;
     }
 
@@ -1196,7 +1339,8 @@ select {
     .footer-grid {
         width: 88%;
 
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
 
         gap: 40px;
     }
@@ -1208,9 +1352,9 @@ select {
 }
 
 
-/* =========================
+/* =========================================
    425px
-========================= */
+========================================= */
 
 @media (max-width: 425px) {
 
@@ -1236,6 +1380,7 @@ select {
 
     .hero-actions {
         flex-direction: column;
+
         align-items: stretch;
     }
 
@@ -1246,6 +1391,7 @@ select {
 
     .hero-card {
         min-height: 370px;
+
         padding: 30px;
     }
 
@@ -1269,6 +1415,7 @@ select {
 
     .form-row {
         grid-template-columns: 1fr;
+
         gap: 0;
     }
 
@@ -1287,9 +1434,9 @@ select {
 }
 
 
-/* =========================
+/* =========================================
    375px
-========================= */
+========================================= */
 
 @media (max-width: 375px) {
 

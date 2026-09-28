@@ -1,107 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =========================
-       MOBILE NAVIGATION
-    ========================= */
+    /* =========================================
+       NAVIGATION ELEMENTS
+    ========================================== */
 
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileNav = document.getElementById("mobileNav");
+    const menuBtn =
+        document.getElementById("menuBtn");
 
-    if (menuBtn && mobileNav) {
+    const mobileNav =
+        document.getElementById("mobileNav");
 
-        menuBtn.addEventListener("click", () => {
-
-            const isOpen = mobileNav.classList.toggle("show");
-
-            menuBtn.classList.toggle("active", isOpen);
-
-            menuBtn.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
-
-            menuBtn.setAttribute(
-                "aria-label",
-                isOpen ? "Close menu" : "Open menu"
-            );
-
-        });
-
-
-        mobileNav.querySelectorAll("a").forEach((link) => {
-
-            link.addEventListener("click", () => {
-
-                mobileNav.classList.remove("show");
-
-                menuBtn.classList.remove("active");
-
-                menuBtn.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Open menu"
-                );
-
-            });
-
-        });
-
-
-        document.addEventListener("keydown", (event) => {
-
-            if (event.key === "Escape") {
-
-                mobileNav.classList.remove("show");
-
-                menuBtn.classList.remove("active");
-
-                menuBtn.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Open menu"
-                );
-
-            }
-
-        });
-
-
-        window.addEventListener("resize", () => {
-
-            if (window.innerWidth > 768) {
-
-                mobileNav.classList.remove("show");
-
-                menuBtn.classList.remove("active");
-
-                menuBtn.setAttribute(
-                    "aria-expanded",
-                    "false"
-                );
-
-                menuBtn.setAttribute(
-                    "aria-label",
-                    "Open menu"
-                );
-
-            }
-
-        });
-
-    }
-
-
-    /* =========================
-       ROLE-BASED DASHBOARD
-    ========================= */
+    const navItems =
+        document.querySelectorAll(".nav-link");
 
     const dashboardLinks = [
         document.getElementById("dashboardNavLink"),
@@ -109,70 +19,300 @@ document.addEventListener("DOMContentLoaded", () => {
     ].filter(Boolean);
 
 
-    const loggedIn =
-        sessionStorage.getItem("vorvenaUserLoggedIn") === "true";
+
+    /* =========================================
+       DASHBOARD ROLE ROUTING
+    ========================================== */
+
+    function setupDashboardLinks() {
+
+        if (!dashboardLinks.length) {
+            return;
+        }
 
 
-    let user = null;
-
-    try {
-
-        user = JSON.parse(
-            sessionStorage.getItem("vorvenaLoggedInUser") || "null"
-        );
-
-    } catch (error) {
-
-        user = null;
-
-    }
+        const loggedIn =
+            sessionStorage.getItem(
+                "vorvenaUserLoggedIn"
+            ) === "true";
 
 
-    let dashboardHref = null;
+        const storedUser =
+            sessionStorage.getItem(
+                "vorvenaLoggedInUser"
+            );
 
 
-    if (
-        loggedIn &&
-        user &&
-        user.accountType === "client"
-    ) {
+        /* Logged out */
 
-        dashboardHref = "clients-dashboard.html";
+        if (!loggedIn || !storedUser) {
 
-    }
+            dashboardLinks.forEach((link) => {
 
+                link.hidden = true;
 
-    if (
-        loggedIn &&
-        user &&
-        user.accountType === "professional"
-    ) {
+                link.classList.remove(
+                    "visible"
+                );
 
-        dashboardHref = "professional-dashboard.html";
+                link.href = "#";
 
-    }
+            });
+
+            return;
+        }
 
 
-    dashboardLinks.forEach((link) => {
+        let user = null;
 
-        if (dashboardHref) {
 
-            link.href = dashboardHref;
+        try {
 
-            link.hidden = false;
+            user = JSON.parse(storedUser);
 
-        } else {
+        } catch (error) {
 
-            link.hidden = true;
+            console.error(
+                "Unable to read logged-in user."
+            );
+
+            dashboardLinks.forEach((link) => {
+
+                link.hidden = true;
+
+                link.classList.remove(
+                    "visible"
+                );
+
+                link.href = "#";
+
+            });
+
+            return;
+        }
+
+
+        if (!user || !user.accountType) {
+
+            dashboardLinks.forEach((link) => {
+
+                link.hidden = true;
+
+                link.classList.remove(
+                    "visible"
+                );
+
+                link.href = "#";
+
+            });
+
+            return;
+        }
+
+
+        let dashboardHref = null;
+
+
+        /* Client */
+
+        if (
+            user.accountType ===
+            "client"
+        ) {
+
+            dashboardHref =
+                "clients-dashboard.html";
 
         }
 
-    });
+
+        /* Professional */
+
+        if (
+            user.accountType ===
+            "professional"
+        ) {
+
+            dashboardHref =
+                "professional-dashboard.html";
+
+        }
 
 
-    /* =========================
-       ACTIVE NAVIGATION
-    ========================= */
+        /* Unknown account type */
+
+        if (!dashboardHref) {
+
+            dashboardLinks.forEach((link) => {
+
+                link.hidden = true;
+
+                link.classList.remove(
+                    "visible"
+                );
+
+                link.href = "#";
+
+            });
+
+            return;
+        }
+
+
+        /* Apply dashboard route */
+
+        dashboardLinks.forEach((link) => {
+
+            link.href =
+                dashboardHref;
+
+            link.hidden = false;
+
+            link.classList.add(
+                "visible"
+            );
+
+        });
+
+    }
+
+
+
+    /* =========================================
+       CLOSE MOBILE MENU
+    ========================================== */
+
+    function closeMobileMenu() {
+
+        if (!menuBtn || !mobileNav) {
+            return;
+        }
+
+
+        mobileNav.classList.remove(
+            "show"
+        );
+
+
+        menuBtn.classList.remove(
+            "active"
+        );
+
+
+        menuBtn.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+
+        menuBtn.setAttribute(
+            "aria-label",
+            "Open menu"
+        );
+
+    }
+
+
+
+    /* =========================================
+       MOBILE MENU
+    ========================================== */
+
+    if (menuBtn && mobileNav) {
+
+        menuBtn.addEventListener(
+            "click",
+            () => {
+
+                const isOpen =
+                    mobileNav.classList.toggle(
+                        "show"
+                    );
+
+
+                menuBtn.classList.toggle(
+                    "active",
+                    isOpen
+                );
+
+
+                menuBtn.setAttribute(
+                    "aria-expanded",
+                    String(isOpen)
+                );
+
+
+                menuBtn.setAttribute(
+                    "aria-label",
+                    isOpen
+                        ? "Close menu"
+                        : "Open menu"
+                );
+
+            }
+        );
+
+
+        /* Close when navigation link is clicked */
+
+        navItems.forEach((link) => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    closeMobileMenu();
+
+                }
+            );
+
+        });
+
+
+        /* Close with Escape */
+
+        document.addEventListener(
+            "keydown",
+            (event) => {
+
+                if (
+                    event.key ===
+                    "Escape"
+                ) {
+
+                    closeMobileMenu();
+
+                }
+
+            }
+        );
+
+
+        /* Close when returning to desktop */
+
+        window.addEventListener(
+            "resize",
+            () => {
+
+                if (
+                    window.innerWidth >
+                    768
+                ) {
+
+                    closeMobileMenu();
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    /* =========================================
+       ACTIVE PAGE
+    ========================================== */
 
     let currentPage =
         window.location.pathname
@@ -181,58 +321,86 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     if (!currentPage) {
-        currentPage = "index.html";
+
+        currentPage =
+            "index.html";
+
     }
 
 
-    document
-        .querySelectorAll(
-            ".desktop-nav a, .mobile-nav a"
-        )
-        .forEach((link) => {
+    navItems.forEach((link) => {
 
-            const href = link.getAttribute("href");
-
-            if (
-                href &&
-                !href.startsWith("#") &&
-                !href.startsWith("http")
-            ) {
-
-                const cleanHref =
-                    href.split("#")[0];
-
-                if (
-                    cleanHref === currentPage &&
-                    cleanHref !== "clients.html"
-                ) {
-
-                    link.classList.add("active");
-
-                }
-
-            }
-
-        });
+        const linkPage =
+            link.getAttribute("href");
 
 
-    /* =========================
+        if (
+            !linkPage ||
+            linkPage === "#"
+        ) {
+
+            link.classList.remove(
+                "active"
+            );
+
+            return;
+        }
+
+
+        const cleanLinkPage =
+            linkPage.split("#")[0];
+
+
+        if (
+            cleanLinkPage ===
+            currentPage
+        ) {
+
+            link.classList.add(
+                "active"
+            );
+
+        } else {
+
+            link.classList.remove(
+                "active"
+            );
+
+        }
+
+    });
+
+
+
+    /* =========================================
+       INITIALIZE DASHBOARD
+    ========================================== */
+
+    setupDashboardLinks();
+
+
+
+    /* =========================================
        CLIENT SESSION
-    ========================= */
+    ========================================== */
 
     const isClientLoggedIn =
-        sessionStorage.getItem("vorvenaUserLoggedIn") === "true";
+        sessionStorage.getItem(
+            "vorvenaUserLoggedIn"
+        ) === "true";
 
 
     let clientUser = null;
 
+
     try {
 
-        clientUser = JSON.parse(
-            sessionStorage.getItem(
-                "vorvenaLoggedInUser"
-            ) || "null"
-        );
+        clientUser =
+            JSON.parse(
+                sessionStorage.getItem(
+                    "vorvenaLoggedInUser"
+                ) || "null"
+            );
 
     } catch (error) {
 
@@ -243,13 +411,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /*
        Only use client information
-       when the logged-in account is a client.
+       when the logged-in account
+       is a client.
     */
 
     if (
         !isClientLoggedIn ||
         !clientUser ||
-        clientUser.accountType !== "client"
+        clientUser.accountType !==
+            "client"
     ) {
 
         clientUser = null;
@@ -257,9 +427,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
+
+    /* =========================================
        SELECTED PROFESSIONAL
-    ========================= */
+    ========================================== */
 
     const selectedProfessionalRaw =
         sessionStorage.getItem(
@@ -293,15 +464,18 @@ document.addEventListener("DOMContentLoaded", () => {
             "selectedProfessionalBox"
         );
 
+
     const selectedProfessionalName =
         document.getElementById(
             "selectedProfessionalName"
         );
 
+
     const selectedProfessionalDetails =
         document.getElementById(
             "selectedProfessionalDetails"
         );
+
 
     const selectedProfessionalInput =
         document.getElementById(
@@ -314,10 +488,13 @@ document.addEventListener("DOMContentLoaded", () => {
         selectedProfessionalBox
     ) {
 
-        selectedProfessionalBox.hidden = false;
+        selectedProfessionalBox.hidden =
+            false;
 
 
-        if (selectedProfessionalName) {
+        if (
+            selectedProfessionalName
+        ) {
 
             selectedProfessionalName.textContent =
                 selectedProfessional.name ||
@@ -327,7 +504,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        if (selectedProfessionalDetails) {
+        if (
+            selectedProfessionalDetails
+        ) {
 
             const profession =
                 selectedProfessional.profession ||
@@ -335,10 +514,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 selectedProfessional.title ||
                 "Professional";
 
+
             const location =
                 selectedProfessional.location ||
                 selectedProfessional.city ||
                 "";
+
 
             selectedProfessionalDetails.textContent =
                 location
@@ -348,7 +529,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        if (selectedProfessionalInput) {
+        if (
+            selectedProfessionalInput
+        ) {
 
             selectedProfessionalInput.value =
                 JSON.stringify(
@@ -360,34 +543,40 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
+
+    /* =========================================
        PROJECT REQUEST FORM
-    ========================= */
+    ========================================== */
 
     const projectForm =
         document.getElementById(
             "projectRequestForm"
         );
 
+
     const formMessage =
         document.getElementById(
             "formMessage"
         );
+
 
     const submitButton =
         document.getElementById(
             "submitProjectBtn"
         );
 
+
     const clientEmailInput =
         document.getElementById(
             "clientEmail"
         );
 
+
     const clientNameInput =
         document.getElementById(
             "clientName"
         );
+
 
     const projectSubject =
         document.getElementById(
@@ -395,10 +584,10 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-    /*
-       If the client is logged in,
-       prefill the known client information.
-    */
+
+    /* =========================================
+       PREFILL CLIENT INFORMATION
+    ========================================== */
 
     if (clientUser) {
 
@@ -443,6 +632,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 selectedProfessional.fullName ||
                 "Professional";
 
+
             projectSubject.value =
                 `VORVENA Project Request - ${professionalName}`;
 
@@ -450,6 +640,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+
+
+    /* =========================================
+       PROJECT REQUEST SUBMISSION
+    ========================================== */
 
     if (projectForm) {
 
@@ -460,10 +655,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 event.preventDefault();
 
 
-                /*
-                   A project request requires
-                   a logged-in client.
-                */
+                /* -------------------------
+                   CLIENT LOGIN REQUIRED
+                ------------------------- */
 
                 if (!clientUser) {
 
@@ -493,11 +687,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
-                /*
-                   A selected professional is required
-                   when the request comes from a
-                   professional profile.
-                */
+                /* -------------------------
+                   PROFESSIONAL REQUIRED
+                ------------------------- */
 
                 if (!selectedProfessional) {
 
@@ -521,7 +713,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
-                if (!projectForm.checkValidity()) {
+                /* -------------------------
+                   FORM VALIDATION
+                ------------------------- */
+
+                if (
+                    !projectForm.checkValidity()
+                ) {
 
                     projectForm.reportValidity();
 
@@ -530,9 +728,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
+                /* -------------------------
+                   SUBMITTING
+                ------------------------- */
+
                 if (submitButton) {
 
-                    submitButton.disabled = true;
+                    submitButton.disabled =
+                        true;
 
                     submitButton.textContent =
                         "SUBMITTING...";
@@ -548,10 +751,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
-                /*
-                   Keep client session information
-                   attached to the request.
-                */
+                /* -------------------------
+                   CLIENT EMAIL
+                ------------------------- */
 
                 if (clientEmailInput) {
 
@@ -562,7 +764,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 const formData =
-                    new FormData(projectForm);
+                    new FormData(
+                        projectForm
+                    );
 
 
                 formData.append(
@@ -594,6 +798,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
 
+                /* -------------------------
+                   SEND TO FORMSPREE
+                ------------------------- */
+
                 try {
 
                     const response =
@@ -601,7 +809,9 @@ document.addEventListener("DOMContentLoaded", () => {
                             projectForm.action,
                             {
                                 method: "POST",
+
                                 body: formData,
+
                                 headers: {
                                     Accept:
                                         "application/json"
@@ -630,7 +840,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     projectForm.reset();
 
 
-                    if (selectedProfessionalBox) {
+                    if (
+                        selectedProfessionalBox
+                    ) {
 
                         selectedProfessionalBox.hidden =
                             true;
@@ -641,6 +853,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     sessionStorage.removeItem(
                         "vorvenaHiringIntent"
                     );
+
 
                     sessionStorage.removeItem(
                         "vorvenaSelectedProfessional"
@@ -654,10 +867,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     }
 
-
                 } catch (error) {
 
-                    console.error(error);
+                    console.error(
+                        "Project request error:",
+                        error
+                    );
 
 
                     if (formMessage) {
@@ -686,9 +901,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
+
+    /* =========================================
        PROJECT REQUEST HASH
-    ========================= */
+    ========================================== */
 
     if (
         window.location.hash ===
@@ -716,37 +932,51 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
+
+    /* =========================================
        REVEAL ANIMATION
-    ========================= */
+    ========================================== */
 
     const revealElements =
         document.querySelectorAll(
-            ".feature-card, .process-card, .request-info-card, .structure-card"
+            ".feature-card, " +
+            ".process-card, " +
+            ".request-info-card, " +
+            ".structure-card"
         );
 
 
-    if ("IntersectionObserver" in window) {
+    if (
+        "IntersectionObserver" in window
+    ) {
 
         const observer =
             new IntersectionObserver(
-                (entries, observerInstance) => {
+                (
+                    entries,
+                    observerInstance
+                ) => {
 
-                    entries.forEach((entry) => {
+                    entries.forEach(
+                        (entry) => {
 
-                        if (entry.isIntersecting) {
+                            if (
+                                entry.isIntersecting
+                            ) {
 
-                            entry.target.classList.add(
-                                "visible"
-                            );
+                                entry.target.classList.add(
+                                    "visible"
+                                );
 
-                            observerInstance.unobserve(
-                                entry.target
-                            );
+
+                                observerInstance.unobserve(
+                                    entry.target
+                                );
+
+                            }
 
                         }
-
-                    });
+                    );
 
                 },
                 {
@@ -755,14 +985,37 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
-        revealElements.forEach((element) => {
+        revealElements.forEach(
+            (element) => {
 
-            observer.observe(element);
+                observer.observe(
+                    element
+                );
 
-        });
+            }
+        );
+
+    } else {
+
+        /* Fallback for older browsers */
+
+        revealElements.forEach(
+            (element) => {
+
+                element.classList.add(
+                    "visible"
+                );
+
+            }
+        );
 
     }
 
+
+
+    /* =========================================
+       PAGE LOADED
+    ========================================== */
 
     console.log(
         "VORVENA Clients page loaded successfully."

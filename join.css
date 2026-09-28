@@ -7,6 +7,7 @@
     --light-gray: #e5e7eb;
     --border: #d9dde3;
     --error: #b42318;
+    --success: #1f5130;
 }
 
 * {
@@ -50,6 +51,11 @@ button {
     cursor: pointer;
 }
 
+
+/* =========================================
+   NAVBAR
+========================================= */
+
 .site-header {
     width: 100%;
     background: var(--white);
@@ -61,57 +67,78 @@ button {
 .nav-container {
     width: 100%;
     max-width: 1400px;
-    margin: 0 auto;
     min-height: 82px;
+    margin: 0 auto;
     padding: 0 6%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 .logo {
+    flex-shrink: 0;
+
+    color: var(--navy);
     font-size: 24px;
     font-weight: 800;
     letter-spacing: 3px;
-    color: var(--navy);
 }
 
-.desktop-nav {
+.nav-links {
     display: flex;
     align-items: center;
     gap: 34px;
 }
 
-.desktop-nav a {
+.nav-link {
+    position: relative;
+
+    color: var(--black);
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.8px;
-    color: var(--black);
-    position: relative;
-    transition: 0.3s ease;
+
+    transition:
+        color 0.3s ease,
+        opacity 0.3s ease;
 }
 
-.desktop-nav a:hover,
-.desktop-nav a.active {
+.nav-link:hover,
+.nav-link.active {
     color: var(--navy);
 }
 
-.desktop-nav a.active::after {
+.nav-link.active::after {
     content: "";
+
     position: absolute;
     left: 0;
     bottom: -8px;
+
     width: 100%;
     height: 2px;
+
     background: var(--navy);
+}
+
+.dashboard-link {
+    display: none;
+}
+
+.dashboard-link.visible {
+    display: inline-flex;
 }
 
 .menu-btn {
     display: none;
+
     width: 42px;
     height: 42px;
+
     border: 1px solid var(--light-gray);
     background: var(--white);
+
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -122,6 +149,7 @@ button {
     width: 20px;
     height: 2px;
     background: var(--navy);
+
     transition: 0.3s ease;
 }
 
@@ -133,40 +161,10 @@ button {
     transform: translateY(-4px) rotate(-45deg);
 }
 
-.mobile-nav {
-    display: none;
-    width: 100%;
-    background: var(--white);
-    border-top: 1px solid var(--light-gray);
-    padding: 15px 6% 22px;
-}
 
-.mobile-nav a {
-    display: block;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--light-gray);
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.mobile-nav a:last-child {
-    border-bottom: none;
-}
-
-.mobile-nav a.active {
-    color: var(--navy);
-}
-
-.mobile-nav.show {
-    display: block;
-}
-
-.join-hero {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 110px 6% 80px;
-}
+/* =========================================
+   GENERAL
+========================================= */
 
 .hero-label,
 .section-heading > span,
@@ -175,20 +173,36 @@ button {
 .footer-column > span,
 .join-cta > span {
     display: block;
+
     color: var(--gray);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 1.8px;
 }
 
+
+/* =========================================
+   HERO
+========================================= */
+
+.join-hero {
+    width: 100%;
+    max-width: 1400px;
+
+    margin: 0 auto;
+    padding: 110px 6% 80px;
+}
+
 .join-hero h1 {
     max-width: 950px;
     margin-top: 25px;
+
+    color: var(--navy);
+
     font-size: clamp(55px, 9vw, 130px);
     line-height: 0.9;
     letter-spacing: -5px;
     font-weight: 800;
-    color: var(--navy);
 }
 
 .join-hero h1 span {
@@ -199,7 +213,9 @@ button {
 .hero-bottom {
     margin-top: 65px;
     padding-top: 25px;
+
     border-top: 1px solid var(--light-gray);
+
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -208,6 +224,7 @@ button {
 
 .hero-bottom p {
     max-width: 650px;
+
     color: var(--gray);
     font-size: 16px;
     line-height: 1.8;
@@ -215,11 +232,17 @@ button {
 
 .hero-bottom > span {
     white-space: nowrap;
+
     color: var(--gray);
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 1.5px;
 }
+
+
+/* =========================================
+   APPLICATION
+========================================= */
 
 .application-section {
     width: 100%;
@@ -230,12 +253,14 @@ button {
 .section-heading {
     width: 100%;
     max-width: 1400px;
+
     margin: 0 auto 70px;
 }
 
 .section-heading h2,
 .process-heading h2 {
     margin-top: 18px;
+
     color: var(--navy);
     font-size: clamp(40px, 6vw, 78px);
     line-height: 0.95;
@@ -245,15 +270,19 @@ button {
 .form-area {
     width: 100%;
     max-width: 1100px;
+
     margin: 0 auto;
 }
 
 .form-section {
     width: 100%;
+
     display: grid;
-    grid-template-columns: 70px 1fr;
+    grid-template-columns: 70px minmax(0, 1fr);
     gap: 35px;
+
     padding: 55px 0;
+
     border-top: 1px solid var(--border);
 }
 
@@ -270,6 +299,7 @@ button {
 
 .form-section-title {
     margin-bottom: 28px;
+
     color: var(--navy);
     font-size: 14px;
     font-weight: 800;
@@ -279,13 +309,20 @@ button {
 .section-description {
     max-width: 700px;
     margin-bottom: 30px;
+
     color: var(--gray);
     font-size: 14px;
     line-height: 1.7;
 }
 
+
+/* =========================================
+   FORM GRID
+========================================= */
+
 .form-grid {
     width: 100%;
+
     display: grid;
     grid-template-columns: 1fr;
     gap: 25px;
@@ -297,6 +334,7 @@ button {
 
 .form-group {
     min-width: 0;
+
     display: flex;
     flex-direction: column;
     gap: 9px;
@@ -317,13 +355,20 @@ button {
 .form-group select,
 .form-group textarea {
     width: 100%;
+
     border: 1px solid var(--border);
+    border-radius: 0;
+
     background: var(--white);
     color: var(--black);
+
     padding: 15px 16px;
+
     outline: none;
-    border-radius: 0;
-    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 .form-group input,
@@ -332,8 +377,8 @@ button {
 }
 
 .form-group textarea {
-    resize: vertical;
     min-height: 145px;
+    resize: vertical;
 }
 
 .form-group input:focus,
@@ -354,21 +399,31 @@ button {
     line-height: 1.5;
 }
 
+
+/* =========================================
+   PHONE
+========================================= */
+
 .phone-input {
     width: 100%;
+
     display: grid;
     grid-template-columns: 105px minmax(0, 1fr);
 }
 
 .phone-code-box {
     min-height: 52px;
+
     border: 1px solid var(--border);
     border-right: none;
+
     background: #f0f2f5;
+
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 7px;
+
     color: var(--navy);
     font-size: 13px;
     font-weight: 700;
@@ -378,6 +433,11 @@ button {
     min-width: 0;
 }
 
+
+/* =========================================
+   PROFILE PHOTO
+========================================= */
+
 .upload-area {
     width: 100%;
 }
@@ -385,13 +445,18 @@ button {
 .upload-box {
     width: 100%;
     min-height: 180px;
+
     padding: 25px;
+
     border: 1px dashed var(--border);
     background: var(--white);
+
     display: flex;
     align-items: center;
     gap: 25px;
+
     cursor: pointer;
+
     transition: 0.3s ease;
 }
 
@@ -403,18 +468,21 @@ button {
     width: 115px;
     height: 115px;
     flex: 0 0 115px;
+
     background: var(--off-white);
     border: 1px solid var(--border);
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     overflow: hidden;
 }
 
 .image-preview span {
+    color: var(--gray);
     font-size: 35px;
     font-weight: 300;
-    color: var(--gray);
 }
 
 .image-preview img {
@@ -445,6 +513,11 @@ button {
     display: none;
 }
 
+
+/* =========================================
+   CV
+========================================= */
+
 .file-input-wrapper {
     width: 100%;
 }
@@ -452,17 +525,23 @@ button {
 .file-label {
     width: 100%;
     min-height: 55px;
+
     padding: 0 17px;
+
     border: 1px solid var(--border);
     background: var(--white);
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     cursor: pointer;
+
     color: var(--navy);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.8px;
+
     transition: 0.3s ease;
 }
 
@@ -475,6 +554,11 @@ button {
     font-weight: 300;
 }
 
+
+/* =========================================
+   AGREEMENT
+========================================= */
+
 .agreement-list {
     display: flex;
     flex-direction: column;
@@ -485,9 +569,11 @@ button {
     display: flex;
     align-items: flex-start;
     gap: 13px;
+
     color: var(--gray);
     font-size: 13px;
     line-height: 1.7;
+
     cursor: pointer;
 }
 
@@ -495,7 +581,9 @@ button {
     width: 17px;
     height: 17px;
     flex: 0 0 17px;
+
     margin-top: 3px;
+
     accent-color: var(--navy);
 }
 
@@ -509,9 +597,15 @@ button {
     color: var(--navy);
 }
 
+
+/* =========================================
+   SUBMIT
+========================================= */
+
 .submit-area {
     margin-top: 55px;
     padding: 35px 0;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -519,29 +613,39 @@ button {
 }
 
 .submit-area p {
-    margin-top: 8px;
     max-width: 480px;
+    margin-top: 8px;
+
     color: var(--gray);
     font-size: 13px;
 }
 
 .submit-btn {
     min-height: 58px;
+
     padding: 0 25px;
+
     border: none;
     background: var(--navy);
     color: var(--white);
+
     display: flex;
     align-items: center;
     gap: 30px;
+
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 1px;
+
     transition: 0.3s ease;
 }
 
-.submit-btn:hover {
+.submit-btn:hover:not(:disabled) {
     background: var(--black);
+}
+
+.submit-btn:disabled {
+    cursor: wait;
 }
 
 .submit-arrow {
@@ -551,11 +655,15 @@ button {
 
 .form-message {
     display: none;
+
     width: 100%;
+
     padding: 16px;
     margin-top: 10px;
+
     border: 1px solid var(--border);
     background: var(--white);
+
     color: var(--navy);
     font-size: 13px;
     line-height: 1.6;
@@ -572,21 +680,30 @@ button {
 
 .form-message.success {
     border-color: #b8c9bd;
-    color: #1f5130;
+    color: var(--success);
 }
+
+
+/* =========================================
+   PROCESS
+========================================= */
 
 .process-section {
     width: 100%;
     max-width: 1400px;
+
     margin: 0 auto;
     padding: 110px 6%;
 }
 
 .process-grid {
     width: 100%;
+
     margin-top: 70px;
+
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
+
     border-top: 1px solid var(--light-gray);
     border-left: 1px solid var(--light-gray);
 }
@@ -594,7 +711,9 @@ button {
 .process-card {
     min-width: 0;
     min-height: 300px;
+
     padding: 30px;
+
     border-right: 1px solid var(--light-gray);
     border-bottom: 1px solid var(--light-gray);
 }
@@ -608,6 +727,7 @@ button {
 
 .process-card h3 {
     margin-top: 85px;
+
     color: var(--navy);
     font-size: 22px;
     letter-spacing: 0.5px;
@@ -615,16 +735,25 @@ button {
 
 .process-card p {
     margin-top: 15px;
+
     color: var(--gray);
     font-size: 13px;
     line-height: 1.7;
 }
 
+
+/* =========================================
+   CTA
+========================================= */
+
 .join-cta {
     width: 100%;
+
     padding: 120px 6%;
+
     background: var(--navy);
     color: var(--white);
+
     text-align: center;
 }
 
@@ -633,23 +762,30 @@ button {
 }
 
 .join-cta h2 {
-    margin: 25px auto 40px;
     max-width: 900px;
+
+    margin: 25px auto 40px;
+
     font-size: clamp(45px, 7vw, 95px);
     line-height: 0.92;
     letter-spacing: -4px;
 }
 
 .join-cta a {
+    min-height: 52px;
+
+    padding: 0 25px;
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 52px;
-    padding: 0 25px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 1px;
+
     transition: 0.3s ease;
 }
 
@@ -658,20 +794,30 @@ button {
     color: var(--navy);
 }
 
+
+/* =========================================
+   FOOTER
+========================================= */
+
 .site-footer {
     width: 100%;
+
+    padding: 75px 6% 25px;
+
     background: var(--black);
     color: var(--white);
-    padding: 75px 6% 25px;
 }
 
 .footer-top {
     width: 100%;
     max-width: 1400px;
+
     margin: 0 auto;
+
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 50px;
+
     padding-bottom: 70px;
 }
 
@@ -683,7 +829,9 @@ button {
 
 .footer-brand p {
     max-width: 300px;
+
     margin-top: 18px;
+
     color: #9ca3af;
     font-size: 13px;
     line-height: 1.7;
@@ -704,6 +852,7 @@ button {
 .footer-column a {
     color: #d1d5db;
     font-size: 13px;
+
     transition: 0.25s ease;
 }
 
@@ -714,16 +863,25 @@ button {
 .footer-bottom {
     width: 100%;
     max-width: 1400px;
+
     margin: 0 auto;
     padding-top: 22px;
+
     border-top: 1px solid #222;
+
     display: flex;
     justify-content: space-between;
     gap: 20px;
+
     color: #777;
     font-size: 11px;
     letter-spacing: 0.5px;
 }
+
+
+/* =========================================
+   TABLET
+========================================= */
 
 @media (max-width: 768px) {
 
@@ -732,8 +890,50 @@ button {
         padding: 0 5%;
     }
 
-    .desktop-nav {
+    .nav-links {
         display: none;
+
+        position: absolute;
+        top: 72px;
+        left: 0;
+
+        width: 100%;
+
+        padding: 15px 5% 22px;
+
+        background: var(--white);
+        border-top: 1px solid var(--light-gray);
+        border-bottom: 1px solid var(--light-gray);
+
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-link {
+        display: block;
+
+        padding: 14px 0;
+
+        border-bottom: 1px solid var(--light-gray);
+
+        font-size: 14px;
+    }
+
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    .nav-link.active::after {
+        display: none;
+    }
+
+    .dashboard-link.visible {
+        display: block;
     }
 
     .menu-btn {
@@ -810,6 +1010,11 @@ button {
     }
 }
 
+
+/* =========================================
+   MOBILE
+========================================= */
+
 @media (max-width: 425px) {
 
     .nav-container {
@@ -821,12 +1026,17 @@ button {
         letter-spacing: 2px;
     }
 
+    .nav-links {
+        top: 72px;
+    }
+
     .join-hero {
         padding: 65px 5% 55px;
     }
 
     .join-hero h1 {
         margin-top: 20px;
+
         font-size: 48px;
         line-height: 0.93;
         letter-spacing: -2.5px;
@@ -955,6 +1165,11 @@ button {
         gap: 8px;
     }
 }
+
+
+/* =========================================
+   SMALL PHONES
+========================================= */
 
 @media (max-width: 375px) {
 
